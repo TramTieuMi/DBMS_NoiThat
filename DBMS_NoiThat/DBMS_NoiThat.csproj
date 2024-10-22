@@ -105,6 +105,9 @@
     <EmbeddedResource Include="UC\UCGioHang.resx">
       <DependentUpon>UCGioHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="user\DonHang.resx">
+      <DependentUpon>DonHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="user\GioHang.resx">
       <DependentUpon>GioHang.cs</DependentUpon>
     </EmbeddedResource>
