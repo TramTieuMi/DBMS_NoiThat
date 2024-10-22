@@ -1,6 +1,6 @@
-﻿namespace DBMS_NoiThat.User
+﻿namespace DBMS_NoiThat
 {
-    partial class DONHANG
+    partial class DonHang
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "DONHANG";
+            this.Text = "DonHang";
         }
 
         #endregion

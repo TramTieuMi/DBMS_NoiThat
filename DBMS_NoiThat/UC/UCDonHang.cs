@@ -8,16 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBMS_NoiThat.user
+namespace DBMS_NoiThat.UC
 {
-    public partial class GioHang : Form
+    public partial class UCDonHang : UserControl
     {
-        public GioHang()
+        public UCDonHang()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
         {
 
         }

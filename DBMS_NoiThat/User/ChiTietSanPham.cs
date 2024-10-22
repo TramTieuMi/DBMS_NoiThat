@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBMS_NoiThat.User
+namespace DBMS_NoiThat.user
 {
     public partial class ChiTietSanPham : Form
     {

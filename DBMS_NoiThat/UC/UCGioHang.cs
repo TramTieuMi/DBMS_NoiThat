@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBMS_NoiThat
+namespace DBMS_NoiThat.UC
 {
-    public partial class DonHang : Form
+    public partial class UCGioHang : UserControl
     {
-        public DonHang()
+        public UCGioHang()
         {
             InitializeComponent();
         }
