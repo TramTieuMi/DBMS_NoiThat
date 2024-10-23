@@ -29,10 +29,12 @@ namespace DBMS_NoiThat.user
 
         }
         List<EGioHang> listGH ;
+        int maGH;
         public GioHang(int MaGioHang)
         {
             InitializeComponent();
             LoadGioHang(MaGioHang);
+            maGH= MaGioHang;
         }
         public void LoadGioHang(int MaGioHang)
         {
@@ -53,17 +55,23 @@ namespace DBMS_NoiThat.user
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
-           
+            List<EGioHang> lt = new List<EGioHang>();
             foreach (EGioHang gh in listGH)
             {
                 if(gh.Check == true)
                 {
-                    
+                    lt.Add(gh);
                 }
             }
+            Application.Run(new DonHang(maGH, lt)); 
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void GioHang_Load(object sender, EventArgs e)
         {
 
         }

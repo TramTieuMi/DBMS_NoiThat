@@ -38,6 +38,7 @@ namespace DBMS_NoiThat
         }
         public void LoadSanPham(int MaKhachHang, List<EGioHang> lst)
         {
+            int sum = 0;
             foreach (EGioHang gioHang in lst)
             {
                 if (gioHang.MaGioHang1 == MaKhachHang)
@@ -46,9 +47,10 @@ namespace DBMS_NoiThat
                     int dis = (FPN_HienThi.Width - (2 * ucdh.Width)) / 3;
                     ucdh.Margin = new Padding(dis, dis, 0, 0);
                     FPN_HienThi.Controls.Add(ucdh);
-
+                    sum = sum + gioHang.SoTien1;
                 }
             }
+            LB_SoTien.Text = sum.ToString();
         }
         public void LoadThongTin()
         {
@@ -108,7 +110,7 @@ namespace DBMS_NoiThat
 
                     // Mở kết nối và thực thi câu lệnh
                     connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
                 }
             }
         }

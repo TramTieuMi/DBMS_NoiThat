@@ -108,6 +108,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "GioHang";
             this.Text = "GioHang";
+            this.Load += new System.EventHandler(this.GioHang_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
