@@ -26,5 +26,10 @@ namespace DBMS_NoiThat.UC
         {
 
         }
+
+        private void UCDonHang_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

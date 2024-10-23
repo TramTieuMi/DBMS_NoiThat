@@ -132,6 +132,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UCDonHang";
             this.Size = new System.Drawing.Size(1074, 108);
+            this.Load += new System.EventHandler(this.UCDonHang_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

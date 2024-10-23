@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\EGioHang.cs" />
+    <Compile Include="Entity\EKhachHang.cs" />
+    <Compile Include="Entity\ESanPham.cs" />
     <Compile Include="UC\UCDonHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
