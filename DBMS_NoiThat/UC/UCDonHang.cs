@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBMS_NoiThat.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,16 @@ namespace DBMS_NoiThat.UC
         private void UCDonHang_Load(object sender, EventArgs e)
         {
 
+        }
+        EGioHang eGioHang;
+        public UCDonHang(EGioHang eGioHang)
+        {
+            this.eGioHang = eGioHang;
+            LB_MaSP.Text = eGioHang.MaSanPham1.ToString();
+            LB_TenSP.Text = eGioHang.TenSanPham1;
+            LB_SoLuong.Text = eGioHang.SoLuong1.ToString();
+            LB_Gia.Text = eGioHang.SoTien1.ToString();
+            InitializeComponent();
         }
     }
 }

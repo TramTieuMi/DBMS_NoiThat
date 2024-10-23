@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\EDonHang.cs" />
     <Compile Include="Entity\EGioHang.cs" />
     <Compile Include="Entity\EKhachHang.cs" />
     <Compile Include="Entity\ESanPham.cs" />

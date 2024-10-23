@@ -24,14 +24,14 @@ namespace DBMS_NoiThat.UC
         }
         EGioHang gioHang;
         public UCGioHang(EGioHang gioHang)
-        {
-            InitializeComponent();
+        {   
             this.gioHang = gioHang;
             LB_MaSanPham.Text = gioHang.MaSanPham1.ToString();
             LB_TenSanPham.Text = gioHang.TenSanPham1;
             LB_Gia.Text = gioHang.SoTien1.ToString();
             TB_SoLuong.Text = gioHang.SoLuong1.ToString();
             CK_Chon.Checked = gioHang.Check;
+            InitializeComponent();
         }
 
         private void BTN_Giam_Click(object sender, EventArgs e)
