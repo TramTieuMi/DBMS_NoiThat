@@ -9,7 +9,6 @@ namespace DBMS_NoiThat.Entity
     public class EDonHang
     {
         int MaDonHang;
-        string TenDonHang;
         int MaSanPham;
         int MaKhachHang;
         string TenNguoiDat;
@@ -21,10 +20,9 @@ namespace DBMS_NoiThat.Entity
         string DiaChiNhan;
         string TrangThai;
 
-        public EDonHang(int maDonHang, string tenDonHang, int maSanPham, int maKhachHang, string tenNguoiDat, int sDTNguoiDat, string tenNguoiNhan, int sDTNguoiNhan, int tongTien, string ngayMuaHang, string diaChiNhan, string trangThai)
+        public EDonHang(int maDonHang, int maSanPham, int maKhachHang, string tenNguoiDat, int sDTNguoiDat, string tenNguoiNhan, int sDTNguoiNhan, int tongTien, string ngayMuaHang, string diaChiNhan, string trangThai)
         {
             MaDonHang = maDonHang;
-            TenDonHang = tenDonHang;
             MaSanPham = maSanPham;
             MaKhachHang = maKhachHang;
             TenNguoiDat = tenNguoiDat;
@@ -38,7 +36,6 @@ namespace DBMS_NoiThat.Entity
         }
 
         public int MaDonHang1 { get => MaDonHang; set => MaDonHang = value; }
-        public string TenDonHang1 { get => TenDonHang; set => TenDonHang = value; }
         public int MaSanPham1 { get => MaSanPham; set => MaSanPham = value; }
         public int MaKhachHang1 { get => MaKhachHang; set => MaKhachHang = value; }
         public string TenNguoiDat1 { get => TenNguoiDat; set => TenNguoiDat = value; }

@@ -35,26 +35,27 @@ namespace DBMS_NoiThat.user
         public void LoadChiTietSanPham(int MaSanPham)
         {
             string connectionString = "";
-            string query = "SELECT * FROM DONHANG";
+            string query = "SELECT * FROM SANPHAM WHERE MaSanPham = @MaSanPham";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@MaSanPham", MaSanPham);
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
                         while (reader.Read() )
                         {
                             LB_MaSanPham.Text = reader["MaSanPham"].ToString();
-                            LB_TenSP.Text = reader["TenDonHang"].ToString();
-                            LB_ChatLieu.Text = reader["MaSanPham"].ToString();
-                            LB_Gia.Text = reader["MaKhachHang"].ToString();
-                            LB_KichThuoc.Text = reader["TenNguoiDat"].ToString();
-                            LB_MauSac.Text = reader["SDTNguoiDat"].ToString();
-                            LB_SoLuong.Text = reader["TenNguoiNhan"].ToString();
-                            LB_MoTa.Text = reader["SDTNguoiNhan"].ToString();
+                            LB_TenSP.Text = reader["TenSanPham"].ToString();
+                            LB_ChatLieu.Text = reader["ChatLieu"].ToString();
+                            LB_Gia.Text = reader["GiaSanPham"].ToString();
+                            LB_KichThuoc.Text = reader["KichThuoc"].ToString();
+                            LB_MauSac.Text = reader["MauSac"].ToString();
+                            LB_SoLuong.Text = reader["SoLuong"].ToString();
+                            LB_MoTa.Text = reader["MoTa"].ToString();
                         }
                     }
                     else

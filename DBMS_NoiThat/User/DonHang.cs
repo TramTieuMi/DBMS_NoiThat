@@ -72,7 +72,6 @@ namespace DBMS_NoiThat
                             LB_MaKH.Text = reader["TenDonHang"].ToString();
                             LB_SDTNguoiDat.Text = reader["MaKhachHang"].ToString();
                             LB_SoTien.Text = reader["TenNguoiDat"].ToString();
-                            LB_TenDH.Text = reader["SDTNguoiDat"].ToString();
                             LB_TenNguoiDat.Text = reader["TenNguoiNhan"].ToString();
                             TB_SDTNguoiNhan.Text = reader["SDTNguoiNhan"].ToString();
                             TB_TenNguoiNhan.Text = reader["SDTNguoiNhan"].ToString();
@@ -103,10 +102,9 @@ namespace DBMS_NoiThat
                 {
                     command.Parameters.AddWithValue("@TenNguoiNhan", TB_TenNguoiNhan.Text);
                     command.Parameters.AddWithValue("@SDTNguoiNhan", TB_SDTNguoiNhan.Text);
-                    DateTime currentDate = DateTime.Now;
-                    command.Parameters.AddWithValue("@NgayMuaHang", currentDate.ToString());
+                    command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
                     command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
-                    command.Parameters.AddWithValue("@TrangThai", "Chưa Xác Nhận");
+                    command.Parameters.AddWithValue("@TrangThai", " Đang Xác Nhận");
 
                     // Mở kết nối và thực thi câu lệnh
                     connection.Open();

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace DBMS_NoiThat.user
         {
             InitializeComponent();
         }
-
+        string connectionString = "";
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -38,32 +39,52 @@ namespace DBMS_NoiThat.user
         }
         public void LoadGioHang(int MaGioHang)
         {
-            List<EGioHang> gioHangs = new List<EGioHang>();
-            foreach (EGioHang gioHang in gioHangs)
-            {
-                if(gioHang.MaGioHang1 == MaGioHang)
-                {
-                    listGH.Add(gioHang);
-                    UCGioHang ucgh = new UCGioHang(gioHang);
-                    int dis = (FPN_HienThi.Width - (2 * ucgh.Width)) / 3;
-                    ucgh.Margin = new Padding(dis, dis, 0, 0);
-                    FPN_HienThi.Controls.Add(ucgh);
 
-                }         
+            string query = "SELECT * FROM View_ChiTietGioHang";
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command); 
+
+                adapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dataTable.Rows) // Lặp qua từng hàng trong DataTable
+                    {
+                        if(MaGioHang == (int)row["MaGioHang"])
+                        {
+                            
+                            int MaGioHang1 = (int)row["MaGioHang"];
+                            int MaSanPham1 = (int)row["MaSanPham"];
+                            int SoLuong1 = (int)row["SoLuong"];
+                            int SoTien1 = (int)row["SoTien"]; // Giả sử SoTien là kiểu decimal
+                            string TenSanPham1 = row["TenSanPham"].ToString();
+                            EGioHang gioHang = new EGioHang(MaGioHang1, MaSanPham1, SoLuong1, SoTien1, TenSanPham1, false);
+
+                            UCGioHang ucgh = new UCGioHang(gioHang);
+                            int dis = (FPN_HienThi.Width - (2 * ucgh.Width)) / 3;
+                            ucgh.Margin = new Padding(dis, dis, 0, 0);
+                            FPN_HienThi.Controls.Add(ucgh);
+                        }
+                        
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Không có dữ liệu trong giỏ hàng.");
+                }    
             }
+
+            
         }
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
-            List<EGioHang> lt = new List<EGioHang>();
-            foreach (EGioHang gh in listGH)
-            {
-                if(gh.Check == true)
-                {
-                    lt.Add(gh);
-                }
-            }
-            Application.Run(new DonHang(maGH, lt)); 
+           
+            Application.Run(new DonHang(maGH, new List<EGioHang>())); 
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

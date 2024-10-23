@@ -15,6 +15,10 @@ namespace DBMS_NoiThat.Entity
         string TenSanPham;
         bool check;
 
+        public EGioHang()
+        {
+        }
+
         public EGioHang(int maGioHang, int maSanPham, int soLuong, int soTien, string tenSanPham, bool check)
         {
             MaGioHang = maGioHang;

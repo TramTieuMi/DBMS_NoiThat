@@ -39,7 +39,6 @@
             this.LB_SDTNguoiDat = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.LB_TenNguoiDat = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.LB_MaKH = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.LB_TenDH = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.LB_MaDonHang = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.BTN_MuaHang = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -50,7 +49,6 @@
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.FPN_HienThi = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -70,7 +68,6 @@
             this.guna2Panel1.Controls.Add(this.LB_SDTNguoiDat);
             this.guna2Panel1.Controls.Add(this.LB_TenNguoiDat);
             this.guna2Panel1.Controls.Add(this.LB_MaKH);
-            this.guna2Panel1.Controls.Add(this.LB_TenDH);
             this.guna2Panel1.Controls.Add(this.LB_MaDonHang);
             this.guna2Panel1.Controls.Add(this.BTN_MuaHang);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel11);
@@ -81,7 +78,6 @@
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel6);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel5);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel4);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel3);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
             this.guna2Panel1.Controls.Add(this.FPN_HienThi);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
@@ -177,7 +173,7 @@
             this.guna2HtmlLabel21.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel21.Location = new System.Drawing.Point(819, 1155);
             this.guna2HtmlLabel21.Name = "guna2HtmlLabel21";
-            this.guna2HtmlLabel21.Size = new System.Drawing.Size(0, 0);
+            this.guna2HtmlLabel21.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel21.TabIndex = 22;
             this.guna2HtmlLabel21.Text = null;
             // 
@@ -221,21 +217,11 @@
             this.LB_MaKH.TabIndex = 16;
             this.LB_MaKH.Text = "guna2HtmlLabel17";
             // 
-            // LB_TenDH
-            // 
-            this.LB_TenDH.BackColor = System.Drawing.Color.Transparent;
-            this.LB_TenDH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_TenDH.Location = new System.Drawing.Point(768, 489);
-            this.LB_TenDH.Name = "LB_TenDH";
-            this.LB_TenDH.Size = new System.Drawing.Size(167, 27);
-            this.LB_TenDH.TabIndex = 14;
-            this.LB_TenDH.Text = "guna2HtmlLabel19";
-            // 
             // LB_MaDonHang
             // 
             this.LB_MaDonHang.BackColor = System.Drawing.Color.Transparent;
             this.LB_MaDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_MaDonHang.Location = new System.Drawing.Point(280, 489);
+            this.LB_MaDonHang.Location = new System.Drawing.Point(170, 489);
             this.LB_MaDonHang.Name = "LB_MaDonHang";
             this.LB_MaDonHang.Size = new System.Drawing.Size(167, 27);
             this.LB_MaDonHang.TabIndex = 13;
@@ -321,7 +307,7 @@
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Location = new System.Drawing.Point(937, 922);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(0, 0);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel5.TabIndex = 5;
             this.guna2HtmlLabel5.Text = null;
             // 
@@ -334,16 +320,6 @@
             this.guna2HtmlLabel4.Size = new System.Drawing.Size(171, 27);
             this.guna2HtmlLabel4.TabIndex = 4;
             this.guna2HtmlLabel4.Text = "Địa Chỉ Nhận Hàng";
-            // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(591, 489);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(142, 27);
-            this.guna2HtmlLabel3.TabIndex = 3;
-            this.guna2HtmlLabel3.Text = "Tên Đơn Hàng :";
             // 
             // guna2HtmlLabel2
             // 
@@ -402,13 +378,11 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel LB_SoTien;
         private Guna.UI2.WinForms.Guna2HtmlLabel LB_SDTNguoiDat;
         private Guna.UI2.WinForms.Guna2HtmlLabel LB_TenNguoiDat;
         private Guna.UI2.WinForms.Guna2HtmlLabel LB_MaKH;
-        private Guna.UI2.WinForms.Guna2HtmlLabel LB_TenDH;
         private Guna.UI2.WinForms.Guna2HtmlLabel LB_MaDonHang;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel21;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel22;
