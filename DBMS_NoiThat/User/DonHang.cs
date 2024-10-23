@@ -15,6 +15,7 @@ namespace DBMS_NoiThat
 {
     public partial class DonHang : Form
     {
+        string connectionString = "";
         public DonHang()
         {
             InitializeComponent();
@@ -51,7 +52,7 @@ namespace DBMS_NoiThat
         }
         public void LoadThongTin()
         {
-            string connectionString = "";
+            
             string query = "SELECT * FROM DONHANG";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -91,7 +92,25 @@ namespace DBMS_NoiThat
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "INSERT INTO DONHANG (TenNguoiNhan, SDTNguoiNhan, NgayMuaHang, DiaChiNhan, TrangThai) " +
+                               "VALUES (@TenNguoiNhan, @SDTNguoiNhan, @NgayMuaHang, @DiaChiNhan, @TrangThai)";
 
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@TenNguoiNhan", TB_TenNguoiNhan.Text);
+                    command.Parameters.AddWithValue("@SDTNguoiNhan", TB_SDTNguoiNhan.Text);
+                    DateTime currentDate = DateTime.Now;
+                    command.Parameters.AddWithValue("@NgayMuaHang", currentDate.ToString());
+                    command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
+                    command.Parameters.AddWithValue("@TrangThai", "Chưa Xác Nhận");
+
+                    // Mở kết nối và thực thi câu lệnh
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
