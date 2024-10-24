@@ -1,34 +1,46 @@
-﻿using System;
+﻿using DBMS_NoiThat.user;
+using Do_An_Tuyen_Dung;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-namespace Do_An_Tuyen_Dung
+namespace DBMS_NoiThat
 {
-    public partial class FCreateAccount : Form
+    public partial class TaoTaiKhoan : Form
     {
         SqlConnection stringConnection = Connection.GetSqlConnection();
 
-        public FCreateAccount()
+        public TaoTaiKhoan()
         {
             InitializeComponent();
-
         }
 
-        private void FCreateAccount_Load(object sender, EventArgs e)
+        private void guna2HtmlLabel7_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void guna2TextBox3_TextChanged(object sender, EventArgs e)
+        private void guna2TextBox4_TextChanged(object sender, EventArgs e)
         {
-            this.Text = textBox_MatKhau.Text;
+
+        }
+
+        private void TaoTaiKhoan_Load(object sender, EventArgs e)
+        {
+
         }
         public bool checkAccount(string ac)//check mat khau va ten tai khoan
         {
@@ -39,15 +51,16 @@ namespace Do_An_Tuyen_Dung
         {
             return Regex.IsMatch(em, @"^[a-zA-Z0-9_.]{3,20}@gmail.com(.vn|)$");// @"^[\w_.]{3,20}@gmail.com(.vn|)$");
         }
-
         Modify modify = new Modify();
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void btnDangKy_Click(object sender, EventArgs e)
         {
-            string tentk = textBox_TenTaiKhoan.Text;
-            string email = textBox_Email.Text;
-            string matkhau = textBox_MatKhau.Text;
-            //DateTime dob = DateTimePicker.Text;
-            string role = ComboBox_Role.Text; // Assuming role selection is implemented
+            string tentk = txtTenTK.Text;
+            string hoTen = txtHoten.Text;
+            string email = txtEmail.Text;
+            string matkhau = txtMatkhau.Text;
+            string diaChi = txtDiaChi.Text;
+            string sdt = txtSdt.Text;
+            string role = comboBxRole.Text; // Assuming role selection is implemented
 
 
             if (!checkAccount(tentk)) { MessageBox.Show("Vui lòng nhập tên tài khoản 6-24 kí tự,chỉ với các kí tự chữ và số, có thể là chữ hoa hoặc chữ thường!"); return; }
@@ -65,36 +78,23 @@ namespace Do_An_Tuyen_Dung
                     this.Close();
                 }*/
                 Hide();
-                //if (role == "Admin")
-                //{
-                //    F_DangKiTaiKhoanNTD f_DangKiTaiKhoanNTD = new F_DangKiTaiKhoanNTD();
-                //    f_DangKiTaiKhoanNTD.ShowDialog();
-                //}
-                //else
-                //{
-                //    FNhapThongTin_UV fNhapThongTinUV = new FNhapThongTin_UV();
-                //    fNhapThongTinUV.ShowDialog();
-                //}
+                if (role == "Người dùng")
+                {
+                    FDangNhap Fdangnhap = new FDangNhap();
+                    Fdangnhap.ShowDialog();
+                }
+                else
+                {
+                    //FDangNhap Fdangnhap = new FDangNhap(); /////////////////// để tamj ở đây
+                    //Fdangnhap.ShowDialog();
+                    MessageBox.Show("Xin vui lòng chờ xét duyệt từ admin!");
+                }
 
-                //////////////////////////////////////////////////////////////////////////////////////////////////dang lam 
             }
             catch
             {
                 MessageBox.Show("Tên tài khoản này đã được đăng kí, vui lòng nhập tên tài khoản khác!");
             }
-
-
-
-
-        }
-
-        private void ComboBox_Role_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FCreateAccount_Load_1(object sender, EventArgs e)
-        {
 
         }
     }
