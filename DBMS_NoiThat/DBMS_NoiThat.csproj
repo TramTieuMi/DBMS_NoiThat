@@ -102,6 +102,12 @@
     <Compile Include="user\FDangNhap.Designer.cs">
       <DependentUpon>FDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="user\FLichSu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\FLichSu.Designer.cs">
+      <DependentUpon>FLichSu.cs</DependentUpon>
+    </Compile>
     <Compile Include="user\GioHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="user\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\FLichSu.resx">
+      <DependentUpon>FLichSu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\GioHang.resx">
       <DependentUpon>GioHang.cs</DependentUpon>
