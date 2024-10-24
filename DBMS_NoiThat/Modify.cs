@@ -63,7 +63,6 @@ namespace Do_An_Tuyen_Dung
 
                     }
                 }
-                conn.Close();
             }
         }
         //public void OpenChildForm(Form currentFormChild,Form childForm,Panel panel2)
