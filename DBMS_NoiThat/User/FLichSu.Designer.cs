@@ -97,6 +97,7 @@
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Name = "FLichSu";
             this.Text = "FLichSu";
+            this.Load += new System.EventHandler(this.FLichSu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

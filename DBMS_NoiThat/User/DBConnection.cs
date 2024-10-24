@@ -15,7 +15,7 @@ namespace DBMS_NoiThat.user
         SqlConnection conAdmin = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=NoiThat;Integrated Security=True");
         public DBConnection()
         {
-            sqlCon = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=NoiThat;Integrated Security=True");
+            sqlCon = new SqlConnection(@"Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True");
         }
 
         public SqlConnection GetConnection()

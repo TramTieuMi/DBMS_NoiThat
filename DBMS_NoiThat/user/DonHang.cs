@@ -1,111 +1,123 @@
 ﻿using DBMS_NoiThat.Entity;
 using DBMS_NoiThat.UC;
-using DBMS_NoiThat.user;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DBMS_NoiThat.user;
 
 namespace DBMS_NoiThat
 {
     public partial class DonHang : Form
     {
-        string connectionString = "";
+        private DBConnection dbConnection; // Declare an instance of DBConnection
+        private SqlConnection connection; // Declare the SqlConnection variable
+        private DataTable dataTable = new DataTable();
+
         public DonHang()
         {
             InitializeComponent();
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
         }
 
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        public DonHang(int maDonHang)
         {
-
+            InitializeComponent();
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
+            LoadSanPham(maDonHang);
         }
 
         private void DonHang_Load(object sender, EventArgs e)
         {
-
+            // Initialization code here
         }
-        public DonHang(int MaKhachHang, List<EGioHang> lst)
-        {
-            InitializeComponent();
-            LoadSanPham(MaKhachHang, lst);
 
-        }
-        public void LoadSanPham(int MaKhachHang, List<EGioHang> lst)
+        public void LoadSanPham(int maDonHang)
         {
+            string query = "SELECT * FROM View_DonHangChiTiet";
+
+            connection.Open();
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+            adapter.Fill(dataTable);
             int sum = 0;
-            foreach (EGioHang gioHang in lst)
+            int MaKhachHang = 0;
+            string TenNguoiDat = "";
+            int SDTNguoiDat = 0;
+            string TenNguoiNhan = "";
+            int SDTNguoiNhan = 0;
+            string NgayMuaHang = "";
+            string DiaChiNhan = "";
+
+            foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
             {
-                if (gioHang.MaGioHang1 == MaKhachHang)
+                if ((maDonHang == (int)row["MaDonHang"]) && (row["TrangThai"].ToString() == "Đặt Hàng"))
                 {
-                    UCDonHang ucdh = new UCDonHang(gioHang);
+                    int MaSanPham = (int)row["MaSanPham"];
+                    MaKhachHang = (int)row["MaKhachHang"];
+                    TenNguoiDat = row["TenNguoiDat"].ToString();
+                    SDTNguoiDat = (int)row["SDTNguoiDat"];
+                    TenNguoiNhan = row["TenNguoiNhan"].ToString();
+                    SDTNguoiNhan = (int)row["SDTNguoiNhan"];
+                    int SoTien = (int)row["SoTien"];
+                    NgayMuaHang = row["NgayMuaHang"].ToString();
+                    DiaChiNhan = row["DiaChiNhan"].ToString();
+                    string TrangThai = row["TrangThai"].ToString();
+                    int SoLuong = (int)row["SoLuong"]; // Change this line to get the correct quantity
+                    string TenSanPham = row["TenSanPham"].ToString(); // Change this line to get the correct product name
+
+                    sum += SoTien; // Sum the total amount
+                    EDonHang donHang = new EDonHang(maDonHang, MaSanPham, MaKhachHang, TenNguoiDat, SDTNguoiDat, TenNguoiNhan, SDTNguoiNhan, SoTien, NgayMuaHang, DiaChiNhan, TrangThai, SoLuong, TenSanPham);
+
+                    UCDonHang ucdh = new UCDonHang(donHang);
                     int dis = (FPN_HienThi.Width - (2 * ucdh.Width)) / 3;
                     ucdh.Margin = new Padding(dis, dis, 0, 0);
                     FPN_HienThi.Controls.Add(ucdh);
-                    sum = sum + gioHang.SoTien1;
                 }
             }
+
+            // Set the values in the labels and text boxes
+            LB_MaDonHang.Text = maDonHang.ToString();
+            LB_MaKH.Text = MaKhachHang.ToString();
+            LB_TenNguoiDat.Text = TenNguoiDat;
+            LB_SDTNguoiDat.Text = SDTNguoiDat.ToString();
             LB_SoTien.Text = sum.ToString();
-        }
-        public void LoadThongTin(int maKH)
-        {
+            TB_TenNguoiNhan.Text = TenNguoiNhan;
+            TB_SDTNguoiNhan.Text = SDTNguoiNhan.ToString();
+            TB_DiaChi.Text = DiaChiNhan;
 
-            string query = "SELECT * FROM View_ChiTietDonHang";
-            DataTable dataTable = new DataTable();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                if (dataTable.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dataTable.Rows) // Lặp qua từng hàng trong DataTable
-                    {
-                        if (maKH == (int)row["MaGioHang"] && row["TrangThai"].ToString() == "Chưa Xác Nhận")
-                        {
-
-                            int MaGioHang1 = (int)row["MaGioHang"];
-                           
-                        }
-
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Không có dữ liệu trong giỏ hàng.");
-                }
-            }
+            connection.Close(); // Close the connection
         }
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string query = "UPDATE DONHANG SET " +
+                            "TenNguoiNhan = @TenNguoiNhan, " +
+                            "SDTNguoiNhan = @SDTNguoiNhan, " +
+                            "NgayMuaHang = @NgayMuaHang, " +
+                            "DiaChiNhan = @DiaChiNhan, " +
+                            "TrangThai = @TrangThai " +
+                            "WHERE MaDonHang = @MaDonHang"; // Condition for updating
+
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                string query = "INSERT INTO DONHANG (TenNguoiNhan, SDTNguoiNhan, NgayMuaHang, DiaChiNhan, TrangThai) " +
-                               "VALUES (@TenNguoiNhan, @SDTNguoiNhan, @NgayMuaHang, @DiaChiNhan, @TrangThai)";
+                // Add parameters to the command
+                command.Parameters.AddWithValue("@TenNguoiNhan", TB_TenNguoiNhan.Text);
+                command.Parameters.AddWithValue("@SDTNguoiNhan", TB_SDTNguoiNhan.Text);
+                command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
+                command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
+                command.Parameters.AddWithValue("@TrangThai", "Đang Xác Nhận");
+                command.Parameters.AddWithValue("@MaDonHang", Convert.ToInt32(LB_MaDonHang.Text)); // Pass the order ID
 
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@TenNguoiNhan", TB_TenNguoiNhan.Text);
-                    command.Parameters.AddWithValue("@SDTNguoiNhan", TB_SDTNguoiNhan.Text);
-                    command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
-                    command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
-                    command.Parameters.AddWithValue("@TrangThai", " Đang Xác Nhận");
-
-                    // Mở kết nối và thực thi câu lệnh
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
+                // Execute the command
+                command.ExecuteNonQuery();
             }
+            connection.Close();
         }
     }
 }

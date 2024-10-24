@@ -1,66 +1,56 @@
 ﻿using DBMS_NoiThat.Entity;
 using DBMS_NoiThat.UC;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DBMS_NoiThat.user
 {
     public partial class GioHang : Form
     {
+        private DBConnection dbConnection; // Declare an instance of DBConnection
+        private SqlConnection connection;   // Declare the SqlConnection variable
+        List<EGioHang> listGH;
+        int maGH;
+
         public GioHang()
         {
             InitializeComponent();
-        }
-        static string connectionString = "";
-        SqlConnection connection = new SqlConnection(connectionString);
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
         }
 
-        private void FPN_HienThi_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        List<EGioHang> listGH ;
-        int maGH;
         public GioHang(int MaGioHang)
         {
             InitializeComponent();
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
             LoadGioHang(MaGioHang);
-            maGH= MaGioHang;
+            maGH = MaGioHang;
         }
+
         public void LoadGioHang(int MaGioHang)
         {
-
             string query = "SELECT * FROM View_ChiTietGioHang";
             DataTable dataTable = new DataTable();
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command); 
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
 
             adapter.Fill(dataTable);
 
             if (dataTable.Rows.Count > 0)
             {
-                foreach (DataRow row in dataTable.Rows) // Lặp qua từng hàng trong DataTable
+                foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
                 {
-                    if(MaGioHang == (int)row["MaGioHang"])
+                    if (MaGioHang == (int)row["MaGioHang"])
                     {
-                            
                         int MaGioHang1 = (int)row["MaGioHang"];
                         int MaSanPham1 = (int)row["MaSanPham"];
                         int SoLuong1 = (int)row["SoLuong"];
-                        int SoTien1 = (int)row["SoTien"]; // Giả sử SoTien là kiểu decimal
+                        int SoTien1 = (int)row["SoTien"];
                         string TenSanPham1 = row["TenSanPham"].ToString();
                         EGioHang gioHang = new EGioHang(MaGioHang1, MaSanPham1, SoLuong1, SoTien1, TenSanPham1, false);
                         listGH.Add(gioHang);
@@ -69,16 +59,12 @@ namespace DBMS_NoiThat.user
                         ucgh.Margin = new Padding(dis, dis, 0, 0);
                         FPN_HienThi.Controls.Add(ucgh);
                     }
-                        
                 }
             }
             else
             {
                 Console.WriteLine("Không có dữ liệu trong giỏ hàng.");
-            }    
-            
-
-            
+            }
         }
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
@@ -86,18 +72,25 @@ namespace DBMS_NoiThat.user
             string query1 = "SELECT MaKhachHang, HovaTen, DiaChi, SDT FROM KHACHHANG WHERE MaKhachHang = @MaKhachHang";
             string hoVaTen, diaChi, sdt;
             int maDonHang;
-            List<EGioHang> lst = new List<EGioHang>();
             connection.Open();
+
             using (SqlCommand command1 = new SqlCommand(query1, connection))
             {
                 command1.Parameters.AddWithValue("@MaKhachHang", maGH);
 
                 using (SqlDataReader reader = command1.ExecuteReader())
                 {
-                    hoVaTen = reader["HovaTen"].ToString();    // Lấy HovaTen
-                    diaChi = reader["DiaChi"].ToString();      // Lấy DiaChi
-                    sdt = reader["SDT"].ToString();        // Lấy SDT
-
+                    if (reader.Read()) // Make sure to read the data
+                    {
+                        hoVaTen = reader["HovaTen"].ToString();    // Get HovaTen
+                        diaChi = reader["DiaChi"].ToString();      // Get DiaChi
+                        sdt = reader["SDT"].ToString();            // Get SDT
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy khách hàng.");
+                        return; // Exit if no customer found
+                    }
                 }
             }
 
@@ -105,12 +98,10 @@ namespace DBMS_NoiThat.user
                "TenNguoiNhan, SDTNguoiNhan, TongTien, NgayMuaHang, DiaChiNhan, TrangThai) " +
                "VALUES (@MaSanPham, @MaKhachHang, @TenNguoiDat, @SDTNguoiDat, " +
                "@TenNguoiNhan, @SDTNguoiNhan, @TongTien, @NgayMuaHang, @DiaChiNhan, @TrangThai); " +
-               "SELECT SCOPE_IDENTITY();"; // Lấy giá trị MaDonHang vừa chèn
+               "SELECT SCOPE_IDENTITY();"; // Get the MaDonHang value just inserted
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
-
-                // Thêm các tham số vào câu lệnh SQL
                 command.Parameters.AddWithValue("@MaKhachHang", maGH);
                 command.Parameters.AddWithValue("@TenNguoiDat", hoVaTen);
                 command.Parameters.AddWithValue("@SDTNguoiDat", sdt);
@@ -118,22 +109,18 @@ namespace DBMS_NoiThat.user
                 command.Parameters.AddWithValue("@SDTNguoiNhan", sdt);
                 command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
                 command.Parameters.AddWithValue("@DiaChiNhan", diaChi);
-                command.Parameters.AddWithValue("@TrangThai", "Chưa Xác Nhận");
+                command.Parameters.AddWithValue("@TrangThai", "Đặt Hàng");
                 maDonHang = Convert.ToInt32(command.ExecuteScalar());
-                command.ExecuteNonQuery();
             }
+
             string query2 = "INSERT INTO DONHANG_SANPHAM (MaDonHang, MaKhachHang, MaSanPham, TenSanPham, SoLuong, SoTien) " +
                    "VALUES (@MaDonHang, @MaKhachHang, @MaSanPham, @TenSanPham, @SoLuong, @SoTien)";
             foreach (EGioHang gioHang in listGH)
             {
-                UCGioHang uc =new UCGioHang();
-                uc.AddCheckVaSouong(gioHang.Check, gioHang.SoLuong1);
-                if(gioHang.Check)
+                if (gioHang.Check)
                 {
-                    lst.Add(gioHang);
-                    using(SqlCommand command = new SqlCommand(query2, connection))
+                    using (SqlCommand command = new SqlCommand(query2, connection))
                     {
-                        // Thêm các tham số vào câu lệnh SQL
                         command.Parameters.AddWithValue("@MaDonHang", maDonHang);
                         command.Parameters.AddWithValue("@MaKhachHang", maGH);
                         command.Parameters.AddWithValue("@MaSanPham", gioHang.MaSanPham1);
@@ -143,10 +130,9 @@ namespace DBMS_NoiThat.user
 
                         command.ExecuteNonQuery();
                     }
-
-                }           
+                }
             }
-            Application.Run(new DonHang(maGH, lst));
+            Application.Run(new DonHang(maDonHang));
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
