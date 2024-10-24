@@ -82,6 +82,13 @@
     <Compile Include="user\ChiTietSanPham.Designer.cs">
       <DependentUpon>ChiTietSanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="user\ChiTietSanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\ChiTietSanPhamForm.Designer.cs">
+      <DependentUpon>ChiTietSanPhamForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user\DBConnection.cs" />
     <Compile Include="user\DonHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +121,24 @@
     <Compile Include="user\GioHang.Designer.cs">
       <DependentUpon>GioHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="user\MainFormKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\MainFormKhachHang.Designer.cs">
+      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin\QuanLyDonHangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\QuanLyDonHangForm.Designer.cs">
+      <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user\XemSanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\XemSanPhamForm.Designer.cs">
+      <DependentUpon>XemSanPhamForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="user\XemThongTinUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +153,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UC\UCDonHang.resx">
       <DependentUpon>UCDonHang.cs</DependentUpon>
@@ -141,6 +167,9 @@
     <EmbeddedResource Include="user\ChiTietSanPham.resx">
       <DependentUpon>ChiTietSanPham.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="user\ChiTietSanPhamForm.resx">
+      <DependentUpon>ChiTietSanPhamForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="user\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +178,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="user\GioHang.resx">
       <DependentUpon>GioHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\MainFormKhachHang.resx">
+      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\QuanLyDonHangForm.resx">
+      <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\XemSanPhamForm.resx">
+      <DependentUpon>XemSanPhamForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\XemThongTinUser.resx">
       <DependentUpon>XemThongTinUser.cs</DependentUpon>
@@ -167,6 +205,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2024-10-23 085902.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2024-10-23 085922.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2024-10-23 085947.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
