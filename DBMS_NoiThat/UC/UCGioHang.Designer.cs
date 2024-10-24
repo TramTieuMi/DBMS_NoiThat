@@ -152,6 +152,7 @@
             this.CK_Chon.Size = new System.Drawing.Size(18, 17);
             this.CK_Chon.TabIndex = 24;
             this.CK_Chon.UseVisualStyleBackColor = true;
+            this.CK_Chon.CheckedChanged += new System.EventHandler(this.CK_Chon_CheckedChanged);
             // 
             // label4
             // 

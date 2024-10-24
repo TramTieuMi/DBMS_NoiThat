@@ -63,7 +63,7 @@ namespace DBMS_NoiThat.user
                             int SoTien1 = (int)row["SoTien"]; // Giả sử SoTien là kiểu decimal
                             string TenSanPham1 = row["TenSanPham"].ToString();
                             EGioHang gioHang = new EGioHang(MaGioHang1, MaSanPham1, SoLuong1, SoTien1, TenSanPham1, false);
-
+                            listGH.Add(gioHang);
                             UCGioHang ucgh = new UCGioHang(gioHang);
                             int dis = (FPN_HienThi.Width - (2 * ucgh.Width)) / 3;
                             ucgh.Margin = new Padding(dis, dis, 0, 0);
@@ -83,8 +83,62 @@ namespace DBMS_NoiThat.user
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
-           
-            Application.Run(new DonHang(maGH, new List<EGioHang>())); 
+            foreach (EGioHang gioHang in listGH)
+            {
+                UCGioHang uc =new UCGioHang();
+                uc.AddCheckVaSouong(gioHang.Check, gioHang.SoLuong1);
+                if(gioHang.Check)
+                {
+                    string query = "INSERT INTO DONHANG (MaSanPham, MaKhachHang, TenNguoiDat, SDTNguoiDat, " +
+                   "TenNguoiNhan, SDTNguoiNhan, TongTien, NgayMuaHang, DiaChiNhan, TrangThai) " +
+                   "VALUES (@MaSanPham, @MaKhachHang, @TenNguoiDat, @SDTNguoiDat, " +
+                   "@TenNguoiNhan, @SDTNguoiNhan, @TongTien, @NgayMuaHang, @DiaChiNhan, @TrangThai)";
+                    string query1 = "SELECT MaKhachHang, HovaTen, DiaChi, SDT FROM KHACHHANG WHERE MaKhachHang = @MaKhachHang";
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        try
+                        {
+                            connection.Open();
+                            string hoVaTen, diaChi, sdt;
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                using (SqlCommand command1 = new SqlCommand(query1, connection))
+                                {
+                                    command1.Parameters.AddWithValue("@MaKhachHang", maGH);
+
+                                    using (SqlDataReader reader = command1.ExecuteReader())
+                                    {
+                                        hoVaTen = reader["HovaTen"].ToString();    // Lấy HovaTen
+                                        diaChi = reader["DiaChi"].ToString();      // Lấy DiaChi
+                                        sdt = reader["SDT"].ToString();        // Lấy SDT
+
+                                    }
+                                }
+
+                                // Thêm các tham số vào câu lệnh SQL
+                                command.Parameters.AddWithValue("@MaSanPham", gioHang.MaSanPham1);
+                                command.Parameters.AddWithValue("@MaKhachHang", maGH);
+                                command.Parameters.AddWithValue("@TenNguoiDat", hoVaTen);
+                                command.Parameters.AddWithValue("@SDTNguoiDat", sdt);
+                                command.Parameters.AddWithValue("@TenNguoiNhan", hoVaTen);
+                                command.Parameters.AddWithValue("@SDTNguoiNhan", sdt);
+                                command.Parameters.AddWithValue("@TongTien", gioHang.SoTien1);
+                                command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
+                                command.Parameters.AddWithValue("@DiaChiNhan", diaChi);
+                                command.Parameters.AddWithValue("@TrangThai", "Chưa Xác Nhận");
+
+                                command.ExecuteNonQuery();
+                                connection.Close();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi: " + ex.Message);
+                        }
+                    }
+                }
+            Application.Run(new DonHang(maGH, new List<EGioHang>()));
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

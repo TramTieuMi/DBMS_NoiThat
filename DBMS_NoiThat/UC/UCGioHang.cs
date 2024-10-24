@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Guna.UI2.Native.WinApi;
 
 namespace DBMS_NoiThat.UC
 {
@@ -30,7 +31,7 @@ namespace DBMS_NoiThat.UC
             LB_TenSanPham.Text = gioHang.TenSanPham1;
             LB_Gia.Text = gioHang.SoTien1.ToString();
             TB_SoLuong.Text = gioHang.SoLuong1.ToString();
-            CK_Chon.Checked = gioHang.Check;
+            CK_Chon.Checked = gioHang.Check ;
             InitializeComponent();
         }
 
@@ -46,6 +47,19 @@ namespace DBMS_NoiThat.UC
             int num = Convert.ToInt32(TB_SoLuong.Text);
             num = num + 1;
             TB_SoLuong.Text = num.ToString();
+        }
+
+        private void CK_Chon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CK_Chon.Checked == true)
+            {
+                gioHang.Check = true;
+            }
+        }
+        public void AddCheckVaSouong(bool check, int soLuong)
+        {
+            check = CK_Chon.Checked;
+            soLuong = Convert.ToInt32(TB_SoLuong.Text);
         }
     }
 }
