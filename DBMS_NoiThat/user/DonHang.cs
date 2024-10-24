@@ -1,49 +1,44 @@
 ﻿using DBMS_NoiThat.Entity;
 using DBMS_NoiThat.UC;
-using DBMS_NoiThat.user;
-using Do_An_Tuyen_Dung;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DBMS_NoiThat.user;
 
 namespace DBMS_NoiThat
 {
     public partial class DonHang : Form
     {
-        static string connectionString = "ddd";
-        SqlConnection connection = new SqlConnection(connectionString);
-        DataTable dataTable = new DataTable();
+        private DBConnection dbConnection; // Declare an instance of DBConnection
+        private SqlConnection connection; // Declare the SqlConnection variable
+        private DataTable dataTable = new DataTable();
+
         public DonHang()
         {
             InitializeComponent();
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
         }
 
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        public DonHang(int maDonHang)
         {
-
+            InitializeComponent();
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
+            LoadSanPham(maDonHang);
         }
 
         private void DonHang_Load(object sender, EventArgs e)
         {
-
+            // Initialization code here
         }
-        public DonHang(int maDonHang)
-        {
-            InitializeComponent();
-            LoadSanPham(maDonHang);
 
-        }
         public void LoadSanPham(int maDonHang)
         {
             string query = "SELECT * FROM View_DonHangChiTiet";
-            
+
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -57,9 +52,10 @@ namespace DBMS_NoiThat
             int SDTNguoiNhan = 0;
             string NgayMuaHang = "";
             string DiaChiNhan = "";
-            foreach (DataRow row in dataTable.Rows) // Lặp qua từng hàng trong DataTable
+
+            foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
             {
-                if ( (maDonHang == (int)row["MaDonHang"] ) && ( row["TrangThai"].ToString() == "Đặt Hàng") )
+                if ((maDonHang == (int)row["MaDonHang"]) && (row["TrangThai"].ToString() == "Đặt Hàng"))
                 {
                     int MaSanPham = (int)row["MaSanPham"];
                     MaKhachHang = (int)row["MaKhachHang"];
@@ -71,9 +67,10 @@ namespace DBMS_NoiThat
                     NgayMuaHang = row["NgayMuaHang"].ToString();
                     DiaChiNhan = row["DiaChiNhan"].ToString();
                     string TrangThai = row["TrangThai"].ToString();
-                    int SoLuong = (int)row["TrangThai"];
-                    string TenSanPham = row["TrangThai"].ToString();
-                    sum = sum + SoTien;
+                    int SoLuong = (int)row["SoLuong"]; // Change this line to get the correct quantity
+                    string TenSanPham = row["TenSanPham"].ToString(); // Change this line to get the correct product name
+
+                    sum += SoTien; // Sum the total amount
                     EDonHang donHang = new EDonHang(maDonHang, MaSanPham, MaKhachHang, TenNguoiDat, SDTNguoiDat, TenNguoiNhan, SDTNguoiNhan, SoTien, NgayMuaHang, DiaChiNhan, TrangThai, SoLuong, TenSanPham);
 
                     UCDonHang ucdh = new UCDonHang(donHang);
@@ -81,8 +78,9 @@ namespace DBMS_NoiThat
                     ucdh.Margin = new Padding(dis, dis, 0, 0);
                     FPN_HienThi.Controls.Add(ucdh);
                 }
+            }
 
-            }         
+            // Set the values in the labels and text boxes
             LB_MaDonHang.Text = maDonHang.ToString();
             LB_MaKH.Text = MaKhachHang.ToString();
             LB_TenNguoiDat.Text = TenNguoiDat;
@@ -91,38 +89,35 @@ namespace DBMS_NoiThat
             TB_TenNguoiNhan.Text = TenNguoiNhan;
             TB_SDTNguoiNhan.Text = SDTNguoiNhan.ToString();
             TB_DiaChi.Text = DiaChiNhan;
+
+            connection.Close(); // Close the connection
         }
-        
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
+            string query = "UPDATE DONHANG SET " +
+                            "TenNguoiNhan = @TenNguoiNhan, " +
+                            "SDTNguoiNhan = @SDTNguoiNhan, " +
+                            "NgayMuaHang = @NgayMuaHang, " +
+                            "DiaChiNhan = @DiaChiNhan, " +
+                            "TrangThai = @TrangThai " +
+                            "WHERE MaDonHang = @MaDonHang"; // Condition for updating
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                string query = "UPDATE DONHANG SET " +
-                               "TenNguoiNhan = @TenNguoiNhan, " +
-                               "SDTNguoiNhan = @SDTNguoiNhan, " +
-                               "NgayMuaHang = @NgayMuaHang, " +
-                               "DiaChiNhan = @DiaChiNhan, " +
-                               "TrangThai = @TrangThai " +
-                               "WHERE MaDonHang = @MaDonHang"; // Điều kiện để cập nhật
+                // Add parameters to the command
+                command.Parameters.AddWithValue("@TenNguoiNhan", TB_TenNguoiNhan.Text);
+                command.Parameters.AddWithValue("@SDTNguoiNhan", TB_SDTNguoiNhan.Text);
+                command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
+                command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
+                command.Parameters.AddWithValue("@TrangThai", "Đang Xác Nhận");
+                command.Parameters.AddWithValue("@MaDonHang", Convert.ToInt32(LB_MaDonHang.Text)); // Pass the order ID
 
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    // Thêm các tham số vào câu lệnh
-                    command.Parameters.AddWithValue("@TenNguoiNhan", TB_TenNguoiNhan.Text);
-                    command.Parameters.AddWithValue("@SDTNguoiNhan", TB_SDTNguoiNhan.Text);
-                    command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
-                    command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
-                    command.Parameters.AddWithValue("@TrangThai", "Đang Xác Nhận");
-                    command.Parameters.AddWithValue("@MaDonHang", Convert.ToInt32(LB_MaDonHang)); // Tham số cho mã đơn hàng
-
-                    // Thực thi câu lệnh
-                    command.ExecuteNonQuery();
-                }
-                connection.Close();
+                // Execute the command
+                command.ExecuteNonQuery();
             }
+            connection.Close();
         }
     }
 }
