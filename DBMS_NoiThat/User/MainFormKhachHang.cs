@@ -52,18 +52,7 @@ namespace DBMS_NoiThat.user
 
         }
 
-        private void buttonGioHang_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenChildForm(new QuanLyDonHangForm());
-                // labelHome.Text = buttonQLNV.Text;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        
 
         private void labelMenu_Click(object sender, EventArgs e)
         {

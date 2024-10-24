@@ -166,7 +166,7 @@
             this.buttonGioHang.TabIndex = 2;
             this.buttonGioHang.Text = "Giỏ Hàng";
             this.buttonGioHang.UseVisualStyleBackColor = false;
-            this.buttonGioHang.Click += new System.EventHandler(this.buttonGioHang_Click);
+
             // 
             // buttonTTCN
             // 

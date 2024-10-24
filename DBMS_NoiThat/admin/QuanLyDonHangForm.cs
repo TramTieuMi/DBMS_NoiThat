@@ -215,7 +215,7 @@ namespace DBMS_NoiThat.user
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Lỗi khi thực hiện thủ tục SQL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi thực hiện hàm thủ tục SQL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             conn.CloseConnection();
         }
