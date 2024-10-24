@@ -77,5 +77,10 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void MainFormKhachHang_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
