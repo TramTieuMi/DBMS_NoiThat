@@ -13,7 +13,7 @@ namespace Do_An_Tuyen_Dung
         private static readonly string stringConnection = @"Data Source=DESKTOP-UR1R776\SQLEXPRESS;Initial Catalog=DBMSdemo1;Integrated Security=True;Trust Server Certificate=True";
         public static SqlConnection GetSqlConnection()
         {
-            return new SqlConnection(stringConnection);
+            return new SqlConnection(stringConnection); 
         }
     }
 }
