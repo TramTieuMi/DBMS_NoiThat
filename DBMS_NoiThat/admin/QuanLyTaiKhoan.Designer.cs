@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.btnAdd_Click = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDelete_Click = new System.Windows.Forms.Button();
             this.btnEdit_Click = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvTaiKhoan = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,7 +40,11 @@
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.cmbRoleID = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnTimKiem_Click = new System.Windows.Forms.Button();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.chkTenDangNhap = new System.Windows.Forms.CheckBox();
+            this.chkEmail = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAdd_Click
@@ -53,14 +57,15 @@
             this.btnAdd_Click.UseVisualStyleBackColor = true;
             this.btnAdd_Click.Click += new System.EventHandler(this.btnSave_Click_Click);
             // 
-            // button1
+            // btnDelete_Click
             // 
-            this.button1.Location = new System.Drawing.Point(636, 292);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 57);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Xóa Tài khoản";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDelete_Click.Location = new System.Drawing.Point(636, 292);
+            this.btnDelete_Click.Name = "btnDelete_Click";
+            this.btnDelete_Click.Size = new System.Drawing.Size(134, 57);
+            this.btnDelete_Click.TabIndex = 1;
+            this.btnDelete_Click.Text = "Xóa Tài khoản";
+            this.btnDelete_Click.UseVisualStyleBackColor = true;
+            this.btnDelete_Click.Click += new System.EventHandler(this.btnDelete_Click_Click);
             // 
             // btnEdit_Click
             // 
@@ -72,16 +77,16 @@
             this.btnEdit_Click.UseVisualStyleBackColor = true;
             this.btnEdit_Click.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dataGridView1
+            // dgvTaiKhoan
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(38, 177);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(549, 261);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTaiKhoan.Location = new System.Drawing.Point(38, 177);
+            this.dgvTaiKhoan.Name = "dgvTaiKhoan";
+            this.dgvTaiKhoan.RowHeadersWidth = 62;
+            this.dgvTaiKhoan.RowTemplate.Height = 28;
+            this.dgvTaiKhoan.Size = new System.Drawing.Size(549, 261);
+            this.dgvTaiKhoan.TabIndex = 3;
+            this.dgvTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -148,11 +153,53 @@
             this.cmbRoleID.Size = new System.Drawing.Size(121, 28);
             this.cmbRoleID.TabIndex = 11;
             // 
-            // Form1
+            // btnTimKiem_Click
+            // 
+            this.btnTimKiem_Click.Location = new System.Drawing.Point(489, 101);
+            this.btnTimKiem_Click.Name = "btnTimKiem_Click";
+            this.btnTimKiem_Click.Size = new System.Drawing.Size(98, 27);
+            this.btnTimKiem_Click.TabIndex = 12;
+            this.btnTimKiem_Click.Text = "Tìm kiếm";
+            this.btnTimKiem_Click.UseVisualStyleBackColor = true;
+            this.btnTimKiem_Click.Click += new System.EventHandler(this.btnTimKiem_Click_Click);
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Location = new System.Drawing.Point(327, 136);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(260, 26);
+            this.txtTimKiem.TabIndex = 13;
+            // 
+            // chkTenDangNhap
+            // 
+            this.chkTenDangNhap.AutoSize = true;
+            this.chkTenDangNhap.Location = new System.Drawing.Point(327, 64);
+            this.chkTenDangNhap.Name = "chkTenDangNhap";
+            this.chkTenDangNhap.Size = new System.Drawing.Size(142, 24);
+            this.chkTenDangNhap.TabIndex = 14;
+            this.chkTenDangNhap.Text = "Tên đăng nhập";
+            this.chkTenDangNhap.UseVisualStyleBackColor = true;
+            this.chkTenDangNhap.CheckedChanged += new System.EventHandler(this.chkTenDangNhap_CheckedChanged);
+            // 
+            // chkEmail
+            // 
+            this.chkEmail.AutoSize = true;
+            this.chkEmail.Location = new System.Drawing.Point(327, 101);
+            this.chkEmail.Name = "chkEmail";
+            this.chkEmail.Size = new System.Drawing.Size(74, 24);
+            this.chkEmail.TabIndex = 15;
+            this.chkEmail.Text = "Email";
+            this.chkEmail.UseVisualStyleBackColor = true;
+            // 
+            // QuanLyTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chkEmail);
+            this.Controls.Add(this.chkTenDangNhap);
+            this.Controls.Add(this.txtTimKiem);
+            this.Controls.Add(this.btnTimKiem_Click);
             this.Controls.Add(this.cmbRoleID);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtMatKhau);
@@ -161,14 +208,14 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvTaiKhoan);
             this.Controls.Add(this.btnEdit_Click);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelete_Click);
             this.Controls.Add(this.btnAdd_Click);
-            this.Name = "Form1";
+            this.Name = "QuanLyTaiKhoan";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,9 +224,9 @@
         #endregion
 
         private System.Windows.Forms.Button btnAdd_Click;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete_Click;
         private System.Windows.Forms.Button btnEdit_Click;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvTaiKhoan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -188,5 +235,9 @@
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.ComboBox cmbRoleID;
+        private System.Windows.Forms.Button btnTimKiem_Click;
+        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.CheckBox chkTenDangNhap;
+        private System.Windows.Forms.CheckBox chkEmail;
     }
 }
