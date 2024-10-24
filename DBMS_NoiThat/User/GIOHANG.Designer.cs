@@ -1,4 +1,7 @@
-﻿namespace DBMS_NoiThat.user
+﻿using System;
+using System.Windows.Forms;
+
+namespace DBMS_NoiThat.user
 {
     partial class GioHang
     {
@@ -113,6 +116,16 @@
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FPN_HienThi_Paint(object sender, PaintEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

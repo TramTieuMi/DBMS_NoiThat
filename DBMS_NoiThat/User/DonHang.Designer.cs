@@ -1,4 +1,7 @@
-﻿namespace DBMS_NoiThat
+﻿using System;
+using System.Windows.Forms;
+
+namespace DBMS_NoiThat
 {
     partial class DonHang
     {
@@ -362,6 +365,11 @@
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
