@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
@@ -52,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\QuanLyTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\QuanLyTaiKhoan.Designer.cs">
+      <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="Entity\EDonHang.cs" />
     <Compile Include="Entity\EGioHang.cs" />
@@ -158,6 +168,9 @@
     <Compile Include="user\XemThongTinUser.Designer.cs">
       <DependentUpon>XemThongTinUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="admin\QuanLyTaiKhoan.resx">
+      <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FCreateAccount.resx">
       <DependentUpon>FCreateAccount.cs</DependentUpon>
     </EmbeddedResource>
