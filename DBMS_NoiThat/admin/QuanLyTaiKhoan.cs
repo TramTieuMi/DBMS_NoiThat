@@ -21,7 +21,7 @@ namespace DBMS_NoiThat.admin
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         private void btnSave_Click_Click(object sender, EventArgs e)
@@ -78,7 +78,14 @@ namespace DBMS_NoiThat.admin
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0) // Make sure the row index is valid
+            {
+                var row = dgvTaiKhoan.Rows[e.RowIndex];
+                txtTenDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
+                txtMatKhau.Text = row.Cells["MatKhau"].Value.ToString(); // Ensure your DataTable has this column
+                txtEmail.Text = row.Cells["Email"].Value.ToString();
+                cmbRoleID.SelectedValue = Convert.ToInt32(row.Cells["RoleID"].Value); // Adjust if the column name differs
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
