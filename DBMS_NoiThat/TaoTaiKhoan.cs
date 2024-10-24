@@ -55,11 +55,11 @@ namespace DBMS_NoiThat
         private void btnDangKy_Click(object sender, EventArgs e)
         {
             string tentk = txtTenTK.Text;
-            string hoTen = txtHoten.Text;
+            //string hoTen = txtHoten.Text;
             string email = txtEmail.Text;
             string matkhau = txtMatkhau.Text;
-            string diaChi = txtDiaChi.Text;
-            string sdt = txtSdt.Text;
+           // string diaChi = txtDiaChi.Text;
+            //string sdt = txtSdt.Text;
             string role = comboBxRole.Text; // Assuming role selection is implemented
 
 
@@ -69,15 +69,17 @@ namespace DBMS_NoiThat
             if (modify.taiKhoans("Select * from TaoTaiKhoan where Email = '" + email + "'").Count != 0) { MessageBox.Show("Email này đã được đăng kí, vui lòng đăng kí email khác!"); return; }
             try
             {
-                string query = "Insert into TaoTaiKhoan values ('" + tentk + "','" + matkhau + "','" + email + "','" + role + "')";
-                string query1 = "Insert into DangNhap values ('" + tentk + "','" + matkhau + "', '" + role + "' )";
+                ///////////////////////////////////// chỗ này bỏ cái query 
+                string query = "Insert into TAIKHOAN values ('" + tentk + "','" + matkhau + "','" + email + "','" + role + "')";
+               // string query1 = "Insert into TAIKHOAN  values ('" + tentk + "','" + matkhau + "', '" + role + "' )";
                 modify.Command(query);
-                modify.Command(query1);
+               // modify.Command(query1);
                 /*if (MessageBox.Show("Đăng kí thành công! Bạn có muốn đăng nhập luôn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     this.Close();
                 }*/
                 Hide();
+
                 if (role == "Người dùng")
                 {
                     FDangNhap Fdangnhap = new FDangNhap();
