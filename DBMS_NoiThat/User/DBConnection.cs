@@ -18,7 +18,7 @@ namespace DBMS_NoiThat.user
             sqlCon = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=NoiThat;Integrated Security=True");
         }
 
-        public SqlConnection GetConnection()
+        public static SqlConnection GetConnection()
         {
             return sqlCon;
         }

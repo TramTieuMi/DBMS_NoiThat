@@ -16,5 +16,10 @@ namespace DBMS_NoiThat.user
         {
             InitializeComponent();
         }
+
+        private void FLichSu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

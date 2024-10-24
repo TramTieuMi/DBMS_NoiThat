@@ -32,14 +32,14 @@ namespace DBMS_NoiThat.UC
         {
 
         }
-        EGioHang eGioHang;
-        public UCDonHang(EGioHang eGioHang)
+        EDonHang eDonHang;
+        public UCDonHang(EDonHang eDonHang)
         {
-            this.eGioHang = eGioHang;
-            LB_MaSP.Text = eGioHang.MaSanPham1.ToString();
-            LB_TenSP.Text = eGioHang.TenSanPham1;
-            LB_SoLuong.Text = eGioHang.SoLuong1.ToString();
-            LB_Gia.Text = eGioHang.SoTien1.ToString();
+            this.eDonHang = eDonHang;
+            LB_MaSP.Text = eDonHang.MaSanPham1.ToString();
+            LB_TenSP.Text = eDonHang.TenSanPham1;
+            LB_SoLuong.Text = eDonHang.SoLuong1.ToString();
+            LB_Gia.Text = eDonHang.SoTien1.ToString();
             InitializeComponent();
         }
     }
