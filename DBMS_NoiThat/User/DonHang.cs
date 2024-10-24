@@ -1,5 +1,6 @@
 ﻿using DBMS_NoiThat.Entity;
 using DBMS_NoiThat.UC;
+using DBMS_NoiThat.user;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,41 +53,35 @@ namespace DBMS_NoiThat
             }
             LB_SoTien.Text = sum.ToString();
         }
-        public void LoadThongTin()
+        public void LoadThongTin(int maKH)
         {
-            
-            string query = "SELECT * FROM DONHANG";
+
+            string query = "SELECT * FROM View_ChiTietDonHang";
+            DataTable dataTable = new DataTable();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                try
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                adapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count > 0)
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(query, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+                    foreach (DataRow row in dataTable.Rows) // Lặp qua từng hàng trong DataTable
                     {
-                        while (reader.Read())
+                        if (maKH == (int)row["MaGioHang"] && row["TrangThai"].ToString() == "Chưa Xác Nhận")
                         {
-                            // Lấy giá trị của các cột
-                            LB_MaDonHang.Text = reader["MaDonHang"].ToString();
-                            LB_MaKH.Text = reader["TenDonHang"].ToString();
-                            LB_SDTNguoiDat.Text = reader["MaKhachHang"].ToString();
-                            LB_SoTien.Text = reader["TenNguoiDat"].ToString();
-                            LB_TenNguoiDat.Text = reader["TenNguoiNhan"].ToString();
-                            TB_SDTNguoiNhan.Text = reader["SDTNguoiNhan"].ToString();
-                            TB_TenNguoiNhan.Text = reader["SDTNguoiNhan"].ToString();
-                            TB_DiaChi.Text = reader["SDTNguoiNhan"].ToString();
+
+                            int MaGioHang1 = (int)row["MaGioHang"];
+                           
                         }
+
                     }
-                    else
-                    {
-                        Console.WriteLine("Không có dữ liệu.");
-                    }
-                    reader.Close();
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine("Lỗi: " + ex.Message);
+                    Console.WriteLine("Không có dữ liệu trong giỏ hàng.");
                 }
             }
         }
