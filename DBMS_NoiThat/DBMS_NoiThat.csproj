@@ -52,10 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
     <Compile Include="Entity\EDonHang.cs" />
     <Compile Include="Entity\EGioHang.cs" />
     <Compile Include="Entity\EKhachHang.cs" />
     <Compile Include="Entity\ESanPham.cs" />
+    <Compile Include="Modify.cs" />
     <Compile Include="UC\UCDonHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +96,12 @@
     <Compile Include="user\GioHang.Designer.cs">
       <DependentUpon>GioHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="user\XemProfileUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\XemProfileUser.Designer.cs">
+      <DependentUpon>XemProfileUser.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -117,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="user\GioHang.resx">
       <DependentUpon>GioHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\XemProfileUser.resx">
+      <DependentUpon>XemProfileUser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
