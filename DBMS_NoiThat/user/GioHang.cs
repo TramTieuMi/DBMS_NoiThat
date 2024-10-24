@@ -86,7 +86,6 @@ namespace DBMS_NoiThat.user
             string query1 = "SELECT MaKhachHang, HovaTen, DiaChi, SDT FROM KHACHHANG WHERE MaKhachHang = @MaKhachHang";
             string hoVaTen, diaChi, sdt;
             int maDonHang;
-            List<EGioHang> lst = new List<EGioHang>();
             connection.Open();
             using (SqlCommand command1 = new SqlCommand(query1, connection))
             {
@@ -118,7 +117,7 @@ namespace DBMS_NoiThat.user
                 command.Parameters.AddWithValue("@SDTNguoiNhan", sdt);
                 command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
                 command.Parameters.AddWithValue("@DiaChiNhan", diaChi);
-                command.Parameters.AddWithValue("@TrangThai", "Chưa Xác Nhận");
+                command.Parameters.AddWithValue("@TrangThai", "Đặt Hàng");
                 maDonHang = Convert.ToInt32(command.ExecuteScalar());
                 command.ExecuteNonQuery();
             }
@@ -130,7 +129,7 @@ namespace DBMS_NoiThat.user
                 uc.AddCheckVaSouong(gioHang.Check, gioHang.SoLuong1);
                 if(gioHang.Check)
                 {
-                    lst.Add(gioHang);
+
                     using(SqlCommand command = new SqlCommand(query2, connection))
                     {
                         // Thêm các tham số vào câu lệnh SQL
@@ -146,7 +145,7 @@ namespace DBMS_NoiThat.user
 
                 }           
             }
-            Application.Run(new DonHang(maGH, lst));
+            Application.Run(new DonHang(maDonHang));
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
