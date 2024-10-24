@@ -58,18 +58,6 @@
     <Compile Include="Entity\EKhachHang.cs" />
     <Compile Include="Entity\ESanPham.cs" />
     <Compile Include="Entity\TaiKhoan.cs" />
-    <Compile Include="FCreateAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FCreateAccount.Designer.cs">
-      <DependentUpon>FCreateAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FLogin.Designer.cs">
-      <DependentUpon>FLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Modify.cs" />
     <Compile Include="UC\UCDonHang.cs">
       <SubType>UserControl</SubType>
@@ -108,11 +96,11 @@
     <Compile Include="user\DonHang.Designer.cs">
       <DependentUpon>DonHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="TaoTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="TaoTaiKhoan.Designer.cs">
+      <DependentUpon>TaoTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,12 +146,6 @@
     <Compile Include="user\XemThongTinUser.Designer.cs">
       <DependentUpon>XemThongTinUser.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FCreateAccount.resx">
-      <DependentUpon>FCreateAccount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FLogin.resx">
-      <DependentUpon>FLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -174,6 +156,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TaoTaiKhoan.resx">
+      <DependentUpon>TaoTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC\UCDonHang.resx">
       <DependentUpon>UCDonHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="user\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\FDangNhap.resx">
+      <DependentUpon>FDangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\FLichSu.resx">
       <DependentUpon>FLichSu.cs</DependentUpon>
