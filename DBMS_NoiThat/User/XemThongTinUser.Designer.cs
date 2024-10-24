@@ -1,6 +1,6 @@
 ﻿namespace DBMS_NoiThat.user
 {
-    partial class XemProfileUser
+    partial class XemThongTinUser
     {
         /// <summary>
         /// Required designer variable.
@@ -33,10 +33,10 @@
             this.lbDiachi = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbEmail = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbSdt = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lbHTSdt = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lbHTEmail = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lbHTDiaChi = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lbHTTen = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txtSdt = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txtEmail = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txtDiaChi = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txtHoTen = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
@@ -85,51 +85,51 @@
             this.lbSdt.TabIndex = 4;
             this.lbSdt.Text = "Số điện thoại:";
             // 
-            // lbHTSdt
+            // txtSdt
             // 
-            this.lbHTSdt.BackColor = System.Drawing.Color.Transparent;
-            this.lbHTSdt.Location = new System.Drawing.Point(231, 232);
-            this.lbHTSdt.Name = "lbHTSdt";
-            this.lbHTSdt.Size = new System.Drawing.Size(57, 18);
-            this.lbHTSdt.TabIndex = 8;
-            this.lbHTSdt.Text = "value sdt";
+            this.txtSdt.BackColor = System.Drawing.Color.Transparent;
+            this.txtSdt.Location = new System.Drawing.Point(231, 232);
+            this.txtSdt.Name = "txtSdt";
+            this.txtSdt.Size = new System.Drawing.Size(57, 18);
+            this.txtSdt.TabIndex = 8;
+            this.txtSdt.Text = "value sdt";
             // 
-            // lbHTEmail
+            // txtEmail
             // 
-            this.lbHTEmail.BackColor = System.Drawing.Color.Transparent;
-            this.lbHTEmail.Location = new System.Drawing.Point(231, 293);
-            this.lbHTEmail.Name = "lbHTEmail";
-            this.lbHTEmail.Size = new System.Drawing.Size(72, 18);
-            this.lbHTEmail.TabIndex = 7;
-            this.lbHTEmail.Text = "value email";
+            this.txtEmail.BackColor = System.Drawing.Color.Transparent;
+            this.txtEmail.Location = new System.Drawing.Point(231, 293);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(72, 18);
+            this.txtEmail.TabIndex = 7;
+            this.txtEmail.Text = "value email";
             // 
-            // lbHTDiaChi
+            // txtDiaChi
             // 
-            this.lbHTDiaChi.BackColor = System.Drawing.Color.Transparent;
-            this.lbHTDiaChi.Location = new System.Drawing.Point(232, 177);
-            this.lbHTDiaChi.Name = "lbHTDiaChi";
-            this.lbHTDiaChi.Size = new System.Drawing.Size(82, 18);
-            this.lbHTDiaChi.TabIndex = 6;
-            this.lbHTDiaChi.Text = "Value Dia chi";
+            this.txtDiaChi.BackColor = System.Drawing.Color.Transparent;
+            this.txtDiaChi.Location = new System.Drawing.Point(232, 177);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(82, 18);
+            this.txtDiaChi.TabIndex = 6;
+            this.txtDiaChi.Text = "Value Dia chi";
             // 
-            // lbHTTen
+            // txtHoTen
             // 
-            this.lbHTTen.BackColor = System.Drawing.Color.Transparent;
-            this.lbHTTen.Location = new System.Drawing.Point(232, 121);
-            this.lbHTTen.Name = "lbHTTen";
-            this.lbHTTen.Size = new System.Drawing.Size(65, 18);
-            this.lbHTTen.TabIndex = 5;
-            this.lbHTTen.Text = "Value Ten";
+            this.txtHoTen.BackColor = System.Drawing.Color.Transparent;
+            this.txtHoTen.Location = new System.Drawing.Point(232, 121);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(65, 18);
+            this.txtHoTen.TabIndex = 5;
+            this.txtHoTen.Text = "Value Ten";
             // 
             // XemProfileUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1144, 523);
-            this.Controls.Add(this.lbHTSdt);
-            this.Controls.Add(this.lbHTEmail);
-            this.Controls.Add(this.lbHTDiaChi);
-            this.Controls.Add(this.lbHTTen);
+            this.Controls.Add(this.txtSdt);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtDiaChi);
+            this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.lbSdt);
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.lbDiachi);
@@ -150,9 +150,9 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lbDiachi;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbEmail;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbSdt;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbHTSdt;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbHTEmail;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbHTDiaChi;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbHTTen;
+        private Guna.UI2.WinForms.Guna2HtmlLabel txtSdt;
+        private Guna.UI2.WinForms.Guna2HtmlLabel txtEmail;
+        private Guna.UI2.WinForms.Guna2HtmlLabel txtDiaChi;
+        private Guna.UI2.WinForms.Guna2HtmlLabel txtHoTen;
     }
 }
