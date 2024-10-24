@@ -47,7 +47,7 @@ namespace Do_An_Tuyen_Dung
             }
         }
 
-        // hàm tải dữ liệu từ SQL
+        // hàm tải dữ liệu từ SQL// Hàm tải dữ liệu từ SQL
         public void TaiDuLieu(DataTable dataTable, string sqlQuery, string thuocTinh, string khoaChinh)
         {
             using (SqlConnection conn = Connection.GetSqlConnection())
@@ -55,15 +55,14 @@ namespace Do_An_Tuyen_Dung
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                 {
-                    cmd.Parameters.AddWithValue(thuocTinh, khoaChinh);
+                    // Đảm bảo thêm tham số an toàn và đúng kiểu
+                    cmd.Parameters.Add(thuocTinh, SqlDbType.NVarChar).Value = khoaChinh;
+
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
-
-                        adapter.Fill(dataTable);
-
+                        adapter.Fill(dataTable); // Tải dữ liệu vào DataTable
                     }
                 }
-                conn.Close();
             }
         }
         //public void OpenChildForm(Form currentFormChild,Form childForm,Panel panel2)
