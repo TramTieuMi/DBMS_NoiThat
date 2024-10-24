@@ -70,6 +70,12 @@
     <Compile Include="UC\UCGioHang.Designer.cs">
       <DependentUpon>UCGioHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC\UCLichSuDonHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCLichSuDonHang.Designer.cs">
+      <DependentUpon>UCLichSuDonHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="user\ChiTietSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,12 @@
     </Compile>
     <Compile Include="user\FDangNhap.Designer.cs">
       <DependentUpon>FDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user\FLichSu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\FLichSu.Designer.cs">
+      <DependentUpon>FLichSu.cs</DependentUpon>
     </Compile>
     <Compile Include="user\GioHang.cs">
       <SubType>Form</SubType>
@@ -149,6 +161,9 @@
     <EmbeddedResource Include="UC\UCGioHang.resx">
       <DependentUpon>UCGioHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCLichSuDonHang.resx">
+      <DependentUpon>UCLichSuDonHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="user\ChiTietSanPham.resx">
       <DependentUpon>ChiTietSanPham.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="user\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\FLichSu.resx">
+      <DependentUpon>FLichSu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\GioHang.resx">
       <DependentUpon>GioHang.cs</DependentUpon>
