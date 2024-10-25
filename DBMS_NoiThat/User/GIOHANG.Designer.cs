@@ -125,7 +125,7 @@ namespace DBMS_NoiThat.user
 
         private void FPN_HienThi_Paint(object sender, PaintEventArgs e)
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         #endregion

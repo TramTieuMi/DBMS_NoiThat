@@ -12,10 +12,9 @@ namespace DBMS_NoiThat.user
     internal class DBConnection
     {
         SqlConnection sqlCon;
-        SqlConnection conAdmin = new SqlConnection(@"Data Source=DESKTOP-UR1R776\SQLEXPRESS;Initial Catalog=QuanLyMuaHang;Integrated Security=True;TrustServerCertificate=True");
         public DBConnection()
         {
-            sqlCon = new SqlConnection(@"Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True");
+            sqlCon = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=NoiThat;Integrated Security=True");
         }
 
         public SqlConnection GetConnection()
@@ -23,13 +22,7 @@ namespace DBMS_NoiThat.user
             return sqlCon;
         }
 
-        public SqlConnection getConnectionAdmin
-        {
-            get
-            {
-                return conAdmin;
-            }
-        }
+      
 
         public void OpenConnection()
         {
@@ -46,13 +39,7 @@ namespace DBMS_NoiThat.user
             }
         }
 
-        public void OpenConnectionAdmin()
-        {
-            if (conAdmin.State == ConnectionState.Closed)
-            {
-                conAdmin.Open();
-            }
-        }
+      
 
         public void CloseConnection()
         {
@@ -62,12 +49,6 @@ namespace DBMS_NoiThat.user
             }
         }
 
-        public void CloseConnectionAdmin()
-        {
-            if (conAdmin.State == ConnectionState.Open)
-            {
-                conAdmin.Close();
-            }
-        }
+       
     }
 }
