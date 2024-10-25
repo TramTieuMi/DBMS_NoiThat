@@ -33,7 +33,7 @@ namespace DBMS_NoiThat.user
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.LB_MaGioHang = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LB_Ma = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.FPN_HienThi = new System.Windows.Forms.FlowLayoutPanel();
             this.BTN_MuaHang = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@ namespace DBMS_NoiThat.user
             // panel1
             // 
             this.panel1.Controls.Add(this.LB_MaGioHang);
-            this.panel1.Controls.Add(this.guna2HtmlLabel1);
+            this.panel1.Controls.Add(this.LB_Ma);
             this.panel1.Controls.Add(this.FPN_HienThi);
             this.panel1.Controls.Add(this.BTN_MuaHang);
             this.panel1.Controls.Add(this.label1);
@@ -58,24 +58,26 @@ namespace DBMS_NoiThat.user
             // 
             this.LB_MaGioHang.BackColor = System.Drawing.Color.Transparent;
             this.LB_MaGioHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_MaGioHang.Location = new System.Drawing.Point(877, 19);
+            this.LB_MaGioHang.Location = new System.Drawing.Point(870, 19);
             this.LB_MaGioHang.Name = "LB_MaGioHang";
             this.LB_MaGioHang.Size = new System.Drawing.Size(191, 31);
             this.LB_MaGioHang.TabIndex = 3;
             this.LB_MaGioHang.Text = "guna2HtmlLabel2";
+            this.LB_MaGioHang.Click += new System.EventHandler(this.LB_MaGioHang_Click);
             // 
-            // guna2HtmlLabel1
+            // LB_Ma
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(716, 19);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(155, 31);
-            this.guna2HtmlLabel1.TabIndex = 2;
-            this.guna2HtmlLabel1.Text = "Mã Giỏ Hàng :";
+            this.LB_Ma.BackColor = System.Drawing.Color.Transparent;
+            this.LB_Ma.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_Ma.Location = new System.Drawing.Point(616, 19);
+            this.LB_Ma.Name = "LB_Ma";
+            this.LB_Ma.Size = new System.Drawing.Size(155, 31);
+            this.LB_Ma.TabIndex = 2;
+            this.LB_Ma.Text = "Mã Giỏ Hàng :";
             // 
             // FPN_HienThi
             // 
+            this.FPN_HienThi.AutoScroll = true;
             this.FPN_HienThi.Location = new System.Drawing.Point(0, 71);
             this.FPN_HienThi.Name = "FPN_HienThi";
             this.FPN_HienThi.Size = new System.Drawing.Size(1086, 436);
@@ -118,15 +120,17 @@ namespace DBMS_NoiThat.user
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void FPN_HienThi_Paint(object sender, PaintEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
-        private void FPN_HienThi_Paint(object sender, PaintEventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
            // throw new NotImplementedException();
         }
+
+
 
         #endregion
         private System.Windows.Forms.Panel panel1;
@@ -134,6 +138,6 @@ namespace DBMS_NoiThat.user
         private System.Windows.Forms.Button BTN_MuaHang;
         private System.Windows.Forms.FlowLayoutPanel FPN_HienThi;
         private Guna.UI2.WinForms.Guna2HtmlLabel LB_MaGioHang;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LB_Ma;
     }
 }
