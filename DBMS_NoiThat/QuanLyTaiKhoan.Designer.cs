@@ -1,4 +1,4 @@
-﻿namespace DBMS_NoiThat
+﻿namespace WindowsFormsApp1
 {
     partial class QuanLyTaiKhoan
     {
@@ -225,7 +225,7 @@
             this.Controls.Add(this.btnDelete_Click);
             this.Controls.Add(this.btnAdd_Click);
             this.Name = "QuanLyTaiKhoan";
-            this.Text = "QuanLyTaiKhoan";
+            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).EndInit();
             this.ResumeLayout(false);

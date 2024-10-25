@@ -126,6 +126,7 @@ namespace Do_An_Tuyen_Dung
             this.btn_SignUp.Size = new System.Drawing.Size(188, 42);
             this.btn_SignUp.TabIndex = 16;
             this.btn_SignUp.Text = "SIGN UP";
+            this.btn_SignUp.Click += new System.EventHandler(this.btn_SignUp_Click);
             // 
             // ComboBox_Role
             // 

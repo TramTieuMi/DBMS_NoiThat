@@ -8,10 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Do_An_Tuyen_Dung;
 
 
-namespace DBMS_NoiThat
+namespace WindowsFormsApp1
 {
     public partial class QuanLyTaiKhoan : Form
     {

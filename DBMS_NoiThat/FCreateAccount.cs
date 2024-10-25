@@ -97,5 +97,10 @@ namespace Do_An_Tuyen_Dung
         {
 
         }
+
+        private void btn_SignUp_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
