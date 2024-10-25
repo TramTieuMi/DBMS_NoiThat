@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using DBMS_NoiThat.user;
+using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
 
 namespace DBMS_NoiThat
 {
@@ -21,13 +22,14 @@ namespace DBMS_NoiThat
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
         }
-
+        int maDH ;
         public DonHang(int maDonHang)
         {
             InitializeComponent();
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
             LoadSanPham(maDonHang);
+            maDH = maDonHang;   
         }
 
         private void DonHang_Load(object sender, EventArgs e)
@@ -42,8 +44,8 @@ namespace DBMS_NoiThat
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
-
             adapter.Fill(dataTable);
+
             int sum = 0;
             int MaKhachHang = 0;
             string TenNguoiDat = "";
@@ -60,16 +62,15 @@ namespace DBMS_NoiThat
                     int MaSanPham = (int)row["MaSanPham"];
                     MaKhachHang = (int)row["MaKhachHang"];
                     TenNguoiDat = row["TenNguoiDat"].ToString();
-                    SDTNguoiDat = (int)row["SDTNguoiDat"];
+                    SDTNguoiDat = Convert.ToInt32(row["SDTNguoiDat"].ToString()) ;
                     TenNguoiNhan = row["TenNguoiNhan"].ToString();
-                    SDTNguoiNhan = (int)row["SDTNguoiNhan"];
+                    SDTNguoiNhan = Convert.ToInt32(row["SDTNguoiNhan"].ToString());
                     int SoTien = (int)row["SoTien"];
                     NgayMuaHang = row["NgayMuaHang"].ToString();
                     DiaChiNhan = row["DiaChiNhan"].ToString();
                     string TrangThai = row["TrangThai"].ToString();
                     int SoLuong = (int)row["SoLuong"]; // Change this line to get the correct quantity
                     string TenSanPham = row["TenSanPham"].ToString(); // Change this line to get the correct product name
-
                     sum += SoTien; // Sum the total amount
                     EDonHang donHang = new EDonHang(maDonHang, MaSanPham, MaKhachHang, TenNguoiDat, SDTNguoiDat, TenNguoiNhan, SDTNguoiNhan, SoTien, NgayMuaHang, DiaChiNhan, TrangThai, SoLuong, TenSanPham);
 
@@ -93,15 +94,10 @@ namespace DBMS_NoiThat
             connection.Close(); // Close the connection
         }
 
+
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
-            string query = "UPDATE DONHANG SET " +
-                            "TenNguoiNhan = @TenNguoiNhan, " +
-                            "SDTNguoiNhan = @SDTNguoiNhan, " +
-                            "NgayMuaHang = @NgayMuaHang, " +
-                            "DiaChiNhan = @DiaChiNhan, " +
-                            "TrangThai = @TrangThai " +
-                            "WHERE MaDonHang = @MaDonHang"; // Condition for updating
+            string query = "sp_CapNhatDonHang"; // Condition for updating
 
             connection.Open();
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -112,12 +108,28 @@ namespace DBMS_NoiThat
                 command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
                 command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
                 command.Parameters.AddWithValue("@TrangThai", "Đang Xác Nhận");
-                command.Parameters.AddWithValue("@MaDonHang", Convert.ToInt32(LB_MaDonHang.Text)); // Pass the order ID
+                
+                command.Parameters.AddWithValue("@MaDonHang", maDH); // Pass the order ID
 
                 // Execute the command
                 command.ExecuteNonQuery();
             }
             connection.Close();
+        }
+
+        private void TB_TenNguoiNhan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TB_SDTNguoiNhan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TB_DiaChi_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
