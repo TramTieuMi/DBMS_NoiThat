@@ -1,4 +1,7 @@
-﻿namespace DBMS_NoiThat
+﻿using System;
+using System.Windows.Forms;
+
+namespace DBMS_NoiThat
 {
     partial class DonHang
     {
@@ -99,7 +102,7 @@
             this.TB_DiaChi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TB_DiaChi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_DiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TB_DiaChi.Location = new System.Drawing.Point(280, 933);
+            this.TB_DiaChi.Location = new System.Drawing.Point(296, 933);
             this.TB_DiaChi.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.TB_DiaChi.Name = "TB_DiaChi";
             this.TB_DiaChi.PasswordChar = '\0';
@@ -107,6 +110,7 @@
             this.TB_DiaChi.SelectedText = "";
             this.TB_DiaChi.Size = new System.Drawing.Size(700, 38);
             this.TB_DiaChi.TabIndex = 28;
+            this.TB_DiaChi.TextChanged += new System.EventHandler(this.TB_DiaChi_TextChanged);
             // 
             // TB_SDTNguoiNhan
             // 
@@ -119,7 +123,7 @@
             this.TB_SDTNguoiNhan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TB_SDTNguoiNhan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_SDTNguoiNhan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TB_SDTNguoiNhan.Location = new System.Drawing.Point(280, 873);
+            this.TB_SDTNguoiNhan.Location = new System.Drawing.Point(296, 873);
             this.TB_SDTNguoiNhan.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.TB_SDTNguoiNhan.Name = "TB_SDTNguoiNhan";
             this.TB_SDTNguoiNhan.PasswordChar = '\0';
@@ -127,6 +131,7 @@
             this.TB_SDTNguoiNhan.SelectedText = "";
             this.TB_SDTNguoiNhan.Size = new System.Drawing.Size(390, 38);
             this.TB_SDTNguoiNhan.TabIndex = 27;
+            this.TB_SDTNguoiNhan.TextChanged += new System.EventHandler(this.TB_SDTNguoiNhan_TextChanged);
             // 
             // TB_TenNguoiNhan
             // 
@@ -139,7 +144,7 @@
             this.TB_TenNguoiNhan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TB_TenNguoiNhan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_TenNguoiNhan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TB_TenNguoiNhan.Location = new System.Drawing.Point(280, 813);
+            this.TB_TenNguoiNhan.Location = new System.Drawing.Point(296, 813);
             this.TB_TenNguoiNhan.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.TB_TenNguoiNhan.Name = "TB_TenNguoiNhan";
             this.TB_TenNguoiNhan.PasswordChar = '\0';
@@ -147,6 +152,7 @@
             this.TB_TenNguoiNhan.SelectedText = "";
             this.TB_TenNguoiNhan.Size = new System.Drawing.Size(390, 38);
             this.TB_TenNguoiNhan.TabIndex = 26;
+            this.TB_TenNguoiNhan.TextChanged += new System.EventHandler(this.TB_TenNguoiNhan_TextChanged);
             // 
             // guna2HtmlLabel22
             // 
@@ -191,7 +197,7 @@
             // 
             this.LB_SDTNguoiDat.BackColor = System.Drawing.Color.Transparent;
             this.LB_SDTNguoiDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_SDTNguoiDat.Location = new System.Drawing.Point(280, 678);
+            this.LB_SDTNguoiDat.Location = new System.Drawing.Point(285, 678);
             this.LB_SDTNguoiDat.Name = "LB_SDTNguoiDat";
             this.LB_SDTNguoiDat.Size = new System.Drawing.Size(167, 27);
             this.LB_SDTNguoiDat.TabIndex = 18;
@@ -201,7 +207,7 @@
             // 
             this.LB_TenNguoiDat.BackColor = System.Drawing.Color.Transparent;
             this.LB_TenNguoiDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_TenNguoiDat.Location = new System.Drawing.Point(768, 618);
+            this.LB_TenNguoiDat.Location = new System.Drawing.Point(769, 618);
             this.LB_TenNguoiDat.Name = "LB_TenNguoiDat";
             this.LB_TenNguoiDat.Size = new System.Drawing.Size(167, 27);
             this.LB_TenNguoiDat.TabIndex = 17;
@@ -211,7 +217,7 @@
             // 
             this.LB_MaKH.BackColor = System.Drawing.Color.Transparent;
             this.LB_MaKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_MaKH.Location = new System.Drawing.Point(280, 618);
+            this.LB_MaKH.Location = new System.Drawing.Point(285, 618);
             this.LB_MaKH.Name = "LB_MaKH";
             this.LB_MaKH.Size = new System.Drawing.Size(167, 27);
             this.LB_MaKH.TabIndex = 16;
@@ -221,7 +227,7 @@
             // 
             this.LB_MaDonHang.BackColor = System.Drawing.Color.Transparent;
             this.LB_MaDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_MaDonHang.Location = new System.Drawing.Point(170, 489);
+            this.LB_MaDonHang.Location = new System.Drawing.Point(185, 489);
             this.LB_MaDonHang.Name = "LB_MaDonHang";
             this.LB_MaDonHang.Size = new System.Drawing.Size(167, 27);
             this.LB_MaDonHang.TabIndex = 13;
@@ -305,7 +311,7 @@
             // guna2HtmlLabel5
             // 
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(937, 922);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(953, 922);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             this.guna2HtmlLabel5.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel5.TabIndex = 5;
@@ -362,6 +368,11 @@
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
 
         #endregion

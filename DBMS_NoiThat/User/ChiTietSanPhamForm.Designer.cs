@@ -47,6 +47,7 @@
             this.labelChatLieu = new System.Windows.Forms.Label();
             this.labelTenSP = new System.Windows.Forms.Label();
             this.labelIDSP = new System.Windows.Forms.Label();
+            this.PictureBoxHinhAnhSP = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxHinhAnhSP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -283,6 +284,18 @@
             this.labelIDSP.TabIndex = 47;
             this.labelIDSP.Text = "Mã Sản Phẩm:";
             // 
+            // PictureBoxHinhAnhSP
+            // 
+            this.PictureBoxHinhAnhSP.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PictureBoxHinhAnhSP.BackColor = System.Drawing.Color.Silver;
+            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(736, 268);
+            this.PictureBoxHinhAnhSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PictureBoxHinhAnhSP.Name = "PictureBoxHinhAnhSP";
+            this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(236, 139);
+            this.PictureBoxHinhAnhSP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBoxHinhAnhSP.TabIndex = 61;
+            this.PictureBoxHinhAnhSP.TabStop = false;
+            // 
             // ChiTietSanPhamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,8 +321,11 @@
             this.Controls.Add(this.labelChatLieu);
             this.Controls.Add(this.labelTenSP);
             this.Controls.Add(this.labelIDSP);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ChiTietSanPhamForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChiTietSanPhamForm";
+            this.Load += new System.EventHandler(this.ChiTietSanPhamForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxHinhAnhSP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

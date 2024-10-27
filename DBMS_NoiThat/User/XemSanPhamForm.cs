@@ -117,6 +117,7 @@ namespace DBMS_NoiThat
 
         private void dgvXemSanPham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
             try
             {
                 string id = dgvXemSanPham.CurrentRow.Cells[0].Value.ToString().Trim();

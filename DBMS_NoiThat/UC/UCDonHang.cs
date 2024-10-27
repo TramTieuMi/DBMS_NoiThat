@@ -32,15 +32,17 @@ namespace DBMS_NoiThat.UC
         {
 
         }
-        EGioHang eGioHang;
-        public UCDonHang(EGioHang eGioHang)
+        EDonHang eDonHang;
+        public UCDonHang(EDonHang eDonHang)
         {
-            this.eGioHang = eGioHang;
-            LB_MaSP.Text = eGioHang.MaSanPham1.ToString();
-            LB_TenSP.Text = eGioHang.TenSanPham1;
-            LB_SoLuong.Text = eGioHang.SoLuong1.ToString();
-            LB_Gia.Text = eGioHang.SoTien1.ToString();
-            InitializeComponent();
+            InitializeComponent(); // Khởi tạo các thành phần giao diện trước
+
+            // Sau đó gán giá trị cho các control
+            this.eDonHang = eDonHang;
+            LB_MaSP.Text = eDonHang.MaSanPham1.ToString();
+            LB_TenSP.Text = eDonHang.TenSanPham1;
+            LB_SoLuong.Text = eDonHang.SoLuong1.ToString();
+            LB_Gia.Text = eDonHang.SoTien1.ToString();
         }
     }
 }

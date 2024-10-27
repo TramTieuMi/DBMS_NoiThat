@@ -80,6 +80,7 @@
             this.TB_SoLuong.SelectedText = "";
             this.TB_SoLuong.Size = new System.Drawing.Size(60, 40);
             this.TB_SoLuong.TabIndex = 33;
+            this.TB_SoLuong.TextChanged += new System.EventHandler(this.TB_SoLuong_TextChanged);
             // 
             // BTN_Giam
             // 
@@ -120,9 +121,10 @@
             this.LB_Gia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_Gia.Location = new System.Drawing.Point(510, 20);
             this.LB_Gia.Name = "LB_Gia";
-            this.LB_Gia.Size = new System.Drawing.Size(148, 25);
+            this.LB_Gia.Size = new System.Drawing.Size(23, 25);
             this.LB_Gia.TabIndex = 28;
-            this.LB_Gia.Text = "Mã Sản Phẩm :";
+            this.LB_Gia.Text = "0";
+            this.LB_Gia.Click += new System.EventHandler(this.LB_Gia_Click);
             // 
             // LB_TenSanPham
             // 
@@ -130,9 +132,10 @@
             this.LB_TenSanPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_TenSanPham.Location = new System.Drawing.Point(190, 60);
             this.LB_TenSanPham.Name = "LB_TenSanPham";
-            this.LB_TenSanPham.Size = new System.Drawing.Size(148, 25);
+            this.LB_TenSanPham.Size = new System.Drawing.Size(23, 25);
             this.LB_TenSanPham.TabIndex = 26;
-            this.LB_TenSanPham.Text = "Mã Sản Phẩm :";
+            this.LB_TenSanPham.Text = "0";
+            this.LB_TenSanPham.Click += new System.EventHandler(this.LB_TenSanPham_Click);
             // 
             // LB_MaSanPham
             // 
@@ -140,9 +143,10 @@
             this.LB_MaSanPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_MaSanPham.Location = new System.Drawing.Point(190, 20);
             this.LB_MaSanPham.Name = "LB_MaSanPham";
-            this.LB_MaSanPham.Size = new System.Drawing.Size(148, 25);
+            this.LB_MaSanPham.Size = new System.Drawing.Size(23, 25);
             this.LB_MaSanPham.TabIndex = 25;
-            this.LB_MaSanPham.Text = "Mã Sản Phẩm :";
+            this.LB_MaSanPham.Text = "0";
+            this.LB_MaSanPham.Click += new System.EventHandler(this.LB_MaSanPham_Click);
             // 
             // CK_Chon
             // 
@@ -152,6 +156,7 @@
             this.CK_Chon.Size = new System.Drawing.Size(18, 17);
             this.CK_Chon.TabIndex = 24;
             this.CK_Chon.UseVisualStyleBackColor = true;
+            this.CK_Chon.CheckedChanged += new System.EventHandler(this.CK_Chon_CheckedChanged);
             // 
             // label4
             // 

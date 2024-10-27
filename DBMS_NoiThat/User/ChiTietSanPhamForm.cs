@@ -28,5 +28,10 @@ namespace DBMS_NoiThat
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void ChiTietSanPhamForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

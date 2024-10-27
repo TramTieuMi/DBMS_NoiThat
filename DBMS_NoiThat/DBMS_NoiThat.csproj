@@ -87,26 +87,51 @@
     <Compile Include="UC\UCGioHang.Designer.cs">
       <DependentUpon>UCGioHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC\UCLichSuMuaHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCLichSuMuaHang.Designer.cs">
+      <DependentUpon>UCLichSuMuaHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="user\ChiTietSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="user\ChiTietSanPham.Designer.cs">
       <DependentUpon>ChiTietSanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="user\ChiTietSanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\ChiTietSanPhamForm.Designer.cs">
+      <DependentUpon>ChiTietSanPhamForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user\DBConnection.cs" />
     <Compile Include="user\DonHang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="user\DonHang.Designer.cs">
       <DependentUpon>DonHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="TaoTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="TaoTaiKhoan.Designer.cs">
+      <DependentUpon>TaoTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="user\FDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\FDangNhap.Designer.cs">
+      <DependentUpon>FDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user\FLichSu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\FLichSu.Designer.cs">
+      <DependentUpon>FLichSu.cs</DependentUpon>
+    </Compile>
     <Compile Include="user\GioHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,11 +169,23 @@
     <EmbeddedResource Include="UC\UCGioHang.resx">
       <DependentUpon>UCGioHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCLichSuMuaHang.resx">
+      <DependentUpon>UCLichSuMuaHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="user\ChiTietSanPham.resx">
       <DependentUpon>ChiTietSanPham.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="user\ChiTietSanPhamForm.resx">
+      <DependentUpon>ChiTietSanPhamForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="user\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\FDangNhap.resx">
+      <DependentUpon>FDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\FLichSu.resx">
+      <DependentUpon>FLichSu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\GioHang.resx">
       <DependentUpon>GioHang.cs</DependentUpon>

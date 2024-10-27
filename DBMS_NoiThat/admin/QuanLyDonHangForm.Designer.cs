@@ -435,6 +435,8 @@
             this.textBoxTimKiem.Size = new System.Drawing.Size(98, 20);
             this.textBoxTimKiem.TabIndex = 93;
             this.textBoxTimKiem.Text = "Mã Đơn Hàng";
+            this.textBoxTimKiem.Enter += new System.EventHandler(this.textBoxTimKiem_Enter);
+            this.textBoxTimKiem.Leave += new System.EventHandler(this.textBoxTimKiem_Leave);
             // 
             // radioButtonDaGiao
             // 
@@ -503,6 +505,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "QuanLyDonHangForm";
             this.Text = "QuanLyDonHangForm";
+            this.Load += new System.EventHandler(this.QuanLyDonHangForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

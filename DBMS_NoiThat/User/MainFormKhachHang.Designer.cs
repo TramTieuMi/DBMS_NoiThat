@@ -89,6 +89,7 @@
             this.labelMenu.TabIndex = 4;
             this.labelMenu.Text = "MENU";
             this.labelMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMenu.Click += new System.EventHandler(this.labelMenu_Click);
             // 
             // pictureBox2
             // 
@@ -241,8 +242,10 @@
             this.Controls.Add(this.panel_Body);
             this.Controls.Add(this.panel_left);
             this.Controls.Add(this.panel_Top);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainFormKhachHang";
             this.Text = "MainFormKhachHang";
+            this.Load += new System.EventHandler(this.MainFormKhachHang_Load);
             this.panel_left.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

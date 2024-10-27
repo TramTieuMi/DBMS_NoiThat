@@ -12,6 +12,7 @@ namespace DBMS_NoiThat
 {
     public partial class MainFormKhachHang : Form
     {
+        DBConnection conn = new DBConnection();
         public MainFormKhachHang()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace DBMS_NoiThat
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
         private Form currentFormChild;
         private void OpenChildForm(Form childForm)
@@ -52,8 +54,33 @@ namespace DBMS_NoiThat
 
         private void buttonGioHang_Click(object sender, EventArgs e)
         {
-          
+            try
+            {
+                OpenChildForm(new GioHang());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void labelMenu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new XemSanPhamForm());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void MainFormKhachHang_Load(object sender, EventArgs e)
+        {
+
         }
     }
-
 }
