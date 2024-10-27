@@ -15,12 +15,14 @@ namespace DBMS_NoiThat.Entity
         int SDTNguoiDat;
         string TenNguoiNhan;
         int SDTNguoiNhan;
-        int TongTien;
+        int SoTien;
         string NgayMuaHang;
         string DiaChiNhan;
         string TrangThai;
+        int SoLuong;
+        string TenSanPham;
 
-        public EDonHang(int maDonHang, int maSanPham, int maKhachHang, string tenNguoiDat, int sDTNguoiDat, string tenNguoiNhan, int sDTNguoiNhan, int tongTien, string ngayMuaHang, string diaChiNhan, string trangThai)
+        public EDonHang(int maDonHang, int maSanPham, int maKhachHang, string tenNguoiDat, int sDTNguoiDat, string tenNguoiNhan, int sDTNguoiNhan, int soTien, string ngayMuaHang, string diaChiNhan, string trangThai, int soLuong, string tenSanPham)
         {
             MaDonHang = maDonHang;
             MaSanPham = maSanPham;
@@ -29,10 +31,12 @@ namespace DBMS_NoiThat.Entity
             SDTNguoiDat = sDTNguoiDat;
             TenNguoiNhan = tenNguoiNhan;
             SDTNguoiNhan = sDTNguoiNhan;
-            TongTien = tongTien;
+            SoTien = soTien;
             NgayMuaHang = ngayMuaHang;
             DiaChiNhan = diaChiNhan;
             TrangThai = trangThai;
+            SoLuong = soLuong;
+            TenSanPham = tenSanPham;
         }
 
         public int MaDonHang1 { get => MaDonHang; set => MaDonHang = value; }
@@ -42,9 +46,11 @@ namespace DBMS_NoiThat.Entity
         public int SDTNguoiDat1 { get => SDTNguoiDat; set => SDTNguoiDat = value; }
         public string TenNguoiNhan1 { get => TenNguoiNhan; set => TenNguoiNhan = value; }
         public int SDTNguoiNhan1 { get => SDTNguoiNhan; set => SDTNguoiNhan = value; }
-        public int TongTien1 { get => TongTien; set => TongTien = value; }
+        public int SoTien1 { get => SoTien; set => SoTien = value; }
         public string NgayMuaHang1 { get => NgayMuaHang; set => NgayMuaHang = value; }
         public string DiaChiNhan1 { get => DiaChiNhan; set => DiaChiNhan = value; }
         public string TrangThai1 { get => TrangThai; set => TrangThai = value; }
+        public int SoLuong1 { get => SoLuong; set => SoLuong = value; }
+        public string TenSanPham1 { get => TenSanPham; set => TenSanPham = value; }
     }
 }
