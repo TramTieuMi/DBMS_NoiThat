@@ -71,23 +71,23 @@ namespace DBMS_NoiThat.user
                 }
                 else
                 {
-                    while (reader.Read())
-                    {
-                        if (KTTenCTy(reader["TenTaiKhoan"].ToString()) == true)
-                        {
-                            if (chuoi == reader["TenCongViec"].ToString() || chuoi == reader["Tinh_TP"].ToString())
-                            {
-                                string nganh = reader["TenCongViec"].ToString();
-                                string tenCTy = reader["TenCTy"].ToString();
-                                string diaDiem = reader["Tinh_TP"].ToString();
-                                soNguoi = soNguoi + 1;
-                                LichSuNTD lich = new LichSuNTD(nganh, diaDiem, tenCTy, soNguoi);
+                    //while (reader.Read())
+                    //{
+                    //    if (KTTenCTy(reader["TenTaiKhoan"].ToString()) == true)
+                    //    {
+                    //        if (chuoi == reader["TenCongViec"].ToString() || chuoi == reader["Tinh_TP"].ToString())
+                    //        {
+                    //            string nganh = reader["TenCongViec"].ToString();
+                    //            string tenCTy = reader["TenCTy"].ToString();
+                    //            string diaDiem = reader["Tinh_TP"].ToString();
+                    //            soNguoi = soNguoi + 1;
+                    //            LichSuNTD lich = new LichSuNTD(nganh, diaDiem, tenCTy, soNguoi);
 
-                                list.Add(lich);
-                            }
-                        }
-                    }
-                    soNguoi = 0;
+                    //            list.Add(lich);
+                    //        }
+                    //    }
+                    //}
+                    //soNguoi = 0;
                 }
 
             }
@@ -99,13 +99,13 @@ namespace DBMS_NoiThat.user
             {
                 connStr.Close();
             }
-            foreach (LichSuNTD l in list)
-            {
-                UCLichSuNTD ucLS = new UCLichSuNTD(l);
-                int dis = (fpn_HienThi.Height - (6 * ucLS.Height)) / 10;
-                ucLS.Margin = new Padding(0, dis, 0, 0);
-                fpn_HienThi.Controls.Add(ucLS);
-            }
+            //foreach (LichSuNTD l in list)
+            //{
+            //    UCLichSuNTD ucLS = new UCLichSuNTD(l);
+            //    int dis = (fpn_HienThi.Height - (6 * ucLS.Height)) / 10;
+            //    ucLS.Margin = new Padding(0, dis, 0, 0);
+            //    fpn_HienThi.Controls.Add(ucLS);
+            //}
 
         }
     }

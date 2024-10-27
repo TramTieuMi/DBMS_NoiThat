@@ -9,9 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBMS_NoiThat.user
+namespace DBMS_NoiThat
 {
-
     public partial class QuanLyDonHangForm : Form
     {
         DBConnection conn = new DBConnection();
@@ -146,7 +145,7 @@ namespace DBMS_NoiThat.user
             catch { Exception ex; }
         }
 
-        private void textBoxTimKiem_Enter(object sender, EventArgs e)
+        private void buttonTimKiem_Enter(object sender, EventArgs e)
         {
             if (textBoxTimKiem.Text == "Mã Đơn Hàng")
             {
@@ -155,7 +154,7 @@ namespace DBMS_NoiThat.user
             }
         }
 
-        private void textBoxTimKiem_Leave(object sender, EventArgs e)
+        private void buttonTimKiem_Leave(object sender, EventArgs e)
         {
             if (textBoxTimKiem.Text == "")
             {

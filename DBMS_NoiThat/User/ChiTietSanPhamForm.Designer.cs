@@ -1,4 +1,4 @@
-﻿namespace DBMS_NoiThat.user
+﻿namespace DBMS_NoiThat
 {
     partial class ChiTietSanPhamForm
     {
@@ -32,6 +32,7 @@
             this.textBoxMauSac = new System.Windows.Forms.TextBox();
             this.textBoxChatLieu = new System.Windows.Forms.TextBox();
             this.buttonThemVaoGio = new System.Windows.Forms.Button();
+            this.PictureBoxHinhAnhSP = new System.Windows.Forms.PictureBox();
             this.ButtonUploadImage = new System.Windows.Forms.Button();
             this.labelHinhAnh = new System.Windows.Forms.Label();
             this.labelMoTa = new System.Windows.Forms.Label();
@@ -56,9 +57,10 @@
             this.labelMauSac.AutoSize = true;
             this.labelMauSac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMauSac.ForeColor = System.Drawing.Color.White;
-            this.labelMauSac.Location = new System.Drawing.Point(89, 250);
+            this.labelMauSac.Location = new System.Drawing.Point(67, 203);
+            this.labelMauSac.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMauSac.Name = "labelMauSac";
-            this.labelMauSac.Size = new System.Drawing.Size(88, 20);
+            this.labelMauSac.Size = new System.Drawing.Size(75, 17);
             this.labelMauSac.TabIndex = 65;
             this.labelMauSac.Text = "Màu Sắc:";
             // 
@@ -66,22 +68,22 @@
             // 
             this.textBoxMauSac.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxMauSac.BackColor = System.Drawing.Color.Silver;
-            this.textBoxMauSac.Location = new System.Drawing.Point(275, 247);
-            this.textBoxMauSac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxMauSac.Location = new System.Drawing.Point(206, 201);
+            this.textBoxMauSac.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMauSac.Multiline = true;
             this.textBoxMauSac.Name = "textBoxMauSac";
-            this.textBoxMauSac.Size = new System.Drawing.Size(251, 32);
+            this.textBoxMauSac.Size = new System.Drawing.Size(189, 27);
             this.textBoxMauSac.TabIndex = 64;
             // 
             // textBoxChatLieu
             // 
             this.textBoxChatLieu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxChatLieu.BackColor = System.Drawing.Color.Silver;
-            this.textBoxChatLieu.Location = new System.Drawing.Point(275, 375);
-            this.textBoxChatLieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxChatLieu.Location = new System.Drawing.Point(206, 305);
+            this.textBoxChatLieu.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxChatLieu.Multiline = true;
             this.textBoxChatLieu.Name = "textBoxChatLieu";
-            this.textBoxChatLieu.Size = new System.Drawing.Size(251, 32);
+            this.textBoxChatLieu.Size = new System.Drawing.Size(189, 27);
             this.textBoxChatLieu.TabIndex = 63;
             // 
             // buttonThemVaoGio
@@ -90,22 +92,34 @@
             this.buttonThemVaoGio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonThemVaoGio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonThemVaoGio.ForeColor = System.Drawing.Color.White;
-            this.buttonThemVaoGio.Location = new System.Drawing.Point(667, 452);
-            this.buttonThemVaoGio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonThemVaoGio.Location = new System.Drawing.Point(500, 367);
+            this.buttonThemVaoGio.Margin = new System.Windows.Forms.Padding(2);
             this.buttonThemVaoGio.Name = "buttonThemVaoGio";
-            this.buttonThemVaoGio.Size = new System.Drawing.Size(244, 38);
+            this.buttonThemVaoGio.Size = new System.Drawing.Size(183, 31);
             this.buttonThemVaoGio.TabIndex = 62;
             this.buttonThemVaoGio.Text = "Thêm Vào Giỏ Hàng";
             this.buttonThemVaoGio.UseVisualStyleBackColor = false;
+            // 
+            // PictureBoxHinhAnhSP
+            // 
+            this.PictureBoxHinhAnhSP.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PictureBoxHinhAnhSP.BackColor = System.Drawing.Color.Silver;
+            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(552, 218);
+            this.PictureBoxHinhAnhSP.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureBoxHinhAnhSP.Name = "PictureBoxHinhAnhSP";
+            this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(177, 113);
+            this.PictureBoxHinhAnhSP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBoxHinhAnhSP.TabIndex = 61;
+            this.PictureBoxHinhAnhSP.TabStop = false;
             // 
             // ButtonUploadImage
             // 
             this.ButtonUploadImage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonUploadImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonUploadImage.Location = new System.Drawing.Point(803, 415);
-            this.ButtonUploadImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ButtonUploadImage.Location = new System.Drawing.Point(602, 337);
+            this.ButtonUploadImage.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonUploadImage.Name = "ButtonUploadImage";
-            this.ButtonUploadImage.Size = new System.Drawing.Size(108, 18);
+            this.ButtonUploadImage.Size = new System.Drawing.Size(81, 15);
             this.ButtonUploadImage.TabIndex = 60;
             this.ButtonUploadImage.Text = "upload image";
             this.ButtonUploadImage.UseVisualStyleBackColor = true;
@@ -116,9 +130,10 @@
             this.labelHinhAnh.AutoSize = true;
             this.labelHinhAnh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelHinhAnh.ForeColor = System.Drawing.Color.White;
-            this.labelHinhAnh.Location = new System.Drawing.Point(609, 273);
+            this.labelHinhAnh.Location = new System.Drawing.Point(457, 222);
+            this.labelHinhAnh.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelHinhAnh.Name = "labelHinhAnh";
-            this.labelHinhAnh.Size = new System.Drawing.Size(92, 20);
+            this.labelHinhAnh.Size = new System.Drawing.Size(79, 17);
             this.labelHinhAnh.TabIndex = 59;
             this.labelHinhAnh.Text = "Hình Ảnh:";
             // 
@@ -128,9 +143,10 @@
             this.labelMoTa.AutoSize = true;
             this.labelMoTa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMoTa.ForeColor = System.Drawing.Color.White;
-            this.labelMoTa.Location = new System.Drawing.Point(628, 155);
+            this.labelMoTa.Location = new System.Drawing.Point(471, 126);
+            this.labelMoTa.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMoTa.Name = "labelMoTa";
-            this.labelMoTa.Size = new System.Drawing.Size(67, 20);
+            this.labelMoTa.Size = new System.Drawing.Size(58, 17);
             this.labelMoTa.TabIndex = 58;
             this.labelMoTa.Text = "Mô Tả:";
             // 
@@ -138,11 +154,11 @@
             // 
             this.TextBoxMoTa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxMoTa.BackColor = System.Drawing.Color.Silver;
-            this.TextBoxMoTa.Location = new System.Drawing.Point(727, 133);
-            this.TextBoxMoTa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TextBoxMoTa.Location = new System.Drawing.Point(545, 108);
+            this.TextBoxMoTa.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxMoTa.Multiline = true;
             this.TextBoxMoTa.Name = "TextBoxMoTa";
-            this.TextBoxMoTa.Size = new System.Drawing.Size(269, 95);
+            this.TextBoxMoTa.Size = new System.Drawing.Size(203, 78);
             this.TextBoxMoTa.TabIndex = 57;
             // 
             // ButtonTroVe
@@ -150,10 +166,10 @@
             this.ButtonTroVe.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonTroVe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ButtonTroVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonTroVe.Location = new System.Drawing.Point(41, 31);
-            this.ButtonTroVe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ButtonTroVe.Location = new System.Drawing.Point(31, 25);
+            this.ButtonTroVe.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonTroVe.Name = "ButtonTroVe";
-            this.ButtonTroVe.Size = new System.Drawing.Size(105, 38);
+            this.ButtonTroVe.Size = new System.Drawing.Size(79, 31);
             this.ButtonTroVe.TabIndex = 56;
             this.ButtonTroVe.Text = "Trở về";
             this.ButtonTroVe.UseVisualStyleBackColor = false;
@@ -163,44 +179,44 @@
             // 
             this.TextBoxKichThuoc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxKichThuoc.BackColor = System.Drawing.Color.Silver;
-            this.TextBoxKichThuoc.Location = new System.Drawing.Point(275, 436);
-            this.TextBoxKichThuoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TextBoxKichThuoc.Location = new System.Drawing.Point(206, 354);
+            this.TextBoxKichThuoc.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxKichThuoc.Multiline = true;
             this.TextBoxKichThuoc.Name = "TextBoxKichThuoc";
-            this.TextBoxKichThuoc.Size = new System.Drawing.Size(251, 32);
+            this.TextBoxKichThuoc.Size = new System.Drawing.Size(189, 27);
             this.TextBoxKichThuoc.TabIndex = 55;
             // 
             // TextBoxGiaSP
             // 
             this.TextBoxGiaSP.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxGiaSP.BackColor = System.Drawing.Color.Silver;
-            this.TextBoxGiaSP.Location = new System.Drawing.Point(275, 309);
-            this.TextBoxGiaSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TextBoxGiaSP.Location = new System.Drawing.Point(206, 251);
+            this.TextBoxGiaSP.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxGiaSP.Multiline = true;
             this.TextBoxGiaSP.Name = "TextBoxGiaSP";
-            this.TextBoxGiaSP.Size = new System.Drawing.Size(251, 32);
+            this.TextBoxGiaSP.Size = new System.Drawing.Size(189, 27);
             this.TextBoxGiaSP.TabIndex = 54;
             // 
             // TextBoxTenSP
             // 
             this.TextBoxTenSP.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxTenSP.BackColor = System.Drawing.Color.Silver;
-            this.TextBoxTenSP.Location = new System.Drawing.Point(275, 185);
-            this.TextBoxTenSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TextBoxTenSP.Location = new System.Drawing.Point(206, 150);
+            this.TextBoxTenSP.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxTenSP.Multiline = true;
             this.TextBoxTenSP.Name = "TextBoxTenSP";
-            this.TextBoxTenSP.Size = new System.Drawing.Size(251, 32);
+            this.TextBoxTenSP.Size = new System.Drawing.Size(189, 27);
             this.TextBoxTenSP.TabIndex = 53;
             // 
             // TextBoxIDSP
             // 
             this.TextBoxIDSP.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxIDSP.BackColor = System.Drawing.Color.Silver;
-            this.TextBoxIDSP.Location = new System.Drawing.Point(275, 128);
-            this.TextBoxIDSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TextBoxIDSP.Location = new System.Drawing.Point(206, 104);
+            this.TextBoxIDSP.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxIDSP.Multiline = true;
             this.TextBoxIDSP.Name = "TextBoxIDSP";
-            this.TextBoxIDSP.Size = new System.Drawing.Size(160, 32);
+            this.TextBoxIDSP.Size = new System.Drawing.Size(121, 27);
             this.TextBoxIDSP.TabIndex = 52;
             // 
             // labelKichThuoc
@@ -209,9 +225,10 @@
             this.labelKichThuoc.AutoSize = true;
             this.labelKichThuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelKichThuoc.ForeColor = System.Drawing.Color.White;
-            this.labelKichThuoc.Location = new System.Drawing.Point(88, 430);
+            this.labelKichThuoc.Location = new System.Drawing.Point(66, 349);
+            this.labelKichThuoc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelKichThuoc.Name = "labelKichThuoc";
-            this.labelKichThuoc.Size = new System.Drawing.Size(109, 20);
+            this.labelKichThuoc.Size = new System.Drawing.Size(94, 17);
             this.labelKichThuoc.TabIndex = 51;
             this.labelKichThuoc.Text = "Kích Thước:";
             // 
@@ -221,9 +238,10 @@
             this.labelGiaSP.AutoSize = true;
             this.labelGiaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGiaSP.ForeColor = System.Drawing.Color.White;
-            this.labelGiaSP.Location = new System.Drawing.Point(88, 310);
+            this.labelGiaSP.Location = new System.Drawing.Point(66, 252);
+            this.labelGiaSP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelGiaSP.Name = "labelGiaSP";
-            this.labelGiaSP.Size = new System.Drawing.Size(129, 20);
+            this.labelGiaSP.Size = new System.Drawing.Size(111, 17);
             this.labelGiaSP.TabIndex = 50;
             this.labelGiaSP.Text = "Giá Sản Phẩm";
             // 
@@ -233,9 +251,10 @@
             this.labelChatLieu.AutoSize = true;
             this.labelChatLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelChatLieu.ForeColor = System.Drawing.Color.White;
-            this.labelChatLieu.Location = new System.Drawing.Point(88, 369);
+            this.labelChatLieu.Location = new System.Drawing.Point(66, 300);
+            this.labelChatLieu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelChatLieu.Name = "labelChatLieu";
-            this.labelChatLieu.Size = new System.Drawing.Size(96, 20);
+            this.labelChatLieu.Size = new System.Drawing.Size(82, 17);
             this.labelChatLieu.TabIndex = 49;
             this.labelChatLieu.Text = "Chất Liệu:";
             // 
@@ -245,9 +264,10 @@
             this.labelTenSP.AutoSize = true;
             this.labelTenSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTenSP.ForeColor = System.Drawing.Color.White;
-            this.labelTenSP.Location = new System.Drawing.Point(88, 186);
+            this.labelTenSP.Location = new System.Drawing.Point(66, 151);
+            this.labelTenSP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTenSP.Name = "labelTenSP";
-            this.labelTenSP.Size = new System.Drawing.Size(137, 20);
+            this.labelTenSP.Size = new System.Drawing.Size(119, 17);
             this.labelTenSP.TabIndex = 48;
             this.labelTenSP.Text = "Tên Sản Phẩm:";
             // 
@@ -257,9 +277,10 @@
             this.labelIDSP.AutoSize = true;
             this.labelIDSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelIDSP.ForeColor = System.Drawing.Color.White;
-            this.labelIDSP.Location = new System.Drawing.Point(88, 126);
+            this.labelIDSP.Location = new System.Drawing.Point(66, 102);
+            this.labelIDSP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelIDSP.Name = "labelIDSP";
-            this.labelIDSP.Size = new System.Drawing.Size(131, 20);
+            this.labelIDSP.Size = new System.Drawing.Size(112, 17);
             this.labelIDSP.TabIndex = 47;
             this.labelIDSP.Text = "Mã Sản Phẩm:";
             // 
@@ -277,10 +298,10 @@
             // 
             // ChiTietSanPhamForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1039, 521);
+            this.ClientSize = new System.Drawing.Size(779, 423);
             this.Controls.Add(this.labelMauSac);
             this.Controls.Add(this.textBoxMauSac);
             this.Controls.Add(this.textBoxChatLieu);
