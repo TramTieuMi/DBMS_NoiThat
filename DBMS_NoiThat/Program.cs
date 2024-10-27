@@ -1,6 +1,7 @@
 ﻿using DBMS_NoiThat.user;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;

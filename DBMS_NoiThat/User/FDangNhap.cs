@@ -18,14 +18,14 @@ namespace DBMS_NoiThat.user
         {
             InitializeComponent();
         }
-        public static string TenTaiKhoan { get; private set; }
+        public static string TenDangNhap { get; private set; }
         Modify modify = new Modify();
         private void guna2Button1_Click(object sender, EventArgs e)
         {
 
 
             string tentk = txtTenTK.Text;
-            TenTaiKhoan = tentk;
+            TenDangNhap = tentk;
             string matkhau = txtMatKhau.Text;
             if (tentk.Trim() == "") { MessageBox.Show("Vui lòng nhập tên tài khoản!"); }
             else if (matkhau.Trim() == "") { MessageBox.Show("Vui lòng nhập mật khẩu!"); }
@@ -50,7 +50,7 @@ namespace DBMS_NoiThat.user
                             if (role == 2)
                             {
                                 FDangNhap flogin = new FDangNhap();
-                                MainFormKhachHang mainForm = new MainFormKhachHang();
+                                XemThongTinUser mainForm = new XemThongTinUser();
                                 mainForm.ShowDialog();
                                 break;
                             }
@@ -72,6 +72,11 @@ namespace DBMS_NoiThat.user
                 }
 
             }
+        }
+
+        private void FDangNhap_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

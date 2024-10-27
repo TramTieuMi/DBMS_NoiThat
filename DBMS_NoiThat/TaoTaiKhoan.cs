@@ -54,50 +54,55 @@ namespace DBMS_NoiThat
         Modify modify = new Modify();
         private void btnDangKy_Click(object sender, EventArgs e)
         {
+            
+            string Hoten = txtHoten.Text;
             string tentk = txtTenTK.Text;
-            //string hoTen = txtHoten.Text;
+            string DiaChi = txtDiaChi.Text;
             string email = txtEmail.Text;
             string matkhau = txtMatkhau.Text;
-           // string diaChi = txtDiaChi.Text;
-            //string sdt = txtSdt.Text;
-            string role = comboBxRole.Text; // Assuming role selection is implemented
+            string sdt =txtSdt.Text;
+            string role = comboBxRole.Text;
 
 
+            int roleid = -1; ;
             if (!checkAccount(tentk)) { MessageBox.Show("Vui lòng nhập tên tài khoản 6-24 kí tự,chỉ với các kí tự chữ và số, có thể là chữ hoa hoặc chữ thường!"); return; }
             if (!checkAccount(matkhau)) { MessageBox.Show("Vui lòng nhập mật khẩu  6-24 kí tự,chỉ với các kí tự chữ và số, có thể là chữ hoa hoặc chữ thường!"); return; }
             if (!checkEmail(email)) { MessageBox.Show("Vui lòng nhập đúng định dạng email!"); return; }
-            if (modify.taiKhoans("Select * from TaoTaiKhoan where Email = '" + email + "'").Count != 0) { MessageBox.Show("Email này đã được đăng kí, vui lòng đăng kí email khác!"); return; }
+            if (modify.taiKhoans("Select * from TAIKHOAN where Email = '" + email + "'").Count != 0) { MessageBox.Show("Email này đã được đăng kí, vui lòng đăng kí email khác!"); return; }
             try
             {
-                ///////////////////////////////////// chỗ này bỏ cái query 
-                string query = "Insert into TAIKHOAN values ('" + tentk + "','" + matkhau + "','" + email + "','" + role + "')";
-               // string query1 = "Insert into TAIKHOAN  values ('" + tentk + "','" + matkhau + "', '" + role + "' )";
-                modify.Command(query);
-               // modify.Command(query1);
+                
+                if (role == "Người dùng")
+                {
+                    roleid = 2;
+                }
+                else if (role == "Quản trị viên")
+                {
+                    roleid = 1;
+                }
+
+                string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao) VALUES ('" + Hoten + "','" + email + "','" + DiaChi + "','" + sdt + "', GETDATE())";
+                string queryTK = "INSERT INTO TAIKHOAN (TenDangNhap, MatKhau, Email, RoleID) VALUES ('" + tentk + "', '" + matkhau + "', '" + email + "', '" + roleid + "')";
+
+                //string queryKH = "Insert into KHACHHANG values ('" + Hoten + "','" + email + "','" + DiaChi + "','" + sdt + "')";
+                //string queryTK = "Insert into TAIKHOAN values ('" + tentk + "','" + matkhau + "','" + email + "','" + role + "')";
+                modify.Command(queryKH);
+                modify.Command(queryTK);
                 /*if (MessageBox.Show("Đăng kí thành công! Bạn có muốn đăng nhập luôn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     this.Close();
                 }*/
                 Hide();
-
-                if (role == "Người dùng")
-                {
-                    FDangNhap Fdangnhap = new FDangNhap();
-                    Fdangnhap.ShowDialog();
-                }
-                else
-                {
-                    //FDangNhap Fdangnhap = new FDangNhap(); /////////////////// để tamj ở đây
-                    //Fdangnhap.ShowDialog();
-                    MessageBox.Show("Xin vui lòng chờ xét duyệt từ admin!");
-                }
-
+                
+                FDangNhap dangnhap = new FDangNhap();
+                dangnhap.ShowDialog();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Tên tài khoản này đã được đăng kí, vui lòng nhập tên tài khoản khác!");
+                MessageBox.Show("Đăng ký thất bại: " + ex.Message);
             }
 
         }
     }
 }
+

@@ -19,7 +19,7 @@ namespace DBMS_NoiThat.user
         public XemThongTinUser()
         {
             InitializeComponent();
-            //  ThucThi(FDangNhap.TenDangNhap); /////////////////////////////////////////////////////////////////////////
+            ThucThi(FDangNhap.TenDangNhap); /////////////////////////////////////////////////////////////////////////
         }
         public XemThongTinUser(string tenUV, string email)
         {
@@ -58,12 +58,12 @@ namespace DBMS_NoiThat.user
 
             FDangNhap fLogin = new FDangNhap();
             string em = "VanKien@gmail.com";
-            DataTable dataTable = new DataTable();
-            string sqlQuery = "SELECT TenDangNhap, MatKhau, Email, RoleID FROM TAIKHOAN WHERE Email = @Email";
+            DataTable dataTable = new DataTable(); 
+            string sqlQuery = "SELECT HovaTen,Email,DiaChi,SDT FROM KHACHHANG WHERE Email = @Email";
 
 
             DataTable dataTable1 = new DataTable();
-            string sqlQuery1 = "SELECT TenDangNhap,Email FROM TAIKHOAN WHERE TenDangNhap = @TenDangNhap";
+            string sqlQuery1 = "SELECT TenDangNhap, MatKhau, Email, RoleID FROM TAIKHOAN WHERE TenDangNhap = @TenDangNhap";
             modify.TaiDuLieu(dataTable1, sqlQuery1, "@TenDangNhap", tenTK);
             if (dataTable1.Rows.Count > 0)
             {
@@ -85,10 +85,10 @@ namespace DBMS_NoiThat.user
                     string email = row["Email"].ToString();
                     if (email == em)
                     {
-                        txtHoTen.Text = row["HoTenUV"].ToString();
-                        txtDiaChi.Text = row["HoTenUV"].ToString();
-                        txtSdt.Text = row["HoTenUV"].ToString(); 
-                        txtEmail.Text = row["HoTenUV"].ToString(); 
+                        txtHoTen.Text = row["HovaTen"].ToString();
+                        txtDiaChi.Text = row["DiaChi"].ToString();
+                        txtSdt.Text = row["SDT"].ToString(); 
+                        txtEmail.Text = row["Email"].ToString(); 
 
                     }
                 }
