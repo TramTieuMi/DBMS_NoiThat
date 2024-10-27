@@ -1,6 +1,7 @@
 ﻿using DBMS_NoiThat.user;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +18,7 @@ namespace DBMS_NoiThat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GioHang());
+            Application.Run(new TaoTaiKhoan());
         }
     }
 }
