@@ -56,7 +56,7 @@ namespace DBMS_NoiThat.user
         {
             try
             {
-                OpenChildForm(new QuanLyDonHangForm());
+                OpenChildForm(new GioHang());
                 // labelHome.Text = buttonQLNV.Text;
             }
             catch (Exception ex)

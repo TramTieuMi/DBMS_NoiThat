@@ -12,7 +12,7 @@ namespace DBMS_NoiThat.user
     {
         private DBConnection dbConnection; // Declare an instance of DBConnection
         private SqlConnection connection;   // Declare the SqlConnection variable
-        List<EGioHang> listGH;
+        List<EGioHang> listGH = new List<EGioHang>();
         int maGH;
 
         public GioHang()
@@ -25,6 +25,7 @@ namespace DBMS_NoiThat.user
         public GioHang(int MaGioHang)
         {
             InitializeComponent();
+            LB_Ma.Text = "Mã Giỏ Hàng :";
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
             LoadGioHang(MaGioHang);
@@ -40,13 +41,14 @@ namespace DBMS_NoiThat.user
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
             adapter.Fill(dataTable);
-
             if (dataTable.Rows.Count > 0)
             {
                 foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
                 {
+                    
                     if (MaGioHang == (int)row["MaGioHang"])
                     {
+                        LB_MaGioHang.Text = row["MaGioHang"].ToString();
                         int MaGioHang1 = (int)row["MaGioHang"];
                         int MaSanPham1 = (int)row["MaSanPham"];
                         int SoLuong1 = (int)row["SoLuong"];
@@ -65,11 +67,12 @@ namespace DBMS_NoiThat.user
             {
                 Console.WriteLine("Không có dữ liệu trong giỏ hàng.");
             }
+            connection.Close();
         }
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
-            string query1 = "SELECT MaKhachHang, HovaTen, DiaChi, SDT FROM KHACHHANG WHERE MaKhachHang = @MaKhachHang";
+            string query1 = "sp_LayThongTinKhachHang";
             string hoVaTen, diaChi, sdt;
             int maDonHang;
             connection.Open();
@@ -94,11 +97,7 @@ namespace DBMS_NoiThat.user
                 }
             }
 
-            string query = "INSERT INTO DONHANG (MaSanPham, MaKhachHang, TenNguoiDat, SDTNguoiDat, " +
-               "TenNguoiNhan, SDTNguoiNhan, TongTien, NgayMuaHang, DiaChiNhan, TrangThai) " +
-               "VALUES (@MaSanPham, @MaKhachHang, @TenNguoiDat, @SDTNguoiDat, " +
-               "@TenNguoiNhan, @SDTNguoiNhan, @TongTien, @NgayMuaHang, @DiaChiNhan, @TrangThai); " +
-               "SELECT SCOPE_IDENTITY();"; // Get the MaDonHang value just inserted
+            string query = "sp_ThemDonHang"; // Get the MaDonHang value just inserted
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -113,14 +112,15 @@ namespace DBMS_NoiThat.user
                 maDonHang = Convert.ToInt32(command.ExecuteScalar());
             }
 
-            string query2 = "INSERT INTO DONHANG_SANPHAM (MaDonHang, MaKhachHang, MaSanPham, TenSanPham, SoLuong, SoTien) " +
-                   "VALUES (@MaDonHang, @MaKhachHang, @MaSanPham, @TenSanPham, @SoLuong, @SoTien)";
+
+            string query3 = "sp_ThemDonHangSanPham";
             foreach (EGioHang gioHang in listGH)
             {
                 if (gioHang.Check)
                 {
-                    using (SqlCommand command = new SqlCommand(query2, connection))
+                    using (SqlCommand command = new SqlCommand(query3, connection))
                     {
+                        // Thêm các tham số vào lệnh SQL
                         command.Parameters.AddWithValue("@MaDonHang", maDonHang);
                         command.Parameters.AddWithValue("@MaKhachHang", maGH);
                         command.Parameters.AddWithValue("@MaSanPham", gioHang.MaSanPham1);
@@ -128,11 +128,13 @@ namespace DBMS_NoiThat.user
                         command.Parameters.AddWithValue("@SoLuong", gioHang.SoLuong1);
                         command.Parameters.AddWithValue("@SoTien", gioHang.SoTien1);
 
+                        // Thực thi lệnh SQL
                         command.ExecuteNonQuery();
                     }
                 }
             }
-            Application.Run(new DonHang(maDonHang));
+            DonHang dh = new DonHang(maDonHang);
+            dh.ShowDialog();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -141,6 +143,11 @@ namespace DBMS_NoiThat.user
         }
 
         private void GioHang_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LB_MaGioHang_Click(object sender, EventArgs e)
         {
 
         }
