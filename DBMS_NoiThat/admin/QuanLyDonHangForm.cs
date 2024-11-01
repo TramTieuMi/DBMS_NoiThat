@@ -181,22 +181,31 @@ namespace DBMS_NoiThat.user
 
         private void buttonTimKiem_Click(object sender, EventArgs e)
         {
-            int idDonHang = Convert.ToInt32(textBoxTimKiem.Text);
-            conn.OpenConnection();
-            SqlCommand cmd = new SqlCommand("proc_TimKiemDonHangTheoMaDonHang", conn.GetConnection());
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaDon", idDonHang);
-            DataTable table = new DataTable();
-            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            try
             {
-                adapter.Fill(table);
+                int idDonHang = Convert.ToInt32(textBoxTimKiem.Text);
+                conn.OpenConnection();
+                SqlCommand cmd = new SqlCommand("proc_TimKiemDonHangTheoMaDonHang", conn.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaDon", idDonHang);
+                DataTable table = new DataTable();
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(table);
+                }
+                dataGridView1.DataSource = table;
+                conn.CloseConnection();
             }
-            dataGridView1.DataSource = table;
-            conn.CloseConnection();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+          
         }
 
         private void buttonCapNhatTrangThai_Click(object sender, EventArgs e)
         {
+
             int idDonHang = Convert.ToInt32(TextBoxMaDonHang.Text);
             string status;
             if (radioButtonChoXN.Checked == true)

@@ -11,42 +11,45 @@ namespace DBMS_NoiThat.user
 {
     internal class DBConnection
     {
-        SqlConnection sqlCon;
+        // @"Data Source=NGOCNAM;Initial Catalog=NoiThat;Integrated Security=True"
+        SqlConnection sqlcon;
         public DBConnection()
         {
-            sqlCon = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=NoiThat;Integrated Security=True");
+            sqlcon = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=NoiThat;Integrated Security=True");
         }
-
         public SqlConnection GetConnection()
         {
-            return sqlCon;
+            return sqlcon;
         }
-
-      
-
         public void OpenConnection()
         {
             try
             {
-                if (sqlCon.State == ConnectionState.Closed) // Nết trạng thái là đóng kết nối
+                if (sqlcon.State == ConnectionState.Closed)
                 {
-                    sqlCon.Open();                          // Mở kết nối
+                    sqlcon.Open();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);    // Nếu có lỗi thì thông báo
+                MessageBox.Show(ex.Message);
             }
+           
         }
-
-      
-
         public void CloseConnection()
         {
-            if (sqlCon.State == ConnectionState.Open) // Nếu kết nối đang được mở
+            try
             {
-                sqlCon.Close();     // Đóng kết nối
+                if (sqlcon.State == ConnectionState.Open)
+                {
+                    sqlcon.Close();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
        

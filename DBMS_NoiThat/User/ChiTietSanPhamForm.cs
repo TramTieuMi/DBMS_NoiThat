@@ -29,7 +29,9 @@ namespace DBMS_NoiThat.user
             }
         }
 
-        private void ChiTietSanPhamForm_Load(object sender, EventArgs e)
+       
+
+        private void buttonThemVaoGio_Click(object sender, EventArgs e)
         {
 
         }
