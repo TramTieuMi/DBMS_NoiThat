@@ -82,5 +82,36 @@ namespace DBMS_NoiThat.user
         {
 
         }
+
+        private void buttonTTCN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new XemThongTinUser());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void panel_Body_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonLSMH_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new FLichSu());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

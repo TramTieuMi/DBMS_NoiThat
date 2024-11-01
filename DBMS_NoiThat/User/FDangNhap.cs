@@ -50,7 +50,7 @@ namespace DBMS_NoiThat.user
                             if (role == 2)
                             {
                                 FDangNhap flogin = new FDangNhap();
-                                XemThongTinUser mainForm = new XemThongTinUser();
+                                MainFormKhachHang mainForm = new MainFormKhachHang();
                                 mainForm.ShowDialog();
                                 break;
                             }

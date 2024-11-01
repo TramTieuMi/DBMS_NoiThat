@@ -59,6 +59,7 @@
             this.panel_Body.Name = "panel_Body";
             this.panel_Body.Size = new System.Drawing.Size(1487, 683);
             this.panel_Body.TabIndex = 11;
+            this.panel_Body.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Body_Paint);
             // 
             // panel_left
             // 
@@ -151,6 +152,7 @@
             this.buttonLSMH.TabIndex = 3;
             this.buttonLSMH.Text = "Lịch Sử Mua Hàng";
             this.buttonLSMH.UseVisualStyleBackColor = false;
+            this.buttonLSMH.Click += new System.EventHandler(this.buttonLSMH_Click);
             // 
             // buttonGioHang
             // 
@@ -182,6 +184,7 @@
             this.buttonTTCN.TabIndex = 1;
             this.buttonTTCN.Text = "Thông Tin Cá Nhân";
             this.buttonTTCN.UseVisualStyleBackColor = false;
+            this.buttonTTCN.Click += new System.EventHandler(this.buttonTTCN_Click);
             // 
             // lbTitle
             // 
@@ -237,7 +240,7 @@
             this.Controls.Add(this.panel_Body);
             this.Controls.Add(this.panel_left);
             this.Controls.Add(this.panel_Top);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainFormKhachHang";
             this.Text = "MainFormKhachHang";
             this.Load += new System.EventHandler(this.MainFormKhachHang_Load);

@@ -1,4 +1,5 @@
 ﻿using DBMS_NoiThat.Entity;
+using DBMS_NoiThat.UC;
 using Do_An_Tuyen_Dung;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace DBMS_NoiThat.user
         public FLichSu()
         {
             InitializeComponent();
+            //LoadDanhSach(null);
         }
         SqlConnection connStr = Connection.GetSqlConnection();
         private void FLichSu_Load(object sender, EventArgs e)
@@ -38,14 +40,16 @@ namespace DBMS_NoiThat.user
             List<LichSuMuaHang> list = new List<LichSuMuaHang>();
             try
             {
-                string query = "SELECT TenCongViec,Tinh_TP,TenTaiKhoan,TenCTy FROM DangBaiNTD " +//////////////////////////
-                    "JOIN ThongTinCTy_Chinh on DangBaiNTD.EmailHR = ThongTinCTy_Chinh.EmailHR " +////////////
-                    "JOIN TaoTaiKhoan on TaoTaiKhoan.Email = ThongTinCTy_Chinh.EmailHR";////
+                string query = "SELECT SANPHAM.TenSanPham, SANPHAM.MoTa, SANPHAM.MauSac, SANPHAM.SoLuong, " +
+               "DONHANG.NgayMuaHang, DONHANG.TrangThai " +
+               "FROM DONHANG " +
+               "JOIN SANPHAM ON DONHANG.MaSanPham = SANPHAM.MaSanPham";
+
                 SqlCommand command = new SqlCommand(query, connStr);
                 connStr.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 flwPnLichSu.Controls.Clear();
-                int soNguoi = 0;
+                int soDon = 0;
 
                 if (chuoi == null)
                 {
@@ -67,27 +71,31 @@ namespace DBMS_NoiThat.user
                         }
 
                     }
-                    soNguoi = 0;
+                    soDon = 0;
                 }
                 else
                 {
-                    //while (reader.Read())
-                    //{
-                    //    if (KTTenCTy(reader["TenTaiKhoan"].ToString()) == true)
-                    //    {
-                    //        if (chuoi == reader["TenCongViec"].ToString() || chuoi == reader["Tinh_TP"].ToString())
-                    //        {
-                    //            string nganh = reader["TenCongViec"].ToString();
-                    //            string tenCTy = reader["TenCTy"].ToString();
-                    //            string diaDiem = reader["Tinh_TP"].ToString();
-                    //            soNguoi = soNguoi + 1;
-                    //            LichSuNTD lich = new LichSuNTD(nganh, diaDiem, tenCTy, soNguoi);
+                    while (reader.Read())
+                    {
+                        if (KTTenTaiKhoan(reader["TenDangNhap"].ToString()) == true)
+                        {
+                            if (chuoi == reader["TenCongViec"].ToString() || chuoi == reader["Tinh_TP"].ToString())
+                            {
+                                string tenSanPham = reader["TenSanPham"].ToString();
+                                string moTa = reader["MoTa"].ToString();                         
+                                string mau = reader["MauSac"].ToString();
+                                string soLuong = reader["SoLuong"].ToString();
+                                string ngayMua = reader["NgayMuaHang"].ToString();
+                                string trangThai = reader["TrangThai"].ToString();
+                                string thanhTien = reader["TongTien"].ToString();
+                                soDon = soDon + 1;
+                                LichSuMuaHang lich = new LichSuMuaHang(tenSanPham, moTa, mau, soLuong, ngayMua, trangThai, thanhTien);
 
-                    //            list.Add(lich);
-                    //        }
-                    //    }
-                    //}
-                    //soNguoi = 0;
+                                list.Add(lich);
+                            }
+                        }
+                    }
+                    soDon = 0;
                 }
 
             }
@@ -99,13 +107,18 @@ namespace DBMS_NoiThat.user
             {
                 connStr.Close();
             }
-            //foreach (LichSuNTD l in list)
-            //{
-            //    UCLichSuNTD ucLS = new UCLichSuNTD(l);
-            //    int dis = (fpn_HienThi.Height - (6 * ucLS.Height)) / 10;
-            //    ucLS.Margin = new Padding(0, dis, 0, 0);
-            //    fpn_HienThi.Controls.Add(ucLS);
-            //}
+            foreach (LichSuMuaHang l in list)
+            {
+                UCLichSuMuaHang ucLS = new UCLichSuMuaHang(l);
+                int dis = (flwPnLichSu.Height - (6 * ucLS.Height)) / 10;
+                ucLS.Margin = new Padding(0, dis, 0, 0);
+                flwPnLichSu.Controls.Add(ucLS);
+            }
+
+        }
+
+        private void flwPnLichSu_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
