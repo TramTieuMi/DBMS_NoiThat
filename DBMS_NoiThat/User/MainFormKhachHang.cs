@@ -13,9 +13,12 @@ namespace DBMS_NoiThat.user
     public partial class MainFormKhachHang : Form
     {
         DBConnection conn = new DBConnection();
-        public MainFormKhachHang()
+        private string tenTaiKhoan;
+        public MainFormKhachHang(string tenTaiKhoan)
         {
+            
             InitializeComponent();
+            this.tenTaiKhoan = tenTaiKhoan;
             try
             {
                 OpenChildForm(new XemSanPhamForm());
@@ -80,7 +83,7 @@ namespace DBMS_NoiThat.user
 
         private void MainFormKhachHang_Load(object sender, EventArgs e)
         {
-
+            hello.Text = $"Welcome {tenTaiKhoan} to our website";
         }
 
         private void buttonTTCN_Click(object sender, EventArgs e)

@@ -44,6 +44,7 @@
             this.panel_Top = new System.Windows.Forms.Panel();
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
+            this.hello = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -200,6 +201,7 @@
             // panel_Top
             // 
             this.panel_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel_Top.Controls.Add(this.hello);
             this.panel_Top.Controls.Add(this.lbTitle);
             this.panel_Top.Controls.Add(this.labelDate);
             this.panel_Top.Controls.Add(this.labelTime);
@@ -231,6 +233,16 @@
             this.labelTime.TabIndex = 1;
             this.labelTime.Text = "label1";
             this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // hello
+            // 
+            this.hello.BackColor = System.Drawing.Color.Transparent;
+            this.hello.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hello.Location = new System.Drawing.Point(1200, 44);
+            this.hello.Name = "hello";
+            this.hello.Size = new System.Drawing.Size(122, 22);
+            this.hello.TabIndex = 4;
+            this.hello.Text = "label welcome";
             // 
             // MainFormKhachHang
             // 
@@ -270,5 +282,6 @@
         private System.Windows.Forms.Panel panel_Top;
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label labelTime;
+        private Guna.UI2.WinForms.Guna2HtmlLabel hello;
     }
 }

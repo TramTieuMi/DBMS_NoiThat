@@ -22,7 +22,7 @@ namespace DBMS_NoiThat.user
         Modify modify = new Modify();
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-
+                
 
             string tentk = txtTenTK.Text;
             TenDangNhap = tentk;
@@ -50,7 +50,7 @@ namespace DBMS_NoiThat.user
                             if (role == 2)
                             {
                                 FDangNhap flogin = new FDangNhap();
-                                MainFormKhachHang mainForm = new MainFormKhachHang();
+                                MainFormKhachHang mainForm = new MainFormKhachHang(ten);
                                 mainForm.ShowDialog();
                                 break;
                             }
