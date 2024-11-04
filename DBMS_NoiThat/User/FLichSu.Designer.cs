@@ -89,11 +89,11 @@
             // 
             // flwPnLichSu
             // 
-            this.flwPnLichSu.Location = new System.Drawing.Point(119, 105);
+            this.flwPnLichSu.Location = new System.Drawing.Point(44, 128);
             this.flwPnLichSu.Name = "flwPnLichSu";
-            this.flwPnLichSu.Size = new System.Drawing.Size(925, 449);
+            this.flwPnLichSu.Size = new System.Drawing.Size(1074, 426);
             this.flwPnLichSu.TabIndex = 6;
-            this.flwPnLichSu.Paint += new System.Windows.Forms.PaintEventHandler(this.flwPnLichSu_Paint);
+            this.flwPnLichSu.Paint += new System.Windows.Forms.PaintEventHandler(this.flwPnLichSu_Paint_1);
             // 
             // FLichSu
             // 

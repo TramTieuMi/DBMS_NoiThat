@@ -63,7 +63,7 @@ namespace DBMS_NoiThat.user
 
 
             DataTable dataTable1 = new DataTable();
-            string sqlQuery1 = "SELECT TenDangNhap, MatKhau, Email, RoleID FROM TAIKHOAN WHERE TenDangNhap = @TenDangNhap";
+            string sqlQuery1 = "SELECT * FROM View_ThongTinTaiKhoanUser where TenDangNhap = @TenDangNhap";
             modify.TaiDuLieu(dataTable1, sqlQuery1, "@TenDangNhap", tenTK);
             if (dataTable1.Rows.Count > 0)
             {
