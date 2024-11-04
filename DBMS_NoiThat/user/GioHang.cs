@@ -79,6 +79,7 @@ namespace DBMS_NoiThat.user
 
             using (SqlCommand command1 = new SqlCommand(query1, connection))
             {
+                command1.CommandType = CommandType.StoredProcedure; // Đảm bảo đặt loại lệnh là StoredProcedure
                 command1.Parameters.AddWithValue("@MaKhachHang", maGH);
 
                 using (SqlDataReader reader = command1.ExecuteReader())
@@ -101,6 +102,7 @@ namespace DBMS_NoiThat.user
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
+                command.CommandType = CommandType.StoredProcedure; // Đặt loại lệnh là StoredProcedure
                 command.Parameters.AddWithValue("@MaKhachHang", maGH);
                 command.Parameters.AddWithValue("@TenNguoiDat", hoVaTen);
                 command.Parameters.AddWithValue("@SDTNguoiDat", sdt);
@@ -120,6 +122,7 @@ namespace DBMS_NoiThat.user
                 {
                     using (SqlCommand command = new SqlCommand(query3, connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure; // Đặt loại lệnh là StoredProcedure
                         // Thêm các tham số vào lệnh SQL
                         command.Parameters.AddWithValue("@MaDonHang", maDonHang);
                         command.Parameters.AddWithValue("@MaKhachHang", maGH);
