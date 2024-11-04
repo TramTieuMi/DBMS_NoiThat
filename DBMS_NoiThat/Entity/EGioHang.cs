@@ -14,6 +14,7 @@ namespace DBMS_NoiThat.Entity
         int SoTien;
         string TenSanPham;
         bool check;
+      
 
         public EGioHang()
         {

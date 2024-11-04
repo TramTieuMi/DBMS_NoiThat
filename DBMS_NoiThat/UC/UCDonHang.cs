@@ -44,5 +44,10 @@ namespace DBMS_NoiThat.UC
             LB_SoLuong.Text = eDonHang.SoLuong1.ToString();
             LB_Gia.Text = eDonHang.SoTien1.ToString();
         }
+
+        private void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
