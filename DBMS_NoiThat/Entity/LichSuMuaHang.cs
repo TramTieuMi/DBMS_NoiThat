@@ -12,15 +12,15 @@ namespace DBMS_NoiThat.Entity
         string tenSanPham;
         string moTa;
         string mau;
-        string soLuong;
-        string ngayMua;
+        int soLuong;
+        DateTime ngayMua;
         string trangThai;
-        string thanhTien;
+        //int thanhTien;
 
         public LichSuMuaHang()
         {
         }
-        public LichSuMuaHang(string tenSanPham, string moTa, string mau, string soLuong, string ngayMua, string trangThai, string thanhTien)
+        public LichSuMuaHang(string tenSanPham, string moTa, string mau, int soLuong, DateTime ngayMua, string trangThai)
         {
             this.tenSanPham = tenSanPham;
             this.moTa = moTa;
@@ -28,15 +28,15 @@ namespace DBMS_NoiThat.Entity
             this.soLuong = soLuong;
             this.ngayMua = ngayMua;
             this.trangThai = trangThai;
-            this.thanhTien = thanhTien;
+            //this.thanhTien = thanhTien;
         }
 
         public string TenSanPham { get => tenSanPham; set => tenSanPham = value; }
         public string MoTa { get => moTa; set => moTa = value; }
         public string Mau { get => mau; set => mau = value; }
-        public string SoLuong { get => soLuong; set => soLuong = value; }
-        public string NgayMua { get => ngayMua; set => ngayMua = value; }
+        public int SoLuong { get => soLuong; set => soLuong = value; }
+        public DateTime NgayMua { get => ngayMua; set => ngayMua = value; }
         public string TrangThai { get => trangThai; set => trangThai = value; }
-        public string ThanhTien { get => thanhTien; set => thanhTien = value; }
+        //public int ThanhTien { get => thanhTien; set => thanhTien = value; }
     }
 }

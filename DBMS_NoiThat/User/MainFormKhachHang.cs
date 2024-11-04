@@ -13,12 +13,14 @@ namespace DBMS_NoiThat.user
     public partial class MainFormKhachHang : Form
     {
         DBConnection conn = new DBConnection();
+        private int maKhachHang;
         private string tenTaiKhoan;
         public MainFormKhachHang(string tenTaiKhoan)
         {
             
             InitializeComponent();
             this.tenTaiKhoan = tenTaiKhoan;
+            //this.maKhachHang = maKhachHang;
             try
             {
                 OpenChildForm(new XemSanPhamForm());
@@ -115,6 +117,12 @@ namespace DBMS_NoiThat.user
             {
                 MessageBox.Show(ex.Message);
             }
+
+        }
+
+        private void panel_Top_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
