@@ -1,4 +1,5 @@
 ﻿using DBMS_NoiThat.Entity;
+using DBMS_NoiThat.UC;
 using Do_An_Tuyen_Dung;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,36 @@ using System.Windows.Forms;
 namespace DBMS_NoiThat.user
 {
     public partial class FLichSu : Form
+
     {
+        private int maKhachHang; // Mã khách hàng
+
+        private DBConnection dbConnection; // Declare an instance of DBConnection
+        private SqlConnection connection;
+
+        List<LichSuMuaHang> lstLichSu = new List<LichSuMuaHang>();
+        int maKH; /// <summary>
+                  /// /////////////////////////////////////////////////////////////////////////////
+                  /// </summary>
+
+        private string tenDangNhap;
         public FLichSu()
         {
             InitializeComponent();
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
         }
-        SqlConnection connStr = Connection.GetSqlConnection();
+        public FLichSu(int maKhachHang)
+        {
+            InitializeComponent();
+            this.maKhachHang = maKhachHang;
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
+            LoadLichSu(maKhachHang);
+            maKH = maKhachHang;
+        }
+
+        //SqlConnection connStr = Connection.GetSqlConnection();
         private void FLichSu_Load(object sender, EventArgs e)
         {
 
@@ -33,80 +58,124 @@ namespace DBMS_NoiThat.user
             }
             return false;
         }
-        public void LoadDanhSach(string chuoi)
+        //public void LoadSanPham(int maDonHang)
+        //{
+        //    string query = "SELECT * FROM View_DonHangChiTiet";
+        //    DataTable dataTable = new DataTable();
+        //    connection.Open();
+        //    SqlCommand command = new SqlCommand(query, connection);
+        //    SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //    adapter.Fill(dataTable);
+
+        //    int sum = 0;
+        //    int MaKhachHang = 0;
+        //    string TenSanPham= "";
+        //    string MoTa = "";
+        //    string Mau = "";
+        //    int SoLuong = 0;
+        //    DateTime NgayMua = ;
+        //    string TrangThai = "";
+
+        //    foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
+        //    {
+        //        if ((maDonHang == (int)row["MaDonHang"]) && (row["TrangThai"].ToString() == "Đặt Hàng"))
+        //        {
+        //            int MaSanPham = (int)row["MaSanPham"];
+        //            MaKhachHang = (int)row["MaKhachHang"];
+
+        //            TenSanPham = row["TenSanPham"].ToString();
+        //            MoTa = row["MoTa"].ToString();
+        //            Mau = row["Mau"].ToString();
+        //            SoLuong = Convert.ToInt32(row["SDTNguoiNhan"].ToString());
+        //           // NgayMua = row["NgayMuaHang"].ToString();
+        //            TrangThai = row["TrangThai"].ToString();
+
+        //            int SoTien = (int)row["SoTien"];
+        //            sum += SoTien; // Sum the total amount
+        //            LichSuMuaHang lichsu = new LichSuMuaHang(TenSanPham, MoTa, Mau, SoLuong, NgayMua, TrangThai);
+
+        //            UCLichSuMuaHang ucls = new UCLichSuMuaHang(lichsu);
+        //            int dis = (flwPnLichSu.Width - (2 * ucls.Width)) / 3;
+        //            ucls.Margin = new Padding(dis, dis, 0, 0);
+        //            flwPnLichSu.Controls.Add(ucls);
+        //        }
+        //    }
+
+        //// Set the values in the labels and text boxes
+        //LB_MaDonHang.Text = maDonHang.ToString();
+        //LB_MaKH.Text = MaKhachHang.ToString();
+        //LB_TenNguoiDat.Text = TenNguoiDat;
+        //LB_SDTNguoiDat.Text = SDTNguoiDat.ToString();
+        //LB_SoTien.Text = sum.ToString();
+        //TB_TenNguoiNhan.Text = TenNguoiNhan;
+        //TB_SDTNguoiNhan.Text = SDTNguoiNhan.ToString();
+        //TB_DiaChi.Text = DiaChiNhan;
+
+        //    connection.Close(); // Close the connection
+        //}
+        public void LoadLichSu(int maKhachHang)
         {
-            List<LichSuMuaHang> list = new List<LichSuMuaHang>();
-            try
-            {
-                string query = "SELECT TenCongViec,Tinh_TP,TenTaiKhoan,TenCTy FROM DangBaiNTD " +//////////////////////////
-                    "JOIN ThongTinCTy_Chinh on DangBaiNTD.EmailHR = ThongTinCTy_Chinh.EmailHR " +////////////
-                    "JOIN TaoTaiKhoan on TaoTaiKhoan.Email = ThongTinCTy_Chinh.EmailHR";////
-                SqlCommand command = new SqlCommand(query, connStr);
-                connStr.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                flwPnLichSu.Controls.Clear();
-                int soNguoi = 0;
+            List<LichSuMuaHang> listLichSu = new List<LichSuMuaHang>();
+            string query = "select * from view_ChiTietLichSuMuaHang";
 
-                if (chuoi == null)
+
+            DataTable dataTable = new DataTable();
+            connection.Open();
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+
+            int sum = 0;
+            int MaKhachHang = 0;
+            string TenNguoiDat = "";
+            int SDTNguoiDat = 0;
+            string TenNguoiNhan = "";
+            int SDTNguoiNhan = 0;
+            string NgayMuaHang = "";
+            string DiaChiNhan = "";
+            adapter.Fill(dataTable);
+            if (dataTable.Rows.Count > 0)
+            {
+                foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
                 {
-                    while (reader.Read())
+
+                    if (maKhachHang == (int)row["MaKhachHang"])
                     {
-                        if (KTTenTaiKhoan(reader["TenDangNhap"].ToString()) == true)//
-                        {
-                            string tenSanPham = reader["TenSanPham"].ToString();/// ten dung ko
-                            string moTa = reader["MoTa"].ToString();/// ten dung ko
-                            string mau = reader["MauSac"].ToString();/// ten dung ko
-                            string soLuong = reader["SoLuong"].ToString();/// ten dung ko
-                            string ngayMua = reader["NgayMuaHang"].ToString();/// ten dung ko
-                            string trangThai = reader["TrangThai"].ToString();/// ten dung ko
-                            string thanhTien = reader["TongTien"].ToString();/// ten dung ko
 
-                            LichSuMuaHang lichsu = new LichSuMuaHang(tenSanPham, moTa, mau, soLuong, ngayMua, trangThai, thanhTien);
+                        string TenSanPham1 = (string)row["TenSanPham"];
+                        string MoTa1 = (string)row["MoTa"];
+                        string MauSac1 = (string)row["MauSac"];
+                        int SoLuong1 = (int)row["SoLuong"];
+                        DateTime NgayMua1 = (DateTime)row["NgayMuaHang"];
+                        string TrangThai1 = (string)row["TrangThai"];
+                        //int SoTien1 = (int)row["SoTien"];
 
-                            list.Add(lichsu);
-                        }
 
+                        LichSuMuaHang gioHang = new LichSuMuaHang(TenSanPham1, MoTa1, MauSac1, SoLuong1, NgayMua1, TrangThai1);
+                        listLichSu.Add(gioHang);
+                        UCLichSuMuaHang ucgh = new UCLichSuMuaHang(gioHang);
+                        int dis = (flwPnLichSu.Width - (2 * ucgh.Width)) / 3;
+                        ucgh.Margin = new Padding(dis, dis, 0, 0);
+                        flwPnLichSu.Controls.Add(ucgh);
                     }
-                    soNguoi = 0;
                 }
-                else
-                {
-                    //while (reader.Read())
-                    //{
-                    //    if (KTTenCTy(reader["TenTaiKhoan"].ToString()) == true)
-                    //    {
-                    //        if (chuoi == reader["TenCongViec"].ToString() || chuoi == reader["Tinh_TP"].ToString())
-                    //        {
-                    //            string nganh = reader["TenCongViec"].ToString();
-                    //            string tenCTy = reader["TenCTy"].ToString();
-                    //            string diaDiem = reader["Tinh_TP"].ToString();
-                    //            soNguoi = soNguoi + 1;
-                    //            LichSuNTD lich = new LichSuNTD(nganh, diaDiem, tenCTy, soNguoi);
-
-                    //            list.Add(lich);
-                    //        }
-                    //    }
-                    //}
-                    //soNguoi = 0;
-                }
-
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Lỗi truy vấn: " + ex.Message);
+                Console.WriteLine("Không có dữ liệu trong giỏ hàng.");
             }
-            finally
-            {
-                connStr.Close();
-            }
-            //foreach (LichSuNTD l in list)
-            //{
-            //    UCLichSuNTD ucLS = new UCLichSuNTD(l);
-            //    int dis = (fpn_HienThi.Height - (6 * ucLS.Height)) / 10;
-            //    ucLS.Margin = new Padding(0, dis, 0, 0);
-            //    fpn_HienThi.Controls.Add(ucLS);
-            //}
+            connection.Close();
+        }
+
+        private void flwPnLichSu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void flwPnLichSu_Paint_1(object sender, PaintEventArgs e)
+        {
 
         }
     }
+  
 }

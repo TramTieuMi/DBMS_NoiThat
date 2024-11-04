@@ -22,7 +22,7 @@ namespace DBMS_NoiThat.user
         Modify modify = new Modify();
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-
+                
 
             string tentk = txtTenTK.Text;
             TenDangNhap = tentk;
@@ -33,7 +33,11 @@ namespace DBMS_NoiThat.user
             {
                 DataTable dt = new DataTable();
                 string query = "Select * from TAIKHOAN where TenDangNhap  = '" + tentk + "' and MatKhau  = '" + matkhau + "'";
-                string query1 = "SELECT TenDangNhap,RoleID FROM TAIKHOAN  Where TenDangNhap = @TenDangNhap";
+                //string query = "SELECT TAIKHOAN.TenDangNhap, TAIKHOAN.MatKhau, KHACHHANG.Email, KHACHHANG.MaKhachHang" +
+                //    "FROM TAIKHOAN" +
+                //    "JOIN KHACHHANG ON TAIKHOAN.Email = KHACHHANG.Email";
+                // truy vấn tên trùng mới cho vô ?
+                string query1 = "SELECT TenDangNhap,RoleID FROM TAIKHOAN Where TenDangNhap = @TenDangNhap";
                 modify.TaiDuLieu(dt, query1, "@TenDangNhap", txtTenTK.Text);
                 if (modify.taiKhoans(query).Count != 0)
                 {
@@ -41,16 +45,20 @@ namespace DBMS_NoiThat.user
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     foreach (DataRow row in dt.Rows)
                     {
-
                         string ten = row["TenDangNhap"].ToString();
+                        //string queryCustomer = "SELECT KHACHHANG.MaKhachHang FROM TAIKHOAN " +
+                        //        "JOIN KHACHHANG ON TAIKHOAN.Email = KHACHHANG.Email" +
+                        //        "where TenDangNhap = @TenDangNhap";
+                        //int? maKhachHang = row["MaKhachHang"] != DBNull.Value ? (int?)Convert.ToInt32(row["MaKhachHang"]) : null;
+
                         if (ten == txtTenTK.Text)
                         {
                             int role = Convert.ToInt32(row["RoleID"]);
-                            //string role = row["role"].ToString();
+                            
                             if (role == 2)
                             {
                                 FDangNhap flogin = new FDangNhap();
-                                XemThongTinUser mainForm = new XemThongTinUser();
+                                MainFormKhachHang mainForm = new MainFormKhachHang(ten);
                                 mainForm.ShowDialog();
                                 break;
                             }
@@ -59,7 +67,6 @@ namespace DBMS_NoiThat.user
                                 FDangNhap flogin = new FDangNhap();
                                 QuanLyDonHangForm mainform = new QuanLyDonHangForm();
                                 mainform.ShowDialog();
-
                                 break;
                             }
                         }
@@ -70,8 +77,9 @@ namespace DBMS_NoiThat.user
                 {
                     MessageBox.Show("Tên tài khoản hoặc mật khẩu không chính xác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
             }
+
+        
         }
 
         private void FDangNhap_Load(object sender, EventArgs e)

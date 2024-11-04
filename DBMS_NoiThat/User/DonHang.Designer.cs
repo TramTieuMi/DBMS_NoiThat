@@ -344,6 +344,7 @@ namespace DBMS_NoiThat
             this.FPN_HienThi.Name = "FPN_HienThi";
             this.FPN_HienThi.Size = new System.Drawing.Size(1074, 394);
             this.FPN_HienThi.TabIndex = 1;
+            this.FPN_HienThi.Paint += new System.Windows.Forms.PaintEventHandler(this.FPN_HienThi_Paint);
             // 
             // guna2HtmlLabel1
             // 

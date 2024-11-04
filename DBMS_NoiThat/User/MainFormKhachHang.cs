@@ -13,9 +13,14 @@ namespace DBMS_NoiThat.user
     public partial class MainFormKhachHang : Form
     {
         DBConnection conn = new DBConnection();
-        public MainFormKhachHang()
+        private int maKhachHang;
+        private string tenTaiKhoan;
+        public MainFormKhachHang(string tenTaiKhoan)
         {
+            
             InitializeComponent();
+            this.tenTaiKhoan = tenTaiKhoan;
+            //this.maKhachHang = maKhachHang;
             try
             {
                 OpenChildForm(new XemSanPhamForm());
@@ -79,6 +84,43 @@ namespace DBMS_NoiThat.user
         }
 
         private void MainFormKhachHang_Load(object sender, EventArgs e)
+        {
+            hello.Text = $"Welcome {tenTaiKhoan} to our website";
+        }
+
+        private void buttonTTCN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new XemThongTinUser());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void panel_Body_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonLSMH_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new FLichSu());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void panel_Top_Paint(object sender, PaintEventArgs e)
         {
 
         }

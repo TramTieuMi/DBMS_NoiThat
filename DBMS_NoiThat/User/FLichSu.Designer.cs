@@ -89,16 +89,17 @@
             // 
             // flwPnLichSu
             // 
-            this.flwPnLichSu.Location = new System.Drawing.Point(119, 105);
+            this.flwPnLichSu.Location = new System.Drawing.Point(44, 128);
             this.flwPnLichSu.Name = "flwPnLichSu";
-            this.flwPnLichSu.Size = new System.Drawing.Size(927, 399);
+            this.flwPnLichSu.Size = new System.Drawing.Size(1074, 426);
             this.flwPnLichSu.TabIndex = 6;
+            this.flwPnLichSu.Paint += new System.Windows.Forms.PaintEventHandler(this.flwPnLichSu_Paint_1);
             // 
             // FLichSu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 516);
+            this.ClientSize = new System.Drawing.Size(1175, 566);
             this.Controls.Add(this.flwPnLichSu);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.guna2ComboBox1);
