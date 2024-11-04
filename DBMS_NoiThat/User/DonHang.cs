@@ -102,6 +102,7 @@ namespace DBMS_NoiThat
             connection.Open();
             using (SqlCommand command = new SqlCommand(query, connection))
             {
+                command.CommandType = CommandType.StoredProcedure; // Đặt loại lệnh là StoredProcedure
                 // Add parameters to the command
                 command.Parameters.AddWithValue("@TenNguoiNhan", TB_TenNguoiNhan.Text);
                 command.Parameters.AddWithValue("@SDTNguoiNhan", TB_SDTNguoiNhan.Text);
