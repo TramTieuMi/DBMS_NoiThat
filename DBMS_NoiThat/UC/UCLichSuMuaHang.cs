@@ -32,28 +32,23 @@ namespace DBMS_NoiThat.UC
         LichSuMuaHang LichSuMua;
         public UCLichSuMuaHang(LichSuMuaHang LichSuMua)
         {
+            InitializeComponent();
             this.LichSuMua = LichSuMua;
-           // nganh = lichSuNTD.Nganh;
-            tensp = LichSuMua.TenSanPham;
-            txtTenSP.Text = LichSuMua.TenSanPham.ToString(); 
+            // nganh = lichSuNTD.Nganh;
 
-            mota = LichSuMua.MoTa;
-            txtMoTa.Text = "Mô tả " +LichSuMua.MoTa.ToString();
+            txtTenSP.Text = LichSuMua.TenSanPham.ToString();
 
-            mau = LichSuMua.Mau.ToString();
+            txtMoTa.Text = $"Mô tả {LichSuMua.MoTa.ToString()}";
+
             txtMau.Text = "Màu sắc" + LichSuMua.Mau.ToString();
 
-            soluong = LichSuMua.SoLuong.ToString();
             txtSoLuong.Text = "Số lượng "+LichSuMua.SoLuong.ToString();
 
-            ngaymua = LichSuMua.NgayMua.ToString();
             txtNgayMua.Text = "Ngày mua hàng " + LichSuMua.NgayMua.ToString();
 
-            trangthai = LichSuMua.TrangThai.ToString();
             txtTrangThai.Text = "Trạng thái " + LichSuMua.TrangThai.ToString();
 
-            tongtien= LichSuMua.ThanhTien.ToString();
-            txtThanhTien.Text = "Tổng tiền " + LichSuMua.ThanhTien.ToString();
+          //  txtThanhTien.Text = "Tổng tiền " + LichSuMua.ThanhTien.ToString();
             //CK_Chon = new CheckBox();
             //CK_Chon.Checked = gioHang.Check;
         }

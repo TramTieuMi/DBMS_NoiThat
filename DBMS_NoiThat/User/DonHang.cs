@@ -131,5 +131,10 @@ namespace DBMS_NoiThat
         {
 
         }
+
+        private void FPN_HienThi_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
