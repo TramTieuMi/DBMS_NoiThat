@@ -14,7 +14,7 @@ namespace DBMS_NoiThat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GioHang(2));
+            Application.Run(new DonHang(6));
         }
     }
 }

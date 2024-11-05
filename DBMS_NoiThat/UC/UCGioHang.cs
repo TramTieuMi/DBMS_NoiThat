@@ -30,11 +30,11 @@ namespace DBMS_NoiThat.UC
             InitializeComponent();
             this.gioHang = gioHang;
             //LB_MaSanPham = new Label();
-            LB_MaSanPham.Text = gioHang.MaSanPham1.ToString();
+            LB_MaSanPham.Text = "Mã Sản Phẩm : " + gioHang.MaSanPham1.ToString();
             //LB_TenSanPham = new Label();
-            LB_TenSanPham.Text = gioHang.TenSanPham1;
+            LB_TenSanPham.Text = "Tên Sản Phẩm : " + gioHang.TenSanPham1;
             //LB_Gia = new Label();
-            LB_Gia.Text = gioHang.SoTien1.ToString();
+            LB_Gia.Text = "Giá : " + gioHang.SoTien1.ToString();
             //TB_SoLuong = new Guna2TextBox();
             TB_SoLuong.Text = gioHang.SoLuong1.ToString();
             //MessageBox.Show(LB_TenSanPham.Text);

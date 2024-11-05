@@ -33,7 +33,6 @@ namespace DBMS_NoiThat.user
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.LB_MaGioHang = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.LB_Ma = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.FPN_HienThi = new System.Windows.Forms.FlowLayoutPanel();
             this.BTN_MuaHang = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,7 +42,6 @@ namespace DBMS_NoiThat.user
             // panel1
             // 
             this.panel1.Controls.Add(this.LB_MaGioHang);
-            this.panel1.Controls.Add(this.LB_Ma);
             this.panel1.Controls.Add(this.FPN_HienThi);
             this.panel1.Controls.Add(this.BTN_MuaHang);
             this.panel1.Controls.Add(this.label1);
@@ -58,22 +56,12 @@ namespace DBMS_NoiThat.user
             // 
             this.LB_MaGioHang.BackColor = System.Drawing.Color.Transparent;
             this.LB_MaGioHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_MaGioHang.Location = new System.Drawing.Point(870, 19);
+            this.LB_MaGioHang.Location = new System.Drawing.Point(775, 19);
             this.LB_MaGioHang.Name = "LB_MaGioHang";
             this.LB_MaGioHang.Size = new System.Drawing.Size(191, 31);
             this.LB_MaGioHang.TabIndex = 3;
             this.LB_MaGioHang.Text = "guna2HtmlLabel2";
             this.LB_MaGioHang.Click += new System.EventHandler(this.LB_MaGioHang_Click);
-            // 
-            // LB_Ma
-            // 
-            this.LB_Ma.BackColor = System.Drawing.Color.Transparent;
-            this.LB_Ma.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_Ma.Location = new System.Drawing.Point(616, 19);
-            this.LB_Ma.Name = "LB_Ma";
-            this.LB_Ma.Size = new System.Drawing.Size(155, 31);
-            this.LB_Ma.TabIndex = 2;
-            this.LB_Ma.Text = "Mã Giỏ Hàng :";
             // 
             // FPN_HienThi
             // 
@@ -138,6 +126,5 @@ namespace DBMS_NoiThat.user
         private System.Windows.Forms.Button BTN_MuaHang;
         private System.Windows.Forms.FlowLayoutPanel FPN_HienThi;
         private Guna.UI2.WinForms.Guna2HtmlLabel LB_MaGioHang;
-        private Guna.UI2.WinForms.Guna2HtmlLabel LB_Ma;
     }
 }

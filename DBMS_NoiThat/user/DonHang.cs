@@ -39,6 +39,12 @@ namespace DBMS_NoiThat
 
         public void LoadSanPham(int maDonHang)
         {
+            LB_TieuDe.Text = "Đơn Hàng Của Bạn";
+            LB_TTNguoiDat.Text = "Thông Tin Người Đặt Hàng";
+            LB_TTNguoiNhan.Text = "Thông Tin Người Nhận Hàng";
+            LB_TNguoiNhan.Text = "Tên Người Nhận :";
+            LB_SDTNhan.Text = "Số Điện Thoại Người Nhận :";
+            LB_DiaChi.Text = "Địa Chỉ Nhận Hàng :";
             string query = "SELECT * FROM View_DonHangChiTiet";
 
             connection.Open();
@@ -82,11 +88,11 @@ namespace DBMS_NoiThat
             }
 
             // Set the values in the labels and text boxes
-            LB_MaDonHang.Text = maDonHang.ToString();
-            LB_MaKH.Text = MaKhachHang.ToString();
-            LB_TenNguoiDat.Text = TenNguoiDat;
-            LB_SDTNguoiDat.Text = SDTNguoiDat.ToString();
-            LB_SoTien.Text = sum.ToString();
+            LB_MaDonHang.Text = "Mã Đơn Hàng : " + maDonHang.ToString();
+            LB_MaKH.Text = "Mã Khách Hàng : " + MaKhachHang.ToString();
+            LB_TenNguoiDat.Text = "Tên Người Đặt : " + TenNguoiDat;
+            LB_SDTNguoiDat.Text = "Số Điện Thoại Người Đặt : " + SDTNguoiDat.ToString();
+            LB_SoTien.Text = "Tổng Số Tiền : " + sum.ToString();
             TB_TenNguoiNhan.Text = TenNguoiNhan;
             TB_SDTNguoiNhan.Text = SDTNguoiNhan.ToString();
             TB_DiaChi.Text = DiaChiNhan;

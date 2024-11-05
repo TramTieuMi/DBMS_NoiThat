@@ -25,7 +25,6 @@ namespace DBMS_NoiThat.user
         public GioHang(int MaGioHang)
         {
             InitializeComponent();
-            LB_Ma.Text = "Mã Giỏ Hàng :";
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
             LoadGioHang(MaGioHang);
@@ -48,7 +47,7 @@ namespace DBMS_NoiThat.user
                     
                     if (MaGioHang == (int)row["MaGioHang"])
                     {
-                        LB_MaGioHang.Text = row["MaGioHang"].ToString();
+                        LB_MaGioHang.Text = "Mã Giỏ Hàng : " + row["MaGioHang"].ToString();
                         int MaGioHang1 = (int)row["MaGioHang"];
                         int MaSanPham1 = (int)row["MaSanPham"];
                         int SoLuong1 = (int)row["SoLuong"];
