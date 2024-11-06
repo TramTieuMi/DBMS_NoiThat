@@ -40,7 +40,6 @@
             this.labelMauSac = new System.Windows.Forms.Label();
             this.buttonThemVaoGio = new System.Windows.Forms.Button();
             this.PictureBoxHinhAnhSP = new System.Windows.Forms.PictureBox();
-            this.ButtonUploadImage = new System.Windows.Forms.Button();
             this.labelHinhAnh = new System.Windows.Forms.Label();
             this.labelMoTa = new System.Windows.Forms.Label();
             this.ButtonTroVe = new System.Windows.Forms.Button();
@@ -196,19 +195,6 @@
             this.PictureBoxHinhAnhSP.TabIndex = 66;
             this.PictureBoxHinhAnhSP.TabStop = false;
             // 
-            // ButtonUploadImage
-            // 
-            this.ButtonUploadImage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ButtonUploadImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonUploadImage.Location = new System.Drawing.Point(690, 466);
-            this.ButtonUploadImage.Margin = new System.Windows.Forms.Padding(2);
-            this.ButtonUploadImage.Name = "ButtonUploadImage";
-            this.ButtonUploadImage.Size = new System.Drawing.Size(81, 15);
-            this.ButtonUploadImage.TabIndex = 65;
-            this.ButtonUploadImage.Text = "upload image";
-            this.ButtonUploadImage.UseVisualStyleBackColor = true;
-            this.ButtonUploadImage.Click += new System.EventHandler(this.ButtonUploadImage_Click);
-            // 
             // labelHinhAnh
             // 
             this.labelHinhAnh.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -332,7 +318,6 @@
             this.Controls.Add(this.labelMauSac);
             this.Controls.Add(this.buttonThemVaoGio);
             this.Controls.Add(this.PictureBoxHinhAnhSP);
-            this.Controls.Add(this.ButtonUploadImage);
             this.Controls.Add(this.labelHinhAnh);
             this.Controls.Add(this.labelMoTa);
             this.Controls.Add(this.ButtonTroVe);
@@ -364,7 +349,6 @@
         private System.Windows.Forms.Label labelMauSac;
         private System.Windows.Forms.Button buttonThemVaoGio;
         public System.Windows.Forms.PictureBox PictureBoxHinhAnhSP;
-        private System.Windows.Forms.Button ButtonUploadImage;
         private System.Windows.Forms.Label labelHinhAnh;
         private System.Windows.Forms.Label labelMoTa;
         private System.Windows.Forms.Button ButtonTroVe;

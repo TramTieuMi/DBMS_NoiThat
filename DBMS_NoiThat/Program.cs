@@ -1,4 +1,5 @@
 ﻿using DBMS_NoiThat.user;
+using DBMS_NoiThat.user9;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
@@ -15,7 +16,8 @@ namespace DBMS_NoiThat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainFormKhachHang());
+            Application.Run(new FDangNhap());
+
         }
     }
 }

@@ -75,7 +75,8 @@ namespace DBMS_NoiThat.user
                     conn.CloseConnection();
 
                 }
-                catch { Exception ex; }
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message); }
             }
             else if (radioButtonTenSP.Checked == true)
             {
@@ -94,7 +95,8 @@ namespace DBMS_NoiThat.user
                     conn.CloseConnection();
 
                 }
-                catch { Exception ex; }
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message); }
             }
             else
             {
@@ -113,7 +115,8 @@ namespace DBMS_NoiThat.user
                     conn.CloseConnection();
 
                 }
-                catch { Exception ex; }
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message); }
             }
         }
 

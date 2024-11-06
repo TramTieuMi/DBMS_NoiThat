@@ -102,7 +102,8 @@ namespace DBMS_NoiThat.user
                 conn.CloseConnection();
 
             }
-            catch { Exception ex; }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
         private void radioButtonDaXacNhan_CheckedChanged(object sender, EventArgs e)
@@ -122,7 +123,8 @@ namespace DBMS_NoiThat.user
                 conn.CloseConnection();
 
             }
-            catch { Exception ex; }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
         private void radioButtonDaGiao_CheckedChanged(object sender, EventArgs e)
@@ -142,7 +144,8 @@ namespace DBMS_NoiThat.user
                 conn.CloseConnection();
 
             }
-            catch { Exception ex; }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
         private void textBoxTimKiem_Enter(object sender, EventArgs e)
