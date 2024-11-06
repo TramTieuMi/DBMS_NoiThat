@@ -1,5 +1,6 @@
 ﻿using DBMS_NoiThat.Entity;
 using DBMS_NoiThat.UC;
+using Do_An_Tuyen_Dung;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,10 +49,10 @@ namespace DBMS_NoiThat.user
                     if (MaGioHang == (int)row["MaGioHang"])
                     {
                         LB_MaGioHang.Text = "Mã Giỏ Hàng : " + row["MaGioHang"].ToString();
-                        int MaGioHang1 = (int)row["MaGioHang"];
-                        int MaSanPham1 = (int)row["MaSanPham"];
-                        int SoLuong1 = (int)row["SoLuong"];
-                        int SoTien1 = (int)row["SoTien"];
+                        int MaGioHang1 = Convert.ToInt32(row["MaGioHang"]);
+                        int MaSanPham1 = Convert.ToInt32(row["MaSanPham"]);
+                        int SoLuong1 = Convert.ToInt32(row["SoLuong"]);
+                        int SoTien1 = Convert.ToInt32(row["SoTien"]);
                         string TenSanPham1 = row["TenSanPham"].ToString();
                         EGioHang gioHang = new EGioHang(MaGioHang1, MaSanPham1, SoLuong1, SoTien1, TenSanPham1, false);
                         listGH.Add(gioHang);
@@ -71,6 +72,13 @@ namespace DBMS_NoiThat.user
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
+            // Kiểm tra nếu listGH rỗng hoặc không có sản phẩm nào được chọn để mua
+            if (listGH.Count == 0 || !listGH.Exists(gioHang => gioHang.Check))
+            {
+                MessageBox.Show("Bạn chưa chọn sản phẩm nào để mua");
+                return;
+            }
+
             string query1 = "sp_LayThongTinKhachHang";
             string hoVaTen, diaChi, sdt;
             int maDonHang;
@@ -133,8 +141,10 @@ namespace DBMS_NoiThat.user
                         // Thực thi lệnh SQL
                         command.ExecuteNonQuery();
                     }
+                    gioHang.Check = false;
                 }
             }
+            connection.Close();
             DonHang dh = new DonHang(maDonHang);
             dh.ShowDialog();
         }

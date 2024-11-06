@@ -56,7 +56,6 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1086, 105);
             this.guna2Panel1.TabIndex = 0;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // PB_hienthi
             // 
@@ -130,7 +129,6 @@
             this.LB_Gia.Size = new System.Drawing.Size(23, 25);
             this.LB_Gia.TabIndex = 28;
             this.LB_Gia.Text = "0";
-            this.LB_Gia.Click += new System.EventHandler(this.LB_Gia_Click);
             // 
             // LB_TenSanPham
             // 
@@ -141,7 +139,6 @@
             this.LB_TenSanPham.Size = new System.Drawing.Size(23, 25);
             this.LB_TenSanPham.TabIndex = 26;
             this.LB_TenSanPham.Text = "0";
-            this.LB_TenSanPham.Click += new System.EventHandler(this.LB_TenSanPham_Click);
             // 
             // LB_MaSanPham
             // 
@@ -152,7 +149,6 @@
             this.LB_MaSanPham.Size = new System.Drawing.Size(23, 25);
             this.LB_MaSanPham.TabIndex = 25;
             this.LB_MaSanPham.Text = "0";
-            this.LB_MaSanPham.Click += new System.EventHandler(this.LB_MaSanPham_Click);
             // 
             // CK_Chon
             // 
