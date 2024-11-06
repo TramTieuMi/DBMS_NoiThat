@@ -32,16 +32,16 @@ namespace DBMS_NoiThat.user
             dataGridView1.DataSource = SPTable;
             dataGridView1.Refresh();
             dataGridView1.Columns["MaDonHang"].HeaderText = "Mã Đơn Hàng";
-            dataGridView1.Columns["MaSanPham"].HeaderText = "Mã Sản Phẩm";
             dataGridView1.Columns["MaKhachHang"].HeaderText = "Mã Khách Hàng";
             dataGridView1.Columns["TenNguoiDat"].HeaderText = "Tên Người Đặt";
             dataGridView1.Columns["SDTNguoiDat"].HeaderText = "SĐT Người Đặt";
-            dataGridView1.Columns["TenNguoiNhan"].HeaderText = "Tên Người Nhận";
+            dataGridView1.Columns["TenNguoiNhan"].HeaderText = "SĐT Người Nhận";
             dataGridView1.Columns["SDTNguoiNhan"].HeaderText = "SĐT Người Nhận";
             dataGridView1.Columns["TongTien"].HeaderText = "Tổng Tiền";
             dataGridView1.Columns["NgayMuaHang"].HeaderText = "Ngày Mua Hàng";
             dataGridView1.Columns["DiaChiNhan"].HeaderText = "Địa Chỉ Nhận";
             dataGridView1.Columns["TrangThai"].HeaderText = "Trạng Thái";
+       
             conn.CloseConnection();
         }
 
@@ -52,17 +52,16 @@ namespace DBMS_NoiThat.user
 
 
                 TextBoxMaDonHang.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString().Trim();
-                textBoxMaSanPham.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString().Trim();
-                TextBoxMaKhachHang.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString().Trim();
-                textBoxTenNguoiDat.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString().Trim();
-                textBoxSDTNguoiDat.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString().Trim();
-                textBoxTenNguoiNhan.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString().Trim();
-                textBoxSĐTNguoiNhan.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString().Trim();
-                textBoxTongTien.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString().Trim();
-                textBoxNgayMuaHang.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString().Trim();
-                textBoxDiaChiNhan.Text = dataGridView1.CurrentRow.Cells[9].Value.ToString().Trim();
+                TextBoxMaKhachHang.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString().Trim();
+                textBoxTenNguoiDat.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString().Trim();
+                textBoxSDTNguoiDat.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString().Trim();
+                textBoxTenNguoiNhan.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString().Trim();
+                textBoxSĐTNguoiNhan.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString().Trim();
+                textBoxTongTien.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString().Trim();
+                textBoxNgayMuaHang.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString().Trim();
+                textBoxDiaChiNhan.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString().Trim();
 
-                string status = dataGridView1.CurrentRow.Cells[10].Value.ToString().Trim();
+                string status = dataGridView1.CurrentRow.Cells[9].Value.ToString().Trim();
 
                 if (status == "Ðang chờ xác nhận".Trim())
                 {
