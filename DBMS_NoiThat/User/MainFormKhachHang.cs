@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBMS_NoiThat.user;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBMS_NoiThat.user
+namespace DBMS_NoiThat.user9
 {
     public partial class MainFormKhachHang : Form
     {
@@ -17,7 +18,7 @@ namespace DBMS_NoiThat.user
         private string tenTaiKhoan;
         public MainFormKhachHang(string tenTaiKhoan)
         {
-            
+
             InitializeComponent();
             this.tenTaiKhoan = tenTaiKhoan;
             //this.maKhachHang = maKhachHang;
@@ -30,7 +31,7 @@ namespace DBMS_NoiThat.user
             {
                 MessageBox.Show(ex.Message);
             }
-
+            
         }
         private Form currentFormChild;
         private void OpenChildForm(Form childForm)
@@ -61,7 +62,7 @@ namespace DBMS_NoiThat.user
         {
             try
             {
-                OpenChildForm(new GioHang());
+                OpenChildForm(new GioHang(maKhachHang));
                 // labelHome.Text = buttonQLNV.Text;
             }
             catch (Exception ex)

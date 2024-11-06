@@ -1,4 +1,4 @@
-﻿namespace DBMS_NoiThat.user
+﻿namespace DBMS_NoiThat.user9
 {
     partial class MainFormKhachHang
     {

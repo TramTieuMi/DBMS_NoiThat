@@ -81,9 +81,9 @@ namespace DBMS_NoiThat.UC
         private void BTN_Giam_Click(object sender, EventArgs e)
         {
             int num = Convert.ToInt32(TB_SoLuong.Text) - 1;
-            if (num < 0)
+            if (num < 1)
             {
-                MessageBox.Show("Số lượng không thể âm.");
+                MessageBox.Show("Phải có ít nhất một sản phẩm trong Giỏ Hàng.");
                 return;
             }else
             {

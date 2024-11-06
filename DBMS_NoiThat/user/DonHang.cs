@@ -122,6 +122,7 @@ namespace DBMS_NoiThat
                 command.ExecuteNonQuery();
             }
             connection.Close();
+            this.Close();
         }
 
         private void TB_TenNguoiNhan_TextChanged(object sender, EventArgs e)
