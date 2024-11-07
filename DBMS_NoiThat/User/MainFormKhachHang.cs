@@ -16,6 +16,7 @@ namespace DBMS_NoiThat.user9
     {
         DBConnection conn = new DBConnection();
         private int maKhachHang;
+
         private string tenTaiKhoan;
         public MainFormKhachHang(string tenTaiKhoan)
         {
@@ -109,6 +110,7 @@ namespace DBMS_NoiThat.user9
             labelTime.Text = DateTime.Now.ToLongTimeString();
             labelDate.Text = DateTime.Now.ToLongDateString();
             hello.Text = $"Welcome {tenTaiKhoan} to our website";
+            te.Text = $"Welcome {maKhachHang} to our website";
         }
 
         private void buttonTTCN_Click(object sender, EventArgs e)
@@ -130,8 +132,10 @@ namespace DBMS_NoiThat.user9
         {
             try
             {
-                OpenChildForm(new FLichSu());
+                //OpenChildForm(new FLichSu(maKhachHang));
                 // labelHome.Text = buttonQLNV.Text;
+                FLichSu lichSuForm = new FLichSu(this.tenTaiKhoan);
+                lichSuForm.ShowDialog();
             }
             catch (Exception ex)
             {

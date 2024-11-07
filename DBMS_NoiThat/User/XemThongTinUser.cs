@@ -95,5 +95,14 @@ namespace DBMS_NoiThat.user
             }
         }
 
+        private void lbSdt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHoTen_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
