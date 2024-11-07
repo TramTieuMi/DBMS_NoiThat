@@ -132,10 +132,11 @@ namespace DBMS_NoiThat.user9
         {
             try
             {
-                //OpenChildForm(new FLichSu(maKhachHang));
+                //FLichSu lichSuForm = new FLichSu(this.tenTaiKhoan);
+                OpenChildForm(new FLichSu(tenTaiKhoan));
                 // labelHome.Text = buttonQLNV.Text;
-                FLichSu lichSuForm = new FLichSu(this.tenTaiKhoan);
-                lichSuForm.ShowDialog();
+                
+                //lichSuForm.ShowDialog();
             }
             catch (Exception ex)
             {
