@@ -87,6 +87,7 @@
             this.lbSdt.Size = new System.Drawing.Size(105, 22);
             this.lbSdt.TabIndex = 4;
             this.lbSdt.Text = "Số điện thoại:";
+            this.lbSdt.Click += new System.EventHandler(this.lbSdt_Click);
             // 
             // txtSdt
             // 
@@ -127,6 +128,7 @@
             this.txtHoTen.Size = new System.Drawing.Size(160, 40);
             this.txtHoTen.TabIndex = 5;
             this.txtHoTen.Text = "Value Ten";
+            this.txtHoTen.Click += new System.EventHandler(this.txtHoTen_Click);
             // 
             // XemThongTinUser
             // 

@@ -58,6 +58,7 @@
     <Compile Include="Entity\EKhachHang.cs" />
     <Compile Include="Entity\ESanPham.cs" />
     <Compile Include="Entity\LichSuMuaHang.cs" />
+    <Compile Include="Entity\Session.cs" />
     <Compile Include="Entity\TaiKhoan.cs" />
     <Compile Include="Modify.cs" />
     <Compile Include="UC\UCDonHang.cs">

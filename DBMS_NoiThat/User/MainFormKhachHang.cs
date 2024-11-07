@@ -14,13 +14,14 @@ namespace DBMS_NoiThat.user
     {
         DBConnection conn = new DBConnection();
         private int maKhachHang;
+
         private string tenTaiKhoan;
         public MainFormKhachHang(string tenTaiKhoan)
         {
             
             InitializeComponent();
             this.tenTaiKhoan = tenTaiKhoan;
-            //this.maKhachHang = maKhachHang;
+            this.maKhachHang = maKhachHang;
             try
             {
                 OpenChildForm(new XemSanPhamForm());
@@ -86,6 +87,7 @@ namespace DBMS_NoiThat.user
         private void MainFormKhachHang_Load(object sender, EventArgs e)
         {
             hello.Text = $"Welcome {tenTaiKhoan} to our website";
+            te.Text = $"Welcome {maKhachHang} to our website";
         }
 
         private void buttonTTCN_Click(object sender, EventArgs e)
@@ -110,8 +112,10 @@ namespace DBMS_NoiThat.user
         {
             try
             {
-                OpenChildForm(new FLichSu());
+                //OpenChildForm(new FLichSu(maKhachHang));
                 // labelHome.Text = buttonQLNV.Text;
+                FLichSu lichSuForm = new FLichSu(this.tenTaiKhoan);
+                lichSuForm.ShowDialog();
             }
             catch (Exception ex)
             {

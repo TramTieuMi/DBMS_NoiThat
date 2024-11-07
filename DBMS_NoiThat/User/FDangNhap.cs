@@ -1,4 +1,5 @@
-﻿using Do_An_Tuyen_Dung;
+﻿using DBMS_NoiThat.Entity;
+using Do_An_Tuyen_Dung;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,6 +47,8 @@ namespace DBMS_NoiThat.user
                     foreach (DataRow row in dt.Rows)
                     {
                         string ten = row["TenDangNhap"].ToString();
+                        //int maKhachHang = (int)row["MaKhachHang"];
+
                         //string queryCustomer = "SELECT KHACHHANG.MaKhachHang FROM TAIKHOAN " +
                         //        "JOIN KHACHHANG ON TAIKHOAN.Email = KHACHHANG.Email" +
                         //        "where TenDangNhap = @TenDangNhap";
@@ -54,9 +57,11 @@ namespace DBMS_NoiThat.user
                         if (ten == txtTenTK.Text)
                         {
                             int role = Convert.ToInt32(row["RoleID"]);
+
                             
                             if (role == 2)
                             {
+                                
                                 FDangNhap flogin = new FDangNhap();
                                 MainFormKhachHang mainForm = new MainFormKhachHang(ten);
                                 mainForm.ShowDialog();

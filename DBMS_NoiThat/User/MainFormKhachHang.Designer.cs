@@ -42,7 +42,7 @@
             this.buttonTTCN = new System.Windows.Forms.Button();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel_Top = new System.Windows.Forms.Panel();
-            this.ma = new System.Windows.Forms.Label();
+            this.te = new System.Windows.Forms.Label();
             this.hello = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
@@ -202,7 +202,7 @@
             // panel_Top
             // 
             this.panel_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel_Top.Controls.Add(this.ma);
+            this.panel_Top.Controls.Add(this.te);
             this.panel_Top.Controls.Add(this.hello);
             this.panel_Top.Controls.Add(this.lbTitle);
             this.panel_Top.Controls.Add(this.labelDate);
@@ -215,14 +215,14 @@
             this.panel_Top.TabIndex = 10;
             this.panel_Top.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Top_Paint);
             // 
-            // ma
+            // te
             // 
-            this.ma.AutoSize = true;
-            this.ma.Location = new System.Drawing.Point(868, 39);
-            this.ma.Name = "ma";
-            this.ma.Size = new System.Drawing.Size(44, 16);
-            this.ma.TabIndex = 5;
-            this.ma.Text = "label1";
+            this.te.AutoSize = true;
+            this.te.Location = new System.Drawing.Point(953, 44);
+            this.te.Name = "te";
+            this.te.Size = new System.Drawing.Size(44, 16);
+            this.te.TabIndex = 5;
+            this.te.Text = "label1";
             // 
             // hello
             // 
@@ -238,7 +238,7 @@
             // 
             this.labelDate.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDate.ForeColor = System.Drawing.Color.White;
-            this.labelDate.Location = new System.Drawing.Point(675, 28);
+            this.labelDate.Location = new System.Drawing.Point(655, 27);
             this.labelDate.Name = "labelDate";
             this.labelDate.Size = new System.Drawing.Size(231, 38);
             this.labelDate.TabIndex = 2;
@@ -295,6 +295,6 @@
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label labelTime;
         private Guna.UI2.WinForms.Guna2HtmlLabel hello;
-        private System.Windows.Forms.Label ma;
+        private System.Windows.Forms.Label te;
     }
 }
