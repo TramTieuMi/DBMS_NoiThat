@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace DBMS_NoiThat.user
 {
@@ -24,31 +26,35 @@ namespace DBMS_NoiThat.user
         private SqlConnection connection;
 
         List<LichSuMuaHang> lstLichSu = new List<LichSuMuaHang>();
-        int maKH; /// <summary>
-                  /// /////////////////////////////////////////////////////////////////////////////
-                  /// </summary>
+        int maKH; 
 
-        private string tenDangNhap;
+        private string tenTaiKhoan;
         public FLichSu()
         {
             InitializeComponent();
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
+            //string em = KiemEmail();
+            //LoadLichSu(null, em);
         }
-        public FLichSu(int maKhachHang)
+        public FLichSu(string tenTaiKhoan)
         {
             InitializeComponent();
-            this.maKhachHang = maKhachHang;
+            //this.tenDangNhap = tenDangNhap;
+            this.tenTaiKhoan = tenTaiKhoan;
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
-            LoadLichSu(maKhachHang);
+            LoadLichSu(tenTaiKhoan);
             maKH = maKhachHang;
         }
 
         //SqlConnection connStr = Connection.GetSqlConnection();
         private void FLichSu_Load(object sender, EventArgs e)
         {
-
+            InitializeComponent();
+            string em = KiemEmail();
+            nm.Text = $"Welcome {tenTaiKhoan} to our website";
+            //  LoadLichSu(maKhachHang);
         }
         public bool KTTenTaiKhoan(string chuoi)
         {
@@ -57,6 +63,24 @@ namespace DBMS_NoiThat.user
                 return true;
             }
             return false;
+        }
+        public string KiemEmail()
+        {
+            string em = string.Empty;
+            string query = "SELECT TenDangNhap,Email FROM TAIKHOAN";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["TenDangNhap"].ToString() == FDangNhap.TenDangNhap)
+                {
+                    em = reader["Email"].ToString();
+                    break;
+                }
+            }
+            connection.Close();
+            return em;
         }
         //public void LoadSanPham(int maDonHang)
         //{
@@ -113,33 +137,27 @@ namespace DBMS_NoiThat.user
 
         //    connection.Close(); // Close the connection
         //}
-        public void LoadLichSu(int maKhachHang)
+        public void LoadLichSu(string tenDangNhap)
         {
             List<LichSuMuaHang> listLichSu = new List<LichSuMuaHang>();
-            string query = "select * from view_ChiTietLichSuMuaHang";
+            string query = "select * from view_ChiTietLichSuMuaHang WHERE TenDangNhap = @TenDangNhap";
 
 
             DataTable dataTable = new DataTable();
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TenDangNhap", tenTaiKhoan); // Truyền mã khách hàng vào truy vấn
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
 
-            int sum = 0;
-            int MaKhachHang = 0;
-            string TenNguoiDat = "";
-            int SDTNguoiDat = 0;
-            string TenNguoiNhan = "";
-            int SDTNguoiNhan = 0;
-            string NgayMuaHang = "";
-            string DiaChiNhan = "";
             adapter.Fill(dataTable);
+            flwPnLichSu.Controls.Clear();
             if (dataTable.Rows.Count > 0)
             {
                 foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
                 {
 
-                    if (maKhachHang == (int)row["MaKhachHang"])
+                    if (tenTaiKhoan == (string)row["TenDangNhap"])
                     {
 
                         string TenSanPham1 = (string)row["TenSanPham"];
@@ -179,3 +197,79 @@ namespace DBMS_NoiThat.user
     }
   
 }
+
+// code chính //////////////////////////////////////////////
+
+
+
+//------------- Theo do an cu 
+//List<LichSuMuaHang> listLichSu = new List<LichSuMuaHang>();
+//try
+//{
+
+//    string query = "select * from view_ChiTietLichSuMuaHang";
+//    SqlCommand command = new SqlCommand(query, connection);
+//    connection.Open();
+//    SqlDataReader reader = command.ExecuteReader();
+//    flwPnLichSu.Controls.Clear();
+
+//    // DataTable dataTable = new DataTable();
+
+//    if (chuoi == null)
+//    {
+
+//        while (reader.Read())
+//        {
+//            if (email == reader["Email"].ToString())
+//            {
+//                string TenSanPham1 = reader["TenSanPham"].ToString();
+//                string MoTa1 = reader["MoTa"].ToString();
+//                string MauSac1 = reader["MauSac"].ToString();
+//                int SoLuong1 = Convert.ToInt32(reader["SoLuong"]); // Chuyển đổi thành int
+//                DateTime NgayMua1 = Convert.ToDateTime(reader["NgayMuaHang"]); // Chuyển đổi thành DateTime
+//                string TrangThai1 = reader["TrangThai"].ToString();
+
+//                LichSuMuaHang gioHang = new LichSuMuaHang(TenSanPham1, MoTa1, MauSac1, SoLuong1, NgayMua1, TrangThai1);
+//                listLichSu.Add(gioHang);
+//            }
+//        }
+//    }
+//    else
+//    {
+//        while (reader.Read())
+//        {
+//            if (chuoi == reader["TenSanPham"].ToString() || chuoi == reader["Mau"].ToString() || chuoi == reader["SoLuong"].ToString())
+//            {
+//                if (email == reader["Email"].ToString())
+//                {
+//                    string TenSanPham1 = reader["TenSanPham"].ToString();
+//                    string MoTa1 = reader["MoTa"].ToString();
+//                    string MauSac1 = reader["MauSac"].ToString();
+//                    int SoLuong1 = Convert.ToInt32(reader["SoLuong"]); // Chuyển đổi thành int
+//                    DateTime NgayMua1 = Convert.ToDateTime(reader["NgayMuaHang"]); // Chuyển đổi thành DateTime
+//                    string TrangThai1 = reader["TrangThai"].ToString();
+
+//                    LichSuMuaHang gioHang = new LichSuMuaHang(TenSanPham1, MoTa1, MauSac1, SoLuong1, NgayMua1, TrangThai1);
+//                    listLichSu.Add(gioHang);
+//                }
+//            }
+//        }
+//    }
+//}
+//catch (Exception ex)
+//{
+//    Console.WriteLine("Lỗi truy vấn: " + ex.Message);
+//}
+//finally
+//{
+//    connection.Close();
+//}
+//foreach (LichSuMuaHang l in listLichSu)
+//{
+//    //listLichSu.Add(gioHang);
+//    UCLichSuMuaHang ucgh = new UCLichSuMuaHang(l);
+//    int dis = (flwPnLichSu.Width - (2 * ucgh.Width)) / 3;
+//    ucgh.Margin = new Padding(dis, dis, 0, 0);
+//    flwPnLichSu.Controls.Add(ucgh);
+
+//}
