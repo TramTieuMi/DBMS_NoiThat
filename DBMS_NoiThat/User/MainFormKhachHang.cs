@@ -110,7 +110,7 @@ namespace DBMS_NoiThat.user9
             labelTime.Text = DateTime.Now.ToLongTimeString();
             labelDate.Text = DateTime.Now.ToLongDateString();
             hello.Text = $"Welcome {tenTaiKhoan} to our website";
-            te.Text = $"Welcome {maKhachHang} to our website";
+            //te.Text = $"Welcome {maKhachHang} to our website";
         }
 
         private void buttonTTCN_Click(object sender, EventArgs e)

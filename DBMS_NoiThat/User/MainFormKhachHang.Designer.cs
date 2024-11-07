@@ -46,19 +46,19 @@
             this.hello = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            //this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel_Body.SuspendLayout();
             this.panel_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_Top.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Body
             // 
             this.panel_Body.BackColor = System.Drawing.Color.White;
-            this.panel_Body.Controls.Add(this.pictureBox3);
+            //this.panel_Body.Controls.Add(this.pictureBox3);
             this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Body.Location = new System.Drawing.Point(202, 100);
             this.panel_Body.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -220,7 +220,7 @@
             this.panel_Top.Name = "panel_Top";
             this.panel_Top.Size = new System.Drawing.Size(1317, 100);
             this.panel_Top.TabIndex = 10;
-            this.panel_Top.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Top_Paint);
+            //this.panel_Top.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Top_Paint);
             // 
             // te
             // 
@@ -267,14 +267,14 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::DBMS_NoiThat.Properties.Resources.thiet_ke_logo_cong_ty_noi_that_house;
-            this.pictureBox3.Location = new System.Drawing.Point(400, 120);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(376, 294);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 7;
-            this.pictureBox3.TabStop = false;
+            //this.pictureBox3.Image = global::DBMS_NoiThat.Properties.Resources.thiet_ke_logo_cong_ty_noi_that_house;
+            //this.pictureBox3.Location = new System.Drawing.Point(400, 120);
+            //this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            //this.pictureBox3.Name = "pictureBox3";
+            //this.pictureBox3.Size = new System.Drawing.Size(376, 294);
+            //this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            //this.pictureBox3.TabIndex = 7;
+            //this.pictureBox3.TabStop = false;
             // 
             // MainFormKhachHang
             // 
@@ -293,7 +293,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_Top.ResumeLayout(false);
             this.panel_Top.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
