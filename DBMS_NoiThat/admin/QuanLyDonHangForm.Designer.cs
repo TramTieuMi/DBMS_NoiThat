@@ -45,11 +45,9 @@
             this.labelDiaChiNhan = new System.Windows.Forms.Label();
             this.textBoxTenNguoiDat = new System.Windows.Forms.TextBox();
             this.textBoxSDTNguoiDat = new System.Windows.Forms.TextBox();
-            this.textBoxMaSanPham = new System.Windows.Forms.TextBox();
             this.TextBoxMaDonHang = new System.Windows.Forms.TextBox();
             this.TextBoxMaKhachHang = new System.Windows.Forms.TextBox();
             this.labelTenNguoiDat = new System.Windows.Forms.Label();
-            this.labelMaSP = new System.Windows.Forms.Label();
             this.labelMaKhachHang = new System.Windows.Forms.Label();
             this.labelMaDonHang = new System.Windows.Forms.Label();
             this.labelSDTNguoiDat = new System.Windows.Forms.Label();
@@ -259,7 +257,7 @@
             // 
             this.textBoxTenNguoiDat.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxTenNguoiDat.BackColor = System.Drawing.Color.Silver;
-            this.textBoxTenNguoiDat.Location = new System.Drawing.Point(150, 126);
+            this.textBoxTenNguoiDat.Location = new System.Drawing.Point(150, 113);
             this.textBoxTenNguoiDat.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTenNguoiDat.Multiline = true;
             this.textBoxTenNguoiDat.Name = "textBoxTenNguoiDat";
@@ -270,29 +268,18 @@
             // 
             this.textBoxSDTNguoiDat.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxSDTNguoiDat.BackColor = System.Drawing.Color.Silver;
-            this.textBoxSDTNguoiDat.Location = new System.Drawing.Point(150, 158);
+            this.textBoxSDTNguoiDat.Location = new System.Drawing.Point(150, 145);
             this.textBoxSDTNguoiDat.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSDTNguoiDat.Multiline = true;
             this.textBoxSDTNguoiDat.Name = "textBoxSDTNguoiDat";
             this.textBoxSDTNguoiDat.Size = new System.Drawing.Size(187, 26);
             this.textBoxSDTNguoiDat.TabIndex = 96;
             // 
-            // textBoxMaSanPham
-            // 
-            this.textBoxMaSanPham.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxMaSanPham.BackColor = System.Drawing.Color.Silver;
-            this.textBoxMaSanPham.Location = new System.Drawing.Point(150, 63);
-            this.textBoxMaSanPham.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxMaSanPham.Multiline = true;
-            this.textBoxMaSanPham.Name = "textBoxMaSanPham";
-            this.textBoxMaSanPham.Size = new System.Drawing.Size(91, 26);
-            this.textBoxMaSanPham.TabIndex = 95;
-            // 
             // TextBoxMaDonHang
             // 
             this.TextBoxMaDonHang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxMaDonHang.BackColor = System.Drawing.Color.Silver;
-            this.TextBoxMaDonHang.Location = new System.Drawing.Point(150, 32);
+            this.TextBoxMaDonHang.Location = new System.Drawing.Point(150, 50);
             this.TextBoxMaDonHang.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxMaDonHang.Multiline = true;
             this.TextBoxMaDonHang.Name = "TextBoxMaDonHang";
@@ -303,7 +290,7 @@
             // 
             this.TextBoxMaKhachHang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxMaKhachHang.BackColor = System.Drawing.Color.Silver;
-            this.TextBoxMaKhachHang.Location = new System.Drawing.Point(150, 94);
+            this.TextBoxMaKhachHang.Location = new System.Drawing.Point(150, 81);
             this.TextBoxMaKhachHang.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxMaKhachHang.Multiline = true;
             this.TextBoxMaKhachHang.Name = "TextBoxMaKhachHang";
@@ -316,7 +303,7 @@
             this.labelTenNguoiDat.AutoSize = true;
             this.labelTenNguoiDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTenNguoiDat.ForeColor = System.Drawing.Color.Blue;
-            this.labelTenNguoiDat.Location = new System.Drawing.Point(20, 132);
+            this.labelTenNguoiDat.Location = new System.Drawing.Point(20, 119);
             this.labelTenNguoiDat.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTenNguoiDat.Name = "labelTenNguoiDat";
             this.labelTenNguoiDat.Size = new System.Drawing.Size(118, 17);
@@ -324,27 +311,13 @@
             this.labelTenNguoiDat.Text = "Tên Người Đặt:";
             this.labelTenNguoiDat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelMaSP
-            // 
-            this.labelMaSP.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelMaSP.AutoSize = true;
-            this.labelMaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaSP.ForeColor = System.Drawing.Color.Blue;
-            this.labelMaSP.Location = new System.Drawing.Point(26, 69);
-            this.labelMaSP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMaSP.Name = "labelMaSP";
-            this.labelMaSP.Size = new System.Drawing.Size(112, 17);
-            this.labelMaSP.TabIndex = 91;
-            this.labelMaSP.Text = "Mã Sản Phẩm:";
-            this.labelMaSP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // labelMaKhachHang
             // 
             this.labelMaKhachHang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelMaKhachHang.AutoSize = true;
             this.labelMaKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMaKhachHang.ForeColor = System.Drawing.Color.Blue;
-            this.labelMaKhachHang.Location = new System.Drawing.Point(11, 100);
+            this.labelMaKhachHang.Location = new System.Drawing.Point(11, 87);
             this.labelMaKhachHang.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMaKhachHang.Name = "labelMaKhachHang";
             this.labelMaKhachHang.Size = new System.Drawing.Size(127, 17);
@@ -358,7 +331,7 @@
             this.labelMaDonHang.AutoSize = true;
             this.labelMaDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMaDonHang.ForeColor = System.Drawing.Color.Blue;
-            this.labelMaDonHang.Location = new System.Drawing.Point(27, 38);
+            this.labelMaDonHang.Location = new System.Drawing.Point(27, 56);
             this.labelMaDonHang.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMaDonHang.Name = "labelMaDonHang";
             this.labelMaDonHang.Size = new System.Drawing.Size(111, 17);
@@ -372,7 +345,7 @@
             this.labelSDTNguoiDat.AutoSize = true;
             this.labelSDTNguoiDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSDTNguoiDat.ForeColor = System.Drawing.Color.Blue;
-            this.labelSDTNguoiDat.Location = new System.Drawing.Point(17, 164);
+            this.labelSDTNguoiDat.Location = new System.Drawing.Point(17, 151);
             this.labelSDTNguoiDat.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSDTNguoiDat.Name = "labelSDTNguoiDat";
             this.labelSDTNguoiDat.Size = new System.Drawing.Size(121, 17);
@@ -400,11 +373,9 @@
             this.groupBox1.Controls.Add(this.labelDiaChiNhan);
             this.groupBox1.Controls.Add(this.textBoxTenNguoiDat);
             this.groupBox1.Controls.Add(this.textBoxSDTNguoiDat);
-            this.groupBox1.Controls.Add(this.textBoxMaSanPham);
             this.groupBox1.Controls.Add(this.TextBoxMaDonHang);
             this.groupBox1.Controls.Add(this.TextBoxMaKhachHang);
             this.groupBox1.Controls.Add(this.labelTenNguoiDat);
-            this.groupBox1.Controls.Add(this.labelMaSP);
             this.groupBox1.Controls.Add(this.labelMaKhachHang);
             this.groupBox1.Controls.Add(this.labelMaDonHang);
             this.groupBox1.Controls.Add(this.labelSDTNguoiDat);
@@ -492,8 +463,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1363, 697);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(1031, 554);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonTimKiem);
             this.Controls.Add(this.textBoxTimKiem);
@@ -503,7 +474,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "QuanLyDonHangForm";
             this.Text = "QuanLyDonHangForm";
-            this.Load += new System.EventHandler(this.QuanLyDonHangForm_Load);
+            this.Click += new System.EventHandler(this.QuanLyDonHangForm_Click);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -531,11 +502,9 @@
         private System.Windows.Forms.Label labelDiaChiNhan;
         public System.Windows.Forms.TextBox textBoxTenNguoiDat;
         public System.Windows.Forms.TextBox textBoxSDTNguoiDat;
-        public System.Windows.Forms.TextBox textBoxMaSanPham;
         public System.Windows.Forms.TextBox TextBoxMaDonHang;
         public System.Windows.Forms.TextBox TextBoxMaKhachHang;
         private System.Windows.Forms.Label labelTenNguoiDat;
-        private System.Windows.Forms.Label labelMaSP;
         private System.Windows.Forms.Label labelMaKhachHang;
         private System.Windows.Forms.Label labelMaDonHang;
         private System.Windows.Forms.Label labelSDTNguoiDat;

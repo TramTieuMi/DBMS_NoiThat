@@ -14,7 +14,7 @@ namespace DBMS_NoiThat.user
        // SqlConnection sqlCon;
        
         SqlConnection sqlCon;
-        //SqlConnection conAdmin = new SqlConnection(@"Data Source=DESKTOP-UR1R776\SQLEXPRESS;Initial Catalog=QuanLyMuaHang;Integrated Security=True;TrustServerCertificate=True");
+        //SqlConnection conAdmin = new SqlConnection(@"Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True");
         public DBConnection()
         {
             sqlCon = new SqlConnection(@"Data Source=DESKTOP-UR1R776\SQLEXPRESS;Initial Catalog=data;Integrated Security=True;TrustServerCertificate=True");
