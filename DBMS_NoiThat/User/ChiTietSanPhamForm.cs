@@ -71,7 +71,7 @@ namespace DBMS_NoiThat.user
                         cmd1.Parameters.AddWithValue("@MaGioHang", idKH);
                         cmd1.Parameters.AddWithValue("@MaSanPham", id);
                         cmd1.Parameters.AddWithValue("@SoLuong", sl);
-                        cmd1.Parameters.AddWithValue("@SoTien", giaSP * sl);
+                       // cmd1.Parameters.AddWithValue("@SoTien", giaSP * sl);
                         cmd1.ExecuteNonQuery();
                         MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

@@ -1,4 +1,4 @@
-﻿using DBMS_NoiThat.user;
+﻿using DBMS_NoiThat.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,14 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBMS_NoiThat.user9
+namespace DBMS_NoiThat.user
 {
-    public partial class MainFormKhachHang : Form
+    public partial class MainFormAdmin : Form
     {
         DBConnection conn = new DBConnection();
-        private int maKhachHang;
         private string tenTaiKhoan;
-        public MainFormKhachHang(string tenTaiKhoan)
+        public MainFormAdmin()
+        {
+            InitializeComponent();
+        }
+        public MainFormAdmin(string tenTaiKhoan)
         {
 
             InitializeComponent();
@@ -28,26 +31,42 @@ namespace DBMS_NoiThat.user9
             cmd.Parameters.AddWithValue("@TenDangNhap", tenTaiKhoan);
             int maKhachHang = (int)cmd.ExecuteScalar();
             conn.CloseConnection();
-            // MessageBox.Show(maKhachHang.ToString());
             timer1.Start();
             labelTime.Text = DateTime.Now.ToLongTimeString();
             labelDate.Text = DateTime.Now.ToLongDateString();
+            hello.Text = "Welcome "+tenTaiKhoan.ToString();
+            hello.Show();
+            // MessageBox.Show(maKhachHang.ToString());
+            //try
+            //{
+            //    XemSanPhamForm xemSanPhamForm = new XemSanPhamForm();
+            //    xemSanPhamForm.idKhachHang = maKhachHang;
+            //    OpenChildForm(xemSanPhamForm);
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+
+        }
+       
+        private void buttonQLDH_Click(object sender, EventArgs e)
+        {
             try
             {
-                XemSanPhamForm xemSanPhamForm = new XemSanPhamForm();
-                xemSanPhamForm.idKhachHang= maKhachHang;
-                OpenChildForm(xemSanPhamForm);
-                
+                OpenChildForm(new QuanLyDonHangForm());
+                // labelHome.Text = buttonQLNV.Text;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
         private Form currentFormChild;
         private void OpenChildForm(Form childForm)
         {
+           
             try
             {
                 // Đóng form con hiện tại nếu có
@@ -74,70 +93,29 @@ namespace DBMS_NoiThat.user9
             {
                 MessageBox.Show(ex.Message);
             }
-        }
 
-        private void buttonGioHang_Click(object sender, EventArgs e)
+        }
+        private void CloseChildForm()
         {
-            try
+            if (currentFormChild != null)
             {
-                OpenChildForm(new GioHang(maKhachHang));
-                // labelHome.Text = buttonQLNV.Text;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                currentFormChild.Close();
+                panel_Body.Controls.Remove(currentFormChild);
+                currentFormChild = null;
             }
         }
 
-        private void labelMenu_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                XemSanPhamForm xemSanPhamForm = new XemSanPhamForm();
-                xemSanPhamForm.idKhachHang = maKhachHang;
-                OpenChildForm(xemSanPhamForm);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void MainFormKhachHang_Load(object sender, EventArgs e)
+        private void MainFormAdmin_Load(object sender, EventArgs e)
         {
             timer1.Start();
             labelTime.Text = DateTime.Now.ToLongTimeString();
             labelDate.Text = DateTime.Now.ToLongDateString();
-            hello.Text = $"Welcome {tenTaiKhoan} to our website";
+            CloseChildForm();
         }
 
-        private void buttonTTCN_Click(object sender, EventArgs e)
+        private void labelMenu_Click(object sender, EventArgs e)
         {
-            try
-            {
-                OpenChildForm(new XemThongTinUser());
-                // labelHome.Text = buttonQLNV.Text;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-      
-
-        private void buttonLSMH_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenChildForm(new FLichSu());
-                // labelHome.Text = buttonQLNV.Text;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+           CloseChildForm();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

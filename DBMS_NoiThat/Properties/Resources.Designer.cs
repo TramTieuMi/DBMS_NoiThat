@@ -89,5 +89,15 @@ namespace DBMS_NoiThat.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thiet_ke_logo_cong_ty_noi_that_house {
+            get {
+                object obj = ResourceManager.GetObject("thiet-ke-logo-cong-ty-noi-that-house", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

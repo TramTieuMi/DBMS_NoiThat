@@ -28,6 +28,7 @@ namespace DBMS_NoiThat.user
             SqlCommand cmd = new SqlCommand("select * from v_XemDonHang", conn.GetConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(SPTable);
+            dataGridView1.ReadOnly = true;
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = SPTable;
             dataGridView1.Refresh();
@@ -41,7 +42,9 @@ namespace DBMS_NoiThat.user
             dataGridView1.Columns["NgayMuaHang"].HeaderText = "Ngày Mua Hàng";
             dataGridView1.Columns["DiaChiNhan"].HeaderText = "Địa Chỉ Nhận";
             dataGridView1.Columns["TrangThai"].HeaderText = "Trạng Thái";
-       
+
+            dataGridView1.RowTemplate.Height = 80;
+            dataGridView1.AllowUserToAddRows = false;
             conn.CloseConnection();
         }
 
@@ -166,12 +169,6 @@ namespace DBMS_NoiThat.user
             }
         }
 
-        private void QuanLyDonHangForm_Load(object sender, EventArgs e)
-        {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            LoadDataToDataGridView();
-        }
-
         private void buttonTimKiem_Click(object sender, EventArgs e)
         {
             int idDonHang = Convert.ToInt32(textBoxTimKiem.Text);
@@ -220,6 +217,12 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show("Lỗi khi thực hiện thủ tục SQL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             conn.CloseConnection();
+        }
+
+        private void QuanLyDonHangForm_Click(object sender, EventArgs e)
+        {
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            LoadDataToDataGridView();
         }
     }
 }

@@ -66,8 +66,8 @@ namespace DBMS_NoiThat.user
                             else
                             {
                                 FDangNhap flogin = new FDangNhap();
-                                QuanLyDonHangForm mainform = new QuanLyDonHangForm();
-                                mainform.ShowDialog();
+                                MainFormAdmin mainForm = new MainFormAdmin(ten);
+                                mainForm.ShowDialog();
                                 break;
                             }
                         }
