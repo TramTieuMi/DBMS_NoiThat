@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,19 @@ namespace DBMS_NoiThat.user9
 
             InitializeComponent();
             this.tenTaiKhoan = tenTaiKhoan;
-            //this.maKhachHang = maKhachHang;
+
+            conn.OpenConnection();
+            SqlCommand cmd = new SqlCommand("SELECT dbo.GetMaKhachHang(@TenDangNhap)", conn.GetConnection());
+            cmd.Parameters.AddWithValue("@TenDangNhap", tenTaiKhoan);
+            int maKhachHang = (int)cmd.ExecuteScalar();
+            conn.CloseConnection();
+           // MessageBox.Show(maKhachHang.ToString());
             try
             {
-                OpenChildForm(new XemSanPhamForm());
-                // labelHome.Text = buttonQLNV.Text;
+                XemSanPhamForm xemSanPhamForm = new XemSanPhamForm();
+                xemSanPhamForm.idKhachHang= maKhachHang;
+                OpenChildForm(xemSanPhamForm);
+                
             }
             catch (Exception ex)
             {
@@ -75,8 +84,9 @@ namespace DBMS_NoiThat.user9
         {
             try
             {
-                OpenChildForm(new XemSanPhamForm());
-                // labelHome.Text = buttonQLNV.Text;
+                XemSanPhamForm xemSanPhamForm = new XemSanPhamForm();
+                xemSanPhamForm.idKhachHang = maKhachHang;
+                OpenChildForm(xemSanPhamForm);
             }
             catch (Exception ex)
             {

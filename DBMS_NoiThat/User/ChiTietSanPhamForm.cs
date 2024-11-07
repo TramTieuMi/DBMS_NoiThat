@@ -13,14 +13,18 @@ using static System.Windows.Forms.AxHost;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
+using DBMS_NoiThat.user9;
 
 namespace DBMS_NoiThat.user
 {
     public partial class ChiTietSanPhamForm : Form
     {
         DBConnection mydb = new DBConnection();
+        public int idKH;
         public ChiTietSanPhamForm()
         {
+            
+
             InitializeComponent();
         }
 
@@ -28,6 +32,7 @@ namespace DBMS_NoiThat.user
         {
             try
             {
+               
                 Close();
             }
             catch (Exception ex)
@@ -44,7 +49,7 @@ namespace DBMS_NoiThat.user
                 int id = Convert.ToInt32(LableIDSP.Text);
                 mydb.OpenConnection();
                 SqlCommand cmd = new SqlCommand("SELECT dbo.KiemTraGioHangTonTai(@MaDonHang, @MaSanPham)", mydb.GetConnection());
-                cmd.Parameters.AddWithValue("@MaDonHang", 1);
+                cmd.Parameters.AddWithValue("@MaDonHang", idKH);
                 cmd.Parameters.AddWithValue("@MaSanPham", id);
                 int status = (int)cmd.ExecuteScalar();
                 mydb.CloseConnection();
@@ -63,7 +68,7 @@ namespace DBMS_NoiThat.user
                     {
                         SqlCommand cmd1 = new SqlCommand("proc_ThemVaoGioHang", mydb.GetConnection());
                         cmd1.CommandType = CommandType.StoredProcedure;
-                        cmd1.Parameters.AddWithValue("@MaGioHang", 1);
+                        cmd1.Parameters.AddWithValue("@MaGioHang", idKH);
                         cmd1.Parameters.AddWithValue("@MaSanPham", id);
                         cmd1.Parameters.AddWithValue("@SoLuong", sl);
                         cmd1.Parameters.AddWithValue("@SoTien", giaSP * sl);

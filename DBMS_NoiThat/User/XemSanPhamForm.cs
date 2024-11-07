@@ -16,6 +16,7 @@ namespace DBMS_NoiThat.user
     public partial class XemSanPhamForm : Form
     {
         DBConnection conn = new DBConnection();
+        public int idKhachHang;
         public XemSanPhamForm()
         {
             InitializeComponent();
@@ -138,25 +139,28 @@ namespace DBMS_NoiThat.user
                 {
                     adapter.Fill(table1);
                 }
+                conn.CloseConnection();
                 //  dgvXemSanPham.DataSource = table1;
-                ChiTietSanPhamForm updateDeletStdF = new ChiTietSanPhamForm();
+                ChiTietSanPhamForm xemtSPF = new ChiTietSanPhamForm();
                 // thu tu cua cac cot: id fname Inane bd - gdr - phn - adrs - pic
+                xemtSPF.idKH = idKhachHang;
+                //MessageBox.Show(xemtSPF.idKH.ToString());
 
-                updateDeletStdF.LableIDSP.Text = table1.Rows[0][0].ToString().Trim();
-                updateDeletStdF.TextBoxTenSP.Text = table1.Rows[0][1].ToString().Trim();
-                updateDeletStdF.TextBoxGiaSP.Text = table1.Rows[0][3].ToString().Trim();
-                updateDeletStdF.textBoxChatLieu.Text = table1.Rows[0][4].ToString().Trim();
-                updateDeletStdF.TextBoxKichThuoc.Text = table1.Rows[0][6].ToString().Trim();
-                updateDeletStdF.TextBoxMoTa.Text = table1.Rows[0][5].ToString().Trim();
-                updateDeletStdF.textBoxMauSac.Text = table1.Rows[0][7].ToString().Trim();
+                xemtSPF.LableIDSP.Text = table1.Rows[0][0].ToString().Trim();
+                xemtSPF.TextBoxTenSP.Text = table1.Rows[0][1].ToString().Trim();
+                xemtSPF.TextBoxGiaSP.Text = table1.Rows[0][3].ToString().Trim();
+                xemtSPF.textBoxChatLieu.Text = table1.Rows[0][4].ToString().Trim();
+                xemtSPF.TextBoxKichThuoc.Text = table1.Rows[0][6].ToString().Trim();
+                xemtSPF.TextBoxMoTa.Text = table1.Rows[0][5].ToString().Trim();
+                xemtSPF.textBoxMauSac.Text = table1.Rows[0][7].ToString().Trim();
                 byte[] pic;
                 pic = (byte[])table1.Rows[0][2];
                 MemoryStream picture = new MemoryStream(pic);
-                updateDeletStdF.PictureBoxHinhAnhSP.Image = Image.FromStream(picture);
+                xemtSPF.PictureBoxHinhAnhSP.Image = Image.FromStream(picture);
 
-                //updateDeletStdF.ShowDialog();
+                xemtSPF.ShowDialog();
                 //this.Show();
-                updateDeletStdF.Show();
+                 //xemtSPF.Show();
                 conn.CloseConnection();
 
             }
