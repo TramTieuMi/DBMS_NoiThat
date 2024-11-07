@@ -157,5 +157,10 @@ namespace DBMS_NoiThat.user9
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void panel_Body_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
