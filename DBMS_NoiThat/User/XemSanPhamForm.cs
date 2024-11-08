@@ -130,12 +130,12 @@ namespace DBMS_NoiThat.user
             {
                 string id = dgvXemSanPham.CurrentRow.Cells[0].Value.ToString().Trim();
                 int ID = Convert.ToInt32(id);
-                conn.OpenConnection();
-                SqlCommand cmd1 = new SqlCommand("proc_ChiTietSanPham", conn.GetConnection());
-                cmd1.CommandType = CommandType.StoredProcedure;
-                cmd1.Parameters.AddWithValue("@MaSP", ID);
+
                 DataTable table1 = new DataTable();
-                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd1))
+                conn.OpenConnection();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fn_ChiTietSanPham(@MaSP)", conn.GetConnection());
+                cmd.Parameters.AddWithValue("@MaSP", ID);
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
                     adapter.Fill(table1);
                 }

@@ -16,8 +16,8 @@ namespace DBMS_NoiThat
 {
     public partial class TaoTaiKhoan : Form
     {
-        SqlConnection stringConnection = Connection.GetSqlConnection();
-
+        //SqlConnection stringConnection = Connection.GetSqlConnection();
+        SqlConnection connStr = Connection.GetSqlConnection();
         public TaoTaiKhoan()
         {
             InitializeComponent();
@@ -69,6 +69,12 @@ namespace DBMS_NoiThat
             if (!checkAccount(matkhau)) { MessageBox.Show("Vui lòng nhập mật khẩu  6-24 kí tự,chỉ với các kí tự chữ và số, có thể là chữ hoa hoặc chữ thường!"); return; }
             if (!checkEmail(email)) { MessageBox.Show("Vui lòng nhập đúng định dạng email!"); return; }
             if (modify.taiKhoans("Select * from TAIKHOAN where Email = '" + email + "'").Count != 0) { MessageBox.Show("Email này đã được đăng kí, vui lòng đăng kí email khác!"); return; }
+            // Kiểm tra tên đăng nhập đã tồn tại
+            if (modify.taiKhoans("SELECT * FROM TAIKHOAN WHERE TenDangNhap = '" + tentk + "'").Count != 0)
+            {
+                MessageBox.Show("Tên tài khoản này đã được sử dụng, vui lòng chọn tên khác!");
+                return;
+            }
             try
             {
                 
@@ -84,18 +90,49 @@ namespace DBMS_NoiThat
                 string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao) VALUES ('" + Hoten + "','" + email + "','" + DiaChi + "','" + sdt + "', GETDATE())";
                 string queryTK = "INSERT INTO TAIKHOAN (TenDangNhap, MatKhau, Email, RoleID) VALUES ('" + tentk + "', '" + matkhau + "', '" + email + "', '" + roleid + "')";
 
-                //string queryKH = "Insert into KHACHHANG values ('" + Hoten + "','" + email + "','" + DiaChi + "','" + sdt + "')";
-                //string queryTK = "Insert into TAIKHOAN values ('" + tentk + "','" + matkhau + "','" + email + "','" + role + "')";
-                modify.Command(queryKH);
-                modify.Command(queryTK);
-                /*if (MessageBox.Show("Đăng kí thành công! Bạn có muốn đăng nhập luôn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                //
+                // Sử dụng Transaction
+                using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
                 {
-                    this.Close();
-                }*/
-                Hide();
-                
-                FDangNhap dangnhap = new FDangNhap();
-                dangnhap.ShowDialog();
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+
+                    try
+                    {
+                        using (SqlCommand cmdKH = new SqlCommand(queryKH, connection, transaction))
+                        {
+                            cmdKH.Parameters.AddWithValue("@HoVaTen", Hoten);
+                            cmdKH.Parameters.AddWithValue("@Email", email);
+                            cmdKH.Parameters.AddWithValue("@DiaChi", DiaChi);
+                            cmdKH.Parameters.AddWithValue("@SDT", sdt);
+                            cmdKH.ExecuteNonQuery();
+                        }
+
+                        using (SqlCommand cmdTK = new SqlCommand(queryTK, connection, transaction))
+                        {
+                            cmdTK.Parameters.AddWithValue("@TenDangNhap", tentk);
+                            cmdTK.Parameters.AddWithValue("@MatKhau", matkhau);
+                            cmdTK.Parameters.AddWithValue("@Email", email);
+                            cmdTK.Parameters.AddWithValue("@RoleID", roleid);
+                            cmdTK.ExecuteNonQuery();
+                        }
+
+                        // Commit transaction nếu cả hai câu lệnh INSERT đều thành công
+                        transaction.Commit();
+                        MessageBox.Show("Đăng ký thành công!");
+
+                        Hide();
+                        FDangNhap dangnhap = new FDangNhap();
+                        dangnhap.ShowDialog();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Rollback transaction nếu có lỗi
+                        transaction.Rollback();
+                        MessageBox.Show("Đăng ký thất bại: " + ex.Message);
+                    }
+                }
+
             }
             catch (Exception ex)
             {
