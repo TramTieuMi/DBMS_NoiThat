@@ -219,5 +219,10 @@ namespace DBMS_NoiThat.user
             }
             conn.CloseConnection();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
