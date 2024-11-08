@@ -1,4 +1,5 @@
-﻿using Do_An_Tuyen_Dung;
+﻿using DBMS_NoiThat.user;
+using Do_An_Tuyen_Dung;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -87,28 +88,56 @@ namespace DBMS_NoiThat.user
 
         public void ThucThi(string tenTK)
         {
-            //đoạn này chưa đụng đến nha
-
             FDangNhap fLogin = new FDangNhap();
             string em = "VanKien@gmail.com";
             DataTable dataTable = new DataTable();
             string sqlQuery = "SELECT HovaTen,Email,DiaChi,SDT FROM KHACHHANG WHERE Email = @Email";
 
 
-            DataTable dataTable1 = new DataTable();
-            string sqlQuery1 = "SELECT * FROM View_ThongTinTaiKhoanUser where TenDangNhap = @TenDangNhap";
-            modify.TaiDuLieu(dataTable1, sqlQuery1, "@TenDangNhap", tenTK);
-            if (dataTable1.Rows.Count > 0)
+            // Thực hiện truy vấn chỉ một lần để lấy tất cả thông tin
+            modify.TaiDuLieu(dataTable, sqlQuery, "@TenDangNhap", tenTK);
+
+            // Kiểm tra nếu có dữ liệu, gán trực tiếp vào các ô
+            if (dataTable.Rows.Count > 0)
             {
-                foreach (DataRow row1 in dataTable1.Rows)
-                {
-                    string TenTK = row1["TenDangNhap"].ToString();
-                    if (TenTK == tenTK)
-                    {
-                        em = row1["Email"].ToString();
-                    }
-                }
+                DataRow row = dataTable.Rows[0];
+                txtHoTen.Text = row["HovaTen"].ToString();
+                txtDiaChi.Text = row["DiaChi"].ToString();
+                txtSdt.Text = row["SDT"].ToString();
+                txtEmail.Text = row["Email"].ToString();
+                txtTenDangNhap.Text = row["TenDangNhap"].ToString();
             }
+
+        }
+
+        private void lbSdt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHoTen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (isEditing)
+            {
+                // Nếu đang ở chế độ chỉnh sửa, và nhấn "Cancel", hủy bỏ và quay lại chế độ xem
+                ThucThi(FDangNhap.TenDangNhap); // Tải lại dữ liệu ban đầu
+                ToggleEdit(false);
+                isEditing = false;
+            }
+            else
+            {
+                // Kích hoạt chế độ chỉnh sửa
+                ToggleEdit(true);
+                isEditing = true;
+            }
+        }
+        private void UpdateUserData()
+        {
 
             modify.TaiDuLieu(dataTable, sqlQuery, "@Email", em);
             if (dataTable.Rows.Count > 0)
@@ -123,17 +152,38 @@ namespace DBMS_NoiThat.user
                         txtSdt.Text = row["SDT"].ToString();
                         txtEmail.Text = row["Email"].ToString();
 
-                    }
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+                // Mở kết nối và thực thi câu lệnh
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("TenDangNhap: " + txtHoTen.Text);
+                // Kiểm tra kết quả
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy bản ghi nào để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
 
-        private void lbSdt_Click(object sender, EventArgs e)
+
+        private void btnSave_Click(object sender, EventArgs e)
         {
-
+            // Lưu thông tin và quay về chế độ xem
+            UpdateUserData();
+            ToggleEdit(false);
+            isEditing = false;
         }
 
-        private void txtHoTen_Click(object sender, EventArgs e)
+        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -211,3 +261,4 @@ namespace DBMS_NoiThat.user
         }
     }
 }
+

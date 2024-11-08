@@ -45,11 +45,11 @@
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(44, 34);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(26, 33);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(297, 31);
             this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "THÔNG TIN NGƯỜI DÙNG";
+            this.guna2HtmlLabel1.Text = "THÔNG TIN NGƯỜI DÙNG   ";
             // 
             // lbHoten
             // 
@@ -93,14 +93,13 @@
             // 
             // txtHoTen
             // 
-            this.txtHoTen.BackColor = System.Drawing.Color.Transparent;
-            this.txtHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHoTen.Location = new System.Drawing.Point(565, 130);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(160, 40);
-            this.txtHoTen.TabIndex = 5;
-            this.txtHoTen.Text = "Value Ten";
-            this.txtHoTen.Click += new System.EventHandler(this.txtHoTen_Click);
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(422, 391);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(108, 22);
+            this.guna2HtmlLabel2.TabIndex = 15;
+            this.guna2HtmlLabel2.Text = "Tên tài khoản:";
             // 
             // btnEdit
             // 
