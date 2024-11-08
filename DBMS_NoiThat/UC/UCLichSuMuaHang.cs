@@ -38,15 +38,15 @@ namespace DBMS_NoiThat.UC
 
             txtTenSP.Text = LichSuMua.TenSanPham.ToString();
 
-            txtMoTa.Text = $"Mô tả {LichSuMua.MoTa.ToString()}";
+            txtMoTa.Text = $"Mô tả: {LichSuMua.MoTa.ToString()}";
 
-            txtMau.Text = "Màu sắc" + LichSuMua.Mau.ToString();
+            txtMau.Text = "Màu sắc: " + LichSuMua.Mau.ToString();
 
-            txtSoLuong.Text = "Số lượng "+LichSuMua.SoLuong.ToString();
+            txtSoLuong.Text = "Số lượng: "+LichSuMua.SoLuong.ToString();
 
-            txtNgayMua.Text = "Ngày mua hàng " + LichSuMua.NgayMua.ToString();
+            txtNgayMua.Text = "Ngày mua hàng: " + LichSuMua.NgayMua.ToString();
 
-            txtTrangThai.Text = "Trạng thái " + LichSuMua.TrangThai.ToString();
+            txtTrangThai.Text = "Trạng thái: " + LichSuMua.TrangThai.ToString();
 
           //  txtThanhTien.Text = "Tổng tiền " + LichSuMua.ThanhTien.ToString();
             //CK_Chon = new CheckBox();

@@ -51,29 +51,32 @@
             // txtMoTa
             // 
             this.txtMoTa.BackColor = System.Drawing.Color.Transparent;
-            this.txtMoTa.Location = new System.Drawing.Point(509, 22);
+            this.txtMoTa.Location = new System.Drawing.Point(233, 28);
             this.txtMoTa.Name = "txtMoTa";
             this.txtMoTa.Size = new System.Drawing.Size(96, 18);
             this.txtMoTa.TabIndex = 2;
-            this.txtMoTa.Text = "thoải mái, êm ái     ";
+            this.txtMoTa.Text = "thoải mái, êm ái                          ";
             // 
             // txtSoLuong
             // 
+            this.txtSoLuong.AutoSize = false;
             this.txtSoLuong.BackColor = System.Drawing.Color.Transparent;
-            this.txtSoLuong.Location = new System.Drawing.Point(233, 62);
+            this.txtSoLuong.Location = new System.Drawing.Point(233, 70);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(129, 18);
+            this.txtSoLuong.Padding = new System.Windows.Forms.Padding(3);
+            this.txtSoLuong.Size = new System.Drawing.Size(220, 53);
             this.txtSoLuong.TabIndex = 3;
-            this.txtSoLuong.Text = "số lượng: 3 sản phẩm    ";
+            this.txtSoLuong.Text = "số lượng: 3 sản phẩm                   v     ";
             // 
             // txtMau
             // 
+            this.txtMau.AutoSize = false;
             this.txtMau.BackColor = System.Drawing.Color.Transparent;
-            this.txtMau.Location = new System.Drawing.Point(16, 62);
+            this.txtMau.Location = new System.Drawing.Point(16, 70);
             this.txtMau.Name = "txtMau";
-            this.txtMau.Size = new System.Drawing.Size(121, 18);
+            this.txtMau.Size = new System.Drawing.Size(211, 35);
             this.txtMau.TabIndex = 4;
-            this.txtMau.Text = "phân loại: màu xanh     ";
+            this.txtMau.Text = "phân loại: màu xanh                         ";
             // 
             // guna2HtmlLabel7
             // 
@@ -97,21 +100,23 @@
             // 
             // txtTrangThai
             // 
+            this.txtTrangThai.AutoSize = false;
             this.txtTrangThai.BackColor = System.Drawing.Color.Transparent;
-            this.txtTrangThai.Location = new System.Drawing.Point(854, 62);
+            this.txtTrangThai.Location = new System.Drawing.Point(781, 70);
             this.txtTrangThai.Name = "txtTrangThai";
-            this.txtTrangThai.Size = new System.Drawing.Size(50, 18);
+            this.txtTrangThai.Size = new System.Drawing.Size(223, 35);
             this.txtTrangThai.TabIndex = 8;
-            this.txtTrangThai.Text = "Đã giao     ";
+            this.txtTrangThai.Text = "Đã giao                         ";
             // 
             // txtNgayMua
             // 
+            this.txtNgayMua.AutoSize = false;
             this.txtNgayMua.BackColor = System.Drawing.Color.Transparent;
-            this.txtNgayMua.Location = new System.Drawing.Point(573, 62);
+            this.txtNgayMua.Location = new System.Drawing.Point(527, 70);
             this.txtNgayMua.Name = "txtNgayMua";
-            this.txtNgayMua.Size = new System.Drawing.Size(67, 18);
+            this.txtNgayMua.Size = new System.Drawing.Size(248, 61);
             this.txtNgayMua.TabIndex = 5;
-            this.txtNgayMua.Text = "12/12/2023       ";
+            this.txtNgayMua.Text = "12/12/2023                        ";
             // 
             // UCLichSuMuaHang
             // 
@@ -127,7 +132,7 @@
             this.Controls.Add(this.txtMoTa);
             this.Controls.Add(this.txtTenSP);
             this.Name = "UCLichSuMuaHang";
-            this.Size = new System.Drawing.Size(1255, 105);
+            this.Size = new System.Drawing.Size(1255, 134);
             this.Load += new System.EventHandler(this.UCLichSuDonHang_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
