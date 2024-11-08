@@ -16,8 +16,8 @@ namespace DBMS_NoiThat
 {
     public partial class TaoTaiKhoan : Form
     {
-        SqlConnection stringConnection = Connection.GetSqlConnection();
-
+        //SqlConnection stringConnection = Connection.GetSqlConnection();
+        SqlConnection connStr = Connection.GetSqlConnection();
         public TaoTaiKhoan()
         {
             InitializeComponent();
@@ -54,50 +54,92 @@ namespace DBMS_NoiThat
         Modify modify = new Modify();
         private void btnDangKy_Click(object sender, EventArgs e)
         {
+            
+            string Hoten = txtHoten.Text;
             string tentk = txtTenTK.Text;
-            //string hoTen = txtHoten.Text;
+            string DiaChi = txtDiaChi.Text;
             string email = txtEmail.Text;
             string matkhau = txtMatkhau.Text;
-           // string diaChi = txtDiaChi.Text;
-            //string sdt = txtSdt.Text;
-            string role = comboBxRole.Text; // Assuming role selection is implemented
+            string sdt =txtSdt.Text;
+            string role = comboBxRole.Text;
 
 
+            int roleid = -1; ;
             if (!checkAccount(tentk)) { MessageBox.Show("Vui lòng nhập tên tài khoản 6-24 kí tự,chỉ với các kí tự chữ và số, có thể là chữ hoa hoặc chữ thường!"); return; }
             if (!checkAccount(matkhau)) { MessageBox.Show("Vui lòng nhập mật khẩu  6-24 kí tự,chỉ với các kí tự chữ và số, có thể là chữ hoa hoặc chữ thường!"); return; }
             if (!checkEmail(email)) { MessageBox.Show("Vui lòng nhập đúng định dạng email!"); return; }
-            if (modify.taiKhoans("Select * from TaoTaiKhoan where Email = '" + email + "'").Count != 0) { MessageBox.Show("Email này đã được đăng kí, vui lòng đăng kí email khác!"); return; }
+            if (modify.taiKhoans("Select * from TAIKHOAN where Email = '" + email + "'").Count != 0) { MessageBox.Show("Email này đã được đăng kí, vui lòng đăng kí email khác!"); return; }
+            // Kiểm tra tên đăng nhập đã tồn tại
+            if (modify.taiKhoans("SELECT * FROM TAIKHOAN WHERE TenDangNhap = '" + tentk + "'").Count != 0)
+            {
+                MessageBox.Show("Tên tài khoản này đã được sử dụng, vui lòng chọn tên khác!");
+                return;
+            }
             try
             {
-                ///////////////////////////////////// chỗ này bỏ cái query 
-                string query = "Insert into TAIKHOAN values ('" + tentk + "','" + matkhau + "','" + email + "','" + role + "')";
-               // string query1 = "Insert into TAIKHOAN  values ('" + tentk + "','" + matkhau + "', '" + role + "' )";
-                modify.Command(query);
-               // modify.Command(query1);
-                /*if (MessageBox.Show("Đăng kí thành công! Bạn có muốn đăng nhập luôn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    this.Close();
-                }*/
-                Hide();
-
+                
                 if (role == "Người dùng")
                 {
-                    FDangNhap Fdangnhap = new FDangNhap();
-                    Fdangnhap.ShowDialog();
+                    roleid = 2;
                 }
-                else
+                else if (role == "Quản trị viên")
                 {
-                    //FDangNhap Fdangnhap = new FDangNhap(); /////////////////// để tamj ở đây
-                    //Fdangnhap.ShowDialog();
-                    MessageBox.Show("Xin vui lòng chờ xét duyệt từ admin!");
+                    roleid = 1;
+                }
+
+                string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao) VALUES ('" + Hoten + "','" + email + "','" + DiaChi + "','" + sdt + "', GETDATE())";
+                string queryTK = "INSERT INTO TAIKHOAN (TenDangNhap, MatKhau, Email, RoleID) VALUES ('" + tentk + "', '" + matkhau + "', '" + email + "', '" + roleid + "')";
+
+                //
+                // Sử dụng Transaction
+                using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+
+                    try
+                    {
+                        using (SqlCommand cmdKH = new SqlCommand(queryKH, connection, transaction))
+                        {
+                            cmdKH.Parameters.AddWithValue("@HoVaTen", Hoten);
+                            cmdKH.Parameters.AddWithValue("@Email", email);
+                            cmdKH.Parameters.AddWithValue("@DiaChi", DiaChi);
+                            cmdKH.Parameters.AddWithValue("@SDT", sdt);
+                            cmdKH.ExecuteNonQuery();
+                        }
+
+                        using (SqlCommand cmdTK = new SqlCommand(queryTK, connection, transaction))
+                        {
+                            cmdTK.Parameters.AddWithValue("@TenDangNhap", tentk);
+                            cmdTK.Parameters.AddWithValue("@MatKhau", matkhau);
+                            cmdTK.Parameters.AddWithValue("@Email", email);
+                            cmdTK.Parameters.AddWithValue("@RoleID", roleid);
+                            cmdTK.ExecuteNonQuery();
+                        }
+
+                        // Commit transaction nếu cả hai câu lệnh INSERT đều thành công
+                        transaction.Commit();
+                        MessageBox.Show("Đăng ký thành công!");
+
+                        Hide();
+                        FDangNhap dangnhap = new FDangNhap();
+                        dangnhap.ShowDialog();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Rollback transaction nếu có lỗi
+                        transaction.Rollback();
+                        MessageBox.Show("Đăng ký thất bại: " + ex.Message);
+                    }
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Tên tài khoản này đã được đăng kí, vui lòng nhập tên tài khoản khác!");
+                MessageBox.Show("Đăng ký thất bại: " + ex.Message);
             }
 
         }
     }
 }
+

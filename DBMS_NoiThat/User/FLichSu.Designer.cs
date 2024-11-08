@@ -32,13 +32,15 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.flwPnLichSu = new System.Windows.Forms.FlowLayoutPanel();
+            this.nm = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(41, 28);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(119, 41);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(243, 31);
             this.guna2HtmlLabel1.TabIndex = 0;
@@ -86,11 +88,30 @@
             this.guna2Button1.TabIndex = 5;
             this.guna2Button1.Text = "Tìm Kiếm";
             // 
+            // flwPnLichSu
+            // 
+            this.flwPnLichSu.Location = new System.Drawing.Point(44, 128);
+            this.flwPnLichSu.Name = "flwPnLichSu";
+            this.flwPnLichSu.Size = new System.Drawing.Size(1074, 426);
+            this.flwPnLichSu.TabIndex = 6;
+            this.flwPnLichSu.Paint += new System.Windows.Forms.PaintEventHandler(this.flwPnLichSu_Paint_1);
+            // 
+            // nm
+            // 
+            this.nm.BackColor = System.Drawing.Color.Transparent;
+            this.nm.Location = new System.Drawing.Point(493, 65);
+            this.nm.Name = "nm";
+            this.nm.Size = new System.Drawing.Size(21, 18);
+            this.nm.TabIndex = 7;
+            this.nm.Text = "mt/      ";
+            // 
             // FLichSu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 501);
+            this.ClientSize = new System.Drawing.Size(1175, 566);
+            this.Controls.Add(this.nm);
+            this.Controls.Add(this.flwPnLichSu);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.guna2HtmlLabel2);
@@ -109,5 +130,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private System.Windows.Forms.FlowLayoutPanel flwPnLichSu;
+        private Guna.UI2.WinForms.Guna2HtmlLabel nm;
     }
 }

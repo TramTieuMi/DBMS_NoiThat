@@ -4,16 +4,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace DBMS_NoiThat.user
 {
     public partial class XemSanPhamForm : Form
     {
         DBConnection conn = new DBConnection();
+        public int idKhachHang;
         public XemSanPhamForm()
         {
             InitializeComponent();
@@ -27,6 +30,7 @@ namespace DBMS_NoiThat.user
             SqlCommand cmd = new SqlCommand("select * from v_XemSanPham", conn.GetConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(SPTable);
+            dgvXemSanPham.ReadOnly = true;
             dgvXemSanPham.DataSource = null;
             dgvXemSanPham.DataSource = SPTable;
             dgvXemSanPham.Refresh();
@@ -35,6 +39,12 @@ namespace DBMS_NoiThat.user
             dgvXemSanPham.Columns["HinhAnh"].HeaderText = "Hình Ảnh";
             dgvXemSanPham.Columns["GiaSanPham"].HeaderText = "Giá Sản Phẩm";
             dgvXemSanPham.Columns["MauSac"].HeaderText = "Màu Sắc";
+            DataGridViewImageColumn piccol = new DataGridViewImageColumn(); // doi tuong lam viec voi dang picture cua datagridview
+            piccol = (DataGridViewImageColumn)dgvXemSanPham.Columns["HinhAnh"];
+            piccol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+
+            dgvXemSanPham.RowTemplate.Height = 80;
+            dgvXemSanPham.AllowUserToAddRows = false;
             conn.CloseConnection();
         }
 
@@ -66,7 +76,8 @@ namespace DBMS_NoiThat.user
                     conn.CloseConnection();
 
                 }
-                catch { Exception ex; }
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message); }
             }
             else if (radioButtonTenSP.Checked == true)
             {
@@ -85,7 +96,8 @@ namespace DBMS_NoiThat.user
                     conn.CloseConnection();
 
                 }
-                catch { Exception ex; }
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message); }
             }
             else
             {
@@ -104,15 +116,12 @@ namespace DBMS_NoiThat.user
                     conn.CloseConnection();
 
                 }
-                catch { Exception ex; }
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message); }
             }
         }
 
-        private void XemSanPhamForm_Load(object sender, EventArgs e)
-        {
-            dgvXemSanPham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            LoadDataToDataGridView();
-        }
+      
 
         private void dgvXemSanPham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -121,34 +130,37 @@ namespace DBMS_NoiThat.user
             {
                 string id = dgvXemSanPham.CurrentRow.Cells[0].Value.ToString().Trim();
                 int ID = Convert.ToInt32(id);
-                conn.OpenConnection();
-                SqlCommand cmd1 = new SqlCommand("proc_ChiTietSanPham", conn.GetConnection());
-                cmd1.CommandType = CommandType.StoredProcedure;
-                cmd1.Parameters.AddWithValue("@MaSP", ID);
+
                 DataTable table1 = new DataTable();
-                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd1))
+                conn.OpenConnection();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fn_ChiTietSanPham(@MaSP)", conn.GetConnection());
+                cmd.Parameters.AddWithValue("@MaSP", ID);
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
                     adapter.Fill(table1);
                 }
+                conn.CloseConnection();
                 //  dgvXemSanPham.DataSource = table1;
-                ChiTietSanPhamForm updateDeletStdF = new ChiTietSanPhamForm();
+                ChiTietSanPhamForm xemtSPF = new ChiTietSanPhamForm();
                 // thu tu cua cac cot: id fname Inane bd - gdr - phn - adrs - pic
+                xemtSPF.idKH = idKhachHang;
+                //MessageBox.Show(xemtSPF.idKH.ToString());
 
-                updateDeletStdF.TextBoxIDSP.Text = table1.Rows[0][0].ToString().Trim();
-                updateDeletStdF.TextBoxTenSP.Text = table1.Rows[0][1].ToString().Trim();
-                updateDeletStdF.TextBoxGiaSP.Text = table1.Rows[0][3].ToString().Trim();
-                updateDeletStdF.textBoxChatLieu.Text = table1.Rows[0][4].ToString().Trim();
-                updateDeletStdF.TextBoxKichThuoc.Text = table1.Rows[0][6].ToString().Trim();
-                updateDeletStdF.TextBoxMoTa.Text = table1.Rows[0][5].ToString().Trim();
-                updateDeletStdF.textBoxMauSac.Text = table1.Rows[0][7].ToString().Trim();
-                //byte[] pic;
-                //    pic = (byte[])dgvXemSanPham.CurrentRow.Cells[2].Value;
-                //    MemoryStream picture = new MemoryStream(pic);
-                //    updateDeletStdF.PictureBoxHinhAnhSP.Image = Image.FromStream(picture);
+                xemtSPF.LableIDSP.Text = table1.Rows[0][0].ToString().Trim();
+                xemtSPF.TextBoxTenSP.Text = table1.Rows[0][1].ToString().Trim();
+                xemtSPF.TextBoxGiaSP.Text = table1.Rows[0][3].ToString().Trim();
+                xemtSPF.textBoxChatLieu.Text = table1.Rows[0][4].ToString().Trim();
+                xemtSPF.TextBoxKichThuoc.Text = table1.Rows[0][6].ToString().Trim();
+                xemtSPF.TextBoxMoTa.Text = table1.Rows[0][5].ToString().Trim();
+                xemtSPF.textBoxMauSac.Text = table1.Rows[0][7].ToString().Trim();
+                byte[] pic;
+                pic = (byte[])table1.Rows[0][2];
+                MemoryStream picture = new MemoryStream(pic);
+                xemtSPF.PictureBoxHinhAnhSP.Image = Image.FromStream(picture);
 
-                updateDeletStdF.ShowDialog();
+                xemtSPF.ShowDialog();
                 //this.Show();
-                //    updateDeletStdF.Show();
+                 //xemtSPF.Show();
                 conn.CloseConnection();
 
             }
@@ -156,6 +168,12 @@ namespace DBMS_NoiThat.user
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void XemSanPhamForm_Click(object sender, EventArgs e)
+        {
+            dgvXemSanPham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            LoadDataToDataGridView();
         }
     }
 }

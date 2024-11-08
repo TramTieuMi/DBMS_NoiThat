@@ -148,6 +148,7 @@
             this.Controls.Add(this.btnDangNhap);
             this.Name = "FDangNhap";
             this.Text = "FLogin";
+            this.Load += new System.EventHandler(this.FDangNhap_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
