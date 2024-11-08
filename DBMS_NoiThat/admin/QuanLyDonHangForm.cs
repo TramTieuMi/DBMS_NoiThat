@@ -28,20 +28,23 @@ namespace DBMS_NoiThat.user
             SqlCommand cmd = new SqlCommand("select * from v_XemDonHang", conn.GetConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(SPTable);
+            dataGridView1.ReadOnly = true;
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = SPTable;
             dataGridView1.Refresh();
             dataGridView1.Columns["MaDonHang"].HeaderText = "Mã Đơn Hàng";
-            dataGridView1.Columns["MaSanPham"].HeaderText = "Mã Sản Phẩm";
             dataGridView1.Columns["MaKhachHang"].HeaderText = "Mã Khách Hàng";
             dataGridView1.Columns["TenNguoiDat"].HeaderText = "Tên Người Đặt";
             dataGridView1.Columns["SDTNguoiDat"].HeaderText = "SĐT Người Đặt";
-            dataGridView1.Columns["TenNguoiNhan"].HeaderText = "Tên Người Nhận";
+            dataGridView1.Columns["TenNguoiNhan"].HeaderText = "SĐT Người Nhận";
             dataGridView1.Columns["SDTNguoiNhan"].HeaderText = "SĐT Người Nhận";
             dataGridView1.Columns["TongTien"].HeaderText = "Tổng Tiền";
             dataGridView1.Columns["NgayMuaHang"].HeaderText = "Ngày Mua Hàng";
             dataGridView1.Columns["DiaChiNhan"].HeaderText = "Địa Chỉ Nhận";
             dataGridView1.Columns["TrangThai"].HeaderText = "Trạng Thái";
+
+            dataGridView1.RowTemplate.Height = 80;
+            dataGridView1.AllowUserToAddRows = false;
             conn.CloseConnection();
         }
 
@@ -52,17 +55,16 @@ namespace DBMS_NoiThat.user
 
 
                 TextBoxMaDonHang.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString().Trim();
-                textBoxMaSanPham.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString().Trim();
-                TextBoxMaKhachHang.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString().Trim();
-                textBoxTenNguoiDat.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString().Trim();
-                textBoxSDTNguoiDat.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString().Trim();
-                textBoxTenNguoiNhan.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString().Trim();
-                textBoxSĐTNguoiNhan.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString().Trim();
-                textBoxTongTien.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString().Trim();
-                textBoxNgayMuaHang.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString().Trim();
-                textBoxDiaChiNhan.Text = dataGridView1.CurrentRow.Cells[9].Value.ToString().Trim();
+                TextBoxMaKhachHang.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString().Trim();
+                textBoxTenNguoiDat.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString().Trim();
+                textBoxSDTNguoiDat.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString().Trim();
+                textBoxTenNguoiNhan.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString().Trim();
+                textBoxSĐTNguoiNhan.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString().Trim();
+                textBoxTongTien.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString().Trim();
+                textBoxNgayMuaHang.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString().Trim();
+                textBoxDiaChiNhan.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString().Trim();
 
-                string status = dataGridView1.CurrentRow.Cells[10].Value.ToString().Trim();
+                string status = dataGridView1.CurrentRow.Cells[9].Value.ToString().Trim();
 
                 if (status == "Ðang chờ xác nhận".Trim())
                 {
@@ -103,7 +105,8 @@ namespace DBMS_NoiThat.user
                 conn.CloseConnection();
 
             }
-            catch { Exception ex; }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
         private void radioButtonDaXacNhan_CheckedChanged(object sender, EventArgs e)
@@ -123,7 +126,8 @@ namespace DBMS_NoiThat.user
                 conn.CloseConnection();
 
             }
-            catch { Exception ex; }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
         private void radioButtonDaGiao_CheckedChanged(object sender, EventArgs e)
@@ -143,7 +147,8 @@ namespace DBMS_NoiThat.user
                 conn.CloseConnection();
 
             }
-            catch { Exception ex; }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
         private void textBoxTimKiem_Enter(object sender, EventArgs e)
@@ -162,12 +167,6 @@ namespace DBMS_NoiThat.user
                 textBoxTimKiem.Text = "Mã Đơn Hàng";
                 textBoxTimKiem.ForeColor = Color.DarkGray;
             }
-        }
-
-        private void QuanLyDonHangForm_Load(object sender, EventArgs e)
-        {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            LoadDataToDataGridView();
         }
 
         private void buttonTimKiem_Click(object sender, EventArgs e)
@@ -218,6 +217,17 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show("Lỗi khi thực hiện thủ tục SQL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             conn.CloseConnection();
+        }
+
+        private void QuanLyDonHangForm_Click(object sender, EventArgs e)
+        {
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            LoadDataToDataGridView();
+        }
+
+        private void QuanLyDonHangForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

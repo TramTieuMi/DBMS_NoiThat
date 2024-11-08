@@ -17,6 +17,29 @@ namespace Do_An_Tuyen_Dung
         }
         SqlCommand sqlCommand; //dung de truy van cac cau lenh Insert,Update, Delete...
         SqlDataReader dataReader; //dung de doc du lieu trong bang
+        public List<TaiKhoan> taiKhoans(SqlCommand sqlCommand)
+        {
+            List<TaiKhoan> taiKhoans = new List<TaiKhoan>();
+
+            using (SqlConnection sqlConnection = Connection.GetSqlConnection())
+            {
+                sqlConnection.Open();
+
+                sqlCommand.Connection = sqlConnection; // Gán connection cho sqlCommand
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    taiKhoans.Add(new TaiKhoan(dataReader.GetString(0), dataReader.GetString(1)));
+                }
+
+                sqlConnection.Close();
+            }
+
+            return taiKhoans;
+        }
+
+
 
 
         public List<TaiKhoan> taiKhoans(string query)// check tai khoan 
@@ -56,7 +79,7 @@ namespace Do_An_Tuyen_Dung
                 using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                 {
                     // Đảm bảo thêm tham số an toàn và đúng kiểu
-                    cmd.Parameters.Add(thuocTinh, SqlDbType.NVarChar).Value = khoaChinh;
+                    cmd.Parameters.AddWithValue(thuocTinh, khoaChinh);
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {

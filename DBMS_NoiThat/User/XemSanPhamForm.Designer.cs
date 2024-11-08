@@ -264,7 +264,8 @@
             this.Controls.Add(this.labelBed);
             this.Name = "XemSanPhamForm";
             this.Text = "XemSanPhamForm";
-            this.Load += new System.EventHandler(this.XemSanPhamForm_Load);
+           
+            this.Click += new System.EventHandler(this.XemSanPhamForm_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dgvXemSanPham)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
