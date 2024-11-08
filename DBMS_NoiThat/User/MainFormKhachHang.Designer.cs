@@ -34,7 +34,6 @@
             this.panel_left = new System.Windows.Forms.Panel();
             this.labelMenu = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.labelIDNV = new System.Windows.Forms.Label();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonLSMH = new System.Windows.Forms.Button();
@@ -55,7 +54,7 @@
             // 
             this.panel_Body.BackColor = System.Drawing.Color.White;
             this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Body.Location = new System.Drawing.Point(202, 100);
+            this.panel_Body.Location = new System.Drawing.Point(269, 123);
             this.panel_Body.Margin = new System.Windows.Forms.Padding(2);
             this.panel_Body.Name = "panel_Body";
             this.panel_Body.Size = new System.Drawing.Size(1487, 683);
@@ -65,16 +64,15 @@
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.Color.Gray;
+            this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.labelMenu);
             this.panel_left.Controls.Add(this.pictureBox2);
-            this.panel_left.Controls.Add(this.labelIDNV);
             this.panel_left.Controls.Add(this.buttonLogOut);
-            this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.buttonLSMH);
             this.panel_left.Controls.Add(this.buttonGioHang);
             this.panel_left.Controls.Add(this.buttonTTCN);
             this.panel_left.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_left.Location = new System.Drawing.Point(0, 100);
+            this.panel_left.Location = new System.Drawing.Point(0, 123);
             this.panel_left.Margin = new System.Windows.Forms.Padding(2);
             this.panel_left.Name = "panel_left";
             this.panel_left.Size = new System.Drawing.Size(269, 683);
@@ -103,16 +101,6 @@
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
-            // 
-            // labelIDNV
-            // 
-            this.labelIDNV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIDNV.ForeColor = System.Drawing.Color.White;
-            this.labelIDNV.Location = new System.Drawing.Point(29, 123);
-            this.labelIDNV.Name = "labelIDNV";
-            this.labelIDNV.Size = new System.Drawing.Size(193, 38);
-            this.labelIDNV.TabIndex = 3;
-            this.labelIDNV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonLogOut
             // 
@@ -254,7 +242,7 @@
             this.Controls.Add(this.panel_Body);
             this.Controls.Add(this.panel_left);
             this.Controls.Add(this.panel_Top);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainFormKhachHang";
             this.Text = "MainFormKhachHang";
             this.Load += new System.EventHandler(this.MainFormKhachHang_Load);
@@ -274,7 +262,6 @@
         private System.Windows.Forms.Panel panel_left;
         private System.Windows.Forms.Label labelMenu;
         private System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.Label labelIDNV;
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonLSMH;

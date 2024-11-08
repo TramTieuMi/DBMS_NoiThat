@@ -21,7 +21,7 @@ namespace DBMS_NoiThat.user
         private bool isEditing = false;
         Modify modify = new Modify();
         SqlConnection connStr = Connection.GetSqlConnection();
-
+        private int TenDangNhap;
         public XemThongTinUser()
         {
             InitializeComponent();
@@ -41,8 +41,8 @@ namespace DBMS_NoiThat.user
             txtDiaChi.ReadOnly = !enable;
             txtSdt.ReadOnly = !enable;
             txtEmail.ReadOnly = !enable;
-            //btnSave.Visible = enable; // Hiển thị nút "Lưu" khi chế độ chỉnh sửa bật
-            //btnEdit.Text = enable ? "Cancel" : "Edit"; // Đổi thành "Cancel" khi đang chỉnh sửa
+            btnSave.Visible = enable; // Hiển thị nút "Lưu" khi chế độ chỉnh sửa bật
+            btnEdit.Text = enable ? "Cancel" : "Edit"; // Đổi thành "Cancel" khi đang chỉnh sửa
 
             // Thay đổi màu nền khi chế độ chỉnh sửa bật hoặc tắt
             txtDiaChi.BackColor = enable ? Color.White : Color.LightGray;
@@ -73,30 +73,24 @@ namespace DBMS_NoiThat.user
 
         public void ThucThi(string tenTK)
         {
-            // Lấy thông tin người dùng từ cơ sở dữ liệu và điền vào các trường TextBox
-            DataTable dataTable = new DataTable();
-            string sqlQuery = "SELECT HovaTen, Email, DiaChi, SDT FROM KHACHHANG WHERE Email = @Email";
-
-            string em = string.Empty;
-
-            // Lấy email từ tài khoản
-            DataTable dataTable1 = new DataTable();
-            string sqlQuery1 = "SELECT * FROM View_ThongTinTaiKhoanUser WHERE TenDangNhap = @TenDangNhap";
-            modify.TaiDuLieu(dataTable1, sqlQuery1, "@TenDangNhap", tenTK);
-            if (dataTable1.Rows.Count > 0)
+            // Tải dữ liệu user từ cơ sở dữ liệu và điền vào các TextBox
+            using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
             {
-                em = dataTable1.Rows[0]["Email"].ToString();
-            }
+                string query = "SELECT * from View_ThongTinTaiKhoanUser WHERE TenDangNhap = @TenDangNhap";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@TenDangNhap", tenTK);
 
-            // Lấy thông tin chi tiết của khách hàng dựa trên email
-            modify.TaiDuLieu(dataTable, sqlQuery, "@Email", em);
-            if (dataTable.Rows.Count > 0)
-            {
-                DataRow row = dataTable.Rows[0];
-                txtHoTen.Text = row["HovaTen"].ToString();
-                txtDiaChi.Text = row["DiaChi"].ToString();
-                txtSdt.Text = row["SDT"].ToString();
-                txtEmail.Text = row["Email"].ToString();
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    txtHoTen.Text = reader["HovaTen"].ToString();
+                    txtEmail.Text = reader["Email"].ToString();
+                    txtDiaChi.Text = reader["DiaChi"].ToString();
+                    txtSdt.Text = reader["SDT"].ToString();
+                    //txtDiaChi.Text = reader["Address"].ToString();
+                }
+                connection.Close();
             }
         }
 
@@ -132,7 +126,9 @@ namespace DBMS_NoiThat.user
 
         private void XemThongTinUser_Load(object sender, EventArgs e)
         {
-
+            txtDiaChi.ReadOnly = true;
+            txtSdt.ReadOnly = true;
+            txtEmail.ReadOnly = true;
         }
 
    
