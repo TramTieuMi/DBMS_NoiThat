@@ -10,7 +10,7 @@ namespace Do_An_Tuyen_Dung
 {
     internal class Connection
     {
-        private static readonly string stringConnection = @"Data Source=KHANG\LTWEB;Initial Catalog=data1;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+        private static readonly string stringConnection = @"Data Source=KHANG\LTWEB;Initial Catalog=data;Integrated Security=True;TrustServerCertificate=True";
         public static SqlConnection GetSqlConnection()
         {
             return new SqlConnection(stringConnection); 
