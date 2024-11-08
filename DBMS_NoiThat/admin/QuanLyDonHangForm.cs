@@ -227,5 +227,10 @@ namespace DBMS_NoiThat.user
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LoadDataToDataGridView();
         }
+
+        private void QuanLyDonHangForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
