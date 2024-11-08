@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DBMS_NoiThat.user
 {
@@ -93,19 +92,17 @@ namespace DBMS_NoiThat.user
         {
             try
             {
-                
-                DataTable table = new DataTable();
                 conn.OpenConnection();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fn_LocTrangThaiDonHang(@Status)", conn.GetConnection());
+                SqlCommand cmd = new SqlCommand("proc_LocTrangThaiDonHang", conn.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Status", "Ðang chờ xác nhận");
+                DataTable table = new DataTable();
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
                     adapter.Fill(table);
                 }
                 dataGridView1.DataSource = table;
                 conn.CloseConnection();
-
-                
 
             }
             catch (Exception ex)
@@ -116,17 +113,17 @@ namespace DBMS_NoiThat.user
         {
             try
             {
-                DataTable table = new DataTable();
                 conn.OpenConnection();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fn_LocTrangThaiDonHang(@Status)", conn.GetConnection());
+                SqlCommand cmd = new SqlCommand("proc_LocTrangThaiDonHang", conn.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Status", "Ðã xác nhận");
+                DataTable table = new DataTable();
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
                     adapter.Fill(table);
                 }
                 dataGridView1.DataSource = table;
                 conn.CloseConnection();
-               
 
             }
             catch (Exception ex)
@@ -137,17 +134,17 @@ namespace DBMS_NoiThat.user
         {
             try
             {
-                DataTable table = new DataTable();
                 conn.OpenConnection();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fn_LocTrangThaiDonHang(@Status)", conn.GetConnection());
+                SqlCommand cmd = new SqlCommand("proc_LocTrangThaiDonHang", conn.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Status", "Ðã giao");
+                DataTable table = new DataTable();
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
                     adapter.Fill(table);
                 }
                 dataGridView1.DataSource = table;
                 conn.CloseConnection();
-                
 
             }
             catch (Exception ex)
@@ -226,6 +223,11 @@ namespace DBMS_NoiThat.user
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LoadDataToDataGridView();
+        }
+
+        private void QuanLyDonHangForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
