@@ -49,26 +49,26 @@
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(44, 34);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(26, 33);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(297, 31);
             this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "THÔNG TIN NGƯỜI DÙNG";
+            this.guna2HtmlLabel1.Text = "THÔNG TIN NGƯỜI DÙNG   ";
             // 
             // lbHoten
             // 
             this.lbHoten.BackColor = System.Drawing.Color.Transparent;
-            this.lbHoten.Location = new System.Drawing.Point(28, 555);
+            this.lbHoten.Location = new System.Drawing.Point(79, 514);
             this.lbHoten.Name = "lbHoten";
-            this.lbHoten.Size = new System.Drawing.Size(45, 18);
+            this.lbHoten.Size = new System.Drawing.Size(173, 18);
             this.lbHoten.TabIndex = 1;
-            this.lbHoten.Text = "Họ tên:";
+            this.lbHoten.Text = "Để tạm ở đây, ko xóa \r\n\r\nHọ tên: ";
             // 
             // lbDiachi
             // 
             this.lbDiachi.BackColor = System.Drawing.Color.Transparent;
             this.lbDiachi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDiachi.Location = new System.Drawing.Point(552, 217);
+            this.lbDiachi.Location = new System.Drawing.Point(474, 213);
             this.lbDiachi.Name = "lbDiachi";
             this.lbDiachi.Size = new System.Drawing.Size(60, 22);
             this.lbDiachi.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             this.lbEmail.BackColor = System.Drawing.Color.Transparent;
             this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(558, 330);
+            this.lbEmail.Location = new System.Drawing.Point(480, 326);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(50, 22);
             this.lbEmail.TabIndex = 3;
@@ -88,7 +88,7 @@
             // 
             this.lbSdt.BackColor = System.Drawing.Color.Transparent;
             this.lbSdt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSdt.Location = new System.Drawing.Point(514, 272);
+            this.lbSdt.Location = new System.Drawing.Point(436, 268);
             this.lbSdt.Name = "lbSdt";
             this.lbSdt.Size = new System.Drawing.Size(105, 22);
             this.lbSdt.TabIndex = 4;
@@ -124,7 +124,7 @@
             this.txtDiaChi1.TabIndex = 6;
             this.txtDiaChi1.Text = "Value Dia chi";
             // 
-            // txtHoTen
+            // txtEmail
             // 
             this.txtHoTen.BackColor = System.Drawing.Color.Transparent;
             this.txtHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

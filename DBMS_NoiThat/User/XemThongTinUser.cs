@@ -1,5 +1,7 @@
-﻿using Do_An_Tuyen_Dung;
+﻿using DBMS_NoiThat.user;
+using Do_An_Tuyen_Dung;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DBMS_NoiThat.user
 {
@@ -31,6 +35,12 @@ namespace DBMS_NoiThat.user
             ThucThi(tenTK);
             ToggleEdit(false); // Đặt form ở chế độ xem (không cho phép chỉnh sửa)
         }
+        private void ToggleEdit(bool enable)
+        {
+            // Kích hoạt hoặc vô hiệu chỉnh sửa trên các TextBox
+            txtDiaChi.ReadOnly = !enable;  // Đổi từ ReadOnly thành có thể chỉnh sửa
+            txtSdt.ReadOnly = !enable;
+            txtEmail.ReadOnly = !enable;
 
         private void ToggleEdit(bool enable)
         {
@@ -118,12 +128,20 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        private void UpdateUserData()
+        {
 
        
 
         private void XemThongTinUser_Load(object sender, EventArgs e)
         {
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            // Lưu thông tin và quay về chế độ xem
+            UpdateUserData();
+            ToggleEdit(false);
+            isEditing = false;
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -152,3 +170,4 @@ namespace DBMS_NoiThat.user
         }
     }
 }
+
