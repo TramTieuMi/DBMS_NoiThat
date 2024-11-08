@@ -107,12 +107,19 @@ namespace DBMS_NoiThat.user
         {// Cập nhật thông tin người dùng trong cơ sở dữ liệu
             using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
             {
-                string query = "UPDATE TAIKHOAN SET Email = @Email WHERE TenDangNhap = @TenDangNhap";
+                string query = "UPDATE KHACHHANG " +
+                    "SET KHACHHANG.SDT = @SDT, KHACHHANG.DiaChi = @DiaChi " +
+                    "FROM KHACHHANG " +
+                    "JOIN TAIKHOAN ON KHACHHANG.Email = TAIKHOAN.Email " +
+                    "WHERE TenDangNhap = @TenDangNhap";
+
+
                 SqlCommand command = new SqlCommand(query, connection);
 
-                // Đảm bảo rằng các tham số cần thiết có giá trị
+                command.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
+                command.Parameters.AddWithValue("@Sdt", txtSdt.Text);
                 command.Parameters.AddWithValue("@Email", txtEmail.Text);
-                command.Parameters.AddWithValue("@TenDangNhap", FDangNhap.TenDangNhap); // Giả định `FDangNhap.TenDangNhap` chứa tên đăng nhập hiện tại
+                command.Parameters.AddWithValue("@TenDangNhap", txtHoTen.Text);
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -121,6 +128,7 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
         private void XemThongTinUser_Load(object sender, EventArgs e)
         {
