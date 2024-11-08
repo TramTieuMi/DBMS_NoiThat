@@ -33,9 +33,6 @@
             this.lbDiachi = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbEmail = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbSdt = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtSdt1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtEmail1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtDiaChi1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtHoTen = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtDiaChi = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSdt = new Guna.UI2.WinForms.Guna2TextBox();
@@ -68,7 +65,7 @@
             // 
             this.lbDiachi.BackColor = System.Drawing.Color.Transparent;
             this.lbDiachi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDiachi.Location = new System.Drawing.Point(474, 213);
+            this.lbDiachi.Location = new System.Drawing.Point(436, 207);
             this.lbDiachi.Name = "lbDiachi";
             this.lbDiachi.Size = new System.Drawing.Size(60, 22);
             this.lbDiachi.TabIndex = 2;
@@ -78,7 +75,7 @@
             // 
             this.lbEmail.BackColor = System.Drawing.Color.Transparent;
             this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(480, 326);
+            this.lbEmail.Location = new System.Drawing.Point(446, 321);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(50, 22);
             this.lbEmail.TabIndex = 3;
@@ -88,43 +85,13 @@
             // 
             this.lbSdt.BackColor = System.Drawing.Color.Transparent;
             this.lbSdt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSdt.Location = new System.Drawing.Point(436, 268);
+            this.lbSdt.Location = new System.Drawing.Point(399, 262);
             this.lbSdt.Name = "lbSdt";
             this.lbSdt.Size = new System.Drawing.Size(105, 22);
             this.lbSdt.TabIndex = 4;
             this.lbSdt.Text = "Số điện thoại:";
             // 
-            // txtSdt1
-            // 
-            this.txtSdt1.BackColor = System.Drawing.Color.Transparent;
-            this.txtSdt1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSdt1.Location = new System.Drawing.Point(668, 272);
-            this.txtSdt1.Name = "txtSdt1";
-            this.txtSdt1.Size = new System.Drawing.Size(70, 22);
-            this.txtSdt1.TabIndex = 8;
-            this.txtSdt1.Text = "value sdt";
-            // 
-            // txtEmail1
-            // 
-            this.txtEmail1.BackColor = System.Drawing.Color.Transparent;
-            this.txtEmail1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail1.Location = new System.Drawing.Point(668, 330);
-            this.txtEmail1.Name = "txtEmail1";
-            this.txtEmail1.Size = new System.Drawing.Size(87, 22);
-            this.txtEmail1.TabIndex = 7;
-            this.txtEmail1.Text = "value email";
-            // 
-            // txtDiaChi1
-            // 
-            this.txtDiaChi1.BackColor = System.Drawing.Color.Transparent;
-            this.txtDiaChi1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChi1.Location = new System.Drawing.Point(668, 217);
-            this.txtDiaChi1.Name = "txtDiaChi1";
-            this.txtDiaChi1.Size = new System.Drawing.Size(103, 22);
-            this.txtDiaChi1.TabIndex = 6;
-            this.txtDiaChi1.Text = "Value Dia chi";
-            // 
-            // txtEmail
+            // txtHoTen
             // 
             this.txtHoTen.BackColor = System.Drawing.Color.Transparent;
             this.txtHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -145,7 +112,7 @@
             this.txtDiaChi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDiaChi.Location = new System.Drawing.Point(786, 204);
+            this.txtDiaChi.Location = new System.Drawing.Point(538, 191);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.PasswordChar = '\0';
@@ -165,7 +132,7 @@
             this.txtSdt.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSdt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSdt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSdt.Location = new System.Drawing.Point(786, 259);
+            this.txtSdt.Location = new System.Drawing.Point(538, 246);
             this.txtSdt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSdt.Name = "txtSdt";
             this.txtSdt.PasswordChar = '\0';
@@ -185,7 +152,7 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(786, 318);
+            this.txtEmail.Location = new System.Drawing.Point(538, 305);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
@@ -205,7 +172,7 @@
             this.guna2TextBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox4.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.Location = new System.Drawing.Point(786, 374);
+            this.guna2TextBox4.Location = new System.Drawing.Point(538, 361);
             this.guna2TextBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox4.Name = "guna2TextBox4";
             this.guna2TextBox4.PasswordChar = '\0';
@@ -222,12 +189,12 @@
             this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(252, 486);
+            this.btnEdit.Location = new System.Drawing.Point(454, 459);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(180, 45);
+            this.btnEdit.Size = new System.Drawing.Size(80, 35);
             this.btnEdit.TabIndex = 13;
-            this.btnEdit.Text = "btnEdit";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click_1);
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnSave
             // 
@@ -237,12 +204,12 @@
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(683, 486);
+            this.btnSave.Location = new System.Drawing.Point(707, 459);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(180, 45);
+            this.btnSave.Size = new System.Drawing.Size(80, 35);
             this.btnSave.TabIndex = 14;
-            this.btnSave.Text = "btnSave";
-            this.btnSave.Click += new System.EventHandler(this.guna2Button2_Click);
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // XemThongTinUser
             // 
@@ -256,9 +223,6 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtSdt);
             this.Controls.Add(this.txtDiaChi);
-            this.Controls.Add(this.txtSdt1);
-            this.Controls.Add(this.txtEmail1);
-            this.Controls.Add(this.txtDiaChi1);
             this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.lbSdt);
             this.Controls.Add(this.lbEmail);
@@ -280,9 +244,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lbDiachi;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbEmail;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbSdt;
-        private Guna.UI2.WinForms.Guna2HtmlLabel txtSdt1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel txtEmail1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel txtDiaChi1;
         private Guna.UI2.WinForms.Guna2HtmlLabel txtHoTen;
         private Guna.UI2.WinForms.Guna2TextBox txtDiaChi;
         private Guna.UI2.WinForms.Guna2TextBox txtSdt;

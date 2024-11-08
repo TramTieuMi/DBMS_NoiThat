@@ -37,13 +37,6 @@ namespace DBMS_NoiThat.user
         }
         private void ToggleEdit(bool enable)
         {
-            // Kích hoạt hoặc vô hiệu chỉnh sửa trên các TextBox
-            txtDiaChi.ReadOnly = !enable;  // Đổi từ ReadOnly thành có thể chỉnh sửa
-            txtSdt.ReadOnly = !enable;
-            txtEmail.ReadOnly = !enable;
-
-        private void ToggleEdit(bool enable)
-        {
             // Bật hoặc tắt chế độ chỉnh sửa
             txtDiaChi.ReadOnly = !enable;
             txtSdt.ReadOnly = !enable;
@@ -109,9 +102,9 @@ namespace DBMS_NoiThat.user
 
 
 
+
         private void UpdateUserData()
-        {
-            // Cập nhật thông tin người dùng trong cơ sở dữ liệu
+        {// Cập nhật thông tin người dùng trong cơ sở dữ liệu
             using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
             {
                 string query = "UPDATE TAIKHOAN SET Email = @Email WHERE TenDangNhap = @TenDangNhap";
@@ -128,31 +121,15 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void UpdateUserData()
-        {
-
-       
 
         private void XemThongTinUser_Load(object sender, EventArgs e)
         {
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            // Lưu thông tin và quay về chế độ xem
-            UpdateUserData();
-            ToggleEdit(false);
-            isEditing = false;
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            // Lưu thông tin và quay về chế độ xem
-            UpdateUserData();
-            ToggleEdit(false);
-            isEditing = false;
-        }
+   
 
-        private void btnEdit_Click_1(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             if (isEditing)
             {
@@ -168,6 +145,15 @@ namespace DBMS_NoiThat.user
                 isEditing = true;
             }
         }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+            // Lưu thông tin và quay về chế độ xem
+            UpdateUserData();
+            ToggleEdit(false);
+            isEditing = false;
+        }
     }
+
 }
 
