@@ -21,8 +21,9 @@ namespace DBMS_NoiThat.Entity
         string TrangThai;
         int SoLuong;
         string TenSanPham;
+        byte[] pic;
 
-        public EDonHang(int maDonHang, int maSanPham, int maKhachHang, string tenNguoiDat, int sDTNguoiDat, string tenNguoiNhan, int sDTNguoiNhan, int soTien, string ngayMuaHang, string diaChiNhan, string trangThai, int soLuong, string tenSanPham)
+        public EDonHang(int maDonHang, int maSanPham, int maKhachHang, string tenNguoiDat, int sDTNguoiDat, string tenNguoiNhan, int sDTNguoiNhan, int soTien, string ngayMuaHang, string diaChiNhan, string trangThai, int soLuong, string tenSanPham, byte[] pic)
         {
             MaDonHang = maDonHang;
             MaSanPham = maSanPham;
@@ -37,6 +38,7 @@ namespace DBMS_NoiThat.Entity
             TrangThai = trangThai;
             SoLuong = soLuong;
             TenSanPham = tenSanPham;
+            this.pic = pic;
         }
 
         public int MaDonHang1 { get => MaDonHang; set => MaDonHang = value; }
@@ -52,5 +54,6 @@ namespace DBMS_NoiThat.Entity
         public string TrangThai1 { get => TrangThai; set => TrangThai = value; }
         public int SoLuong1 { get => SoLuong; set => SoLuong = value; }
         public string TenSanPham1 { get => TenSanPham; set => TenSanPham = value; }
+        public byte[] Pic { get => pic; set => pic = value; }
     }
 }

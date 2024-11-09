@@ -27,7 +27,7 @@ namespace DBMS_NoiThat.user9
             conn.OpenConnection();
             SqlCommand cmd = new SqlCommand("SELECT dbo.GetMaKhachHang(@TenDangNhap)", conn.GetConnection());
             cmd.Parameters.AddWithValue("@TenDangNhap", tenTaiKhoan);
-            int maKhachHang = (int)cmd.ExecuteScalar();
+            maKhachHang = (int)cmd.ExecuteScalar();
             conn.CloseConnection();
             // MessageBox.Show(maKhachHang.ToString());
             timer1.Start();
