@@ -1,4 +1,5 @@
-﻿using Do_An_Tuyen_Dung;
+﻿using DBMS_NoiThat.user;
+using Do_An_Tuyen_Dung;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
@@ -20,159 +22,100 @@ namespace DBMS_NoiThat.user
         private bool isEditing = false;
         Modify modify = new Modify();
         SqlConnection connStr = Connection.GetSqlConnection();
+        private int TenDangNhap;
         public XemThongTinUser()
         {
             InitializeComponent();
-            ThucThi(FDangNhap.TenDangNhap); /////////////////////////////////////////////////////////////////////////
+            ThucThi(FDangNhap.TenDangNhap); // Lấy thông tin người dùng khi form được mở
         }
+
         public XemThongTinUser(string tenUV, string email)
         {
             InitializeComponent();
             string tenTK = KiemTK(email);
             ThucThi(tenTK);
-            ToggleEdit(false); // Mặc định là chế độ xem, không cho phép chỉnh sửa
+            ToggleEdit(false); // Đặt form ở chế độ xem (không cho phép chỉnh sửa)
         }
         private void ToggleEdit(bool enable)
         {
-            // Kích hoạt hoặc vô hiệu chỉnh sửa trên các TextBox
-            txtDiaChi.ReadOnly = !enable;  // Đổi từ ReadOnly thành có thể chỉnh sửa
+            // Bật hoặc tắt chế độ chỉnh sửa
+            txtDiaChi.ReadOnly = !enable;
             txtSdt.ReadOnly = !enable;
             txtEmail.ReadOnly = !enable;
+            btnSave.Visible = enable; // Hiển thị nút "Lưu" khi chế độ chỉnh sửa bật
+            btnEdit.Text = enable ? "Cancel" : "Edit"; // Đổi thành "Cancel" khi đang chỉnh sửa
 
-            btnSave.Visible = enable;  // Hiển thị nút "Lưu" khi chế độ chỉnh sửa bật
-            btnEdit.Text = enable ? "Cancel" : "Edit";  // Đổi thành "Cancel" khi đang chỉnh sửa
-
-            // Tùy chỉnh màu nền và kiểu dáng để báo hiệu chế độ xem hay chỉnh sửa
-            if (!enable)
-            {
-                // Màu nền khi không thể chỉnh sửa
-                txtDiaChi.BackColor = System.Drawing.Color.LightGray;
-                txtSdt.BackColor = System.Drawing.Color.LightGray;
-                txtEmail.BackColor = System.Drawing.Color.LightGray;
-            }
-            else
-            {
-                // Màu nền khi ở chế độ chỉnh sửa
-                txtDiaChi.BackColor = System.Drawing.Color.White;
-                txtSdt.BackColor = System.Drawing.Color.White;
-                txtEmail.BackColor = System.Drawing.Color.White;
-            }
-        }
-        private void XemProfileUser_Load(object sender, EventArgs e)
-        {
-            // Mặc định các TextBox là ReadOnly (hoặc có thể dùng Enabled = false)
-            txtDiaChi.ReadOnly = true;
-            txtSdt.ReadOnly = true;
-            txtEmail.ReadOnly = true;
+            // Thay đổi màu nền khi chế độ chỉnh sửa bật hoặc tắt
+            txtDiaChi.BackColor = enable ? Color.White : Color.LightGray;
+            txtSdt.BackColor = enable ? Color.White : Color.LightGray;
+            txtEmail.BackColor = enable ? Color.White : Color.LightGray;
         }
 
-        public string KiemTK(string email)
+        private string KiemTK(string email)
         {
-            string tk = string.Empty;
-            string query = "SELECT TenDangNhap,Email FROM TAIKHOAN";
-            SqlCommand command = new SqlCommand(query, connStr);
-            connStr.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            string tenTK = string.Empty;
+            string query = "SELECT TenDangNhap FROM TAIKHOAN WHERE Email = @Email";
+
+            using (SqlCommand command = new SqlCommand(query, connStr))
             {
-                if (reader["Email"].ToString() == email)
+                command.Parameters.AddWithValue("@Email", email);
+                connStr.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    tk = reader["TenDangNhap"].ToString();
-                    break;
+                    tenTK = reader["TenDangNhap"].ToString();
                 }
+                connStr.Close();
             }
-            return tk;
-        }
 
+            return tenTK;
+        }
 
         public void ThucThi(string tenTK)
         {
-            //đoạn này chưa đụng đến nha
-
-            FDangNhap fLogin = new FDangNhap();
-            string em = "VanKien@gmail.com";
-            DataTable dataTable = new DataTable();
-            string sqlQuery = "SELECT HovaTen,Email,DiaChi,SDT FROM KHACHHANG WHERE Email = @Email";
-
-
-            DataTable dataTable1 = new DataTable();
-            string sqlQuery1 = "SELECT * FROM View_ThongTinTaiKhoanUser where TenDangNhap = @TenDangNhap";
-            modify.TaiDuLieu(dataTable1, sqlQuery1, "@TenDangNhap", tenTK);
-            if (dataTable1.Rows.Count > 0)
+            // Tải dữ liệu user từ cơ sở dữ liệu và điền vào các TextBox
+            using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
             {
-                foreach (DataRow row1 in dataTable1.Rows)
+                string query = "SELECT * from View_ThongTinTaiKhoanUser WHERE TenDangNhap = @TenDangNhap";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@TenDangNhap", tenTK);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    string TenTK = row1["TenDangNhap"].ToString();
-                    if (TenTK == tenTK)
-                    {
-                        em = row1["Email"].ToString();
-                    }
+                    txtHoTen.Text = reader["HovaTen"].ToString();
+                    txtEmail.Text = reader["Email"].ToString();
+                    txtDiaChi.Text = reader["DiaChi"].ToString();
+                    txtSdt.Text = reader["SDT"].ToString();
+                    txtTenDangNhap.Text = reader["TenDangNhap"].ToString();
                 }
-            }
-
-            modify.TaiDuLieu(dataTable, sqlQuery, "@Email", em);
-            if (dataTable.Rows.Count > 0)
-            {
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    string email = row["Email"].ToString();
-                    if (email == em)
-                    {
-                        txtHoTen.Text = row["HovaTen"].ToString();
-                        txtDiaChi.Text = row["DiaChi"].ToString();
-                        txtSdt.Text = row["SDT"].ToString();
-                        txtEmail.Text = row["Email"].ToString();
-
-                    }
-                }
+                connection.Close();
             }
         }
 
-        private void lbSdt_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void txtHoTen_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (isEditing)
-            {
-                // Nếu đang ở chế độ chỉnh sửa, và nhấn "Cancel", hủy bỏ và quay lại chế độ xem
-                ThucThi(FDangNhap.TenDangNhap); // Tải lại dữ liệu ban đầu
-                ToggleEdit(false);
-                isEditing = false;
-            }
-            else
-            {
-                // Kích hoạt chế độ chỉnh sửa
-                ToggleEdit(true);
-                isEditing = true;
-            }
-        }
         private void UpdateUserData()
-        {
-
-            // Cập nhật thông tin user trong cơ sở dữ liệu
+        {// Cập nhật thông tin người dùng trong cơ sở dữ liệu
             using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
             {
                 string query = "UPDATE KHACHHANG " +
-               "SET KHACHHANG.SDT = @SDT, KHACHHANG.DiaChi = @DiaChi " +
-               "FROM KHACHHANG " +
-               "JOIN TAIKHOAN ON KHACHHANG.Email = TAIKHOAN.Email " +
-               "WHERE HovaTen = @TenDangNhap";
+                    "SET KHACHHANG.SDT = @SDT, KHACHHANG.DiaChi = @DiaChi " +
+                    "FROM KHACHHANG " +
+                    "JOIN TAIKHOAN ON KHACHHANG.Email = TAIKHOAN.Email " +
+                    "WHERE HovaTen = @HovaTen";
+
 
                 SqlCommand command = new SqlCommand(query, connection);
 
-                command.Parameters.AddWithValue("@SDT", txtSdt.Text);
                 command.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
-                
+                command.Parameters.AddWithValue("@Sdt", txtSdt.Text);
                 command.Parameters.AddWithValue("@Email", txtEmail.Text);
-                command.Parameters.AddWithValue("@TenDangNhap", txtHoTen.Text);
+                command.Parameters.AddWithValue("@HovaTen", txtHoTen.Text);
+                command.Parameters.AddWithValue("@TenDangNhap", txtTenDangNhap.Text);
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -193,21 +136,44 @@ namespace DBMS_NoiThat.user
                 }
                 MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void XemThongTinUser_Load(object sender, EventArgs e)
+        {
+            txtDiaChi.ReadOnly = true;
+            txtSdt.ReadOnly = true;
+            txtEmail.ReadOnly = true;
+        }
+
+   
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (isEditing)
+            {
+                // Nếu đang ở chế độ chỉnh sửa, hủy và quay lại chế độ xem
+                ThucThi(FDangNhap.TenDangNhap); // Tải lại dữ liệu ban đầu
+                ToggleEdit(false);
+                isEditing = false;
+                txtEmail.Visible = true;
+            }
+            else
+            {
+                // Kích hoạt chế độ chỉnh sửa
+                ToggleEdit(true);
+                isEditing = true;
+            }
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
         {
             // Lưu thông tin và quay về chế độ xem
             UpdateUserData();
             ToggleEdit(false);
             isEditing = false;
         }
-
-        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
+
 }
+
