@@ -84,7 +84,7 @@ namespace DBMS_NoiThat.UC
             Panel pnlProduct = new Panel();
             pnlProduct.AutoSize = true;
             pnlProduct.BorderStyle = BorderStyle.FixedSingle;
-            pnlProduct.BackColor = Color.LightBlue; // Màu nền nhẹ nhàng
+            pnlProduct.BackColor = Color.WhiteSmoke; // Màu nền nhẹ nhàng
             pnlProduct.Padding = new Padding(10); // Khoảng cách bên trong Panel
             pnlProduct.Margin = new Padding(10); // Khoảng cách giữa các Panel
 
