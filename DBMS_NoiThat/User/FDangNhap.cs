@@ -35,10 +35,7 @@ namespace DBMS_NoiThat.user
             {
                 DataTable dt = new DataTable();
                 string query = "Select * from TAIKHOAN where TenDangNhap  = '" + tentk + "' and MatKhau  = '" + matkhau + "'";
-                //string query = "SELECT TAIKHOAN.TenDangNhap, TAIKHOAN.MatKhau, KHACHHANG.Email, KHACHHANG.MaKhachHang" +
-                //    "FROM TAIKHOAN" +
-                //    "JOIN KHACHHANG ON TAIKHOAN.Email = KHACHHANG.Email";
-                // truy vấn tên trùng mới cho vô ?
+                
                 string query1 = "SELECT TenDangNhap,RoleID FROM TAIKHOAN Where TenDangNhap = @TenDangNhap";
                 modify.TaiDuLieu(dt, query1, "@TenDangNhap", txtTenTK.Text);
                 if (modify.taiKhoans(query).Count != 0)
@@ -48,13 +45,7 @@ namespace DBMS_NoiThat.user
                     foreach (DataRow row in dt.Rows)
                     {
                         string ten = row["TenDangNhap"].ToString();
-                        //int maKhachHang = (int)row["MaKhachHang"];
-
-                        //string queryCustomer = "SELECT KHACHHANG.MaKhachHang FROM TAIKHOAN " +
-                        //        "JOIN KHACHHANG ON TAIKHOAN.Email = KHACHHANG.Email" +
-                        //        "where TenDangNhap = @TenDangNhap";
-                        //int? maKhachHang = row["MaKhachHang"] != DBNull.Value ? (int?)Convert.ToInt32(row["MaKhachHang"]) : null;
-
+                        
                         if (ten == txtTenTK.Text)
                         {
                             int role = Convert.ToInt32(row["RoleID"]);

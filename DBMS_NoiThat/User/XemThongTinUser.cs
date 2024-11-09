@@ -156,7 +156,7 @@ namespace DBMS_NoiThat.user
                 ThucThi(FDangNhap.TenDangNhap); // Tải lại dữ liệu ban đầu
                 ToggleEdit(false);
                 isEditing = false;
-                
+                txtEmail.Visible = true;
             }
             else
             {
