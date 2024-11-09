@@ -95,35 +95,51 @@ namespace DBMS_NoiThat.user
 
             adapter.Fill(dataTable);
             flwPnLichSu.Controls.Clear();
+
             if (dataTable.Rows.Count > 0)
             {
-                foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
+                // Biến để lưu mã đơn hàng trước đó
+                object previousOrderID = null;
+
+                foreach (DataRow row in dataTable.Rows)
                 {
+                    // Giả sử cột OrderID đại diện cho mã đơn hàng
+                    object currentOrderID = row["MaDonHang"];////////////////////////////
 
-                    if (tenTaiKhoan == (string)row["TenDangNhap"])
+                    // Khi gặp đơn hàng mới, tạo một UserControl mới để hiển thị nhóm sản phẩm
+                    if (previousOrderID == null || !currentOrderID.Equals(previousOrderID))
                     {
+                        UCLichSuMuaHang ucOrderGroup1 = new UCLichSuMuaHang(); // UC đại diện cho một đơn hàng
+                        ucOrderGroup1.SetOrderInfo(currentOrderID, (DateTime)row["NgayMuaHang"], (string)row["TrangThai"]);
+                        flwPnLichSu.Controls.Add(ucOrderGroup1);
 
-                        string TenSanPham1 = (string)row["TenSanPham"];
-                        string MoTa1 = (string)row["MoTa"];
-                        string MauSac1 = (string)row["MauSac"];
-                        int SoLuong1 = (int)row["SoLuong"];
-                        DateTime NgayMua1 = (DateTime)row["NgayMuaHang"];
-                        string TrangThai1 = (string)row["TrangThai"];
-                        //int SoTien1 = (int)row["SoTien"];
-
-
-                        LichSuMuaHang gioHang = new LichSuMuaHang(TenSanPham1, MoTa1, MauSac1, SoLuong1, NgayMua1, TrangThai1);
-                        listLichSu.Add(gioHang);
-                        UCLichSuMuaHang ucgh = new UCLichSuMuaHang(gioHang);
-                        int dis = (flwPnLichSu.Width - (2 * ucgh.Width)) / 3;
-                        ucgh.Margin = new Padding(dis, dis, 0, 0);
-                        flwPnLichSu.Controls.Add(ucgh);
+                        // Cập nhật mã đơn hàng trước đó
+                        previousOrderID = currentOrderID;
                     }
+
+                    // Tạo chi tiết sản phẩm và thêm vào nhóm đơn hàng hiện tại
+                    string TenSanPham = (string)row["TenSanPham"];
+                    string MoTa = (string)row["MoTa"];
+                    string MauSac = (string)row["MauSac"];
+                    int SoLuong = (int)row["SoLuong"];
+                    DateTime NgayMua = (DateTime)row["NgayMuaHang"];
+                    string TrangThai = (string)row["TrangThai"];
+
+
+                    // Tạo đối tượng sản phẩm từ các trường dữ liệu
+                    LichSuMuaHang product = new LichSuMuaHang(TenSanPham, MoTa, MauSac, SoLuong, NgayMua, TrangThai);
+
+
+                    // Lấy tham chiếu đến UserControl cuối cùng vừa thêm vào FlowLayoutPanel
+                    UCLichSuMuaHang ucOrderGroup = (UCLichSuMuaHang)flwPnLichSu.Controls[flwPnLichSu.Controls.Count - 1];
+
+                    // Thêm sản phẩm vào nhóm đơn hàng hiện tại
+                    ucOrderGroup.AddProduct(product); // Phương thức này sẽ thêm sản phẩm vào flwPnLichSu trong ucLichSuMuaHang1
                 }
             }
             else
             {
-                Console.WriteLine("Không có dữ liệu trong giỏ hàng.");
+                Console.WriteLine("Không có dữ liệu trong lịch sử mua hàng.");
             }
             connection.Close();
         }
@@ -134,6 +150,16 @@ namespace DBMS_NoiThat.user
         }
 
         private void flwPnLichSu_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ucLichSuMuaHang1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucLichSuMuaHang1_Load_1(object sender, EventArgs e)
         {
 
         }

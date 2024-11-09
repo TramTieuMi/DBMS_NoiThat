@@ -101,11 +101,13 @@
             // 
             // ucLichSuMuaHang1
             // 
+            this.ucLichSuMuaHang1.AutoScroll = true;
             this.ucLichSuMuaHang1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ucLichSuMuaHang1.Location = new System.Drawing.Point(3, 3);
             this.ucLichSuMuaHang1.Name = "ucLichSuMuaHang1";
-            this.ucLichSuMuaHang1.Size = new System.Drawing.Size(1255, 105);
+            this.ucLichSuMuaHang1.Size = new System.Drawing.Size(1273, 145);
             this.ucLichSuMuaHang1.TabIndex = 0;
+            this.ucLichSuMuaHang1.Load += new System.EventHandler(this.ucLichSuMuaHang1_Load_1);
             // 
             // FLichSu
             // 
