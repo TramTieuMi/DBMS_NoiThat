@@ -161,5 +161,10 @@ namespace DBMS_NoiThat.user
             }
 
         }
+
+        private void panel_Body_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

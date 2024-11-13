@@ -39,8 +39,7 @@ namespace DBMS_NoiThat.user
         }
         public FLichSu(string tenTaiKhoan)
         {
-            InitializeComponent();
-            //this.tenDangNhap = tenDangNhap;
+            InitializeComponent();            
             this.tenTaiKhoan = tenTaiKhoan;
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
@@ -48,13 +47,11 @@ namespace DBMS_NoiThat.user
             maKH = maKhachHang;
         }
 
-        //SqlConnection connStr = Connection.GetSqlConnection();
         private void FLichSu_Load(object sender, EventArgs e)
         {
             InitializeComponent();
             string em = KiemEmail();
-            nm.Text = $"Welcome {tenTaiKhoan} to our website";
-            //  LoadLichSu(maKhachHang);
+            //nm.Text = $"Welcome {tenTaiKhoan} to our website";
         }
         public bool KTTenTaiKhoan(string chuoi)
         {
@@ -82,61 +79,7 @@ namespace DBMS_NoiThat.user
             connection.Close();
             return em;
         }
-        //public void LoadSanPham(int maDonHang)
-        //{
-        //    string query = "SELECT * FROM View_DonHangChiTiet";
-        //    DataTable dataTable = new DataTable();
-        //    connection.Open();
-        //    SqlCommand command = new SqlCommand(query, connection);
-        //    SqlDataAdapter adapter = new SqlDataAdapter(command);
-        //    adapter.Fill(dataTable);
-
-        //    int sum = 0;
-        //    int MaKhachHang = 0;
-        //    string TenSanPham= "";
-        //    string MoTa = "";
-        //    string Mau = "";
-        //    int SoLuong = 0;
-        //    DateTime NgayMua = ;
-        //    string TrangThai = "";
-
-        //    foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
-        //    {
-        //        if ((maDonHang == (int)row["MaDonHang"]) && (row["TrangThai"].ToString() == "Đặt Hàng"))
-        //        {
-        //            int MaSanPham = (int)row["MaSanPham"];
-        //            MaKhachHang = (int)row["MaKhachHang"];
-
-        //            TenSanPham = row["TenSanPham"].ToString();
-        //            MoTa = row["MoTa"].ToString();
-        //            Mau = row["Mau"].ToString();
-        //            SoLuong = Convert.ToInt32(row["SDTNguoiNhan"].ToString());
-        //           // NgayMua = row["NgayMuaHang"].ToString();
-        //            TrangThai = row["TrangThai"].ToString();
-
-        //            int SoTien = (int)row["SoTien"];
-        //            sum += SoTien; // Sum the total amount
-        //            LichSuMuaHang lichsu = new LichSuMuaHang(TenSanPham, MoTa, Mau, SoLuong, NgayMua, TrangThai);
-
-        //            UCLichSuMuaHang ucls = new UCLichSuMuaHang(lichsu);
-        //            int dis = (flwPnLichSu.Width - (2 * ucls.Width)) / 3;
-        //            ucls.Margin = new Padding(dis, dis, 0, 0);
-        //            flwPnLichSu.Controls.Add(ucls);
-        //        }
-        //    }
-
-        //// Set the values in the labels and text boxes
-        //LB_MaDonHang.Text = maDonHang.ToString();
-        //LB_MaKH.Text = MaKhachHang.ToString();
-        //LB_TenNguoiDat.Text = TenNguoiDat;
-        //LB_SDTNguoiDat.Text = SDTNguoiDat.ToString();
-        //LB_SoTien.Text = sum.ToString();
-        //TB_TenNguoiNhan.Text = TenNguoiNhan;
-        //TB_SDTNguoiNhan.Text = SDTNguoiNhan.ToString();
-        //TB_DiaChi.Text = DiaChiNhan;
-
-        //    connection.Close(); // Close the connection
-        //}
+        
         public void LoadLichSu(string tenDangNhap)
         {
             List<LichSuMuaHang> listLichSu = new List<LichSuMuaHang>();
@@ -152,35 +95,72 @@ namespace DBMS_NoiThat.user
 
             adapter.Fill(dataTable);
             flwPnLichSu.Controls.Clear();
+
             if (dataTable.Rows.Count > 0)
             {
-                foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
+                //object previousOrderID = null;
+                decimal totalOrderPrice = 0; // Biến để lưu tổng giá trị của đơn hàng
+                // Biến để lưu mã đơn hàng trước đó
+                object previousOrderID = null;
+
+                foreach (DataRow row in dataTable.Rows)
                 {
+                    // Giả sử cột OrderID đại diện cho mã đơn hàng
+                    object currentOrderID = row["MaDonHang"];////////////////////////////
 
-                    if (tenTaiKhoan == (string)row["TenDangNhap"])
+                    // Khi gặp đơn hàng mới, tạo một UserControl mới để hiển thị nhóm sản phẩm
+                    if (previousOrderID == null || !currentOrderID.Equals(previousOrderID))
                     {
+                        // Nếu không phải đơn hàng đầu tiên, cập nhật giá trị cho đơn hàng trước đó
+                        if (previousOrderID != null)
+                        {
+                            // Thêm tổng giá trị của đơn hàng vào `UserControl`
+                            UCLichSuMuaHang lastUcOrderGroup = (UCLichSuMuaHang)flwPnLichSu.Controls[flwPnLichSu.Controls.Count - 1];
+                            lastUcOrderGroup.SetTotalOrderPrice(totalOrderPrice);
+                        }
+                        UCLichSuMuaHang ucOrderGroup1 = new UCLichSuMuaHang(); // UC đại diện cho một đơn hàng
+                        ucOrderGroup1.SetOrderInfo(currentOrderID, (DateTime)row["NgayMuaHang"], (string)row["TrangThai"]);
+                        flwPnLichSu.Controls.Add(ucOrderGroup1);
 
-                        string TenSanPham1 = (string)row["TenSanPham"];
-                        string MoTa1 = (string)row["MoTa"];
-                        string MauSac1 = (string)row["MauSac"];
-                        int SoLuong1 = (int)row["SoLuong"];
-                        DateTime NgayMua1 = (DateTime)row["NgayMuaHang"];
-                        string TrangThai1 = (string)row["TrangThai"];
-                        //int SoTien1 = (int)row["SoTien"];
+                        // Cập nhật mã đơn hàng trước đó
+                        previousOrderID = currentOrderID;
+                        totalOrderPrice = 0; // Đặt lại tổng giá trị cho đơn hàng mới
 
-
-                        LichSuMuaHang gioHang = new LichSuMuaHang(TenSanPham1, MoTa1, MauSac1, SoLuong1, NgayMua1, TrangThai1);
-                        listLichSu.Add(gioHang);
-                        UCLichSuMuaHang ucgh = new UCLichSuMuaHang(gioHang);
-                        int dis = (flwPnLichSu.Width - (2 * ucgh.Width)) / 3;
-                        ucgh.Margin = new Padding(dis, dis, 0, 0);
-                        flwPnLichSu.Controls.Add(ucgh);
                     }
+
+                    // Tạo chi tiết sản phẩm và thêm vào nhóm đơn hàng hiện tại
+                    string TenSanPham = (string)row["TenSanPham"];
+                    string MoTa = (string)row["MoTa"];
+                    string MauSac = (string)row["MauSac"];
+                    int SoLuong = (int)row["SoLuong"];
+                    DateTime NgayMua = (DateTime)row["NgayMuaHang"];
+                    string TrangThai = (string)row["TrangThai"];
+                    decimal GiaSanPham = (decimal)row["GiaSanPham"]; // Giá sản phẩm
+
+                    // Tính giá trị của sản phẩm và cộng vào tổng giá trị đơn hàng
+                    totalOrderPrice += SoLuong * GiaSanPham;
+                    // Tạo đối tượng sản phẩm từ các trường dữ liệu
+                    LichSuMuaHang product = new LichSuMuaHang(TenSanPham, MoTa, MauSac, SoLuong, NgayMua, TrangThai);
+
+
+                    // Lấy tham chiếu đến UserControl cuối cùng vừa thêm vào FlowLayoutPanel
+                    UCLichSuMuaHang ucOrderGroup = (UCLichSuMuaHang)flwPnLichSu.Controls[flwPnLichSu.Controls.Count - 1];
+
+                    // Thêm sản phẩm vào nhóm đơn hàng hiện tại
+                    ucOrderGroup.AddProduct(product); // Phương thức này sẽ thêm sản phẩm vào flwPnLichSu trong ucLichSuMuaHang1
                 }
+
+                // Cập nhật tổng giá trị cho đơn hàng cuối cùng
+                if (previousOrderID != null)
+                {
+                    UCLichSuMuaHang lastUcOrderGroup = (UCLichSuMuaHang)flwPnLichSu.Controls[flwPnLichSu.Controls.Count - 1];
+                    lastUcOrderGroup.SetTotalOrderPrice(totalOrderPrice);
+                }
+
             }
             else
             {
-                Console.WriteLine("Không có dữ liệu trong giỏ hàng.");
+                Console.WriteLine("Không có dữ liệu trong lịch sử mua hàng.");
             }
             connection.Close();
         }
@@ -191,6 +171,16 @@ namespace DBMS_NoiThat.user
         }
 
         private void flwPnLichSu_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ucLichSuMuaHang1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucLichSuMuaHang1_Load_1(object sender, EventArgs e)
         {
 
         }
