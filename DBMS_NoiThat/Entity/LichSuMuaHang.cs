@@ -29,6 +29,7 @@ namespace DBMS_NoiThat.Entity
             this.ngayMua = ngayMua;
             this.trangThai = trangThai;
             //this.thanhTien = thanhTien;
+           // this.thanhTien = thanhTien;
         }
 
         public string TenSanPham { get => tenSanPham; set => tenSanPham = value; }

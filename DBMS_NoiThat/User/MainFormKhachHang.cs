@@ -162,5 +162,13 @@ namespace DBMS_NoiThat.user9
         {
 
         }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FDangNhap fDangNhap = new FDangNhap();
+            //Application.Run(fDangNhap);
+
+        }
     }
 }

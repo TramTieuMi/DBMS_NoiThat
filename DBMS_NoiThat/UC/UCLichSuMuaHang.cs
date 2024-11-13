@@ -76,7 +76,7 @@ namespace DBMS_NoiThat.UC
             //txtNgayMua.Text = $"Ngày mua: {orderDate.ToShortDateString()}";
             //txtTrangThai.Text = $"Trạng thái: {status}";
         }
-
+        private decimal totalAmount = 0;
         // Phương thức để thêm sản phẩm vào danh sách
         public void AddProduct(LichSuMuaHang product)
         {
@@ -124,12 +124,26 @@ namespace DBMS_NoiThat.UC
             lblTrangThai.Top = lblNgayMua.Bottom + 5;
             pnlProduct.Controls.Add(lblTrangThai);
 
+            //Label lblThanhTien = new Label();
+            //lblThanhTien.Text = $"Thành tiền: {product.ThanhTien:C}";
+            //lblThanhTien.AutoSize = true;
+            //lblThanhTien.Top = lblTrangThai.Bottom + 5;
+            //pnlProduct.Controls.Add(lblThanhTien);
+
+
+            // Cộng dồn tổng tiền
+            //totalAmount += product.ThanhTien;
             // Thêm Panel vào FlowLayoutPanel
             flpProducts.Controls.Add(pnlProduct);
 
 
         }
-        
+        public void SetTotalOrderPrice(decimal totalPrice)
+        {
+            //.Text = $"Tổng giá trị: {totalPrice:C}"; // Định dạng tiền tệ
+            txtThanhTien.Text = $"Tổng: {totalPrice} ₫";
+        }
+
 
         private void UCLichSuDonHang_Load(object sender, EventArgs e)
         {
