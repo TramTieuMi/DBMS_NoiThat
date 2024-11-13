@@ -1,5 +1,4 @@
-﻿using DBMS_NoiThat.user;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBMS_NoiThat.user9
+namespace DBMS_NoiThat.user
 {
     public partial class MainFormKhachHang : Form
     {
@@ -18,16 +17,16 @@ namespace DBMS_NoiThat.user9
         private int maKhachHang;
 
         private string tenTaiKhoan;
+
         public MainFormKhachHang(string tenTaiKhoan)
         {
-
             InitializeComponent();
             this.tenTaiKhoan = tenTaiKhoan;
 
             conn.OpenConnection();
             SqlCommand cmd = new SqlCommand("SELECT dbo.GetMaKhachHang(@TenDangNhap)", conn.GetConnection());
             cmd.Parameters.AddWithValue("@TenDangNhap", tenTaiKhoan);
-            int maKhachHang = (int)cmd.ExecuteScalar();
+            maKhachHang = (int)cmd.ExecuteScalar();
             conn.CloseConnection();
             // MessageBox.Show(maKhachHang.ToString());
             timer1.Start();
@@ -36,15 +35,16 @@ namespace DBMS_NoiThat.user9
             try
             {
                 XemSanPhamForm xemSanPhamForm = new XemSanPhamForm();
-                xemSanPhamForm.idKhachHang= maKhachHang;
+                xemSanPhamForm.idKhachHang = maKhachHang;
                 OpenChildForm(xemSanPhamForm);
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
+
         }
         private Form currentFormChild;
         private void OpenChildForm(Form childForm)
@@ -77,6 +77,21 @@ namespace DBMS_NoiThat.user9
             }
         }
 
+
+        private void buttonTTCN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new XemThongTinUser());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
         private void buttonGioHang_Click(object sender, EventArgs e)
         {
             try
@@ -88,6 +103,7 @@ namespace DBMS_NoiThat.user9
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void labelMenu_Click(object sender, EventArgs e)
@@ -102,6 +118,7 @@ namespace DBMS_NoiThat.user9
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void MainFormKhachHang_Load(object sender, EventArgs e)
@@ -111,22 +128,8 @@ namespace DBMS_NoiThat.user9
             labelDate.Text = DateTime.Now.ToLongDateString();
             hello.Text = $"Welcome {tenTaiKhoan} to our website";
             //te.Text = $"Welcome {maKhachHang} to our website";
-        }
 
-        private void buttonTTCN_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenChildForm(new XemThongTinUser());
-                // labelHome.Text = buttonQLNV.Text;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
-
-      
 
         private void buttonLSMH_Click(object sender, EventArgs e)
         {
@@ -135,7 +138,7 @@ namespace DBMS_NoiThat.user9
                 //FLichSu lichSuForm = new FLichSu(this.tenTaiKhoan);
                 OpenChildForm(new FLichSu(tenTaiKhoan));
                 // labelHome.Text = buttonQLNV.Text;
-                
+
                 //lichSuForm.ShowDialog();
             }
             catch (Exception ex)
@@ -156,6 +159,7 @@ namespace DBMS_NoiThat.user9
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
     }
 }

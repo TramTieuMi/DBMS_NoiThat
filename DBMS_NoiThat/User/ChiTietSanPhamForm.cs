@@ -13,7 +13,7 @@ using static System.Windows.Forms.AxHost;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
-using DBMS_NoiThat.user9;
+
 
 namespace DBMS_NoiThat.user
 {
@@ -82,6 +82,7 @@ namespace DBMS_NoiThat.user
                     }
                     mydb.CloseConnection();
                 }
+
 
             }
             catch (SqlException ex)

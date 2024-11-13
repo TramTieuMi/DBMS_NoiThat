@@ -1,4 +1,4 @@
-﻿namespace DBMS_NoiThat.user9
+﻿namespace DBMS_NoiThat.user
 {
     partial class MainFormKhachHang
     {
@@ -32,11 +32,10 @@
             this.panel_Body = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel_left = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelMenu = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.labelIDNV = new System.Windows.Forms.Label();
             this.buttonLogOut = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonLSMH = new System.Windows.Forms.Button();
             this.buttonGioHang = new System.Windows.Forms.Button();
             this.buttonTTCN = new System.Windows.Forms.Button();
@@ -46,8 +45,8 @@
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.panel_left.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel_Top.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,14 +60,17 @@
             this.panel_Body.Size = new System.Drawing.Size(1115, 555);
             this.panel_Body.TabIndex = 11;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.Color.Gray;
+            this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.labelMenu);
             this.panel_left.Controls.Add(this.pictureBox2);
-            this.panel_left.Controls.Add(this.labelIDNV);
             this.panel_left.Controls.Add(this.buttonLogOut);
-            this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.buttonLSMH);
             this.panel_left.Controls.Add(this.buttonGioHang);
             this.panel_left.Controls.Add(this.buttonTTCN);
@@ -78,6 +80,17 @@
             this.panel_left.Name = "panel_left";
             this.panel_left.Size = new System.Drawing.Size(202, 555);
             this.panel_left.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DBMS_NoiThat.Properties.Resources.thiet_ke_logo_cong_ty_noi_that_house;
+            this.pictureBox1.Location = new System.Drawing.Point(80, 7);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(77, 77);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // labelMenu
             // 
@@ -95,7 +108,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.Location = new System.Drawing.Point(142, 541);
+            this.pictureBox2.Location = new System.Drawing.Point(106, 440);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(12, 15);
@@ -104,17 +117,6 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
             // 
-            // labelIDNV
-            // 
-            this.labelIDNV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIDNV.ForeColor = System.Drawing.Color.White;
-            this.labelIDNV.Location = new System.Drawing.Point(22, 100);
-            this.labelIDNV.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelIDNV.Name = "labelIDNV";
-            this.labelIDNV.Size = new System.Drawing.Size(145, 31);
-            this.labelIDNV.TabIndex = 3;
-            this.labelIDNV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // buttonLogOut
             // 
             this.buttonLogOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -122,24 +124,13 @@
             this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogOut.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.ForeColor = System.Drawing.Color.White;
-            this.buttonLogOut.Location = new System.Drawing.Point(13, 340);
+            this.buttonLogOut.Location = new System.Drawing.Point(10, 276);
             this.buttonLogOut.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(172, 41);
             this.buttonLogOut.TabIndex = 6;
             this.buttonLogOut.Text = "Log Out";
             this.buttonLogOut.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DBMS_NoiThat.Properties.Resources.thiet_ke_logo_cong_ty_noi_that_house;
-            this.pictureBox1.Location = new System.Drawing.Point(107, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(77, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // buttonLSMH
             // 
@@ -148,7 +139,7 @@
             this.buttonLSMH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLSMH.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLSMH.ForeColor = System.Drawing.Color.White;
-            this.buttonLSMH.Location = new System.Drawing.Point(12, 276);
+            this.buttonLSMH.Location = new System.Drawing.Point(9, 224);
             this.buttonLSMH.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLSMH.Name = "buttonLSMH";
             this.buttonLSMH.Size = new System.Drawing.Size(172, 41);
@@ -164,7 +155,7 @@
             this.buttonGioHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGioHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGioHang.ForeColor = System.Drawing.Color.White;
-            this.buttonGioHang.Location = new System.Drawing.Point(12, 211);
+            this.buttonGioHang.Location = new System.Drawing.Point(9, 171);
             this.buttonGioHang.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGioHang.Name = "buttonGioHang";
             this.buttonGioHang.Size = new System.Drawing.Size(172, 41);
@@ -180,7 +171,7 @@
             this.buttonTTCN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTTCN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTTCN.ForeColor = System.Drawing.Color.White;
-            this.buttonTTCN.Location = new System.Drawing.Point(12, 150);
+            this.buttonTTCN.Location = new System.Drawing.Point(9, 122);
             this.buttonTTCN.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTTCN.Name = "buttonTTCN";
             this.buttonTTCN.Size = new System.Drawing.Size(172, 41);
@@ -219,7 +210,7 @@
             // 
             this.hello.BackColor = System.Drawing.Color.Transparent;
             this.hello.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hello.Location = new System.Drawing.Point(298, 61);
+            this.hello.Location = new System.Drawing.Point(224, 50);
             this.hello.Margin = new System.Windows.Forms.Padding(2);
             this.hello.Name = "hello";
             this.hello.Size = new System.Drawing.Size(104, 19);
@@ -230,7 +221,8 @@
             // 
             this.labelDate.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDate.ForeColor = System.Drawing.Color.Black;
-            this.labelDate.Location = new System.Drawing.Point(891, 9);
+            this.labelDate.Location = new System.Drawing.Point(668, 7);
+            this.labelDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDate.Name = "labelDate";
             this.labelDate.Size = new System.Drawing.Size(389, 31);
             this.labelDate.TabIndex = 2;
@@ -261,8 +253,8 @@
             this.Text = "MainFormKhachHang";
             this.Load += new System.EventHandler(this.MainFormKhachHang_Load);
             this.panel_left.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel_Top.ResumeLayout(false);
             this.panel_Top.PerformLayout();
             this.ResumeLayout(false);
@@ -276,7 +268,6 @@
         private System.Windows.Forms.Panel panel_left;
         private System.Windows.Forms.Label labelMenu;
         private System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.Label labelIDNV;
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonLSMH;

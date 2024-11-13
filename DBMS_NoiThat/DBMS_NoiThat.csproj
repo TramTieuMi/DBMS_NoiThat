@@ -41,6 +41,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user\MainFormKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\MainFormKhachHang.Designer.cs">
+      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ThongKeDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\ThongKeDoanhThu.Designer.cs">
+      <DependentUpon>ThongKeDoanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="Entity\EDonHang.cs" />
     <Compile Include="Entity\EGioHang.cs" />
@@ -91,7 +110,7 @@
     <Compile Include="user\ChiTietSanPhamForm.Designer.cs">
       <DependentUpon>ChiTietSanPhamForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="user\DBConnection.cs" />
+    <Compile Include="DBConnection.cs" />
     <Compile Include="user\DonHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,16 +149,10 @@
     <Compile Include="admin\MainFormAdmin.Designer.cs">
       <DependentUpon>MainFormAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="user\MainFormKhachHang.cs">
+    <Compile Include="user\QuanLyDonHangForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="user\MainFormKhachHang.Designer.cs">
-      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="admin\QuanLyDonHangForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="admin\QuanLyDonHangForm.Designer.cs">
+    <Compile Include="user\QuanLyDonHangForm.Designer.cs">
       <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>
     </Compile>
     <Compile Include="user\XemSanPhamForm.cs">
@@ -154,6 +167,15 @@
     <Compile Include="user\XemThongTinUser.Designer.cs">
       <DependentUpon>XemThongTinUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\MainFormKhachHang.resx">
+      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\ThongKeDoanhThu.resx">
+      <DependentUpon>ThongKeDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -197,10 +219,7 @@
     <EmbeddedResource Include="admin\MainFormAdmin.resx">
       <DependentUpon>MainFormAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="user\MainFormKhachHang.resx">
-      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="admin\QuanLyDonHangForm.resx">
+    <EmbeddedResource Include="user\QuanLyDonHangForm.resx">
       <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\XemSanPhamForm.resx">

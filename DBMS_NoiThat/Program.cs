@@ -1,5 +1,6 @@
-﻿using DBMS_NoiThat.user;
-using DBMS_NoiThat.user9;
+﻿using DBMS_NoiThat.admin;
+using DBMS_NoiThat.user;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
