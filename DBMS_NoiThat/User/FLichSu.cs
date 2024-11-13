@@ -98,6 +98,8 @@ namespace DBMS_NoiThat.user
 
             if (dataTable.Rows.Count > 0)
             {
+                //object previousOrderID = null;
+                decimal totalOrderPrice = 0; // Biến để lưu tổng giá trị của đơn hàng
                 // Biến để lưu mã đơn hàng trước đó
                 object previousOrderID = null;
 
@@ -109,14 +111,23 @@ namespace DBMS_NoiThat.user
                     // Khi gặp đơn hàng mới, tạo một UserControl mới để hiển thị nhóm sản phẩm
                     if (previousOrderID == null || !currentOrderID.Equals(previousOrderID))
                     {
+                        // Nếu không phải đơn hàng đầu tiên, cập nhật giá trị cho đơn hàng trước đó
+                        if (previousOrderID != null)
+                        {
+                            // Thêm tổng giá trị của đơn hàng vào `UserControl`
+                            UCLichSuMuaHang lastUcOrderGroup = (UCLichSuMuaHang)flwPnLichSu.Controls[flwPnLichSu.Controls.Count - 1];
+                            lastUcOrderGroup.SetTotalOrderPrice(totalOrderPrice);
+                        }
                         UCLichSuMuaHang ucOrderGroup1 = new UCLichSuMuaHang(); // UC đại diện cho một đơn hàng
                         ucOrderGroup1.SetOrderInfo(currentOrderID, (DateTime)row["NgayMuaHang"], (string)row["TrangThai"]);
                         flwPnLichSu.Controls.Add(ucOrderGroup1);
 
                         // Cập nhật mã đơn hàng trước đó
                         previousOrderID = currentOrderID;
-                    }
+                        totalOrderPrice = 0; // Đặt lại tổng giá trị cho đơn hàng mới
 
+                    }
+                    
                     // Tạo chi tiết sản phẩm và thêm vào nhóm đơn hàng hiện tại
                     string TenSanPham = (string)row["TenSanPham"];
                     string MoTa = (string)row["MoTa"];
@@ -124,8 +135,10 @@ namespace DBMS_NoiThat.user
                     int SoLuong = (int)row["SoLuong"];
                     DateTime NgayMua = (DateTime)row["NgayMuaHang"];
                     string TrangThai = (string)row["TrangThai"];
+                    decimal GiaSanPham = (decimal)row["GiaSanPham"]; // Giá sản phẩm
 
-
+                    // Tính giá trị của sản phẩm và cộng vào tổng giá trị đơn hàng
+                    totalOrderPrice += SoLuong * GiaSanPham;
                     // Tạo đối tượng sản phẩm từ các trường dữ liệu
                     LichSuMuaHang product = new LichSuMuaHang(TenSanPham, MoTa, MauSac, SoLuong, NgayMua, TrangThai);
 
@@ -136,6 +149,14 @@ namespace DBMS_NoiThat.user
                     // Thêm sản phẩm vào nhóm đơn hàng hiện tại
                     ucOrderGroup.AddProduct(product); // Phương thức này sẽ thêm sản phẩm vào flwPnLichSu trong ucLichSuMuaHang1
                 }
+
+                // Cập nhật tổng giá trị cho đơn hàng cuối cùng
+                if (previousOrderID != null)
+                {
+                    UCLichSuMuaHang lastUcOrderGroup = (UCLichSuMuaHang)flwPnLichSu.Controls[flwPnLichSu.Controls.Count - 1];
+                    lastUcOrderGroup.SetTotalOrderPrice(totalOrderPrice);
+                }
+
             }
             else
             {
