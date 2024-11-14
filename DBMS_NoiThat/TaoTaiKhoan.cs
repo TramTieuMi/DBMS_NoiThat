@@ -22,26 +22,6 @@ namespace DBMS_NoiThat
         {
             InitializeComponent();
         }
-
-        private void guna2HtmlLabel7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2TextBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TaoTaiKhoan_Load(object sender, EventArgs e)
-        {
-
-        }
         public bool checkAccount(string ac)//check mat khau va ten tai khoan
         {
             return Regex.IsMatch(ac, "^[a-zA-Z0-9]{6,24}$");
@@ -134,6 +114,8 @@ namespace DBMS_NoiThat
             }
 
         }
+
+       
     }
 }
 
