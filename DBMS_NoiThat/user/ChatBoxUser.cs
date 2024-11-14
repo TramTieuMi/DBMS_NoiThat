@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace DBMS_NoiThat.user
 {
@@ -26,6 +27,8 @@ namespace DBMS_NoiThat.user
         public ChatBoxUser(string email)
         {
             InitializeComponent();
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
             em = email;
             loadNoiDung(email);
         }
@@ -53,6 +56,7 @@ namespace DBMS_NoiThat.user
                     FLP_NoiDung.Controls.Add(ucnd);
                 }
             }
+            connection.Close();
         }
         
 
@@ -63,10 +67,10 @@ namespace DBMS_NoiThat.user
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 // Thêm các tham số cho thủ tục
-                cmd.Parameters.AddWithValue("@EmailGui", em);
+                cmd.Parameters.AddWithValue("@Email", em);  // Đảm bảo tên tham số trùng với tên trong thủ tục
                 DateTime ngayHienTai = DateTime.Now;
                 cmd.Parameters.AddWithValue("@NgayGui", ngayHienTai);
-                cmd.Parameters.AddWithValue("@TrangThai", "Chưa Xem");
+                cmd.Parameters.AddWithValue("@TrangThai", "Gửi,Chưa Xem");
                 cmd.Parameters.AddWithValue("@NoiDung", TB_NoiDung.Text);
 
                 // Mở kết nối và thực thi thủ tục
@@ -74,6 +78,9 @@ namespace DBMS_NoiThat.user
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
+            TB_NoiDung.Controls.Clear();
+            FLP_NoiDung.Controls.Clear();
+            loadNoiDung(em);
         }
     }
 }

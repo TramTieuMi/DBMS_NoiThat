@@ -19,6 +19,9 @@ namespace DBMS_NoiThat.admin
         public ChatBoxAdmin()
         {
             InitializeComponent();
+
+            dbConnection = new DBConnection(); // Instantiate DBConnection
+            connection = dbConnection.GetConnection(); // Get the connection
             loadTen();
         }
         string em;
@@ -26,6 +29,7 @@ namespace DBMS_NoiThat.admin
         {
             connection.Open();
 
+            // Tạo câu lệnh gọi thủ tục
             SqlCommand cmd = new SqlCommand("GetChatboxDetails", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -33,28 +37,33 @@ namespace DBMS_NoiThat.admin
 
             while (reader.Read())
             {
+                // Lấy dữ liệu từ SqlDataReader
                 string email = reader["Email"].ToString();
                 DateTime ngayGui = Convert.ToDateTime(reader["NgayGui"]);
                 string trangThai = reader["TrangThai"].ToString();
                 string noiDung = reader["NoiDung"].ToString();
                 string hovaTen = reader["HovaTen"].ToString();
-                int roleId = Convert.ToInt32(reader["RoleID"]);
-
+                // Tạo đối tượng ChatBox với dữ liệu vừa đọc được
                 ChatBox chatBox = new ChatBox(email, hovaTen, ngayGui, trangThai, noiDung);
-                UCChatAdminTen uccb = new UCChatAdminTen(chatBox);
 
-                // Đăng ký sự kiện BtnTenClicked
-                uccb.BtnTenClicked += (s, cb) => LoadNoiDung(cb.Email1);
+                // Tạo UCChatAdminTen với đối tượng ChatBox
+                UCChatAdminTen uccb = new UCChatAdminTen(chatBox);              
 
+                // Căn chỉnh khoảng cách giữa các điều khiển trong FlowLayoutPanel
                 int dis = (FLP_Ten.Width - (2 * uccb.Width)) / 3;
                 uccb.Margin = new Padding(dis, dis, 0, 0);
 
+                // Thêm UserControl vào FlowLayoutPanel
                 FLP_Ten.Controls.Add(uccb);
+
+                // Đăng ký sự kiện BtnTenClicked
+                uccb.BtnTenClicked += (s, cb) => LoadNoiDung(cb.Email1);
             }
 
             reader.Close();
             connection.Close();
         }
+
 
         public void LoadNoiDung(string email)
         {
