@@ -85,6 +85,7 @@
             // 
             // FLP_Chat
             // 
+            this.FLP_Chat.AutoScroll = true;
             this.FLP_Chat.Location = new System.Drawing.Point(250, 0);
             this.FLP_Chat.Name = "FLP_Chat";
             this.FLP_Chat.Size = new System.Drawing.Size(867, 520);
@@ -92,6 +93,7 @@
             // 
             // FLP_Ten
             // 
+            this.FLP_Ten.AutoScroll = true;
             this.FLP_Ten.Location = new System.Drawing.Point(0, 0);
             this.FLP_Ten.Name = "FLP_Ten";
             this.FLP_Ten.Size = new System.Drawing.Size(250, 587);

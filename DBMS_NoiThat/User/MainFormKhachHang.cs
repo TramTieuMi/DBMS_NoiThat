@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBMS_NoiThat.admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -169,7 +170,7 @@ namespace DBMS_NoiThat.user
 
         private void BTN_Chat_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new ChatBoxAdmin());
         }
     }
 }

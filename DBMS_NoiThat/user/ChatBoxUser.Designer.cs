@@ -63,6 +63,7 @@
             // 
             // FLP_NoiDung
             // 
+            this.FLP_NoiDung.AutoScroll = true;
             this.FLP_NoiDung.Location = new System.Drawing.Point(0, 0);
             this.FLP_NoiDung.Name = "FLP_NoiDung";
             this.FLP_NoiDung.Size = new System.Drawing.Size(867, 455);
