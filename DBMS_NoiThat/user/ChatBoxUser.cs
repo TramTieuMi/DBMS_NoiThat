@@ -22,10 +22,13 @@ namespace DBMS_NoiThat.user
         public ChatBoxUser()
         {
             InitializeComponent();
-
-            loadNoiDung(em);
         }
-
+        public ChatBoxUser(string email)
+        {
+            InitializeComponent();
+            em = email;
+            loadNoiDung(email);
+        }
         public void loadNoiDung(string em)
         {
             SqlCommand command = new SqlCommand("sp_LayChatBoxTheoEmail", connection);
