@@ -22,26 +22,6 @@ namespace DBMS_NoiThat
         {
             InitializeComponent();
         }
-
-        private void guna2HtmlLabel7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2TextBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TaoTaiKhoan_Load(object sender, EventArgs e)
-        {
-
-        }
         public bool checkAccount(string ac)//check mat khau va ten tai khoan
         {
             return Regex.IsMatch(ac, "^[a-zA-Z0-9]{6,24}$");
@@ -86,11 +66,12 @@ namespace DBMS_NoiThat
                 {
                     roleid = 1;
                 }
+                string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao, MatKhau, RoleID, TenDangNhap) " +
+                 "VALUES (@HoVaTen, @Email, @DiaChi, @SDT, GETDATE(), @MatKhau, @RoleID, @TenDangNhap)";
+                
+                string queryTKKH = "INSERT INTO TAIKHOAN (TenDangNhap,MatKhau,Email,RoleID) " +
+                "VALUES (@TenDangNhap,@MatKhau,@Email,@RoleID)";
 
-                string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao) VALUES ('" + Hoten + "','" + email + "','" + DiaChi + "','" + sdt + "', GETDATE())";
-                string queryTK = "INSERT INTO TAIKHOAN (TenDangNhap, MatKhau, Email, RoleID) VALUES ('" + tentk + "', '" + matkhau + "', '" + email + "', '" + roleid + "')";
-
-                //
                 // Sử dụng Transaction
                 using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
                 {
@@ -105,16 +86,19 @@ namespace DBMS_NoiThat
                             cmdKH.Parameters.AddWithValue("@Email", email);
                             cmdKH.Parameters.AddWithValue("@DiaChi", DiaChi);
                             cmdKH.Parameters.AddWithValue("@SDT", sdt);
+                            cmdKH.Parameters.AddWithValue("@MatKhau", matkhau);
+                            cmdKH.Parameters.AddWithValue("@RoleID", roleid);
+                            cmdKH.Parameters.AddWithValue("@TenDangNhap", tentk);
                             cmdKH.ExecuteNonQuery();
                         }
-
-                        using (SqlCommand cmdTK = new SqlCommand(queryTK, connection, transaction))
+                        using (SqlCommand cmdKH = new SqlCommand(queryTKKH, connection, transaction))
                         {
-                            cmdTK.Parameters.AddWithValue("@TenDangNhap", tentk);
-                            cmdTK.Parameters.AddWithValue("@MatKhau", matkhau);
-                            cmdTK.Parameters.AddWithValue("@Email", email);
-                            cmdTK.Parameters.AddWithValue("@RoleID", roleid);
-                            cmdTK.ExecuteNonQuery();
+                            
+                            cmdKH.Parameters.AddWithValue("@TenDangNhap", tentk);
+                            cmdKH.Parameters.AddWithValue("@MatKhau", matkhau);
+                            cmdKH.Parameters.AddWithValue("@Email", email);
+                            cmdKH.Parameters.AddWithValue("@RoleID", roleid);
+                            cmdKH.ExecuteNonQuery();
                         }
 
                         // Commit transaction nếu cả hai câu lệnh INSERT đều thành công
@@ -140,6 +124,8 @@ namespace DBMS_NoiThat
             }
 
         }
+
+       
     }
 }
 
