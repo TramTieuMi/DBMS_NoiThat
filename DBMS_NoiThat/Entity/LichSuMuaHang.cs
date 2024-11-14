@@ -38,5 +38,9 @@ namespace DBMS_NoiThat.Entity
         public DateTime NgayMua { get => ngayMua; set => ngayMua = value; }
         public string TrangThai { get => trangThai; set => trangThai = value; }
         //public int ThanhTien { get => thanhTien; set => thanhTien = value; }
+
+
+        // Giả sử bạn có một danh sách các sản phẩm
+        public List<LichSuMuaHang> DanhSachSanPham { get; set; }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using DBMS_NoiThat.Entity;
+using DBMS_NoiThat.user;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,15 +37,20 @@ namespace DBMS_NoiThat.UC
         EDonHang eDonHang;
         public UCDonHang(EDonHang eDonHang)
         {
-            InitializeComponent(); // Khởi tạo các thành phần giao diện trước
-
-            // Sau đó gán giá trị cho các control
+            InitializeComponent();
             this.eDonHang = eDonHang;
             LB_MaSP.Text = eDonHang.MaSanPham1.ToString();
             LB_TenSP.Text = eDonHang.TenSanPham1;
             LB_SoLuong.Text = eDonHang.SoLuong1.ToString();
             LB_Gia.Text = eDonHang.SoTien1.ToString();
+            using (MemoryStream picture = new MemoryStream(eDonHang.Pic))
+            {
+                PB_hienthi.SizeMode = PictureBoxSizeMode.Zoom; // Thiết lập kiểu hiển thị ảnh
+                PB_hienthi.Image = Image.FromStream(picture); // Nạp ảnh vào PictureBox
+                PB_hienthi.Refresh(); // Làm mới PictureBox
+            }
         }
+
 
         private void guna2PictureBox1_Click(object sender, EventArgs e)
         {
