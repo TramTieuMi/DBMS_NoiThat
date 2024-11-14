@@ -13,6 +13,7 @@ using static Guna.UI2.Native.WinApi;
 using System.Data.SqlClient;
 using DBMS_NoiThat.user;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using System.IO;
 
 namespace DBMS_NoiThat.UC
 {
@@ -34,9 +35,15 @@ namespace DBMS_NoiThat.UC
             LB_TenSanPham.Text = "Tên Sản Phẩm : " + gioHang.TenSanPham1;
             LB_Gia.Text = "Số Tiền : " + gioHang.SoTien1.ToString();
             TB_SoLuong.Text = gioHang.SoLuong1.ToString();
-            CK_Chon.Checked = gioHang.Check ;
-
+            CK_Chon.Checked = gioHang.Check;
+            using (MemoryStream picture = new MemoryStream(gioHang.Pic))
+            {
+                PB_hienthi.SizeMode = PictureBoxSizeMode.Zoom; // Thiết lập kiểu hiển thị ảnh
+                PB_hienthi.Image = Image.FromStream(picture); // Nạp ảnh vào PictureBox
+                PB_hienthi.Refresh(); // Làm mới PictureBox
+            }
         }
+
         public void ThayDoiSoLuong(int num)
         {
             TB_SoLuong.Text = num.ToString();

@@ -181,7 +181,8 @@
             this.buttonThemVaoGio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonThemVaoGio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonThemVaoGio.ForeColor = System.Drawing.Color.White;
-            this.buttonThemVaoGio.Location = new System.Drawing.Point(1154, 762);
+            this.buttonThemVaoGio.Location = new System.Drawing.Point(769, 495);
+            this.buttonThemVaoGio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonThemVaoGio.Name = "buttonThemVaoGio";
             this.buttonThemVaoGio.Size = new System.Drawing.Size(274, 48);
             this.buttonThemVaoGio.TabIndex = 67;
@@ -193,7 +194,8 @@
             // 
             this.PictureBoxHinhAnhSP.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PictureBoxHinhAnhSP.BackColor = System.Drawing.Color.Silver;
-            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(726, 218);
+            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(484, 142);
+            this.PictureBoxHinhAnhSP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureBoxHinhAnhSP.Name = "PictureBoxHinhAnhSP";
             this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(741, 492);
             this.PictureBoxHinhAnhSP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -229,7 +231,8 @@
             this.ButtonTroVe.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonTroVe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ButtonTroVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonTroVe.Location = new System.Drawing.Point(123, 58);
+            this.ButtonTroVe.Location = new System.Drawing.Point(82, 38);
+            this.ButtonTroVe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTroVe.Name = "ButtonTroVe";
             this.ButtonTroVe.Size = new System.Drawing.Size(118, 48);
             this.ButtonTroVe.TabIndex = 62;
@@ -311,9 +314,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1592, 868);
-            this.Controls.Add(this.button1);
+            this.BackColor = System.Drawing.Color.Gray;
+            this.ClientSize = new System.Drawing.Size(1061, 564);
             this.Controls.Add(this.TextBoxMoTa);
             this.Controls.Add(this.TextBoxKichThuoc);
             this.Controls.Add(this.textBoxChatLieu);

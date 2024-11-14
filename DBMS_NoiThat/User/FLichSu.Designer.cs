@@ -33,7 +33,8 @@
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.flwPnLichSu = new System.Windows.Forms.FlowLayoutPanel();
-            this.nm = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.ucLichSuMuaHang1 = new DBMS_NoiThat.UC.UCLichSuMuaHang();
+            this.flwPnLichSu.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
@@ -90,27 +91,29 @@
             // 
             // flwPnLichSu
             // 
+            this.flwPnLichSu.AutoScroll = true;
+            this.flwPnLichSu.Controls.Add(this.ucLichSuMuaHang1);
             this.flwPnLichSu.Location = new System.Drawing.Point(44, 128);
             this.flwPnLichSu.Name = "flwPnLichSu";
-            this.flwPnLichSu.Size = new System.Drawing.Size(1074, 426);
+            this.flwPnLichSu.Size = new System.Drawing.Size(1276, 404);
             this.flwPnLichSu.TabIndex = 6;
             this.flwPnLichSu.Paint += new System.Windows.Forms.PaintEventHandler(this.flwPnLichSu_Paint_1);
             // 
-            // nm
+            // ucLichSuMuaHang1
             // 
-            this.nm.BackColor = System.Drawing.Color.Transparent;
-            this.nm.Location = new System.Drawing.Point(493, 65);
-            this.nm.Name = "nm";
-            this.nm.Size = new System.Drawing.Size(21, 18);
-            this.nm.TabIndex = 7;
-            this.nm.Text = "mt/      ";
+            this.ucLichSuMuaHang1.AutoScroll = true;
+            this.ucLichSuMuaHang1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ucLichSuMuaHang1.Location = new System.Drawing.Point(3, 3);
+            this.ucLichSuMuaHang1.Name = "ucLichSuMuaHang1";
+            this.ucLichSuMuaHang1.Size = new System.Drawing.Size(1273, 145);
+            this.ucLichSuMuaHang1.TabIndex = 0;
+            this.ucLichSuMuaHang1.Load += new System.EventHandler(this.ucLichSuMuaHang1_Load_1);
             // 
             // FLichSu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 566);
-            this.Controls.Add(this.nm);
+            this.ClientSize = new System.Drawing.Size(1332, 566);
             this.Controls.Add(this.flwPnLichSu);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.guna2ComboBox1);
@@ -119,6 +122,7 @@
             this.Name = "FLichSu";
             this.Text = "FLichSu";
             this.Load += new System.EventHandler(this.FLichSu_Load);
+            this.flwPnLichSu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,6 +135,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.FlowLayoutPanel flwPnLichSu;
-        private Guna.UI2.WinForms.Guna2HtmlLabel nm;
+        private UC.UCLichSuMuaHang ucLichSuMuaHang1;
     }
 }

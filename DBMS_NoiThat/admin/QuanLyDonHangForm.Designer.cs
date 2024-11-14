@@ -461,7 +461,11 @@
             this.dataGridView1.Size = new System.Drawing.Size(1227, 303);
             this.dataGridView1.TabIndex = 89;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-           
+<<<<<<< HEAD
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+=======
+            //this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+>>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
             // 
             // QuanLyDonHangForm
             // 

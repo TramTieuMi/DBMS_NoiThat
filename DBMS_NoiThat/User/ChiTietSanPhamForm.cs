@@ -13,7 +13,7 @@ using static System.Windows.Forms.AxHost;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
-using DBMS_NoiThat.user9;
+
 
 namespace DBMS_NoiThat.user
 {
@@ -83,6 +83,7 @@ namespace DBMS_NoiThat.user
                     mydb.CloseConnection();
                 }
 
+
             }
             catch (SqlException ex)
             {
@@ -90,50 +91,44 @@ namespace DBMS_NoiThat.user
             }
         }
 
+        private void ButtonUploadImage_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    OpenFileDialog open = new OpenFileDialog();
+            //    open.Filter = "Select Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+            //    if ((open.ShowDialog() == DialogResult.OK))
+            //    {
+            //        PictureBoxHinhAnhSP.Image = Image.FromFile(open.FileName);
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+            //int id = Convert.ToInt32(LableIDSP.Text);
+
+            //MemoryStream picture = new MemoryStream();
+            //PictureBoxHinhAnhSP.Image.Save(picture, PictureBoxHinhAnhSP.Image.RawFormat);
+            //SqlCommand command = new SqlCommand("UPDATE SANPHAM SET HinhAnh=@pic WHERE MaSanPham=@ID", mydb.GetConnection());
+            //command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            //command.Parameters.Add("@pic", SqlDbType.Image).Value = picture.ToArray();
+
+            //mydb.OpenConnection();
+
+            //if ((command.ExecuteNonQuery() == 1))
+            //{
+            //    mydb.CloseConnection();
+
+            //}
+            //else
+            //{
+            //    mydb.CloseConnection();
+
+            //}
+        }
+
         
-
-        private void ChiTietSanPhamForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog open = new OpenFileDialog();
-                open.Filter = "Select Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
-                if ((open.ShowDialog() == DialogResult.OK))
-                {
-                    PictureBoxHinhAnhSP.Image = Image.FromFile(open.FileName);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            
-
-            int id = Convert.ToInt32(LableIDSP.Text);
-            MemoryStream picture = new MemoryStream();
-            PictureBoxHinhAnhSP.Image.Save(picture, PictureBoxHinhAnhSP.Image.RawFormat);
-            SqlCommand command = new SqlCommand("UPDATE SANPHAM SET HinhAnh=@pic WHERE MaSanPham=@ID", mydb.GetConnection());
-            command.Parameters.Add("@id", SqlDbType.Int).Value = id;
-            command.Parameters.Add("@pic", SqlDbType.Image).Value = picture.ToArray();
-
-            mydb.OpenConnection();
-
-            if ((command.ExecuteNonQuery() == 1))
-            {
-                mydb.CloseConnection();
-
-            }
-            else
-            {
-                mydb.CloseConnection();
-
-            }
-        }
     }
 }
