@@ -44,6 +44,7 @@
             this.hello = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
+            this.BTN_Chat = new System.Windows.Forms.Button();
             this.panel_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -68,6 +69,7 @@
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.Color.Gray;
+            this.panel_left.Controls.Add(this.BTN_Chat);
             this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.labelMenu);
             this.panel_left.Controls.Add(this.pictureBox2);
@@ -85,7 +87,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DBMS_NoiThat.Properties.Resources.thiet_ke_logo_cong_ty_noi_that_house;
-            this.pictureBox1.Location = new System.Drawing.Point(80, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(107, 9);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(77, 77);
@@ -124,24 +126,13 @@
             this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogOut.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.ForeColor = System.Drawing.Color.White;
-            this.buttonLogOut.Location = new System.Drawing.Point(10, 276);
+            this.buttonLogOut.Location = new System.Drawing.Point(10, 335);
             this.buttonLogOut.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(229, 50);
             this.buttonLogOut.TabIndex = 6;
             this.buttonLogOut.Text = "Log Out";
             this.buttonLogOut.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DBMS_NoiThat.Properties.Resources.thiet_ke_logo_cong_ty_noi_that_house;
-            this.pictureBox1.Location = new System.Drawing.Point(107, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(77, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // buttonLSMH
             // 
@@ -250,6 +241,22 @@
             this.labelTime.Text = "label1";
             this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // BTN_Chat
+            // 
+            this.BTN_Chat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BTN_Chat.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BTN_Chat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_Chat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Chat.ForeColor = System.Drawing.Color.White;
+            this.BTN_Chat.Location = new System.Drawing.Point(9, 279);
+            this.BTN_Chat.Margin = new System.Windows.Forms.Padding(2);
+            this.BTN_Chat.Name = "BTN_Chat";
+            this.BTN_Chat.Size = new System.Drawing.Size(229, 50);
+            this.BTN_Chat.TabIndex = 7;
+            this.BTN_Chat.Text = "Hộp Thoại Tư Vấn";
+            this.BTN_Chat.UseVisualStyleBackColor = false;
+            this.BTN_Chat.Click += new System.EventHandler(this.BTN_Chat_Click);
+            // 
             // MainFormKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -288,5 +295,6 @@
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label labelTime;
         private Guna.UI2.WinForms.Guna2HtmlLabel hello;
+        private System.Windows.Forms.Button BTN_Chat;
     }
 }
