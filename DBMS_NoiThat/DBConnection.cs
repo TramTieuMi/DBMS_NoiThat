@@ -18,6 +18,9 @@ namespace DBMS_NoiThat.user
         public DBConnection()
         {
             sqlCon = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=data;Integrated Security=True");
+=======
+            sqlCon = new SqlConnection(@"Data Source=KHANG\LTWEB;Initial Catalog=data1;Integrated Security=True;TrustServerCertificate=True");
+>>>>>>> khang2:DBMS_NoiThat/User/DBConnection.cs
         }
 
         public SqlConnection GetConnection()
