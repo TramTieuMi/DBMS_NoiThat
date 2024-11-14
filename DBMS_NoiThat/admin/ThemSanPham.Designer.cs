@@ -204,8 +204,7 @@
             // 
             // PictureBoxHinhAnhSP
             // 
-     
-           
+          
             this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(432, 47);
             this.PictureBoxHinhAnhSP.Name = "PictureBoxHinhAnhSP";
             this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(306, 224);
