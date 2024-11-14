@@ -16,6 +16,7 @@ namespace DBMS_NoiThat.UC
 {
     public partial class UCLichSuMuaHang : UserControl
     {
+        //private FlowLayoutPanel flwPnLichSu;
         SqlConnection connStr = Connection.GetSqlConnection();
         string tensp;
         string mota;
@@ -34,6 +35,8 @@ namespace DBMS_NoiThat.UC
             // Khởi tạo FlowLayoutPanel (nếu chưa có)
             flpProducts = new FlowLayoutPanel();
             flpProducts.Dock = DockStyle.Fill;
+            //this.AutoSize = true; // Tự động giãn theo nội dung
+            //this.AutoSizeMode = AutoSizeMode.GrowAndShrink; // Điều chỉnh cả chiều rộng và chiều cao
             this.Controls.Add(flpProducts);
             
         }
@@ -49,7 +52,7 @@ namespace DBMS_NoiThat.UC
             flpProducts.Dock = DockStyle.Fill;
             this.Controls.Add(flpProducts);
 
-
+            //t//his.Controls.Add(flwPnLichSu);
             //txtTenSP.Text = LichSuMua.TenSanPham.ToString();
 
             //txtMoTa.Text = $"Mô tả: {LichSuMua.MoTa.ToString()}";
@@ -67,8 +70,9 @@ namespace DBMS_NoiThat.UC
             //CK_Chon.Checked = gioHang.Check;
 
             // Thêm sản phẩm vào FlowLayoutPanel nếu có
-           
+
         }
+       
         // Phương thức để thiết lập thông tin đơn hàng
         public void SetOrderInfo(object orderId, DateTime orderDate, string status)
         {
@@ -127,7 +131,10 @@ namespace DBMS_NoiThat.UC
             // Thêm Panel vào FlowLayoutPanel
             flpProducts.Controls.Add(pnlProduct);
 
+           
 
+            // Sau khi thêm một đơn hàng mới, cập nhật lại chiều cao của UserControl
+            //UpdateHeightBasedOnContent();
         }
 
         public void SetTotalOrderPrice(decimal totalPrice)
