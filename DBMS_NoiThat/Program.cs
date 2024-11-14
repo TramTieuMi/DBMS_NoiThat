@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+﻿using DBMS_NoiThat.user;
+using DBMS_NoiThat.user9;
+=======
 ﻿using DBMS_NoiThat.admin;
 using DBMS_NoiThat.user;
 
@@ -17,7 +21,7 @@ namespace DBMS_NoiThat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QuanLySanPham());
+            Application.Run(new XemThongTinUser());
         }
     }
 }

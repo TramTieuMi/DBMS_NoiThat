@@ -40,6 +40,8 @@
             this.txtTenDangNhap = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+<<<<<<< HEAD
+=======
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SuspendLayout();
@@ -213,6 +215,8 @@
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
+<<<<<<< HEAD
+=======
             // guna2HtmlLabel2
             // 
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
@@ -240,6 +244,7 @@
             this.ClientSize = new System.Drawing.Size(1268, 607);
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.guna2HtmlLabel2);
+>>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.txtTenDangNhap);
@@ -274,6 +279,8 @@
         private Guna.UI2.WinForms.Guna2TextBox txtTenDangNhap;
         private Guna.UI2.WinForms.Guna2Button btnEdit;
         private Guna.UI2.WinForms.Guna2Button btnSave;
+<<<<<<< HEAD
+=======
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
     }

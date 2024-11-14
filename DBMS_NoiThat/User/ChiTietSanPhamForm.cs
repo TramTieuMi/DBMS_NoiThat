@@ -15,6 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 
 
+
 namespace DBMS_NoiThat.user
 {
     public partial class ChiTietSanPhamForm : Form
@@ -91,43 +92,40 @@ namespace DBMS_NoiThat.user
             }
         }
 
-        
-
-        private void ChiTietSanPhamForm_Load(object sender, EventArgs e)
+        private void ButtonUploadImage_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    OpenFileDialog open = new OpenFileDialog();
+            //    open.Filter = "Select Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+            //    if ((open.ShowDialog() == DialogResult.OK))
+            //    {
+            //        PictureBoxHinhAnhSP.Image = Image.FromFile(open.FileName);
+            //    }
 
-        }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+            //int id = Convert.ToInt32(LableIDSP.Text);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog open = new OpenFileDialog();
-                open.Filter = "Select Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
-                if ((open.ShowDialog() == DialogResult.OK))
-                {
-                    PictureBoxHinhAnhSP.Image = Image.FromFile(open.FileName);
-                }
+            //MemoryStream picture = new MemoryStream();
+            //PictureBoxHinhAnhSP.Image.Save(picture, PictureBoxHinhAnhSP.Image.RawFormat);
+            //SqlCommand command = new SqlCommand("UPDATE SANPHAM SET HinhAnh=@pic WHERE MaSanPham=@ID", mydb.GetConnection());
+            //command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            //command.Parameters.Add("@pic", SqlDbType.Image).Value = picture.ToArray();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            
+            //mydb.OpenConnection();
 
-            int id = Convert.ToInt32(LableIDSP.Text);
-            MemoryStream picture = new MemoryStream();
-            PictureBoxHinhAnhSP.Image.Save(picture, PictureBoxHinhAnhSP.Image.RawFormat);
-            SqlCommand command = new SqlCommand("UPDATE SANPHAM SET HinhAnh=@pic WHERE MaSanPham=@ID", mydb.GetConnection());
-            command.Parameters.Add("@id", SqlDbType.Int).Value = id;
-            command.Parameters.Add("@pic", SqlDbType.Image).Value = picture.ToArray();
+            //if ((command.ExecuteNonQuery() == 1))
+            //{
+            //    mydb.CloseConnection();
 
-            mydb.OpenConnection();
-
-            if ((command.ExecuteNonQuery() == 1))
-            {
-                mydb.CloseConnection();
+            //}
+            //else
+            //{
+            //    mydb.CloseConnection();
 
             }
             else

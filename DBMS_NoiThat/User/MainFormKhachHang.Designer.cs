@@ -71,6 +71,7 @@
             this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.labelMenu);
             this.panel_left.Controls.Add(this.buttonLogOut);
+            this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.buttonLSMH);
             this.panel_left.Controls.Add(this.buttonGioHang);
             this.panel_left.Controls.Add(this.buttonTTCN);
