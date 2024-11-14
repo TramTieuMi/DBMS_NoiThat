@@ -1,5 +1,5 @@
 ﻿using DBMS_NoiThat.Entity;
-using DBMS_NoiThat.user9;
+
 using Do_An_Tuyen_Dung;
 using System;
 using System.Collections.Generic;
@@ -82,6 +82,12 @@ namespace DBMS_NoiThat.user
         private void FDangNhap_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTaoTK_Click(object sender, EventArgs e)
+        {
+            Register register = new Register();
+            register.ShowDialog();
         }
     }
 }
