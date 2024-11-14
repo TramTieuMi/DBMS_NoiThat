@@ -47,8 +47,9 @@
             this.btnDangNhap.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
             this.btnDangNhap.Location = new System.Drawing.Point(288, 303);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(180, 45);
+            this.btnDangNhap.Size = new System.Drawing.Size(180, 46);
             this.btnDangNhap.TabIndex = 0;
             this.btnDangNhap.Text = "ĐĂNG NHẬP";
             this.btnDangNhap.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -57,7 +58,8 @@
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(327, 50);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(320, 55);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(133, 31);
             this.guna2HtmlLabel1.TabIndex = 1;
@@ -67,6 +69,7 @@
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(260, 212);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(60, 18);
             this.guna2HtmlLabel3.TabIndex = 3;
@@ -76,6 +79,7 @@
             // 
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Location = new System.Drawing.Point(260, 118);
+            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             this.guna2HtmlLabel4.Size = new System.Drawing.Size(87, 18);
             this.guna2HtmlLabel4.TabIndex = 4;
@@ -112,7 +116,7 @@
             this.txtMatKhau.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMatKhau.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMatKhau.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMatKhau.Location = new System.Drawing.Point(260, 237);
+            this.txtMatKhau.Location = new System.Drawing.Point(260, 238);
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '\0';
@@ -131,10 +135,12 @@
             this.btnTaoTK.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnTaoTK.ForeColor = System.Drawing.Color.White;
             this.btnTaoTK.Location = new System.Drawing.Point(288, 369);
+            this.btnTaoTK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTaoTK.Name = "btnTaoTK";
-            this.btnTaoTK.Size = new System.Drawing.Size(180, 45);
+            this.btnTaoTK.Size = new System.Drawing.Size(180, 46);
             this.btnTaoTK.TabIndex = 7;
             this.btnTaoTK.Text = "TẠO TÀI KHOẢN";
+            this.btnTaoTK.Click += new System.EventHandler(this.btnTaoTK_Click);
             // 
             // FDangNhap
             // 
@@ -148,6 +154,7 @@
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.btnDangNhap);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FDangNhap";
             this.Text = "FLogin";
             this.Load += new System.EventHandler(this.FDangNhap_Load);

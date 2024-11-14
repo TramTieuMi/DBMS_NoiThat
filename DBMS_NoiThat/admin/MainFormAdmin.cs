@@ -1,4 +1,5 @@
-﻿using DBMS_NoiThat.Entity;
+﻿using DBMS_NoiThat.admin;
+using DBMS_NoiThat.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -124,6 +125,19 @@ namespace DBMS_NoiThat.user
             {
                 timer1.Start();
                 labelTime.Text = DateTime.Now.ToLongTimeString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonThongKeDoanhThu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new ThongKeDoanhThu());
+                // labelHome.Text = buttonQLNV.Text;
             }
             catch (Exception ex)
             {
