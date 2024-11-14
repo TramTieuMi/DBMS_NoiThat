@@ -1,4 +1,6 @@
 ﻿using DBMS_NoiThat.admin;
+using DBMS_NoiThat.Entity;
+using Do_An_Tuyen_Dung;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -170,7 +172,41 @@ namespace DBMS_NoiThat.user
 
         private void BTN_Chat_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ChatBoxAdmin());
+            string email = string.Empty;
+
+            SqlCommand cmd = new SqlCommand("sp_LayEmailTheoMaKhachHang", conn.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // Thêm tham số đầu vào cho MaKhachHang
+            cmd.Parameters.AddWithValue("@MaKhachHang", maKhachHang);
+
+            // Thêm tham số đầu ra cho Email
+            SqlParameter emailParam = new SqlParameter("@Email", SqlDbType.VarChar, 255)
+            {
+                Direction = ParameterDirection.Output
+            };
+            cmd.Parameters.Add(emailParam);
+
+            // Mở kết nối và thực hiện thủ tục
+            conn.OpenConnection();
+            cmd.ExecuteNonQuery();
+            
+
+            // Lấy giá trị của tham số đầu ra
+            email = emailParam.Value as string;
+
+            using (SqlCommand cmd1 = new SqlCommand("sp_CapNhatTrangThai_user", conn.GetConnection()))
+            {
+                cmd1.CommandType = CommandType.StoredProcedure;
+
+                // Thêm các tham số cho thủ tục
+                cmd1.Parameters.AddWithValue("@Email", email);
+
+                // Mở kết nối và thực thi thủ tục
+                cmd1.ExecuteNonQuery();
+            }
+            conn.CloseConnection();
+            OpenChildForm(new ChatBoxUser(email));
         }
     }
 }

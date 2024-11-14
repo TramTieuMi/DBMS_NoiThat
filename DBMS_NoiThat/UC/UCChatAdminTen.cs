@@ -38,7 +38,7 @@ namespace DBMS_NoiThat.UC
 
         private ChatBox chatBox;
 
-        public UCChatAdminTen(ChatBox chatBox) : this()
+        public UCChatAdminTen(ChatBox chatBox) 
         {
             InitializeComponent();
             dbConnection = new DBConnection(); // Instantiate DBConnection
@@ -46,28 +46,35 @@ namespace DBMS_NoiThat.UC
             this.chatBox = chatBox;
             BTN_Ten.Text = chatBox.HovaTen1;
 
-            if (chatBox.TrangThai1 == "Gửi,Chưa Xem" || chatBox.TrangThai1 == "Nhận,Chưa Xem")
+            if (chatBox.TrangThai1 == "gui,chua xem" )
             {
                 BTN_Ten.FillColor = System.Drawing.Color.Green;
+            }else {
+                BTN_Ten.FillColor = System.Drawing.Color.FromArgb(94, 148, 255);
+
             }
+            
         }
 
         private void BTN_Ten_Click(object sender, EventArgs e)
         {
+            BTN_Ten.FillColor = System.Drawing.Color.FromArgb(94, 148, 255);
             // Kích hoạt sự kiện BtnTenClicked và truyền đối tượng chatBox
-            BtnTenClicked?.Invoke(this, chatBox);
             using (SqlCommand cmd = new SqlCommand("sp_CapNhatTrangThai", connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 // Thêm các tham số cho thủ tục
-                cmd.Parameters.AddWithValue("@EmailGui", chatBox.Email1);
+                cmd.Parameters.AddWithValue("@Email", chatBox.Email1);
 
                 // Mở kết nối và thực thi thủ tục
                 connection.Open();
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
+
+            
+            BtnTenClicked?.Invoke(this, chatBox);
         }
     }
 

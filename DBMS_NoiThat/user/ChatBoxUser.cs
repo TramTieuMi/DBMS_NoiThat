@@ -70,7 +70,7 @@ namespace DBMS_NoiThat.user
                 cmd.Parameters.AddWithValue("@Email", em);  // Đảm bảo tên tham số trùng với tên trong thủ tục
                 DateTime ngayHienTai = DateTime.Now;
                 cmd.Parameters.AddWithValue("@NgayGui", ngayHienTai);
-                cmd.Parameters.AddWithValue("@TrangThai", "Gửi,Chưa Xem");
+                cmd.Parameters.AddWithValue("@TrangThai", "gui,chua xem");
                 cmd.Parameters.AddWithValue("@NoiDung", TB_NoiDung.Text);
 
                 // Mở kết nối và thực thi thủ tục

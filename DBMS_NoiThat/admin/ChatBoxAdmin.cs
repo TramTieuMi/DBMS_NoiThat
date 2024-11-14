@@ -73,6 +73,7 @@ namespace DBMS_NoiThat.admin
             command.Parameters.AddWithValue("@Email", em );
 
             connection.Open();
+            FLP_Chat.Controls.Clear();
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -89,10 +90,12 @@ namespace DBMS_NoiThat.admin
                     FLP_Chat.Controls.Add(ucnd);
                 }
             }
+            connection.Close();
         }
 
         private void BTN_Gui_Click(object sender, EventArgs e)
         {
+            TB_Nhap.Controls.Clear();
             using (SqlCommand cmd = new SqlCommand("sp_ThemChatBox", connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -101,7 +104,7 @@ namespace DBMS_NoiThat.admin
                 cmd.Parameters.AddWithValue("@Email", em);
                 DateTime ngayHienTai = DateTime.Now;
                 cmd.Parameters.AddWithValue("@NgayGui", ngayHienTai);
-                cmd.Parameters.AddWithValue("@TrangThai", "Chưa Xem");
+                cmd.Parameters.AddWithValue("@TrangThai", "nhan,chua xem");
                 cmd.Parameters.AddWithValue("@NoiDung", TB_Nhap.Text);
 
                 // Mở kết nối và thực thi thủ tục
@@ -109,6 +112,8 @@ namespace DBMS_NoiThat.admin
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
+
+            LoadNoiDung(em);
         }
     }
 }
