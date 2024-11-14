@@ -57,12 +57,12 @@ namespace DBMS_NoiThat
 
                 }
 
-            }
+        }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR:" + ex.Message, "Add Account",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //return false;
+                
             }
             return false;
 
@@ -73,6 +73,8 @@ namespace DBMS_NoiThat
             {
                 // Bắt đầu đếm thời gian khi người dùng nhấn nút gửi mã
                 btnSendCode.Enabled = false;
+                btnVerifyCode.Enabled = true;
+                time = 60;
                 timerSendCode.Start(); // Bắt đầu timer
                 if (txtEmail.Text.Trim() == "")
                 {
@@ -92,7 +94,7 @@ namespace DBMS_NoiThat
                 MailMessage message = new MailMessage();
                 to = txtEmail.Text.Trim();
                 from = "22133010@student.hcmute.edu.vn"; //email của bạn
-                pass = "@5432106#";// pass email
+                pass = "PNDuog@5432106#";// pass email
                 messageBody = "Code: " + randomCode;
                 message.To.Add(to);
                 message.From = new MailAddress(from);
@@ -108,28 +110,33 @@ namespace DBMS_NoiThat
                     smtp.Send(message);
                     MessageBox.Show("Code send successfully", "Code", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     timerSend.Enabled = true;
-                }
+            }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-                }
+                MessageBox.Show(ex.Message);
             }
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
+}
+        
         private void btnVerifyCode_Click(object sender, EventArgs e)
         {
-            labelNotice.Visible= false;
-            btnSendCode.Enabled = true;
+            
             if (checkCode() == true)
             {
+                labelNotice.Visible = false;
+                btnSendCode.Enabled = false;
+                btnVerifyCode.Enabled = false;
                 txtUserName.Visible = true;
                 txtPassword.Visible = true;
                 txtRePassword.Visible = true;
+                
             }
+          
+
         }
         bool checkAccount(string ac)
         {
@@ -283,9 +290,10 @@ namespace DBMS_NoiThat
                 else
                 {
                     // Đặt lại thời gian và dừng timer
-                    labelNotice.Text = "";
-                    time = 60; // Reset thời gian đếm ngược
+                   labelNotice.Text = "";
+                   // time = 60; // Reset thời gian đếm ngược
                     btnSendCode.Enabled = true; // Bật lại nút gửi mã
+                    btnVerifyCode.Enabled = false;
                     timerSendCode.Stop(); // Dừng timer
                 }
             }
