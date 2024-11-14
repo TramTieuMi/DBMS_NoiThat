@@ -32,14 +32,7 @@
             this.panel_Body = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel_left = new System.Windows.Forms.Panel();
-<<<<<<< HEAD
-            this.labelMenu = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.labelIDNV = new System.Windows.Forms.Label();
-            this.buttonLogOut = new System.Windows.Forms.Button();
-=======
             this.BTN_Chat = new System.Windows.Forms.Button();
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelMenu = new System.Windows.Forms.Label();
             this.buttonLogOut = new System.Windows.Forms.Button();
@@ -74,15 +67,9 @@
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.Color.Gray;
-<<<<<<< HEAD
-            this.panel_left.Controls.Add(this.labelMenu);
-            this.panel_left.Controls.Add(this.pictureBox2);
-            this.panel_left.Controls.Add(this.labelIDNV);
-=======
             this.panel_left.Controls.Add(this.BTN_Chat);
             this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.labelMenu);
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
             this.panel_left.Controls.Add(this.buttonLogOut);
             this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.buttonLSMH);
@@ -135,31 +122,6 @@
             this.labelMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelMenu.Click += new System.EventHandler(this.labelMenu_Click);
             // 
-<<<<<<< HEAD
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.Location = new System.Drawing.Point(142, 541);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(16, 18);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            // 
-            // labelIDNV
-            // 
-            this.labelIDNV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIDNV.ForeColor = System.Drawing.Color.White;
-            this.labelIDNV.Location = new System.Drawing.Point(29, 123);
-            this.labelIDNV.Name = "labelIDNV";
-            this.labelIDNV.Size = new System.Drawing.Size(193, 38);
-            this.labelIDNV.TabIndex = 3;
-            this.labelIDNV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-=======
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
             // buttonLogOut
             // 
             this.buttonLogOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -293,10 +255,6 @@
             this.Controls.Add(this.panel_Body);
             this.Controls.Add(this.panel_left);
             this.Controls.Add(this.panel_Top);
-<<<<<<< HEAD
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
             this.Name = "MainFormKhachHang";
             this.Text = "MainFormKhachHang";
             this.Load += new System.EventHandler(this.MainFormKhachHang_Load);
@@ -314,11 +272,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel_left;
         private System.Windows.Forms.Label labelMenu;
-<<<<<<< HEAD
-        private System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.Label labelIDNV;
-=======
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonLSMH;

@@ -15,6 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 
 
+
 namespace DBMS_NoiThat.user
 {
     public partial class ChiTietSanPhamForm : Form
@@ -126,7 +127,12 @@ namespace DBMS_NoiThat.user
             //{
             //    mydb.CloseConnection();
 
-            //}
+            }
+            else
+            {
+                mydb.CloseConnection();
+
+            }
         }
 
         

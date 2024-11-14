@@ -5,7 +5,6 @@ using DBMS_NoiThat.user9;
 ﻿using DBMS_NoiThat.admin;
 using DBMS_NoiThat.user;
 
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;

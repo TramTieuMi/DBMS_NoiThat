@@ -53,8 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,8 +193,6 @@
     <Compile Include="user\XemThongTinUser.Designer.cs">
       <DependentUpon>XemThongTinUser.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-=======
     <EmbeddedResource Include="admin\ChatBoxAdmin.resx">
       <DependentUpon>ChatBoxAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,12 +258,6 @@
     <EmbeddedResource Include="admin\MainFormAdmin.resx">
       <DependentUpon>MainFormAdmin.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="user\MainFormKhachHang.resx">
-      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
-    </EmbeddedResource>
-=======
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
     <EmbeddedResource Include="admin\QuanLyDonHangForm.resx">
       <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>
     </EmbeddedResource>

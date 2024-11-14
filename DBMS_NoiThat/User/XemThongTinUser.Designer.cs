@@ -44,7 +44,6 @@
 =======
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
@@ -237,15 +236,12 @@
             this.guna2HtmlLabel3.TabIndex = 16;
             this.guna2HtmlLabel3.Text = "Để tạm ở đây, ko xóa \r\n\r\nHọ tên: ";
             // 
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
             // XemThongTinUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1268, 607);
-<<<<<<< HEAD
-=======
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.guna2HtmlLabel2);
 >>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
@@ -287,6 +283,5 @@
 =======
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
->>>>>>> da9fbc1f522df9079382bb0e0352ab091f46ddd6
     }
 }
