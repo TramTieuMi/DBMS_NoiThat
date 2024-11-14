@@ -166,5 +166,10 @@ namespace DBMS_NoiThat.user
         {
 
         }
+
+        private void BTN_Chat_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
