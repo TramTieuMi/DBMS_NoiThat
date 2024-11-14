@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
@@ -88,7 +89,7 @@ namespace DBMS_NoiThat.user
                     txtEmail.Text = reader["Email"].ToString();
                     txtDiaChi.Text = reader["DiaChi"].ToString();
                     txtSdt.Text = reader["SDT"].ToString();
-                    //txtDiaChi.Text = reader["Address"].ToString();
+                    txtTenDangNhap.Text = reader["TenDangNhap"].ToString();
                 }
                 connection.Close();
             }
@@ -105,7 +106,7 @@ namespace DBMS_NoiThat.user
                     "SET KHACHHANG.SDT = @SDT, KHACHHANG.DiaChi = @DiaChi " +
                     "FROM KHACHHANG " +
                     "JOIN TAIKHOAN ON KHACHHANG.Email = TAIKHOAN.Email " +
-                    "WHERE TenDangNhap = @TenDangNhap";
+                    "WHERE HovaTen = @HovaTen";
 
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -113,17 +114,31 @@ namespace DBMS_NoiThat.user
                 command.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
                 command.Parameters.AddWithValue("@Sdt", txtSdt.Text);
                 command.Parameters.AddWithValue("@Email", txtEmail.Text);
-                command.Parameters.AddWithValue("@TenDangNhap", txtHoTen.Text);
+                command.Parameters.AddWithValue("@HovaTen", txtHoTen.Text);
+                command.Parameters.AddWithValue("@TenDangNhap", txtTenDangNhap.Text);
 
                 connection.Open();
                 command.ExecuteNonQuery();
                 connection.Close();
-
+                // Mở kết nối và thực thi câu lệnh
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("TenDangNhap: " + txtHoTen.Text);
+                // Kiểm tra kết quả
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy bản ghi nào để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-
+        // moi
         private void XemThongTinUser_Load(object sender, EventArgs e)
         {
             txtDiaChi.ReadOnly = true;
@@ -141,6 +156,7 @@ namespace DBMS_NoiThat.user
                 ThucThi(FDangNhap.TenDangNhap); // Tải lại dữ liệu ban đầu
                 ToggleEdit(false);
                 isEditing = false;
+                txtEmail.Visible = true;
             }
             else
             {

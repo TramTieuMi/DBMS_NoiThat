@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DBMS_NoiThat.user
@@ -39,13 +40,11 @@ namespace DBMS_NoiThat.user
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
-
             adapter.Fill(dataTable);
             if (dataTable.Rows.Count > 0)
             {
-                foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
+                foreach (DataRow row in dataTable.Rows)
                 {
-                    
                     if (MaGioHang == (int)row["MaGioHang"])
                     {
                         LB_MaGioHang.Text = "Mã Giỏ Hàng : " + row["MaGioHang"].ToString();
@@ -54,7 +53,8 @@ namespace DBMS_NoiThat.user
                         int SoLuong1 = Convert.ToInt32(row["SoLuong"]);
                         int SoTien1 = Convert.ToInt32(row["SoTien"]);
                         string TenSanPham1 = row["TenSanPham"].ToString();
-                        EGioHang gioHang = new EGioHang(MaGioHang1, MaSanPham1, SoLuong1, SoTien1, TenSanPham1, false);
+                        byte[] pic = (byte[])row["HinhAnh"];
+                        EGioHang gioHang = new EGioHang(MaGioHang1, MaSanPham1, SoLuong1, SoTien1, TenSanPham1, false, pic);
                         listGH.Add(gioHang);
                         UCGioHang ucgh = new UCGioHang(gioHang);
                         int dis = (FPN_HienThi.Width - (2 * ucgh.Width)) / 3;
@@ -69,6 +69,7 @@ namespace DBMS_NoiThat.user
             }
             connection.Close();
         }
+
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
@@ -129,16 +130,15 @@ namespace DBMS_NoiThat.user
                 {
                     using (SqlCommand command = new SqlCommand(query3, connection))
                     {
-                        command.CommandType = CommandType.StoredProcedure; // Đặt loại lệnh là StoredProcedure
-                        // Thêm các tham số vào lệnh SQL
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@MaDonHang", maDonHang);
                         command.Parameters.AddWithValue("@MaKhachHang", maGH);
                         command.Parameters.AddWithValue("@MaSanPham", gioHang.MaSanPham1);
                         command.Parameters.AddWithValue("@TenSanPham", gioHang.TenSanPham1);
                         command.Parameters.AddWithValue("@SoLuong", gioHang.SoLuong1);
                         command.Parameters.AddWithValue("@SoTien", gioHang.SoTien1);
-
-                        // Thực thi lệnh SQL
+                        MemoryStream picture = new MemoryStream(gioHang.Pic);
+                        command.Parameters.AddWithValue("@HinhAnh", picture);
                         command.ExecuteNonQuery();
                     }
                     gioHang.Check = false;
