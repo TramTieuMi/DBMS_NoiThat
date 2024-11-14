@@ -64,6 +64,12 @@
     <Compile Include="admin\QuanLyTaiKhoan.Designer.cs">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="admin\ThemSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\ThemSanPham.Designer.cs">
+      <DependentUpon>ThemSanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="Entity\EDonHang.cs" />
     <Compile Include="Entity\EGioHang.cs" />
@@ -172,6 +178,9 @@
     <EmbeddedResource Include="admin\QuanLyTaiKhoan.resx">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="admin\ThemSanPham.resx">
+      <DependentUpon>ThemSanPham.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -217,9 +226,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="user\MainFormKhachHang.resx">
       <DependentUpon>MainFormKhachHang.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="admin\QuanLyDonHangForm.resx">
       <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="user\XemSanPhamForm.resx">
       <DependentUpon>XemSanPhamForm.cs</DependentUpon>
@@ -252,6 +263,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\thiet-ke-logo-cong-ty-noi-that-house.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\21920091.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\missing-picture-icon-10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\missing-person-icons-set-vector-5721085.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\275465-200.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -17,7 +17,7 @@ namespace DBMS_NoiThat.user
         //SqlConnection conAdmin = new SqlConnection(@"Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True");
         public DBConnection()
         {
-            sqlCon = new SqlConnection(@"Data Source=KHANG\LTWEB;Initial Catalog=data;Integrated Security=True;TrustServerCertificate=True");
+            sqlCon = new SqlConnection(@"Data Source=KHANG\LTWEB;Initial Catalog=data1;Integrated Security=True;TrustServerCertificate=True");
         }
 
         public SqlConnection GetConnection()
