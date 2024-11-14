@@ -204,8 +204,8 @@
             // 
             // PictureBoxHinhAnhSP
             // 
-            this.PictureBoxHinhAnhSP.Image = global::DBMS_NoiThat.Properties.Resources._2192009;
-            this.PictureBoxHinhAnhSP.InitialImage = global::DBMS_NoiThat.Properties.Resources._2192009;
+     
+           
             this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(432, 47);
             this.PictureBoxHinhAnhSP.Name = "PictureBoxHinhAnhSP";
             this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(306, 224);
