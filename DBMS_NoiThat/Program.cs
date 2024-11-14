@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using DBMS_NoiThat.admin;
 using DBMS_NoiThat.user;
 
@@ -6,6 +7,9 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Threading.Tasks;
+=======
+﻿using System;
+>>>>>>> origin/Khang
 using System.Windows.Forms;
 
 namespace DBMS_NoiThat
@@ -17,7 +21,12 @@ namespace DBMS_NoiThat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new QuanLySanPham());
+=======
+            Application.Run(new QuanLyTaiKhoan());
+
+>>>>>>> origin/Khang
         }
     }
 }

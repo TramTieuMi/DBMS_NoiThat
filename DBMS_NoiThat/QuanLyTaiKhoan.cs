@@ -282,6 +282,7 @@ namespace WindowsFormsApp1
             LoadData();
             LoadRoles();
         }
+<<<<<<< HEAD
 
         private void chkEmail_CheckedChanged(object sender, EventArgs e)
         {
@@ -332,5 +333,7 @@ namespace WindowsFormsApp1
         {
 
         }
+=======
+>>>>>>> origin/Khang
     }
 }
