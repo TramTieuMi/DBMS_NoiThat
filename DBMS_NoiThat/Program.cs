@@ -1,4 +1,5 @@
-﻿using DBMS_NoiThat.user;
+﻿using DBMS_NoiThat.admin;
+using DBMS_NoiThat.user;
 using DBMS_NoiThat.user9;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace DBMS_NoiThat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FDangNhap());
+            Application.Run(new QuanLySanPham());
         }
     }
 }
