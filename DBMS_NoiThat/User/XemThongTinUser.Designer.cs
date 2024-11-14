@@ -226,7 +226,7 @@
             // guna2HtmlLabel3
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(861, 538);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(862, 486);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(173, 18);
             this.guna2HtmlLabel3.TabIndex = 16;
