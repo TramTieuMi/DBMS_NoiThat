@@ -138,7 +138,7 @@ namespace DBMS_NoiThat.user
             }
         }
 
-
+        // moi
         private void XemThongTinUser_Load(object sender, EventArgs e)
         {
             txtDiaChi.ReadOnly = true;
