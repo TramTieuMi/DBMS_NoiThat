@@ -68,8 +68,10 @@ namespace DBMS_NoiThat
                 }
                 string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao, MatKhau, RoleID, TenDangNhap) " +
                  "VALUES (@HoVaTen, @Email, @DiaChi, @SDT, GETDATE(), @MatKhau, @RoleID, @TenDangNhap)";
-
                 
+                string queryTKKH = "INSERT INTO TAIKHOAN (TenDangNhap,MatKhau,Email,RoleID) " +
+                "VALUES (@TenDangNhap,@MatKhau,@Email,@RoleID)";
+
                 // Sử dụng Transaction
                 using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
                 {
@@ -89,8 +91,16 @@ namespace DBMS_NoiThat
                             cmdKH.Parameters.AddWithValue("@TenDangNhap", tentk);
                             cmdKH.ExecuteNonQuery();
                         }
+                        using (SqlCommand cmdKH = new SqlCommand(queryTKKH, connection, transaction))
+                        {
+                            
+                            cmdKH.Parameters.AddWithValue("@TenDangNhap", tentk);
+                            cmdKH.Parameters.AddWithValue("@MatKhau", matkhau);
+                            cmdKH.Parameters.AddWithValue("@Email", email);
+                            cmdKH.Parameters.AddWithValue("@RoleID", roleid);
+                            cmdKH.ExecuteNonQuery();
+                        }
 
-                        
                         // Commit transaction nếu cả hai câu lệnh INSERT đều thành công
                         transaction.Commit();
                         MessageBox.Show("Đăng ký thành công!");

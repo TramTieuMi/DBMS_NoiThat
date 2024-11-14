@@ -12,12 +12,12 @@ namespace DBMS_NoiThat.user
     internal class DBConnection
     {
         // SqlConnection sqlCon;
-        //Data Source=NGOCNAM;Initial Catalog=NoiThat;Integrated Security=True
+        //Data Source=NGOCNAM;Initial Catalog=data;Integrated Security=True
         SqlConnection sqlCon;
         //SqlConnection conAdmin = new SqlConnection(@"Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True");
         public DBConnection()
         {
-            sqlCon = new SqlConnection(@"Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True");
+            sqlCon = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=data;Integrated Security=True");
         }
 
         public SqlConnection GetConnection()

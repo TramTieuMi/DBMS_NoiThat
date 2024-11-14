@@ -10,8 +10,8 @@ namespace Do_An_Tuyen_Dung
 {
     internal class Connection
     {
-        //Data Source=NGOCNAM;Initial Catalog=NoiThat;Integrated Security=True
-        private static readonly string stringConnection = @"Data Source=DESKTOP-UR1R776\SQLEXPRESS;Initial Catalog=data11;Integrated Security=True;TrustServerCertificate=True";
+        //Data Source=NGOCNAM;Initial Catalog=data;Integrated Security=True
+        private static readonly string stringConnection = @"Data Source=NGOCNAM;Initial Catalog=data;Integrated Security=True";
         public static SqlConnection GetSqlConnection()
         {
             return new SqlConnection(stringConnection); 
