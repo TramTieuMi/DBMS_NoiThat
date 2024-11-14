@@ -149,10 +149,10 @@
     <Compile Include="admin\MainFormAdmin.Designer.cs">
       <DependentUpon>MainFormAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="user\QuanLyDonHangForm.cs">
+    <Compile Include="admin\QuanLyDonHangForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="user\QuanLyDonHangForm.Designer.cs">
+    <Compile Include="admin\QuanLyDonHangForm.Designer.cs">
       <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>
     </Compile>
     <Compile Include="user\XemSanPhamForm.cs">
@@ -219,7 +219,7 @@
     <EmbeddedResource Include="admin\MainFormAdmin.resx">
       <DependentUpon>MainFormAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="user\QuanLyDonHangForm.resx">
+    <EmbeddedResource Include="admin\QuanLyDonHangForm.resx">
       <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\XemSanPhamForm.resx">
