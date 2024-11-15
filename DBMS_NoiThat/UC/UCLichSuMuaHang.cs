@@ -46,28 +46,9 @@ namespace DBMS_NoiThat.UC
         {
             InitializeComponent();
             this.LichSuMua = LichSuMua;
-            // nganh = lichSuNTD.Nganh;
-            // Khởi tạo FlowLayoutPanel nếu chưa có
             flpProducts = new FlowLayoutPanel();
             flpProducts.Dock = DockStyle.Fill;
             this.Controls.Add(flpProducts);
-
-            //t//his.Controls.Add(flwPnLichSu);
-            //txtTenSP.Text = LichSuMua.TenSanPham.ToString();
-
-            //txtMoTa.Text = $"Mô tả: {LichSuMua.MoTa.ToString()}";
-
-            //txtMau.Text = "Màu sắc: " + LichSuMua.Mau.ToString();
-
-            //txtSoLuong.Text = "Số lượng: "+LichSuMua.SoLuong.ToString();
-
-            //txtNgayMua.Text = "Ngày mua hàng: " + LichSuMua.NgayMua.ToString();
-
-            //txtTrangThai.Text = "Trạng thái: " + LichSuMua.TrangThai.ToString();
-
-            //  txtThanhTien.Text = "Tổng tiền " + LichSuMua.ThanhTien.ToString();
-            //CK_Chon = new CheckBox();
-            //CK_Chon.Checked = gioHang.Check;
 
             // Thêm sản phẩm vào FlowLayoutPanel nếu có
 
@@ -76,9 +57,7 @@ namespace DBMS_NoiThat.UC
         // Phương thức để thiết lập thông tin đơn hàng
         public void SetOrderInfo(object orderId, DateTime orderDate, string status)
         {
-            //lblOrderID.Text = $"Mã đơn hàng: {orderId}";
-            //txtNgayMua.Text = $"Ngày mua: {orderDate.ToShortDateString()}";
-            //txtTrangThai.Text = $"Trạng thái: {status}";
+            
         }
 
         // Phương thức để thêm sản phẩm vào danh sách
@@ -132,9 +111,6 @@ namespace DBMS_NoiThat.UC
             flpProducts.Controls.Add(pnlProduct);
 
            
-
-            // Sau khi thêm một đơn hàng mới, cập nhật lại chiều cao của UserControl
-            //UpdateHeightBasedOnContent();
         }
 
         public void SetTotalOrderPrice(decimal totalPrice)
