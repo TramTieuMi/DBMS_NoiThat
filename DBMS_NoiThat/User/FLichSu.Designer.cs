@@ -50,7 +50,7 @@
             this.flwPnLichSu.Controls.Add(this.ucLichSuMuaHang1);
             this.flwPnLichSu.Location = new System.Drawing.Point(44, 128);
             this.flwPnLichSu.Name = "flwPnLichSu";
-            this.flwPnLichSu.Size = new System.Drawing.Size(1276, 404);
+            this.flwPnLichSu.Size = new System.Drawing.Size(1276, 460);
             this.flwPnLichSu.TabIndex = 6;
             this.flwPnLichSu.Paint += new System.Windows.Forms.PaintEventHandler(this.flwPnLichSu_Paint_1);
             // 

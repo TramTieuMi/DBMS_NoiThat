@@ -116,7 +116,8 @@ namespace DBMS_NoiThat.UC
         public void SetTotalOrderPrice(decimal totalPrice)
         {
             //.Text = $"Tổng giá trị: {totalPrice:C}"; // Định dạng tiền tệ
-            txtThanhTien.Text = $"Tổng: {totalPrice} ₫";
+            txtThanhTien.Text = $"Tổng: {totalPrice.ToString("N0")} ₫";
+            //txtThanhTien.Text = $"Tổng: {totalPrice} ₫";
         }
         private void UCLichSuDonHang_Load(object sender, EventArgs e)
         {

@@ -41,7 +41,7 @@ namespace DBMS_NoiThat.user
             // Bật hoặc tắt chế độ chỉnh sửa
             txtDiaChi.ReadOnly = !enable;
             txtSdt.ReadOnly = !enable;
-            txtEmail.ReadOnly = !enable;
+            //txtEmail.ReadOnly = !enable;
             btnSave.Visible = enable; // Hiển thị nút "Lưu" khi chế độ chỉnh sửa bật
             btnEdit.Text = enable ? "Cancel" : "Edit"; // Đổi thành "Cancel" khi đang chỉnh sửa
 
@@ -137,6 +137,7 @@ namespace DBMS_NoiThat.user
             txtDiaChi.ReadOnly = true;
             txtSdt.ReadOnly = true;
             txtEmail.ReadOnly = true;
+            txtTenDangNhap.ReadOnly = true;
         }
 
    
