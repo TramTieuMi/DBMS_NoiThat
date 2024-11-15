@@ -199,5 +199,10 @@ namespace DBMS_NoiThat
            
 
         }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
