@@ -78,9 +78,11 @@ namespace DBMS_NoiThat.user
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
-            TB_NoiDung.Controls.Clear();
             FLP_NoiDung.Controls.Clear();
             loadNoiDung(em);
+            TB_NoiDung.Text = "";
+            
+            
         }
     }
 }

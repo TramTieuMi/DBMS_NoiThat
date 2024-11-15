@@ -54,6 +54,7 @@
             this.BTN_Gui.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.BTN_Gui.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.BTN_Gui.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BTN_Gui.FillColor = System.Drawing.Color.Black;
             this.BTN_Gui.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BTN_Gui.ForeColor = System.Drawing.Color.White;
             this.BTN_Gui.Location = new System.Drawing.Point(1002, 520);

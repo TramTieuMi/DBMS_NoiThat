@@ -118,7 +118,7 @@ namespace DBMS_NoiThat.user
                 command.Parameters.AddWithValue("@SDTNguoiNhan", sdt);
                 command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
                 command.Parameters.AddWithValue("@DiaChiNhan", diaChi);
-                command.Parameters.AddWithValue("@TrangThai", "Đặt Hàng");
+                command.Parameters.AddWithValue("@TrangThai", "Ðang chờ xác nhận");
                 maDonHang = Convert.ToInt32(command.ExecuteScalar());
             }
 
