@@ -42,7 +42,7 @@
             // 
             // btnThemSP
             // 
-            this.btnThemSP.Location = new System.Drawing.Point(80, 966);
+            this.btnThemSP.Location = new System.Drawing.Point(132, 695);
             this.btnThemSP.Name = "btnThemSP";
             this.btnThemSP.Size = new System.Drawing.Size(75, 35);
             this.btnThemSP.TabIndex = 1;
@@ -52,7 +52,7 @@
             // 
             // btnXoaSP
             // 
-            this.btnXoaSP.Location = new System.Drawing.Point(203, 966);
+            this.btnXoaSP.Location = new System.Drawing.Point(255, 695);
             this.btnXoaSP.Name = "btnXoaSP";
             this.btnXoaSP.Size = new System.Drawing.Size(75, 35);
             this.btnXoaSP.TabIndex = 2;
@@ -62,7 +62,7 @@
             // 
             // btnSuaSP
             // 
-            this.btnSuaSP.Location = new System.Drawing.Point(339, 966);
+            this.btnSuaSP.Location = new System.Drawing.Point(391, 695);
             this.btnSuaSP.Name = "btnSuaSP";
             this.btnSuaSP.Size = new System.Drawing.Size(75, 35);
             this.btnSuaSP.TabIndex = 3;
@@ -82,7 +82,7 @@
             // 
             // btnTaiLai
             // 
-            this.btnTaiLai.Location = new System.Drawing.Point(474, 966);
+            this.btnTaiLai.Location = new System.Drawing.Point(526, 695);
             this.btnTaiLai.Name = "btnTaiLai";
             this.btnTaiLai.Size = new System.Drawing.Size(75, 35);
             this.btnTaiLai.TabIndex = 5;
@@ -105,7 +105,7 @@
             this.dataGridViewSanPham.Name = "dataGridViewSanPham";
             this.dataGridViewSanPham.RowHeadersWidth = 62;
             this.dataGridViewSanPham.RowTemplate.Height = 28;
-            this.dataGridViewSanPham.Size = new System.Drawing.Size(717, 802);
+            this.dataGridViewSanPham.Size = new System.Drawing.Size(717, 511);
             this.dataGridViewSanPham.TabIndex = 71;
             this.dataGridViewSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSanPham_CellClick);
             this.dataGridViewSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSanPham_CellContentClick);
@@ -114,7 +114,7 @@
             // 
             this.PictureBoxHinhAnhSP.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PictureBoxHinhAnhSP.BackColor = System.Drawing.Color.Silver;
-            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(924, 126);
+            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(845, 122);
             this.PictureBoxHinhAnhSP.Name = "PictureBoxHinhAnhSP";
             this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(474, 398);
             this.PictureBoxHinhAnhSP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

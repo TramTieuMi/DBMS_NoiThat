@@ -29,16 +29,7 @@ namespace DBMS_NoiThat.admin
             string tenDangNhap = txtTenDangNhap.Text;
             string matKhau = txtMatKhau.Text;
             string email = txtEmail.Text;
-            int roleId;
 
-            // Assuming role ID is selected from a ComboBox
-            if (!int.TryParse(cmbRoleID.SelectedValue.ToString(), out roleId))
-            {
-                MessageBox.Show("Vui lòng chọn một Role ID hợp lệ");
-                return;
-            }
-
-            // Get the SQL connection from the Connection class
             using (SqlConnection conn = Connection.GetSqlConnection())
             {
                 conn.Open(); // Open the connection
@@ -46,12 +37,9 @@ namespace DBMS_NoiThat.admin
                 using (SqlCommand cmd = new SqlCommand("proc_ThemTaiKhoan", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Adding parameters
                     cmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
                     cmd.Parameters.AddWithValue("@MatKhau", matKhau);
                     cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@RoleID", roleId);
 
                     try
                     {
@@ -60,8 +48,7 @@ namespace DBMS_NoiThat.admin
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Tài khoản đã được thêm thành công!");
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
+                            LoadData(); // Refresh the DataGridView
                         }
                         else
                         {
@@ -73,7 +60,7 @@ namespace DBMS_NoiThat.admin
                         MessageBox.Show($"Có lỗi xảy ra: {ex.Message}");
                     }
                 }
-            } // Connection is automatically closed here
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -86,29 +73,17 @@ namespace DBMS_NoiThat.admin
             string tenDangNhap = txtTenDangNhap.Text;
             string matKhau = txtMatKhau.Text;
             string email = txtEmail.Text;
-            int roleId;
 
-            // Assuming role ID is selected from a ComboBox
-            if (!int.TryParse(cmbRoleID.SelectedValue.ToString(), out roleId))
-            {
-                MessageBox.Show("Vui lòng chọn một Role ID hợp lệ");
-                return;
-            }
-
-            // Get the SQL connection from the Connection class
             using (SqlConnection conn = Connection.GetSqlConnection())
             {
-                conn.Open(); // Open the connection
+                conn.Open();
 
                 using (SqlCommand cmd = new SqlCommand("proc_SuaTaiKhoan", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Adding parameters
                     cmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
                     cmd.Parameters.AddWithValue("@MatKhau", matKhau);
                     cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@RoleID", roleId);
 
                     try
                     {
@@ -117,8 +92,7 @@ namespace DBMS_NoiThat.admin
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Tài khoản đã được cập nhật thành công!");
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
+                            LoadData(); // Refresh the DataGridView
                         }
                         else
                         {
@@ -130,7 +104,7 @@ namespace DBMS_NoiThat.admin
                         MessageBox.Show($"Có lỗi xảy ra: {ex.Message}");
                     }
                 }
-            } // Connection is automatically closed here
+            }
         }
 
         private void btnDelete_Click_Click(object sender, EventArgs e)
@@ -143,7 +117,6 @@ namespace DBMS_NoiThat.admin
                 using (SqlConnection connection = Connection.GetSqlConnection())
                 {
                     connection.Open();
-
                     using (SqlTransaction transaction = connection.BeginTransaction())
                     {
                         using (SqlCommand cmd = new SqlCommand("proc_XoaTaiKhoan", connection, transaction))
@@ -188,7 +161,7 @@ namespace DBMS_NoiThat.admin
             using (SqlConnection connection = Connection.GetSqlConnection())
             {
                 connection.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN", connection)) // Adjust query as needed
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN", connection))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -202,100 +175,49 @@ namespace DBMS_NoiThat.admin
 
         private void btnTimKiem_Click_Click(object sender, EventArgs e)
         {
-            string timKiem = txtTimKiem.Text; 
-            bool theoEmail = chkEmail.Checked; 
-            bool theoTenDangNhap = chkTenDangNhap.Checked; 
+            string timKiem = txtTimKiem.Text;
 
             using (SqlConnection connection = Connection.GetSqlConnection())
             {
                 connection.Open();
 
                 // Prepare the command to call the function
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.func_TimKiemTaiKhoan(@TimKiem, @TheoEmail, @TheoTenDangNhap)", connection))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.func_TimKiemTaiKhoan(@TimKiem)", connection))
                 {
+                    // Declare the @TimKiem parameter
                     cmd.Parameters.AddWithValue("@TimKiem", timKiem);
-                    cmd.Parameters.AddWithValue("@TheoEmail", theoEmail ? 1 : 0);
-                    cmd.Parameters.AddWithValue("@TheoTenDangNhap", theoTenDangNhap ? 1 : 0);
 
+                    // Create a DataTable to hold the results
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
                     adapter.Fill(dt);
 
-                    dgvTaiKhoan.DataSource = null; // Assuming you have a DataGridView for displaying results
-
+                    // Display the results in the DataGridView
                     if (dt.Rows.Count == 0)
                     {
                         MessageBox.Show("Không tìm thấy tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else
-                    {
-                        dgvTaiKhoan.DataSource = dt; // Bind the results to the DataGridView
-                    }
+                    dgvTaiKhoan.DataSource = dt; // Bind the results to the DataGridView
                 }
 
-                connection.Close(); // Connection is automatically closed by the using statement
+                connection.Close(); // Connection will be automatically closed here
             }
-        }
-
-        private void chkTenDangNhap_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkEmail_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTimKiem_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbRoleID_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMatKhau_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTenDangNhap_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLoadData_Click(object sender, EventArgs e)
         {
+            // Reset the form fields
+            txtTenDangNhap.Text = "";
+            txtMatKhau.Text = "";
+            txtEmail.Text = "";
+            txtTimKiem.Text = "";
 
+            // Optionally, clear the DataGridView or reset it to its default state
+            dgvTaiKhoan.DataSource = null;
+
+            // If you want to reload the data, you can call the LoadData method again
+            LoadData();
         }
     }
 }
+

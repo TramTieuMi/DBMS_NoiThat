@@ -154,5 +154,31 @@ namespace DBMS_NoiThat.user
         {
             Close();
         }
+
+        private void buttonSP_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new QuanLySanPham());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonQLTT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new QuanLyTaiKhoan());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

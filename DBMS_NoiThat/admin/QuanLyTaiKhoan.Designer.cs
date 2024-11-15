@@ -35,15 +35,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtTenDangNhap = new System.Windows.Forms.TextBox();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.cmbRoleID = new System.Windows.Forms.ComboBox();
             this.btnTimKiem_Click = new System.Windows.Forms.Button();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.chkTenDangNhap = new System.Windows.Forms.CheckBox();
-            this.chkEmail = new System.Windows.Forms.CheckBox();
             this.btnLoadData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +93,6 @@
             this.label1.Size = new System.Drawing.Size(116, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Tên đăng nhập";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -107,7 +102,6 @@
             this.label2.Size = new System.Drawing.Size(75, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Mật khẩu";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -117,17 +111,6 @@
             this.label3.Size = new System.Drawing.Size(48, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Email";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 145);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 20);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Chức vụ";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtTenDangNhap
             // 
@@ -135,7 +118,6 @@
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.Size = new System.Drawing.Size(121, 26);
             this.txtTenDangNhap.TabIndex = 8;
-            this.txtTenDangNhap.TextChanged += new System.EventHandler(this.txtTenDangNhap_TextChanged);
             // 
             // txtMatKhau
             // 
@@ -143,7 +125,6 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(121, 26);
             this.txtMatKhau.TabIndex = 9;
-            this.txtMatKhau.TextChanged += new System.EventHandler(this.txtMatKhau_TextChanged);
             // 
             // txtEmail
             // 
@@ -151,16 +132,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(121, 26);
             this.txtEmail.TabIndex = 10;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
-            // 
-            // cmbRoleID
-            // 
-            this.cmbRoleID.FormattingEnabled = true;
-            this.cmbRoleID.Location = new System.Drawing.Point(180, 136);
-            this.cmbRoleID.Name = "cmbRoleID";
-            this.cmbRoleID.Size = new System.Drawing.Size(121, 28);
-            this.cmbRoleID.TabIndex = 11;
-            this.cmbRoleID.SelectedIndexChanged += new System.EventHandler(this.cmbRoleID_SelectedIndexChanged_1);
             // 
             // btnTimKiem_Click
             // 
@@ -178,29 +149,6 @@
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(260, 26);
             this.txtTimKiem.TabIndex = 13;
-            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
-            // 
-            // chkTenDangNhap
-            // 
-            this.chkTenDangNhap.AutoSize = true;
-            this.chkTenDangNhap.Location = new System.Drawing.Point(327, 64);
-            this.chkTenDangNhap.Name = "chkTenDangNhap";
-            this.chkTenDangNhap.Size = new System.Drawing.Size(142, 24);
-            this.chkTenDangNhap.TabIndex = 14;
-            this.chkTenDangNhap.Text = "Tên đăng nhập";
-            this.chkTenDangNhap.UseVisualStyleBackColor = true;
-            this.chkTenDangNhap.CheckedChanged += new System.EventHandler(this.chkTenDangNhap_CheckedChanged);
-            // 
-            // chkEmail
-            // 
-            this.chkEmail.AutoSize = true;
-            this.chkEmail.Location = new System.Drawing.Point(327, 101);
-            this.chkEmail.Name = "chkEmail";
-            this.chkEmail.Size = new System.Drawing.Size(74, 24);
-            this.chkEmail.TabIndex = 15;
-            this.chkEmail.Text = "Email";
-            this.chkEmail.UseVisualStyleBackColor = true;
-            this.chkEmail.CheckedChanged += new System.EventHandler(this.chkEmail_CheckedChanged);
             // 
             // btnLoadData
             // 
@@ -218,15 +166,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnLoadData);
-            this.Controls.Add(this.chkEmail);
-            this.Controls.Add(this.chkTenDangNhap);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.btnTimKiem_Click);
-            this.Controls.Add(this.cmbRoleID);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtMatKhau);
             this.Controls.Add(this.txtTenDangNhap);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -252,15 +196,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTenDangNhap;
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.ComboBox cmbRoleID;
         private System.Windows.Forms.Button btnTimKiem_Click;
         private System.Windows.Forms.TextBox txtTimKiem;
-        private System.Windows.Forms.CheckBox chkTenDangNhap;
-        private System.Windows.Forms.CheckBox chkEmail;
         private System.Windows.Forms.Button btnLoadData;
     }
 }
