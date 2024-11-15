@@ -54,15 +54,6 @@
             this.guna2HtmlLabel1.TabIndex = 0;
             this.guna2HtmlLabel1.Text = "THÔNG TIN NGƯỜI DÙNG   ";
             // 
-            // lbHoten
-            // 
-            this.lbHoten.BackColor = System.Drawing.Color.Transparent;
-            this.lbHoten.Location = new System.Drawing.Point(79, 514);
-            this.lbHoten.Name = "lbHoten";
-            this.lbHoten.Size = new System.Drawing.Size(173, 18);
-            this.lbHoten.TabIndex = 1;
-            this.lbHoten.Text = "Để tạm ở đây, ko xóa \r\n\r\nHọ tên: ";
-            // 
             // lbDiachi
             // 
             this.lbDiachi.BackColor = System.Drawing.Color.Transparent;
@@ -222,15 +213,6 @@
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(106, 22);
             this.guna2HtmlLabel2.TabIndex = 15;
             this.guna2HtmlLabel2.Text = "TenTaiKhoan:";
-            // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(862, 486);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(173, 18);
-            this.guna2HtmlLabel3.TabIndex = 16;
-            this.guna2HtmlLabel3.Text = "Để tạm ở đây, ko xóa \r\n\r\nHọ tên: ";
             // 
             // XemThongTinUser
             // 
