@@ -147,7 +147,7 @@ namespace DBMS_NoiThat.user
 
         private void BTN_ChatBox_Click(object sender, EventArgs e)
         {
-               
+            OpenChildForm(new ChatBoxAdmin());
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)

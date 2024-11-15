@@ -23,18 +23,44 @@ namespace DBMS_NoiThat.UC
             InitializeComponent();
             this.chatBox = chatBox;
             TB_NoiDung.Text = chatBox.NoiDung1;
-            if(chatBox.TrangThai1 == "Nhận,Chưa Xem" || chatBox.TrangThai1 == "Nhận,Ðã Xem") {
-                LB_Ten.Text = "Nhân Viên Của Shop " + chatBox.NgayGui1.ToString();
+
+            if(role == 1 ) {
+                if (chatBox.TrangThai1 == "nhan,chua xem" || chatBox.TrangThai1 == "nhan,da xem")
+                {
+                    LB_Ten.Text =  "Bạn " + " " + chatBox.NgayGui1.ToString() ;
+                }
+                else
+                {
+                    if (chatBox.TrangThai1 == "gui,chua xem")
+                    {
+                        LB_Ten.Text = chatBox.HovaTen1 + chatBox.NgayGui1.ToString() + " Chưa Xem";
+                    }
+                    else
+                    {
+                        LB_Ten.Text = chatBox.HovaTen1 + chatBox.NgayGui1.ToString() + " Đã Xem";
+                    }
+                }
             }
             else {
-                if(chatBox.TrangThai1 == "Gửi,Chưa Xem" )
+                if (chatBox.TrangThai1 == "nhan,chua xem" || chatBox.TrangThai1 == "nhan,da xem")
                 {
-                    LB_Ten.Text = "Bạn " + chatBox.NgayGui1.ToString() + " Chưa Xem";
+                    LB_Ten.Text = "Nhân Viên Của Shop " + chatBox.NgayGui1.ToString();
                 }
-                else {
-                    LB_Ten.Text = "Bạn " + chatBox.NgayGui1.ToString() + " Đã Xem";
-                }               
+                else
+                {
+                    if (chatBox.TrangThai1 == "gui,chua xem")
+                    {
+                        LB_Ten.Text = "Bạn " + chatBox.NgayGui1.ToString() + " Chưa Xem";
+                    }
+                    else
+                    {
+                        LB_Ten.Text = "Bạn " + chatBox.NgayGui1.ToString() + " Đã Xem";
+                    }
+                }
             }
+
+
+            
         }
     }
 }
