@@ -23,8 +23,8 @@ namespace DBMS_NoiThat.UC
             InitializeComponent();
             this.chatBox = chatBox;
             TB_NoiDung.Text = chatBox.NoiDung1;
-
-            if(role == 1 ) {
+            TB_NoiDung.ReadOnly = true;
+            if (role == 1 ) {
                 if (chatBox.TrangThai1 == "nhan,chua xem" || chatBox.TrangThai1 == "nhan,da xem")
                 {
                     LB_Ten.Text =  "Bạn " + " " + chatBox.NgayGui1.ToString() ;
@@ -58,9 +58,9 @@ namespace DBMS_NoiThat.UC
                     }
                 }
             }
-
-
             
+
+
         }
     }
 }

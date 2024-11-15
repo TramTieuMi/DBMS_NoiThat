@@ -36,9 +36,9 @@
             this.txtThanhTien.AutoSize = false;
             this.txtThanhTien.BackColor = System.Drawing.Color.Transparent;
             this.txtThanhTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtThanhTien.Location = new System.Drawing.Point(987, 70);
+            this.txtThanhTien.Location = new System.Drawing.Point(977, 69);
             this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.Size = new System.Drawing.Size(239, 42);
+            this.txtThanhTien.Size = new System.Drawing.Size(258, 42);
             this.txtThanhTien.TabIndex = 7;
             this.txtThanhTien.Text = "2.886.000 VND";
             // 
