@@ -18,6 +18,7 @@ namespace DBMS_NoiThat
     {
         //SqlConnection stringConnection = Connection.GetSqlConnection();
         SqlConnection connStr = Connection.GetSqlConnection();
+        DBConnection myDB = new DBConnection();
         public TaoTaiKhoan()
         {
             InitializeComponent();
@@ -66,40 +67,40 @@ namespace DBMS_NoiThat
                 {
                     roleid = 1;
                 }
-                string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao, MatKhau, RoleID, TenDangNhap) " +
-                 "VALUES (@HoVaTen, @Email, @DiaChi, @SDT, GETDATE(), @MatKhau, @RoleID, @TenDangNhap)";
+                //string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao, MatKhau, RoleID, TenDangNhap) " +
+                // "VALUES (@HoVaTen, @Email, @DiaChi, @SDT, GETDATE(), @MatKhau, @RoleID, @TenDangNhap)";
                 
-                string queryTKKH = "INSERT INTO TAIKHOAN (TenDangNhap,MatKhau,Email,RoleID) " +
-                "VALUES (@TenDangNhap,@MatKhau,@Email,@RoleID)";
+                //string queryTKKH = "INSERT INTO TAIKHOAN (TenDangNhap,MatKhau,Email,RoleID) " +
+                //"VALUES (@TenDangNhap,@MatKhau,@Email,@RoleID)";
 
                 // Sử dụng Transaction
                 using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
                 {
                     connection.Open();
                     SqlTransaction transaction = connection.BeginTransaction();
-
+                    myDB.OpenConnection();
                     try
                     {
-                        using (SqlCommand cmdKH = new SqlCommand(queryKH, connection, transaction))
-                        {
-                            cmdKH.Parameters.AddWithValue("@HoVaTen", Hoten);
-                            cmdKH.Parameters.AddWithValue("@Email", email);
-                            cmdKH.Parameters.AddWithValue("@DiaChi", DiaChi);
-                            cmdKH.Parameters.AddWithValue("@SDT", sdt);
-                            cmdKH.Parameters.AddWithValue("@MatKhau", matkhau);
-                            cmdKH.Parameters.AddWithValue("@RoleID", roleid);
-                            cmdKH.Parameters.AddWithValue("@TenDangNhap", tentk);
-                            cmdKH.ExecuteNonQuery();
-                        }
-                        using (SqlCommand cmdKH = new SqlCommand(queryTKKH, connection, transaction))
-                        {
-                            
-                            cmdKH.Parameters.AddWithValue("@TenDangNhap", tentk);
-                            cmdKH.Parameters.AddWithValue("@MatKhau", matkhau);
-                            cmdKH.Parameters.AddWithValue("@Email", email);
-                            cmdKH.Parameters.AddWithValue("@RoleID", roleid);
-                            cmdKH.ExecuteNonQuery();
-                        }
+                        SqlCommand cmd1 = new SqlCommand("[InsertKhachHang]", myDB.GetConnection());
+                        cmd1.CommandType = CommandType.StoredProcedure;
+                        cmd1.Parameters.AddWithValue("@HoVaTen", Hoten);
+                        cmd1.Parameters.AddWithValue("@Email", email);
+                        cmd1.Parameters.AddWithValue("@DiaChi", DiaChi);
+                        cmd1.Parameters.AddWithValue("@SDT", sdt);
+                        cmd1.Parameters.AddWithValue("@MatKhau", matkhau);
+                        cmd1.Parameters.AddWithValue("@RoleID", roleid);
+                        cmd1.Parameters.AddWithValue("@TenDangNhap", tentk);
+                        cmd1.ExecuteNonQuery();
+
+                        SqlCommand cmd = new SqlCommand("[InsertTaiKhoan]", myDB.GetConnection());
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TenDangNhap", tentk);
+                        cmd.Parameters.AddWithValue("@MatKhau", matkhau);
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@RoleID", roleid);
+                        cmd.ExecuteNonQuery();
+
+                    
 
                         // Commit transaction nếu cả hai câu lệnh INSERT đều thành công
                         transaction.Commit();
