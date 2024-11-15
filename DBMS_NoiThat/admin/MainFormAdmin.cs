@@ -149,5 +149,10 @@ namespace DBMS_NoiThat.user
         {
             OpenChildForm(new ChatBoxAdmin());
         }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

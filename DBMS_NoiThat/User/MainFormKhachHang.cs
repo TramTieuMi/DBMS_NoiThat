@@ -208,5 +208,10 @@ namespace DBMS_NoiThat.user
             conn.CloseConnection();
             OpenChildForm(new ChatBoxUser(email));
         }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

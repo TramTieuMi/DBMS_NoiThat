@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,7 +22,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
@@ -258,6 +263,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin\QuanLyDonHangForm.resx">
       <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="user\XemSanPhamForm.resx">
       <DependentUpon>XemSanPhamForm.cs</DependentUpon>
@@ -290,6 +296,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\thiet-ke-logo-cong-ty-noi-that-house.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\21920091.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\missing-picture-icon-10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\missing-person-icons-set-vector-5721085.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\275465-200.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
