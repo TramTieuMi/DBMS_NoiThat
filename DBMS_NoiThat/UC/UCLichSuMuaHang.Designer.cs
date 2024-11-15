@@ -28,19 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtThanhTien = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SuspendLayout();
-            // 
-            // guna2HtmlLabel7
-            // 
-            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(1092, 42);
-            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(97, 22);
-            this.guna2HtmlLabel7.TabIndex = 6;
-            this.guna2HtmlLabel7.Text = "Thành tiền:";
             // 
             // txtThanhTien
             // 
@@ -59,17 +48,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.Controls.Add(this.txtThanhTien);
-            this.Controls.Add(this.guna2HtmlLabel7);
             this.Name = "UCLichSuMuaHang";
             this.Size = new System.Drawing.Size(1255, 140);
             this.Load += new System.EventHandler(this.UCLichSuDonHang_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2HtmlLabel txtThanhTien;
     }
 }
