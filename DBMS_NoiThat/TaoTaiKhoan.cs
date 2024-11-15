@@ -92,13 +92,13 @@ namespace DBMS_NoiThat
                         cmd1.Parameters.AddWithValue("@TenDangNhap", tentk);
                         cmd1.ExecuteNonQuery();
 
-                        SqlCommand cmd = new SqlCommand("[InsertTaiKhoan]", myDB.GetConnection());
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@TenDangNhap", tentk);
-                        cmd.Parameters.AddWithValue("@MatKhau", matkhau);
-                        cmd.Parameters.AddWithValue("@Email", email);
-                        cmd.Parameters.AddWithValue("@RoleID", roleid);
-                        cmd.ExecuteNonQuery();
+                        //SqlCommand cmd = new SqlCommand("[InsertTaiKhoan]", myDB.GetConnection());
+                        //cmd.CommandType = CommandType.StoredProcedure;
+                        //cmd.Parameters.AddWithValue("@TenDangNhap", tentk);
+                        //cmd.Parameters.AddWithValue("@MatKhau", matkhau);
+                        //cmd.Parameters.AddWithValue("@Email", email);
+                        //cmd.Parameters.AddWithValue("@RoleID", roleid);
+                        //cmd.ExecuteNonQuery();
 
                     
 
@@ -126,7 +126,10 @@ namespace DBMS_NoiThat
 
         }
 
-       
+        private void TaoTaiKhoan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
