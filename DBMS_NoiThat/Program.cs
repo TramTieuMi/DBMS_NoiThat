@@ -21,7 +21,7 @@ namespace DBMS_NoiThat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FDangNhap());
+            Application.Run(new ThongKeDoanhThu());
         }
     }
 }
