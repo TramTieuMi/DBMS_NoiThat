@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lbHoten = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbDiachi = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbEmail = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbSdt = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -41,7 +40,6 @@
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
@@ -53,15 +51,6 @@
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(297, 31);
             this.guna2HtmlLabel1.TabIndex = 0;
             this.guna2HtmlLabel1.Text = "THÔNG TIN NGƯỜI DÙNG   ";
-            // 
-            // lbHoten
-            // 
-            this.lbHoten.BackColor = System.Drawing.Color.Transparent;
-            this.lbHoten.Location = new System.Drawing.Point(79, 514);
-            this.lbHoten.Name = "lbHoten";
-            this.lbHoten.Size = new System.Drawing.Size(173, 18);
-            this.lbHoten.TabIndex = 1;
-            this.lbHoten.Text = "Để tạm ở đây, ko xóa \r\n\r\nHọ tên: ";
             // 
             // lbDiachi
             // 
@@ -223,22 +212,12 @@
             this.guna2HtmlLabel2.TabIndex = 15;
             this.guna2HtmlLabel2.Text = "TenTaiKhoan:";
             // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(862, 486);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(173, 18);
-            this.guna2HtmlLabel3.TabIndex = 16;
-            this.guna2HtmlLabel3.Text = "Để tạm ở đây, ko xóa \r\n\r\nHọ tên: ";
-            // 
             // XemThongTinUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1268, 607);
-            this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnEdit);
@@ -250,7 +229,6 @@
             this.Controls.Add(this.lbSdt);
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.lbDiachi);
-            this.Controls.Add(this.lbHoten);
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Name = "XemThongTinUser";
             this.Text = "XemProfileUser";
@@ -263,7 +241,6 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbHoten;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbDiachi;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbEmail;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbSdt;
@@ -275,6 +252,5 @@
         private Guna.UI2.WinForms.Guna2Button btnEdit;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
     }
 }
