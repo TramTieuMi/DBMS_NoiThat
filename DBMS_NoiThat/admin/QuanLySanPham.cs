@@ -37,28 +37,28 @@ namespace DBMS_NoiThat.admin
         {
             // Call method to load SANPHAM data into the DataGridView
             RefreshSanPhamData();
-            
+
 
 
         }
 
 
         private void PictureBoxHinhAnhSP_Click(object sender, EventArgs e)
-        {
+            {
             // Optionally handle picture box click for other purposes
-        }
+            }
 
         private void btnThemSP_Click(object sender, EventArgs e)
-        {
+            {
             // Open the ThemSanPham form to add a new product
             ThemSanPham form = new ThemSanPham();
             form.ShowDialog();  // Show the form as a dialog so the user can input product data
-        }
+            }
 
         private void btnXoaSP_Click(object sender, EventArgs e)
-        {
-            try
             {
+            try
+                {
                 // Check if a row is selected in the DataGridView
                 if (dataGridViewSanPham.SelectedRows.Count > 0)
                 {
@@ -101,17 +101,18 @@ namespace DBMS_NoiThat.admin
                         }
 
                         dbConnection.CloseConnection();  // Close the connection
+                        }
                     }
-                }
                 else
-                {
+                    {
                     MessageBox.Show("Please select a product to delete.");
                 }
-            }
+                    }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
-            }
+                }
+            } // Connection is automatically closed here
         }
 
         private void btnSuaSP_Click(object sender, EventArgs e)
@@ -130,13 +131,13 @@ namespace DBMS_NoiThat.admin
                 form.ShowDialog();  // Open the form as a dialog
             }
             else
-            {
+        {
                 MessageBox.Show("Please select a product to edit.");
             }
         }
 
         private void btnTaiLai_Click(object sender, EventArgs e)
-        {
+            {
             // Refresh the data when the reload button is clicked
             RefreshSanPhamData();
         }
@@ -146,7 +147,7 @@ namespace DBMS_NoiThat.admin
         public void RefreshSanPhamData()
         {
             try
-            {
+        {
                 DBConnection dbConnection = new DBConnection();
                 conn = dbConnection.GetConnection();  // Open the connection
 
@@ -162,10 +163,10 @@ namespace DBMS_NoiThat.admin
                 {
                     string hinhAnhBase64 = row["HinhAnh"].ToString();
                     if (string.IsNullOrEmpty(hinhAnhBase64))
-                    {
+            {
                         Console.WriteLine("Warning: Image data is empty for product with ID " + row["MaSanPham"]);
                     }
-                }
+            }
 
                 // Optional: Set custom column headers for better display
                 dataGridViewSanPham.Columns["MaSanPham"].HeaderText = "Product ID";
@@ -186,9 +187,9 @@ namespace DBMS_NoiThat.admin
             }
         }
         private void LoadProductImage(int MaSanPham)
-        {
-            try
             {
+            try
+                {
                 // Create DB connection and command to fetch the image for the selected product
                 DBConnection dbConnection = new DBConnection();
                 SqlConnection conn = dbConnection.GetConnection();
@@ -202,13 +203,13 @@ namespace DBMS_NoiThat.admin
                 // Execute the query and get the image data
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
-                {
+                    {
                     reader.Read();  // Read the first row
                     string hinhAnhBase64 = reader["HinhAnh"].ToString();  // Get the Base64 string
 
                     // If there is a Base64 string, convert it to an image and display it
                     if (!string.IsNullOrEmpty(hinhAnhBase64))
-                    {
+                        {
                         byte[] imageBytes = Convert.FromBase64String(hinhAnhBase64);  // Convert Base64 to byte array
                         using (MemoryStream ms = new MemoryStream(imageBytes))
                         {
@@ -217,18 +218,20 @@ namespace DBMS_NoiThat.admin
                         }
                     }
                 }
-                else
-                {
+                        else
+                        {
                     MessageBox.Show("Image not found for this product.");
-                }
+                        }
 
                 // Close the reader and connection
                 reader.Close();
                 dbConnection.CloseConnection();
-            }
+                    }
             catch (Exception ex)
-            {
+                    {
                 MessageBox.Show("Error loading image: " + ex.Message);
+                    }
+                }
             }
         }
 
@@ -247,28 +250,28 @@ namespace DBMS_NoiThat.admin
 
                     // Process and display the image (this is just an example; customize as needed)
                     if (!string.IsNullOrEmpty(hinhAnhBase64))
-                    {
+                        {
                         // Convert Base64 string to image and display it in a PictureBox
                         byte[] imageBytes = Convert.FromBase64String(hinhAnhBase64);
                         using (MemoryStream ms = new MemoryStream(imageBytes))
-                        {
+                            {
                             PictureBoxHinhAnhSP.Image = Image.FromStream(ms);
                             PictureBoxHinhAnhSP.SizeMode = PictureBoxSizeMode.StretchImage;
                         }
-                    }
-                    else
-                    {
+                            }
+                            else
+                            {
                         // Clear the image if no Base64 data is found
                         PictureBoxHinhAnhSP.Image = null;
                     }
-                }
-            }
+                            }
+                        }
             catch (Exception ex)
-            {
+                        {
                 // Handle any exceptions that occur during the event
                 MessageBox.Show("Error displaying image: " + ex.Message);
-            }
-        }
+                    }
+                }
 
         private void btnTimKiemSP_Click(object sender, EventArgs e)
         {
@@ -282,11 +285,12 @@ namespace DBMS_NoiThat.admin
             {
                 MessageBox.Show("Please enter a search term.");
             }
+
         }
         private void SearchSanPham(string searchTerm)
-        {
+                {
             try
-            {
+                    {
                 // Create connection
                 DBConnection dbConnection = new DBConnection();
                 SqlConnection conn = dbConnection.GetConnection();
@@ -297,7 +301,7 @@ namespace DBMS_NoiThat.admin
 
                 // Use SqlDataAdapter to fill the DataTable with the result
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
+                        DataTable dt = new DataTable();
                 da.Fill(dt);  // Fill the DataTable with the search results
 
                 // Bind the DataTable to the DataGridView to display the search results
@@ -305,31 +309,35 @@ namespace DBMS_NoiThat.admin
 
                 // Close the connection after fetching the data
                 conn.Close();
-            }
+                }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        
+
+        private void btnTimKiem_Click_Click(object sender, EventArgs e)
+        {
+            string timKiem = txtTimKiem.Text;
+            
 
         private void txtbTimKiemSP_TextChanged_1(object sender, EventArgs e)
-        {
+                {
             string searchTerm = txtbTimKiemSP.Text;  // Get the current text from the TextBox
 
             if (!string.IsNullOrEmpty(searchTerm))  // Only search if there's something in the TextBox
-            {
+                    {
                 SearchSanPham(searchTerm);  // Call the search function
-            }
-            else
-            {
+                    }
+                    else
+                    {
                 // Optionally, you can reload all products if the TextBox is cleared
                 RefreshSanPhamData();  // Replace with your method to refresh all data
             }
         }
     }
- }
-
+}
+  
 
 
     

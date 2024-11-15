@@ -97,7 +97,10 @@
             this.label1.Size = new System.Drawing.Size(116, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Tên đăng nhập";
+<<<<<<< HEAD
             this.label1.Click += new System.EventHandler(this.label1_Click);
+=======
+>>>>>>> origin/Khang
             // 
             // label2
             // 
@@ -107,7 +110,10 @@
             this.label2.Size = new System.Drawing.Size(75, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Mật khẩu";
+<<<<<<< HEAD
             this.label2.Click += new System.EventHandler(this.label2_Click);
+=======
+>>>>>>> origin/Khang
             // 
             // label3
             // 
@@ -117,7 +123,10 @@
             this.label3.Size = new System.Drawing.Size(48, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Email";
+<<<<<<< HEAD
             this.label3.Click += new System.EventHandler(this.label3_Click);
+=======
+>>>>>>> origin/Khang
             // 
             // label4
             // 
@@ -127,7 +136,10 @@
             this.label4.Size = new System.Drawing.Size(66, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "Chức vụ";
+<<<<<<< HEAD
             this.label4.Click += new System.EventHandler(this.label4_Click);
+=======
+>>>>>>> origin/Khang
             // 
             // txtTenDangNhap
             // 
@@ -135,7 +147,10 @@
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.Size = new System.Drawing.Size(121, 26);
             this.txtTenDangNhap.TabIndex = 8;
+<<<<<<< HEAD
             this.txtTenDangNhap.TextChanged += new System.EventHandler(this.txtTenDangNhap_TextChanged);
+=======
+>>>>>>> origin/Khang
             // 
             // txtMatKhau
             // 
@@ -143,7 +158,10 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(121, 26);
             this.txtMatKhau.TabIndex = 9;
+<<<<<<< HEAD
             this.txtMatKhau.TextChanged += new System.EventHandler(this.txtMatKhau_TextChanged);
+=======
+>>>>>>> origin/Khang
             // 
             // txtEmail
             // 
@@ -151,7 +169,10 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(121, 26);
             this.txtEmail.TabIndex = 10;
+<<<<<<< HEAD
             this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+=======
+>>>>>>> origin/Khang
             // 
             // cmbRoleID
             // 
@@ -160,7 +181,10 @@
             this.cmbRoleID.Name = "cmbRoleID";
             this.cmbRoleID.Size = new System.Drawing.Size(121, 28);
             this.cmbRoleID.TabIndex = 11;
+<<<<<<< HEAD
             this.cmbRoleID.SelectedIndexChanged += new System.EventHandler(this.cmbRoleID_SelectedIndexChanged_1);
+=======
+>>>>>>> origin/Khang
             // 
             // btnTimKiem_Click
             // 
@@ -178,7 +202,10 @@
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(260, 26);
             this.txtTimKiem.TabIndex = 13;
+<<<<<<< HEAD
             this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
+=======
+>>>>>>> origin/Khang
             // 
             // chkTenDangNhap
             // 
@@ -200,7 +227,10 @@
             this.chkEmail.TabIndex = 15;
             this.chkEmail.Text = "Email";
             this.chkEmail.UseVisualStyleBackColor = true;
+<<<<<<< HEAD
             this.chkEmail.CheckedChanged += new System.EventHandler(this.chkEmail_CheckedChanged);
+=======
+>>>>>>> origin/Khang
             // 
             // btnLoadData
             // 

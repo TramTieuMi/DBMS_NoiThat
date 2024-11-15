@@ -121,6 +121,72 @@
             this.dataGridViewSanPham.TabIndex = 71;
             this.dataGridViewSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSanPham_CellClick);
             // 
+            // lblMauSac
+            // 
+            this.lblMauSac.AutoSize = true;
+            this.lblMauSac.Location = new System.Drawing.Point(297, 140);
+            this.lblMauSac.Name = "lblMauSac";
+            this.lblMauSac.Size = new System.Drawing.Size(69, 20);
+            this.lblMauSac.TabIndex = 37;
+            this.lblMauSac.Text = "Màu sắc";
+            // 
+            // lblKichThuoc
+            // 
+            this.lblKichThuoc.AutoSize = true;
+            this.lblKichThuoc.Location = new System.Drawing.Point(297, 102);
+            this.lblKichThuoc.Name = "lblKichThuoc";
+            this.lblKichThuoc.Size = new System.Drawing.Size(87, 20);
+            this.lblKichThuoc.TabIndex = 36;
+            this.lblKichThuoc.Text = "Kích thước ";
+            // 
+            // lblMoTa
+            // 
+            this.lblMoTa.AutoSize = true;
+            this.lblMoTa.Location = new System.Drawing.Point(297, 60);
+            this.lblMoTa.Name = "lblMoTa";
+            this.lblMoTa.Size = new System.Drawing.Size(57, 20);
+            this.lblMoTa.TabIndex = 35;
+            this.lblMoTa.Text = "Mô Tả ";
+            // 
+            // lblChatLieu
+            // 
+            this.lblChatLieu.AutoSize = true;
+            this.lblChatLieu.Location = new System.Drawing.Point(297, 17);
+            this.lblChatLieu.Name = "lblChatLieu";
+            this.lblChatLieu.Size = new System.Drawing.Size(77, 20);
+            this.lblChatLieu.TabIndex = 34;
+            this.lblChatLieu.Text = "Chất Liệu";
+            // 
+            // MauSac
+            // 
+            this.MauSac.Location = new System.Drawing.Point(443, 134);
+            this.MauSac.Name = "MauSac";
+            this.MauSac.Size = new System.Drawing.Size(100, 26);
+            this.MauSac.TabIndex = 41;
+            // 
+            // GiaSanPham
+            // 
+            this.GiaSanPham.Location = new System.Drawing.Point(178, 137);
+            this.GiaSanPham.Name = "GiaSanPham";
+            this.GiaSanPham.Size = new System.Drawing.Size(100, 26);
+            this.GiaSanPham.TabIndex = 42;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.Location = new System.Drawing.Point(443, 175);
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.Size = new System.Drawing.Size(100, 26);
+            this.SoLuong.TabIndex = 44;
+            // 
+            // lblSoLuong
+            // 
+            this.lblSoLuong.AutoSize = true;
+            this.lblSoLuong.Location = new System.Drawing.Point(297, 175);
+            this.lblSoLuong.Name = "lblSoLuong";
+            this.lblSoLuong.Size = new System.Drawing.Size(72, 20);
+            this.lblSoLuong.TabIndex = 43;
+            this.lblSoLuong.Text = "Số lượng";
+            // 
             // QuanLySanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
