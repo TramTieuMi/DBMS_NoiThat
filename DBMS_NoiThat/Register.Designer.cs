@@ -43,11 +43,12 @@
             // 
             // labelname
             // 
-            this.labelname.Font = new System.Drawing.Font("Monotype Corsiva", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelname.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelname.ForeColor = System.Drawing.Color.Black;
-            this.labelname.Location = new System.Drawing.Point(202, 21);
+            this.labelname.Location = new System.Drawing.Point(269, 26);
+            this.labelname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelname.Name = "labelname";
-            this.labelname.Size = new System.Drawing.Size(291, 50);
+            this.labelname.Size = new System.Drawing.Size(388, 62);
             this.labelname.TabIndex = 61;
             this.labelname.Text = "Tạo Tài Khoản";
             this.labelname.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -61,10 +62,9 @@
             // 
             this.lblCode.AutoSize = true;
             this.lblCode.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCode.Location = new System.Drawing.Point(127, 183);
-            this.lblCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCode.Location = new System.Drawing.Point(169, 225);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(44, 17);
+            this.lblCode.Size = new System.Drawing.Size(53, 19);
             this.lblCode.TabIndex = 46;
             this.lblCode.Text = "Code:";
             // 
@@ -72,10 +72,9 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(127, 95);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEmail.Location = new System.Drawing.Point(169, 117);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(48, 17);
+            this.lblEmail.Size = new System.Drawing.Size(60, 19);
             this.lblEmail.TabIndex = 45;
             this.lblEmail.Text = "Email:";
             // 
@@ -83,10 +82,9 @@
             // 
             this.labelNotice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNotice.ForeColor = System.Drawing.Color.Black;
-            this.labelNotice.Location = new System.Drawing.Point(263, 216);
-            this.labelNotice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelNotice.Location = new System.Drawing.Point(351, 266);
             this.labelNotice.Name = "labelNotice";
-            this.labelNotice.Size = new System.Drawing.Size(275, 31);
+            this.labelNotice.Size = new System.Drawing.Size(367, 38);
             this.labelNotice.TabIndex = 58;
             this.labelNotice.Text = "Create Account";
             this.labelNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -97,13 +95,13 @@
             this.btnVerifyCode.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnVerifyCode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnVerifyCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnVerifyCode.FillColor = System.Drawing.Color.DarkGreen;
+            this.btnVerifyCode.FillColor = System.Drawing.Color.MidnightBlue;
             this.btnVerifyCode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerifyCode.ForeColor = System.Drawing.Color.White;
-            this.btnVerifyCode.Location = new System.Drawing.Point(496, 258);
-            this.btnVerifyCode.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVerifyCode.Location = new System.Drawing.Point(661, 318);
+            this.btnVerifyCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVerifyCode.Name = "btnVerifyCode";
-            this.btnVerifyCode.Size = new System.Drawing.Size(135, 37);
+            this.btnVerifyCode.Size = new System.Drawing.Size(180, 46);
             this.btnVerifyCode.TabIndex = 68;
             this.btnVerifyCode.Text = "XÁC THỰC";
             this.btnVerifyCode.Click += new System.EventHandler(this.btnVerifyCode_Click);
@@ -119,13 +117,13 @@
             this.txtCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCode.Location = new System.Drawing.Point(185, 171);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtCode.Location = new System.Drawing.Point(247, 210);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCode.Name = "txtCode";
             this.txtCode.PasswordChar = '\0';
             this.txtCode.PlaceholderText = "";
             this.txtCode.SelectedText = "";
-            this.txtCode.Size = new System.Drawing.Size(163, 39);
+            this.txtCode.Size = new System.Drawing.Size(217, 48);
             this.txtCode.TabIndex = 67;
             // 
             // txtEmail
@@ -139,13 +137,13 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(185, 84);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtEmail.Location = new System.Drawing.Point(247, 103);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(308, 39);
+            this.txtEmail.Size = new System.Drawing.Size(411, 48);
             this.txtEmail.TabIndex = 66;
             // 
             // btnSendCode
@@ -154,13 +152,13 @@
             this.btnSendCode.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSendCode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSendCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSendCode.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnSendCode.FillColor = System.Drawing.Color.Black;
             this.btnSendCode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSendCode.ForeColor = System.Drawing.Color.White;
-            this.btnSendCode.Location = new System.Drawing.Point(496, 133);
-            this.btnSendCode.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSendCode.Location = new System.Drawing.Point(661, 164);
+            this.btnSendCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSendCode.Name = "btnSendCode";
-            this.btnSendCode.Size = new System.Drawing.Size(135, 37);
+            this.btnSendCode.Size = new System.Drawing.Size(180, 46);
             this.btnSendCode.TabIndex = 62;
             this.btnSendCode.Text = "Gửi CODE";
             this.btnSendCode.Click += new System.EventHandler(this.btnSendCode_Click_1);
@@ -172,23 +170,23 @@
             this.btnCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCancel.FillColor = System.Drawing.Color.OrangeRed;
+            this.btnCancel.FillColor = System.Drawing.Color.Black;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(60, 258);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Location = new System.Drawing.Point(80, 318);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(115, 37);
+            this.btnCancel.Size = new System.Drawing.Size(153, 46);
             this.btnCancel.TabIndex = 69;
             this.btnCancel.Text = "Hủy bỏ";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Register
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(745, 317);
+            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.ClientSize = new System.Drawing.Size(993, 390);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnVerifyCode);
             this.Controls.Add(this.txtCode);
@@ -198,6 +196,7 @@
             this.Controls.Add(this.lblCode);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.labelNotice);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";

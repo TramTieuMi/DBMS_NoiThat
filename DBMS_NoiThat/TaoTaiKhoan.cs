@@ -126,7 +126,10 @@ namespace DBMS_NoiThat
 
         }
 
-       
+        private void TaoTaiKhoan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
