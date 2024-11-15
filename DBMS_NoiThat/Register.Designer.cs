@@ -43,7 +43,7 @@
             // 
             // labelname
             // 
-            this.labelname.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelname.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelname.ForeColor = System.Drawing.Color.Black;
             this.labelname.Location = new System.Drawing.Point(269, 26);
             this.labelname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -61,20 +61,20 @@
             // lblCode
             // 
             this.lblCode.AutoSize = true;
-            this.lblCode.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblCode.Location = new System.Drawing.Point(169, 225);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(53, 19);
+            this.lblCode.Size = new System.Drawing.Size(48, 20);
             this.lblCode.TabIndex = 46;
             this.lblCode.Text = "Code:";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblEmail.Location = new System.Drawing.Point(169, 117);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(60, 19);
+            this.lblEmail.Size = new System.Drawing.Size(51, 20);
             this.lblEmail.TabIndex = 45;
             this.lblEmail.Text = "Email:";
             // 
@@ -82,7 +82,7 @@
             // 
             this.labelNotice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNotice.ForeColor = System.Drawing.Color.Black;
-            this.labelNotice.Location = new System.Drawing.Point(351, 266);
+            this.labelNotice.Location = new System.Drawing.Point(170, 263);
             this.labelNotice.Name = "labelNotice";
             this.labelNotice.Size = new System.Drawing.Size(367, 38);
             this.labelNotice.TabIndex = 58;
@@ -96,9 +96,9 @@
             this.btnVerifyCode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnVerifyCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnVerifyCode.FillColor = System.Drawing.Color.MidnightBlue;
-            this.btnVerifyCode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerifyCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnVerifyCode.ForeColor = System.Drawing.Color.White;
-            this.btnVerifyCode.Location = new System.Drawing.Point(661, 318);
+            this.btnVerifyCode.Location = new System.Drawing.Point(487, 210);
             this.btnVerifyCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVerifyCode.Name = "btnVerifyCode";
             this.btnVerifyCode.Size = new System.Drawing.Size(180, 46);
@@ -153,12 +153,12 @@
             this.btnSendCode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSendCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSendCode.FillColor = System.Drawing.Color.Black;
-            this.btnSendCode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSendCode.ForeColor = System.Drawing.Color.White;
-            this.btnSendCode.Location = new System.Drawing.Point(661, 164);
+            this.btnSendCode.Location = new System.Drawing.Point(684, 103);
             this.btnSendCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSendCode.Name = "btnSendCode";
-            this.btnSendCode.Size = new System.Drawing.Size(180, 46);
+            this.btnSendCode.Size = new System.Drawing.Size(128, 48);
             this.btnSendCode.TabIndex = 62;
             this.btnSendCode.Text = "Gửi CODE";
             this.btnSendCode.Click += new System.EventHandler(this.btnSendCode_Click_1);
@@ -173,10 +173,10 @@
             this.btnCancel.FillColor = System.Drawing.Color.Black;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(80, 318);
+            this.btnCancel.Location = new System.Drawing.Point(684, 220);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(153, 46);
+            this.btnCancel.Size = new System.Drawing.Size(91, 36);
             this.btnCancel.TabIndex = 69;
             this.btnCancel.Text = "Hủy bỏ";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

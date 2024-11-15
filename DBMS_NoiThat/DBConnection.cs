@@ -13,6 +13,7 @@ namespace DBMS_NoiThat.user
     {
         // SqlConnection sqlCon;
         //Data Source=NGOCNAM;Initial Catalog=data;Integrated Security=True
+        //Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True
         SqlConnection sqlCon;
         SqlConnection conAdmin = new SqlConnection(@"Data Source=KHANG\LTWEB;Initial Catalog=data1;Integrated Security=True;TrustServerCertificate=True");
         public DBConnection()
