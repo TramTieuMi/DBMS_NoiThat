@@ -84,15 +84,11 @@ namespace DBMS_NoiThat.user
         {
             List<LichSuMuaHang> listLichSu = new List<LichSuMuaHang>();
             string query = "select * from view_ChiTietLichSuMuaHang WHERE TenDangNhap = @TenDangNhap";
-
-
             DataTable dataTable = new DataTable();
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@TenDangNhap", tenTaiKhoan); // Truyền mã khách hàng vào truy vấn
             SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-
             adapter.Fill(dataTable);
             flwPnLichSu.Controls.Clear();
 

@@ -144,5 +144,15 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void BTN_ChatBox_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ChatBoxAdmin());
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

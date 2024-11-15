@@ -210,8 +210,6 @@ namespace DBMS_NoiThat.admin
                 if (radioButtonNam.Checked == true)
                 {
                     int yy = Convert.ToInt32(numericUpDownYear.Text);
-
-
                     DataTable table = new DataTable();
                     conn.OpenConnection();
                     SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.GetDonHangDaGiaoNam(@yy)", conn.GetConnection());
