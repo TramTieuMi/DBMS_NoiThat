@@ -60,7 +60,7 @@ namespace DBMS_NoiThat
             string DiaChiNhan = "";
             foreach (DataRow row in dataTable.Rows)
             {
-                if ((maDonHang == (int)row["MaDonHang"]) && (row["TrangThai"].ToString() == "Đặt Hàng"))
+                if ((maDonHang == (int)row["MaDonHang"]) && (row["TrangThai"].ToString() == "Ðang chờ xác nhận"))
                 {
                     int MaSanPham = (int)row["MaSanPham"];
                     MaKhachHang = (int)row["MaKhachHang"];

@@ -58,7 +58,7 @@
             this.TB_NoiDung.PasswordChar = '\0';
             this.TB_NoiDung.PlaceholderText = "";
             this.TB_NoiDung.SelectedText = "";
-            this.TB_NoiDung.Size = new System.Drawing.Size(861, 37);
+            this.TB_NoiDung.Size = new System.Drawing.Size(840, 37);
             this.TB_NoiDung.TabIndex = 1;
             // 
             // UCChatNoiDung
@@ -68,7 +68,7 @@
             this.Controls.Add(this.TB_NoiDung);
             this.Controls.Add(this.LB_Ten);
             this.Name = "UCChatNoiDung";
-            this.Size = new System.Drawing.Size(867, 70);
+            this.Size = new System.Drawing.Size(840, 70);
             this.ResumeLayout(false);
             this.PerformLayout();
 
