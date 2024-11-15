@@ -289,10 +289,10 @@ namespace DBMS_NoiThat
             // LB_TieuDe
             // 
             this.LB_TieuDe.BackColor = System.Drawing.Color.Transparent;
-            this.LB_TieuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_TieuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_TieuDe.Location = new System.Drawing.Point(417, 11);
             this.LB_TieuDe.Name = "LB_TieuDe";
-            this.LB_TieuDe.Size = new System.Drawing.Size(286, 40);
+            this.LB_TieuDe.Size = new System.Drawing.Size(302, 40);
             this.LB_TieuDe.TabIndex = 0;
             this.LB_TieuDe.Text = "Đơn Hàng Của Bạn";
             // 
