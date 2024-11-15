@@ -28,20 +28,53 @@ namespace DBMS_NoiThat.user
             InitializeComponent();
         }
 
-        private void ButtonTroVe_Click(object sender, EventArgs e)
+       
+
+       
+        
+
+     
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-               
-                Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //try
+            //{
+            //    OpenFileDialog open = new OpenFileDialog();
+            //    open.Filter = "Select Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+            //    if ((open.ShowDialog() == DialogResult.OK))
+            //    {
+            //        PictureBoxHinhAnhSP.Image = Image.FromFile(open.FileName);
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+            
+
+            //int id = Convert.ToInt32(LableIDSP.Text);
+            //MemoryStream picture = new MemoryStream();
+            //PictureBoxHinhAnhSP.Image.Save(picture, PictureBoxHinhAnhSP.Image.RawFormat);
+            //SqlCommand command = new SqlCommand("UPDATE SANPHAM SET HinhAnh=@pic WHERE MaSanPham=@ID", mydb.GetConnection());
+            //command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            //command.Parameters.Add("@pic", SqlDbType.Image).Value = picture.ToArray();
+
+            //mydb.OpenConnection();
+
+            //if ((command.ExecuteNonQuery() == 1))
+            //{
+            //    mydb.CloseConnection();
+
+            //}
+            //else
+            //{
+            //    mydb.CloseConnection();
+
+            //}
         }
 
-        private void buttonThemVaoGio_Click(object sender, EventArgs e)
+        private void buttonThemVaoGio_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -71,7 +104,7 @@ namespace DBMS_NoiThat.user
                         cmd1.Parameters.AddWithValue("@MaGioHang", idKH);
                         cmd1.Parameters.AddWithValue("@MaSanPham", id);
                         cmd1.Parameters.AddWithValue("@SoLuong", sl);
-                       // cmd1.Parameters.AddWithValue("@SoTien", giaSP * sl);
+                        // cmd1.Parameters.AddWithValue("@SoTien", giaSP * sl);
                         cmd1.ExecuteNonQuery();
                         MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -91,52 +124,17 @@ namespace DBMS_NoiThat.user
             }
         }
 
-        
-
-        private void ChiTietSanPhamForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void ButtonTroVe_Click_1(object sender, EventArgs e)
         {
             try
             {
-                OpenFileDialog open = new OpenFileDialog();
-                open.Filter = "Select Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
-                if ((open.ShowDialog() == DialogResult.OK))
-                {
-                    PictureBoxHinhAnhSP.Image = Image.FromFile(open.FileName);
-                }
 
+                Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            
-
-            int id = Convert.ToInt32(LableIDSP.Text);
-            MemoryStream picture = new MemoryStream();
-            PictureBoxHinhAnhSP.Image.Save(picture, PictureBoxHinhAnhSP.Image.RawFormat);
-            SqlCommand command = new SqlCommand("UPDATE SANPHAM SET HinhAnh=@pic WHERE MaSanPham=@ID", mydb.GetConnection());
-            command.Parameters.Add("@id", SqlDbType.Int).Value = id;
-            command.Parameters.Add("@pic", SqlDbType.Image).Value = picture.ToArray();
-
-            mydb.OpenConnection();
-
-            if ((command.ExecuteNonQuery() == 1))
-            {
-                mydb.CloseConnection();
-
-            }
-            else
-            {
-                mydb.CloseConnection();
-
+                MessageBox.Show(ex.Message);
             }
         }
-
-        
     }
 }
