@@ -1,4 +1,4 @@
-﻿namespace DBMS_NoiThat
+﻿namespace DBMS_NoiThat.admin
 {
     partial class QuanLyTaiKhoan
     {
@@ -42,9 +42,9 @@
             this.cmbRoleID = new System.Windows.Forms.ComboBox();
             this.btnTimKiem_Click = new System.Windows.Forms.Button();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.btnLoadData = new System.Windows.Forms.Button();
             this.chkTenDangNhap = new System.Windows.Forms.CheckBox();
             this.chkEmail = new System.Windows.Forms.CheckBox();
-            this.btnLoadData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -180,6 +180,16 @@
             this.txtTimKiem.TabIndex = 13;
             this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
+            // btnLoadData
+            // 
+            this.btnLoadData.Location = new System.Drawing.Point(636, 262);
+            this.btnLoadData.Name = "btnLoadData";
+            this.btnLoadData.Size = new System.Drawing.Size(134, 57);
+            this.btnLoadData.TabIndex = 16;
+            this.btnLoadData.Text = "Tải lại";
+            this.btnLoadData.UseVisualStyleBackColor = true;
+            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
+            // 
             // chkTenDangNhap
             // 
             this.chkTenDangNhap.AutoSize = true;
@@ -201,16 +211,6 @@
             this.chkEmail.Text = "Email";
             this.chkEmail.UseVisualStyleBackColor = true;
             this.chkEmail.CheckedChanged += new System.EventHandler(this.chkEmail_CheckedChanged);
-            // 
-            // btnLoadData
-            // 
-            this.btnLoadData.Location = new System.Drawing.Point(636, 262);
-            this.btnLoadData.Name = "btnLoadData";
-            this.btnLoadData.Size = new System.Drawing.Size(134, 57);
-            this.btnLoadData.TabIndex = 16;
-            this.btnLoadData.Text = "Tải lại";
-            this.btnLoadData.UseVisualStyleBackColor = true;
-            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
             // 
             // QuanLyTaiKhoan
             // 
@@ -259,8 +259,8 @@
         private System.Windows.Forms.ComboBox cmbRoleID;
         private System.Windows.Forms.Button btnTimKiem_Click;
         private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.Button btnLoadData;
         private System.Windows.Forms.CheckBox chkTenDangNhap;
         private System.Windows.Forms.CheckBox chkEmail;
-        private System.Windows.Forms.Button btnLoadData;
     }
 }

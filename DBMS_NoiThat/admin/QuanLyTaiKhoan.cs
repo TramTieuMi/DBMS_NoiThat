@@ -10,8 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Do_An_Tuyen_Dung;
 
-
-namespace DBMS_NoiThat
+namespace DBMS_NoiThat.admin
 {
     public partial class QuanLyTaiKhoan : Form
     {
@@ -22,8 +21,7 @@ namespace DBMS_NoiThat
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadData();
-            LoadRoles();
+
         }
 
         private void btnSave_Click_Click(object sender, EventArgs e)
@@ -33,13 +31,7 @@ namespace DBMS_NoiThat
             string email = txtEmail.Text;
             int roleId;
 
-            // Check if an item is selected in the ComboBox
-            if (cmbRoleID.SelectedValue == null)
-            {
-                MessageBox.Show("Vui lòng chọn một Role ID hợp lệ");
-                return;
-            }
-            // Attempt to parse the selected value
+            // Assuming role ID is selected from a ComboBox
             if (!int.TryParse(cmbRoleID.SelectedValue.ToString(), out roleId))
             {
                 MessageBox.Show("Vui lòng chọn một Role ID hợp lệ");
@@ -69,7 +61,7 @@ namespace DBMS_NoiThat
                         {
                             MessageBox.Show("Tài khoản đã được thêm thành công!");
                             this.DialogResult = DialogResult.OK;
-                            
+                            this.Close();
                         }
                         else
                         {
@@ -86,14 +78,7 @@ namespace DBMS_NoiThat
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Make sure the row index is valid
-            {
-                var row = dgvTaiKhoan.Rows[e.RowIndex];
-                txtTenDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
-                txtMatKhau.Text = row.Cells["MatKhau"].Value.ToString(); // Ensure your DataTable has this column
-                txtEmail.Text = row.Cells["Email"].Value.ToString();
-                cmbRoleID.SelectedValue = Convert.ToInt32(row.Cells["RoleID"].Value); // Adjust if the column name differs
-            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -119,11 +104,11 @@ namespace DBMS_NoiThat
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    // Adding parameters with explicit types
-                    cmd.Parameters.Add("@TenDangNhap", SqlDbType.NVarChar).Value = tenDangNhap;
-                    cmd.Parameters.Add("@MatKhau", SqlDbType.NVarChar).Value = matKhau; // Consider hashing this
-                    cmd.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
-                    cmd.Parameters.Add("@RoleID", SqlDbType.Int).Value = roleId;
+                    // Adding parameters
+                    cmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
+                    cmd.Parameters.AddWithValue("@MatKhau", matKhau);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@RoleID", roleId);
 
                     try
                     {
@@ -133,11 +118,11 @@ namespace DBMS_NoiThat
                         {
                             MessageBox.Show("Tài khoản đã được cập nhật thành công!");
                             this.DialogResult = DialogResult.OK;
-                            
+                            this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Cập nhật tài khoản thất bại!, chắc rằng sử dụng đúng Email");
+                            MessageBox.Show("Cập nhật tài khoản thất bại!");
                         }
                     }
                     catch (SqlException ex)
@@ -234,6 +219,7 @@ namespace DBMS_NoiThat
 
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
                     adapter.Fill(dt);
 
                     dgvTaiKhoan.DataSource = null; // Assuming you have a DataGridView for displaying results
@@ -246,42 +232,15 @@ namespace DBMS_NoiThat
                     {
                         dgvTaiKhoan.DataSource = dt; // Bind the results to the DataGridView
                     }
-                } // Connection is automatically closed by the using statement
+                }
+
+                connection.Close(); // Connection is automatically closed by the using statement
             }
         }
 
         private void chkTenDangNhap_CheckedChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void LoadRoles()
-{
-            using (SqlConnection connection = Connection.GetSqlConnection())
-            {
-                connection.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT RoleID, RoleName FROM Roles", connection))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    cmbRoleID.DataSource = dt;
-                    cmbRoleID.DisplayMember = "RoleName";
-                    cmbRoleID.ValueMember = "RoleID";
-                }
-            }
-}
-
-        private void cmbRoleID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLoadData_Click(object sender, EventArgs e)
-        {
-            LoadData();
-            LoadRoles();
         }
 
         private void chkEmail_CheckedChanged(object sender, EventArgs e)
@@ -330,6 +289,11 @@ namespace DBMS_NoiThat
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLoadData_Click(object sender, EventArgs e)
         {
 
         }
