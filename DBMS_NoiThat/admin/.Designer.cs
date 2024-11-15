@@ -1,4 +1,4 @@
-﻿namespace DBMS_NoiThat.admin
+﻿namespace DBMS_NoiThat
 {
     partial class QuanLySanPham
     {
@@ -34,10 +34,10 @@
             this.btnTimKiemSP = new System.Windows.Forms.Button();
             this.btnTaiLai = new System.Windows.Forms.Button();
             this.txtbTimKiemSP = new System.Windows.Forms.TextBox();
-            this.PictureBoxHinhAnhSP = new System.Windows.Forms.PictureBox();
             this.dataGridViewSanPham = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxHinhAnhSP)).BeginInit();
+            this.PictureBoxHinhAnhSP = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSanPham)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxHinhAnhSP)).BeginInit();
             this.SuspendLayout();
             // 
             // btnThemSP
@@ -98,6 +98,18 @@
             this.txtbTimKiemSP.TabIndex = 70;
             this.txtbTimKiemSP.TextChanged += new System.EventHandler(this.txtbTimKiemSP_TextChanged_1);
             // 
+            // dataGridViewSanPham
+            // 
+            this.dataGridViewSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSanPham.Location = new System.Drawing.Point(25, 143);
+            this.dataGridViewSanPham.Name = "dataGridViewSanPham";
+            this.dataGridViewSanPham.RowHeadersWidth = 62;
+            this.dataGridViewSanPham.RowTemplate.Height = 28;
+            this.dataGridViewSanPham.Size = new System.Drawing.Size(717, 802);
+            this.dataGridViewSanPham.TabIndex = 71;
+            this.dataGridViewSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSanPham_CellClick);
+            this.dataGridViewSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSanPham_CellContentClick);
+            // 
             // PictureBoxHinhAnhSP
             // 
             this.PictureBoxHinhAnhSP.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -109,17 +121,6 @@
             this.PictureBoxHinhAnhSP.TabIndex = 67;
             this.PictureBoxHinhAnhSP.TabStop = false;
             this.PictureBoxHinhAnhSP.Click += new System.EventHandler(this.PictureBoxHinhAnhSP_Click);
-            // 
-            // dataGridViewSanPham
-            // 
-            this.dataGridViewSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSanPham.Location = new System.Drawing.Point(25, 143);
-            this.dataGridViewSanPham.Name = "dataGridViewSanPham";
-            this.dataGridViewSanPham.RowHeadersWidth = 62;
-            this.dataGridViewSanPham.RowTemplate.Height = 28;
-            this.dataGridViewSanPham.Size = new System.Drawing.Size(717, 802);
-            this.dataGridViewSanPham.TabIndex = 71;
-            this.dataGridViewSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSanPham_CellClick);
             // 
             // QuanLySanPham
             // 
@@ -137,8 +138,8 @@
             this.Name = "QuanLySanPham";
             this.Text = "QuanLySanPham";
             this.Load += new System.EventHandler(this.QuanLySanPham_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxHinhAnhSP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSanPham)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxHinhAnhSP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
