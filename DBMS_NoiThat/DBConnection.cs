@@ -19,7 +19,7 @@ namespace DBMS_NoiThat.user
         {
             
 
-            sqlCon = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=data;Integrated Security=True");
+            sqlCon = new SqlConnection(@"Data Source=DESKTOP-UR1R776\SQLEXPRESS;Initial Catalog=data11;Integrated Security=True;TrustServerCertificate=True");
 
         }
 
