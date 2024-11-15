@@ -95,7 +95,7 @@ namespace DBMS_NoiThat.admin
 
         private void BTN_Gui_Click(object sender, EventArgs e)
         {
-            TB_Nhap.Controls.Clear();
+            TB_Nhap.Text = "";
             using (SqlCommand cmd = new SqlCommand("sp_ThemChatBox", connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
