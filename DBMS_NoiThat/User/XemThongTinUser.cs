@@ -100,41 +100,34 @@ namespace DBMS_NoiThat.user
 
         private void UpdateUserData()
         {// Cập nhật thông tin người dùng trong cơ sở dữ liệu
+         // Cập nhật thông tin người dùng trong cơ sở dữ liệu
             using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
             {
-                string query = "UPDATE KHACHHANG " +
-                    "SET KHACHHANG.SDT = @SDT, KHACHHANG.DiaChi = @DiaChi " +
-                    "FROM KHACHHANG " +
-                    "JOIN TAIKHOAN ON KHACHHANG.Email = TAIKHOAN.Email " +
-                    "WHERE HovaTen = @HovaTen";
+                string storedProcedure = "dbo.UpdateUserInfo";
 
-
-                SqlCommand command = new SqlCommand(query, connection);
-
-                command.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
-                command.Parameters.AddWithValue("@Sdt", txtSdt.Text);
-                command.Parameters.AddWithValue("@Email", txtEmail.Text);
-                command.Parameters.AddWithValue("@HovaTen", txtHoTen.Text);
-                command.Parameters.AddWithValue("@TenDangNhap", txtTenDangNhap.Text);
-
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-                // Mở kết nối và thực thi câu lệnh
-                connection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                connection.Close();
-                MessageBox.Show("TenDangNhap: " + txtHoTen.Text);
-                // Kiểm tra kết quả
-                if (rowsAffected > 0)
+                using (SqlCommand command = new SqlCommand(storedProcedure, connection))
                 {
-                    MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@HovaTen", txtHoTen.Text);
+                    command.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
+                    command.Parameters.AddWithValue("@SDT", txtSdt.Text);
+                    command.Parameters.AddWithValue("@Email", txtEmail.Text);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
+
+                    // Kiểm tra kết quả
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy bản ghi nào để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy bản ghi nào để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
