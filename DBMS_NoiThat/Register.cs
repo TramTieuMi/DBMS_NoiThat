@@ -41,8 +41,6 @@ namespace DBMS_NoiThat
             myDB.OpenConnection();
             try
             {
-
-
                 myDB.OpenConnection();
                 SqlCommand cmd = new SqlCommand("SELECT dbo.CheckEmailExists(@Email)", myDB.GetConnection());
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
@@ -62,7 +60,6 @@ namespace DBMS_NoiThat
                 
             }
             return false;
-
         }
 
         
@@ -200,6 +197,11 @@ namespace DBMS_NoiThat
 
             }
            
+
+        }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
 
         }
     }
