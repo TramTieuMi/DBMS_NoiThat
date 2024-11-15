@@ -178,11 +178,12 @@
             this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEdit.FillColor = System.Drawing.Color.Black;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnEdit.ForeColor = System.Drawing.Color.White;
             this.btnEdit.Location = new System.Drawing.Point(454, 459);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(80, 35);
+            this.btnEdit.Size = new System.Drawing.Size(93, 35);
             this.btnEdit.TabIndex = 13;
             this.btnEdit.Text = "Edit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -193,11 +194,12 @@
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.Black;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(707, 459);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(80, 35);
+            this.btnSave.Size = new System.Drawing.Size(86, 35);
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
