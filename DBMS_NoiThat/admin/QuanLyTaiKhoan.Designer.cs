@@ -135,9 +135,9 @@
             // 
             // btnTimKiem_Click
             // 
-            this.btnTimKiem_Click.Location = new System.Drawing.Point(489, 101);
+            this.btnTimKiem_Click.Location = new System.Drawing.Point(489, 87);
             this.btnTimKiem_Click.Name = "btnTimKiem_Click";
-            this.btnTimKiem_Click.Size = new System.Drawing.Size(98, 27);
+            this.btnTimKiem_Click.Size = new System.Drawing.Size(98, 41);
             this.btnTimKiem_Click.TabIndex = 12;
             this.btnTimKiem_Click.Text = "Tìm kiếm";
             this.btnTimKiem_Click.UseVisualStyleBackColor = true;

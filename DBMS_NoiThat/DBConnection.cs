@@ -15,12 +15,12 @@ namespace DBMS_NoiThat.user
         //Data Source=NGOCNAM;Initial Catalog=data;Integrated Security=True
         //Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True
         SqlConnection sqlCon;
-        SqlConnection conAdmin = new SqlConnection(@"Data Source=KHANG\LTWEB;Initial Catalog=data1;Integrated Security=True;TrustServerCertificate=True");
+        SqlConnection conAdmin = new SqlConnection(@"Data Source=KHANG\LTWEB;Initial Catalog=data_daydu;Integrated Security=True;TrustServerCertificate=True");
         public DBConnection()
         {
             
 
-            sqlCon = new SqlConnection(@"Data Source=KHANG\LTWEB;Initial Catalog=data1;Integrated Security=True;TrustServerCertificate=True");
+            sqlCon = new SqlConnection(@"Data Source=KHANG\LTWEB;Initial Catalog=data_daydu;Integrated Security=True;TrustServerCertificate=True");
 
         }
 
