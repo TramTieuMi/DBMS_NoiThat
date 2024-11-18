@@ -57,7 +57,34 @@ namespace DBMS_NoiThat.UC
         // Phương thức để thiết lập thông tin đơn hàng
         public void SetOrderInfo(object orderId, DateTime orderDate, string status)
         {
-            
+            // Tạo một panel để hiển thị thông tin đơn hàng
+            Panel pnlOrderInfo = new Panel();
+            pnlOrderInfo.AutoSize = true;
+            pnlOrderInfo.BorderStyle = BorderStyle.FixedSingle;
+            pnlOrderInfo.BackColor = Color.LightGray;
+            pnlOrderInfo.Padding = new Padding(10);
+            pnlOrderInfo.Margin = new Padding(10);
+
+            // Tạo và thêm các Label vào Panel
+            Label lblOrderId = new Label();
+            lblOrderId.Text = $"Mã đơn hàng: {orderId}";
+            lblOrderId.AutoSize = true;
+            pnlOrderInfo.Controls.Add(lblOrderId);
+
+            Label lblOrderDate = new Label();
+            lblOrderDate.Text = $"Ngày đặt: {orderDate.ToShortDateString()}";
+            lblOrderDate.AutoSize = true;
+            lblOrderDate.Top = lblOrderId.Bottom + 5;
+            pnlOrderInfo.Controls.Add(lblOrderDate);
+
+            Label lblOrderStatus = new Label();
+            lblOrderStatus.Text = $"Trạng thái: {status}";
+            lblOrderStatus.AutoSize = true;
+            lblOrderStatus.Top = lblOrderDate.Bottom + 5;
+            pnlOrderInfo.Controls.Add(lblOrderStatus);
+
+            // Thêm Panel vào FlowLayoutPanel
+            flpProducts.Controls.Add(pnlOrderInfo);
         }
 
         // Phương thức để thêm sản phẩm vào danh sách
@@ -116,8 +143,10 @@ namespace DBMS_NoiThat.UC
         public void SetTotalOrderPrice(decimal totalPrice)
         {
             //.Text = $"Tổng giá trị: {totalPrice:C}"; // Định dạng tiền tệ
-            txtThanhTien.Text = $"Tổng: {totalPrice.ToString("N0")} ₫";
-            //txtThanhTien.Text = $"Tổng: {totalPrice} ₫";
+            // txtThanhTien.Text = $"Tổng: {totalPrice.ToString("N0")} ₫";
+            
+            txtThanhTien.Text = totalPrice.ToString("N0") + " đ";
+
         }
         private void UCLichSuDonHang_Load(object sender, EventArgs e)
         {
