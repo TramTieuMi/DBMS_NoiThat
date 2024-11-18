@@ -109,10 +109,8 @@ namespace DBMS_NoiThat
                 command.Parameters.AddWithValue("@SDTNguoiNhan", TB_SDTNguoiNhan.Text);
                 command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
                 command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
-                command.Parameters.AddWithValue("@TrangThai", "Đang Xác Nhận");
-                
+                command.Parameters.AddWithValue("@TrangThai", "Đang Xác Nhận");               
                 command.Parameters.AddWithValue("@MaDonHang", maDH); // Pass the order ID
-
                 // Execute the command
                 command.ExecuteNonQuery();
             }
