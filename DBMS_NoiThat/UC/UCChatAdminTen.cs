@@ -57,7 +57,8 @@ namespace DBMS_NoiThat.UC
         }
 
         private void BTN_Ten_Click(object sender, EventArgs e)
-        {
+        {          
+                 
             BTN_Ten.FillColor = System.Drawing.Color.FromArgb(94, 148, 255);
             // Kích hoạt sự kiện BtnTenClicked và truyền đối tượng chatBox
             using (SqlCommand cmd = new SqlCommand("sp_CapNhatTrangThai", connection))
