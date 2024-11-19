@@ -47,6 +47,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel_Body = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.NhacNho = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_Top.SuspendLayout();
             this.panel_left.SuspendLayout();
@@ -105,7 +106,7 @@
             this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogOut.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.ForeColor = System.Drawing.Color.White;
-            this.buttonLogOut.Location = new System.Drawing.Point(19, 587);
+            this.buttonLogOut.Location = new System.Drawing.Point(17, 654);
             this.buttonLogOut.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(229, 50);
@@ -196,6 +197,7 @@
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.Color.Gray;
+            this.panel_left.Controls.Add(this.NhacNho);
             this.panel_left.Controls.Add(this.BTN_ChatBox);
             this.panel_left.Controls.Add(this.buttonThongKeDoanhThu);
             this.panel_left.Controls.Add(this.labelMenu);
@@ -269,7 +271,7 @@
             this.panel_Body.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel_Body.Controls.Add(this.pictureBox2);
             this.panel_Body.Location = new System.Drawing.Point(269, 123);
-            this.panel_Body.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_Body.Margin = new System.Windows.Forms.Padding(4);
             this.panel_Body.Name = "panel_Body";
             this.panel_Body.Size = new System.Drawing.Size(1487, 694);
             this.panel_Body.TabIndex = 14;
@@ -285,6 +287,22 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
+            // NhacNho
+            // 
+            this.NhacNho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.NhacNho.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.NhacNho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NhacNho.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NhacNho.ForeColor = System.Drawing.Color.White;
+            this.NhacNho.Location = new System.Drawing.Point(15, 581);
+            this.NhacNho.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.NhacNho.Name = "NhacNho";
+            this.NhacNho.Size = new System.Drawing.Size(229, 50);
+            this.NhacNho.TabIndex = 9;
+            this.NhacNho.Text = "Nhắc Nhở";
+            this.NhacNho.UseVisualStyleBackColor = false;
+            this.NhacNho.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -293,7 +311,7 @@
             this.Controls.Add(this.panel_Body);
             this.Controls.Add(this.panel_Top);
             this.Controls.Add(this.panel_left);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainFormAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainFormAdmin";
@@ -326,5 +344,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button buttonThongKeDoanhThu;
         private System.Windows.Forms.Button BTN_ChatBox;
+        private System.Windows.Forms.Button NhacNho;
     }
 }
