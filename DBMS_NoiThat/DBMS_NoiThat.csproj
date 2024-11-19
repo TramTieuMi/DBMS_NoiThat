@@ -82,6 +82,7 @@
     <Compile Include="admin\QuanLyTaiKhoan.Designer.cs">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Discount.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>

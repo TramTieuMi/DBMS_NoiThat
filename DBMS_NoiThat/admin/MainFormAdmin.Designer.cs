@@ -106,7 +106,7 @@
             this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogOut.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.ForeColor = System.Drawing.Color.White;
-            this.buttonLogOut.Location = new System.Drawing.Point(17, 654);
+            this.buttonLogOut.Location = new System.Drawing.Point(19, 587);
             this.buttonLogOut.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(229, 50);
@@ -197,7 +197,6 @@
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.Color.Gray;
-            this.panel_left.Controls.Add(this.NhacNho);
             this.panel_left.Controls.Add(this.BTN_ChatBox);
             this.panel_left.Controls.Add(this.buttonThongKeDoanhThu);
             this.panel_left.Controls.Add(this.labelMenu);
@@ -287,22 +286,6 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
-            // NhacNho
-            // 
-            this.NhacNho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.NhacNho.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.NhacNho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NhacNho.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NhacNho.ForeColor = System.Drawing.Color.White;
-            this.NhacNho.Location = new System.Drawing.Point(15, 581);
-            this.NhacNho.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.NhacNho.Name = "NhacNho";
-            this.NhacNho.Size = new System.Drawing.Size(229, 50);
-            this.NhacNho.TabIndex = 9;
-            this.NhacNho.Text = "Nhắc Nhở";
-            this.NhacNho.UseVisualStyleBackColor = false;
-            this.NhacNho.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,6 +327,5 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button buttonThongKeDoanhThu;
         private System.Windows.Forms.Button BTN_ChatBox;
-        private System.Windows.Forms.Button NhacNho;
     }
 }

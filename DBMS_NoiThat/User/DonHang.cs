@@ -15,6 +15,7 @@ namespace DBMS_NoiThat
         private DBConnection dbConnection; // Declare an instance of DBConnection
         private SqlConnection connection; // Declare the SqlConnection variable
         private DataTable dataTable = new DataTable();
+        private DataTable dataTable1 = new DataTable();
 
         public DonHang()
         {
@@ -91,6 +92,44 @@ namespace DBMS_NoiThat
             TB_TenNguoiNhan.Text = TenNguoiNhan;
             TB_SDTNguoiNhan.Text = SDTNguoiNhan.ToString();
             TB_DiaChi.Text = DiaChiNhan;
+
+            using (SqlCommand command1 = new SqlCommand("GetDiscountsByCustomer", connection))
+            {
+                command1.CommandType = CommandType.StoredProcedure;
+
+                // Thêm tham số MaKhachHang
+                command1.Parameters.Add(new SqlParameter("@MaKhachHang", SqlDbType.Int));
+                command1.Parameters["@MaKhachHang"].Value = MaKhachHang;
+
+                // Sử dụng SqlDataAdapter để điền dữ liệu vào DataTable
+                using (SqlDataAdapter adapter1 = new SqlDataAdapter(command1))
+                {
+
+                    adapter1.Fill(dataTable1);
+                    foreach (DataRow row in dataTable1.Rows)    
+                    {
+                        {
+                            string maGiamGia = row["MaGiamGia"].ToString();
+                            int maSanPham = (int)row["MaSanPham"];
+                            float soLuongGiam = (float)row["SoLuongGiam"];
+                            DateTime ngayApDung = (DateTime)row["MaGiamGia"];
+                            DateTime ngayKetThuc = (DateTime)row["MaGiamGia"];
+                            string liDo = row["LiDo"].ToString();
+                            Discount discount = new Discount(maGiamGia, maSanPham, MaKhachHang, soLuongGiam, ngayApDung, ngayKetThuc, liDo);
+                            UCDiscount ucgg = new UCDiscount(discount);
+                            int dis = (FPN_HienThi.Width - (2 * ucgg.Width)) / 3;
+                            ucgg.Margin = new Padding(dis, dis, 0, 0);
+                            FLP_Voucher.Controls.Add(ucgg);
+                        }
+                    }
+                }
+            }
+
+            
+
+
+
+
             connection.Close();
         }
 
