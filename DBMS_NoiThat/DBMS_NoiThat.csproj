@@ -76,6 +76,7 @@
     <Compile Include="admin\QuanLyTaiKhoan.Designer.cs">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Discount.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +89,12 @@
     <Compile Include="admin\.Designer.cs">
       <DependentUpon>QuanlySanPham.cs</DependentUpon>
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC\UCDiscount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCDiscount.Designer.cs">
+      <DependentUpon>UCDiscount.cs</DependentUpon>
     </Compile>
     <Compile Include="user\MainFormKhachHang.cs">
       <SubType>Form</SubType>
@@ -239,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin\QuanlySanPham.resx">
       <DependentUpon>QuanlySanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCDiscount.resx">
+      <DependentUpon>UCDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\MainFormKhachHang.resx">
       <DependentUpon>MainFormKhachHang.cs</DependentUpon>
