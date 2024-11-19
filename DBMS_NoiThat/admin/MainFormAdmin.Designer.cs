@@ -47,7 +47,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel_Body = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.BTN_TaoMGG = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_Top.SuspendLayout();
             this.panel_left.SuspendLayout();
@@ -106,7 +105,7 @@
             this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogOut.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.ForeColor = System.Drawing.Color.White;
-            this.buttonLogOut.Location = new System.Drawing.Point(16, 647);
+            this.buttonLogOut.Location = new System.Drawing.Point(19, 587);
             this.buttonLogOut.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(229, 50);
@@ -197,7 +196,6 @@
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.Color.Gray;
-            this.panel_left.Controls.Add(this.BTN_TaoMGG);
             this.panel_left.Controls.Add(this.BTN_ChatBox);
             this.panel_left.Controls.Add(this.buttonThongKeDoanhThu);
             this.panel_left.Controls.Add(this.labelMenu);
@@ -287,22 +285,6 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
-            // BTN_TaoMGG
-            // 
-            this.BTN_TaoMGG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.BTN_TaoMGG.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BTN_TaoMGG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_TaoMGG.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_TaoMGG.ForeColor = System.Drawing.Color.White;
-            this.BTN_TaoMGG.Location = new System.Drawing.Point(15, 575);
-            this.BTN_TaoMGG.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BTN_TaoMGG.Name = "BTN_TaoMGG";
-            this.BTN_TaoMGG.Size = new System.Drawing.Size(229, 50);
-            this.BTN_TaoMGG.TabIndex = 9;
-            this.BTN_TaoMGG.Text = "Tạo Mã Giảm Giá";
-            this.BTN_TaoMGG.UseVisualStyleBackColor = false;
-            this.BTN_TaoMGG.Click += new System.EventHandler(this.BTN_TaoMGG_Click);
-            // 
             // MainFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,6 +326,5 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button buttonThongKeDoanhThu;
         private System.Windows.Forms.Button BTN_ChatBox;
-        private System.Windows.Forms.Button BTN_TaoMGG;
     }
 }

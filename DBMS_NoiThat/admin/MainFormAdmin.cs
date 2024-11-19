@@ -181,9 +181,9 @@ namespace DBMS_NoiThat.user
             }
         }
 
-        private void BTN_TaoMGG_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new DisCount());
+
         }
     }
 }

@@ -52,10 +52,10 @@
             // 
             // btnThemSP_Click
             // 
-            this.btnThemSP_Click.Location = new System.Drawing.Point(650, 466);
+            this.btnThemSP_Click.Location = new System.Drawing.Point(731, 582);
             this.btnThemSP_Click.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemSP_Click.Name = "btnThemSP_Click";
-            this.btnThemSP_Click.Size = new System.Drawing.Size(168, 34);
+            this.btnThemSP_Click.Size = new System.Drawing.Size(189, 42);
             this.btnThemSP_Click.TabIndex = 0;
             this.btnThemSP_Click.Text = "Thêm/Sửa sản phẩm";
             this.btnThemSP_Click.UseVisualStyleBackColor = true;
@@ -63,10 +63,10 @@
             // 
             // btnHuy_Click
             // 
-            this.btnHuy_Click.Location = new System.Drawing.Point(847, 466);
+            this.btnHuy_Click.Location = new System.Drawing.Point(953, 582);
             this.btnHuy_Click.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHuy_Click.Name = "btnHuy_Click";
-            this.btnHuy_Click.Size = new System.Drawing.Size(98, 34);
+            this.btnHuy_Click.Size = new System.Drawing.Size(110, 42);
             this.btnHuy_Click.TabIndex = 1;
             this.btnHuy_Click.Text = "Hủy ";
             this.btnHuy_Click.UseVisualStyleBackColor = true;
@@ -74,129 +74,136 @@
             // 
             // txtTenSanPham
             // 
-            this.txtTenSanPham.Location = new System.Drawing.Point(65, 89);
+            this.txtTenSanPham.Location = new System.Drawing.Point(73, 111);
             this.txtTenSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenSanPham.Name = "txtTenSanPham";
-            this.txtTenSanPham.Size = new System.Drawing.Size(299, 22);
+            this.txtTenSanPham.Size = new System.Drawing.Size(336, 26);
             this.txtTenSanPham.TabIndex = 3;
+            this.txtTenSanPham.TextChanged += new System.EventHandler(this.txtTenSanPham_TextChanged);
             // 
             // txtGiaSanPham
             // 
-            this.txtGiaSanPham.Location = new System.Drawing.Point(65, 158);
+            this.txtGiaSanPham.Location = new System.Drawing.Point(73, 198);
             this.txtGiaSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGiaSanPham.Name = "txtGiaSanPham";
-            this.txtGiaSanPham.Size = new System.Drawing.Size(299, 22);
+            this.txtGiaSanPham.Size = new System.Drawing.Size(336, 26);
             this.txtGiaSanPham.TabIndex = 5;
+            this.txtGiaSanPham.TextChanged += new System.EventHandler(this.txtGiaSanPham_TextChanged);
             // 
             // txtChatLieu
             // 
-            this.txtChatLieu.Location = new System.Drawing.Point(66, 222);
+            this.txtChatLieu.Location = new System.Drawing.Point(74, 278);
             this.txtChatLieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtChatLieu.Name = "txtChatLieu";
-            this.txtChatLieu.Size = new System.Drawing.Size(299, 22);
+            this.txtChatLieu.Size = new System.Drawing.Size(336, 26);
             this.txtChatLieu.TabIndex = 6;
+            this.txtChatLieu.TextChanged += new System.EventHandler(this.txtChatLieu_TextChanged);
             // 
             // txtMoTa
             // 
-            this.txtMoTa.Location = new System.Drawing.Point(66, 288);
+            this.txtMoTa.Location = new System.Drawing.Point(74, 360);
             this.txtMoTa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMoTa.Name = "txtMoTa";
-            this.txtMoTa.Size = new System.Drawing.Size(299, 22);
+            this.txtMoTa.Size = new System.Drawing.Size(336, 26);
             this.txtMoTa.TabIndex = 7;
+            this.txtMoTa.TextChanged += new System.EventHandler(this.txtMoTa_TextChanged);
             // 
             // txtKichThuoc
             // 
-            this.txtKichThuoc.Location = new System.Drawing.Point(65, 358);
+            this.txtKichThuoc.Location = new System.Drawing.Point(73, 448);
             this.txtKichThuoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtKichThuoc.Name = "txtKichThuoc";
-            this.txtKichThuoc.Size = new System.Drawing.Size(299, 22);
+            this.txtKichThuoc.Size = new System.Drawing.Size(336, 26);
             this.txtKichThuoc.TabIndex = 8;
+            this.txtKichThuoc.TextChanged += new System.EventHandler(this.txtKichThuoc_TextChanged);
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(65, 430);
+            this.txtSoLuong.Location = new System.Drawing.Point(73, 538);
             this.txtSoLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(299, 22);
+            this.txtSoLuong.Size = new System.Drawing.Size(336, 26);
             this.txtSoLuong.TabIndex = 9;
+            this.txtSoLuong.TextChanged += new System.EventHandler(this.txtSoLuong_TextChanged);
             // 
             // txtMauSac
             // 
-            this.txtMauSac.Location = new System.Drawing.Point(68, 493);
+            this.txtMauSac.Location = new System.Drawing.Point(76, 616);
             this.txtMauSac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMauSac.Name = "txtMauSac";
-            this.txtMauSac.Size = new System.Drawing.Size(299, 22);
+            this.txtMauSac.Size = new System.Drawing.Size(336, 26);
             this.txtMauSac.TabIndex = 10;
+            this.txtMauSac.TextChanged += new System.EventHandler(this.txtMauSac_TextChanged);
             // 
             // lblTenSanPham
             // 
             this.lblTenSanPham.AutoSize = true;
-            this.lblTenSanPham.Location = new System.Drawing.Point(62, 70);
+            this.lblTenSanPham.Location = new System.Drawing.Point(70, 88);
             this.lblTenSanPham.Name = "lblTenSanPham";
-            this.lblTenSanPham.Size = new System.Drawing.Size(96, 16);
+            this.lblTenSanPham.Size = new System.Drawing.Size(114, 20);
             this.lblTenSanPham.TabIndex = 13;
             this.lblTenSanPham.Text = "Tên Sản Phẩm";
             // 
             // lblKichThuoc
             // 
             this.lblKichThuoc.AutoSize = true;
-            this.lblKichThuoc.Location = new System.Drawing.Point(67, 340);
+            this.lblKichThuoc.Location = new System.Drawing.Point(75, 425);
             this.lblKichThuoc.Name = "lblKichThuoc";
-            this.lblKichThuoc.Size = new System.Drawing.Size(76, 16);
+            this.lblKichThuoc.Size = new System.Drawing.Size(91, 20);
             this.lblKichThuoc.TabIndex = 14;
             this.lblKichThuoc.Text = "Kích Thước ";
             // 
             // lblChatLieu
             // 
             this.lblChatLieu.AutoSize = true;
-            this.lblChatLieu.Location = new System.Drawing.Point(65, 204);
+            this.lblChatLieu.Location = new System.Drawing.Point(73, 255);
             this.lblChatLieu.Name = "lblChatLieu";
-            this.lblChatLieu.Size = new System.Drawing.Size(68, 16);
+            this.lblChatLieu.Size = new System.Drawing.Size(85, 20);
             this.lblChatLieu.TabIndex = 15;
             this.lblChatLieu.Text = "Chất  Liệu ";
             // 
             // lblMoTa
             // 
             this.lblMoTa.AutoSize = true;
-            this.lblMoTa.Location = new System.Drawing.Point(67, 270);
+            this.lblMoTa.Location = new System.Drawing.Point(75, 338);
             this.lblMoTa.Name = "lblMoTa";
-            this.lblMoTa.Size = new System.Drawing.Size(49, 16);
+            this.lblMoTa.Size = new System.Drawing.Size(57, 20);
             this.lblMoTa.TabIndex = 16;
             this.lblMoTa.Text = "Mô Tả ";
             // 
             // lblMauSac
             // 
             this.lblMauSac.AutoSize = true;
-            this.lblMauSac.Location = new System.Drawing.Point(67, 475);
+            this.lblMauSac.Location = new System.Drawing.Point(75, 594);
             this.lblMauSac.Name = "lblMauSac";
-            this.lblMauSac.Size = new System.Drawing.Size(63, 16);
+            this.lblMauSac.Size = new System.Drawing.Size(76, 20);
             this.lblMauSac.TabIndex = 17;
             this.lblMauSac.Text = "Màu Sắc ";
             // 
             // lblGiaSanPham
             // 
             this.lblGiaSanPham.AutoSize = true;
-            this.lblGiaSanPham.Location = new System.Drawing.Point(62, 139);
+            this.lblGiaSanPham.Location = new System.Drawing.Point(70, 174);
             this.lblGiaSanPham.Name = "lblGiaSanPham";
-            this.lblGiaSanPham.Size = new System.Drawing.Size(93, 16);
+            this.lblGiaSanPham.Size = new System.Drawing.Size(112, 20);
             this.lblGiaSanPham.TabIndex = 18;
             this.lblGiaSanPham.Text = "Giá Sản Phẩm";
             // 
             // lblSoLuong
             // 
             this.lblSoLuong.AutoSize = true;
-            this.lblSoLuong.Location = new System.Drawing.Point(62, 412);
+            this.lblSoLuong.Location = new System.Drawing.Point(70, 515);
             this.lblSoLuong.Name = "lblSoLuong";
-            this.lblSoLuong.Size = new System.Drawing.Size(67, 16);
+            this.lblSoLuong.Size = new System.Drawing.Size(82, 20);
             this.lblSoLuong.TabIndex = 19;
             this.lblSoLuong.Text = "Số Lượng ";
             // 
             // btnThemAnh_Click
             // 
-            this.btnThemAnh_Click.Location = new System.Drawing.Point(673, 295);
+            this.btnThemAnh_Click.Location = new System.Drawing.Point(757, 369);
             this.btnThemAnh_Click.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemAnh_Click.Name = "btnThemAnh_Click";
-            this.btnThemAnh_Click.Size = new System.Drawing.Size(92, 28);
+            this.btnThemAnh_Click.Size = new System.Drawing.Size(104, 35);
             this.btnThemAnh_Click.TabIndex = 20;
             this.btnThemAnh_Click.Text = "Thêm ảnh";
             this.btnThemAnh_Click.UseVisualStyleBackColor = true;
@@ -204,10 +211,10 @@
             // 
             // btnXoaAnh_Click
             // 
-            this.btnXoaAnh_Click.Location = new System.Drawing.Point(810, 295);
+            this.btnXoaAnh_Click.Location = new System.Drawing.Point(911, 369);
             this.btnXoaAnh_Click.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoaAnh_Click.Name = "btnXoaAnh_Click";
-            this.btnXoaAnh_Click.Size = new System.Drawing.Size(84, 28);
+            this.btnXoaAnh_Click.Size = new System.Drawing.Size(94, 35);
             this.btnXoaAnh_Click.TabIndex = 21;
             this.btnXoaAnh_Click.Text = "Xóa ảnh";
             this.btnXoaAnh_Click.UseVisualStyleBackColor = true;
@@ -215,19 +222,20 @@
             // 
             // PictureBoxHinhAnhSP
             // 
-            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(650, 107);
+            this.PictureBoxHinhAnhSP.Image = global::DBMS_NoiThat.Properties.Resources._2192009;
+            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(731, 134);
             this.PictureBoxHinhAnhSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PictureBoxHinhAnhSP.Name = "PictureBoxHinhAnhSP";
-            this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(272, 179);
+            this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(306, 224);
             this.PictureBoxHinhAnhSP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBoxHinhAnhSP.TabIndex = 11;
             this.PictureBoxHinhAnhSP.TabStop = false;
             // 
             // ThemSanPham
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1458, 690);
+            this.ClientSize = new System.Drawing.Size(1640, 862);
             this.Controls.Add(this.btnXoaAnh_Click);
             this.Controls.Add(this.btnThemAnh_Click);
             this.Controls.Add(this.lblSoLuong);
