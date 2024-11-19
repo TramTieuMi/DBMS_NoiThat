@@ -47,7 +47,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel_Body = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.NhacNho = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_Top.SuspendLayout();
             this.panel_left.SuspendLayout();
