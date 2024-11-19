@@ -116,10 +116,10 @@ namespace DBMS_NoiThat
                             DateTime ngayKetThuc = (DateTime)row["MaGiamGia"];
                             string liDo = row["LiDo"].ToString();
                             Discount discount = new Discount(maGiamGia, maSanPham, MaKhachHang, soLuongGiam, ngayApDung, ngayKetThuc, liDo);
-                           // UCDiscount ucgg = new UCDiscount(discount);
-                           // int dis = (FPN_HienThi.Width - (2 * ucgg.Width)) / 3;
-                           // ucgg.Margin = new Padding(dis, dis, 0, 0);
-                           // FLP_Voucher.Controls.Add(ucgg);
+                            UCDiscount ucgg = new UCDiscount(discount);
+                            int dis = (FPN_HienThi.Width - (2 * ucgg.Width)) / 3;
+                            ucgg.Margin = new Padding(dis, dis, 0, 0);
+                            FLP_Voucher.Controls.Add(ucgg);
                         }
                     }
                 }
