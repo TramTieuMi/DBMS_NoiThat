@@ -96,6 +96,12 @@
       <DependentUpon>QuanlySanPham.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UC\UCDiscount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCDiscount.Designer.cs">
+      <DependentUpon>UCDiscount.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC\UCNhacNho.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -255,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin\QuanlySanPham.resx">
       <DependentUpon>QuanlySanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCDiscount.resx">
+      <DependentUpon>UCDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\UCNhacNho.resx">
       <DependentUpon>UCNhacNho.cs</DependentUpon>
