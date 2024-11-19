@@ -36,7 +36,7 @@
             this.txtThanhTien.AutoSize = false;
             this.txtThanhTien.BackColor = System.Drawing.Color.Transparent;
             this.txtThanhTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtThanhTien.Location = new System.Drawing.Point(1022, 71);
+            this.txtThanhTien.Location = new System.Drawing.Point(1050, 91);
             this.txtThanhTien.Name = "txtThanhTien";
             this.txtThanhTien.Size = new System.Drawing.Size(258, 42);
             this.txtThanhTien.TabIndex = 7;
@@ -49,7 +49,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.Controls.Add(this.txtThanhTien);
             this.Name = "UCLichSuMuaHang";
-            this.Size = new System.Drawing.Size(1255, 140);
+            this.Size = new System.Drawing.Size(1283, 140);
             this.Load += new System.EventHandler(this.UCLichSuDonHang_Load);
             this.ResumeLayout(false);
 
