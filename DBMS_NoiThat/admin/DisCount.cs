@@ -23,17 +23,6 @@ namespace DBMS_NoiThat.admin
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
         }
-        public string GenerateRandomCode(int length)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            Random random = new Random();
-            char[] result = new char[length];
-            for (int i = 0; i < length; i++)
-            {
-                result[i] = chars[random.Next(chars.Length)];
-            }
-            return new string(result);
-        }
 
         public List<int> ExtractNumbers(string input)
         {
@@ -60,7 +49,7 @@ namespace DBMS_NoiThat.admin
 
             List<int> ListMSP  = ExtractNumbers(TB_MSP.Text);
             List<int> ListMKH = ExtractNumbers(TB_MKH.Text);
-            int soLuongGiam = Convert.ToInt32(TB_GTG.Text);
+            decimal soLuongGiam = Math.Round(decimal.Parse(TB_GTG.Text), 3);
             DateTime ngayApDung = DTP_NAD.Value.Date; ;
             DateTime ngayKetThuc = DTP_NKT.Value.Date; ;
             string liDo = TB_LDG.Text;
@@ -70,7 +59,6 @@ namespace DBMS_NoiThat.admin
                 {
                     int maSanPham = ListMSP[i]; // Lấy giá trị từ danh sách ListMSP
                     int maKhachHang = ListMKH[j]; // Lấy giá trị từ danh sách ListMKH
-                    string maGiamGia = GenerateRandomCode(6);
                     using (SqlCommand command = new SqlCommand("sp_InsertDiscount", connection))
                     {
                         connection.Open();
@@ -78,10 +66,9 @@ namespace DBMS_NoiThat.admin
                         command.CommandType = CommandType.StoredProcedure;
 
                         // Thêm các tham số
-                        command.Parameters.AddWithValue("@MaGiamGia", maGiamGia);
                         command.Parameters.AddWithValue("@MaSanPham", maSanPham);
                         command.Parameters.AddWithValue("@MaKhachHang", maKhachHang);
-                        command.Parameters.AddWithValue("@SoLuongGiam", soLuongGiam);
+                        command.Parameters.Add("@SoLuongGiam", SqlDbType.Decimal).Value = soLuongGiam;
                         command.Parameters.AddWithValue("@NgayApDung", ngayApDung);
                         command.Parameters.AddWithValue("@NgayKetThuc", ngayKetThuc);
                         command.Parameters.AddWithValue("@LiDo", liDo);
@@ -93,7 +80,7 @@ namespace DBMS_NoiThat.admin
 
                 }
             }
-            
+            MessageBox.Show("Tạo Discount thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
