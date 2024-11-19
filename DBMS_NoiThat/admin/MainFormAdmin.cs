@@ -180,5 +180,10 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void BTN_TaoMGG_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DisCount());
+        }
     }
 }

@@ -204,13 +204,60 @@ namespace DBMS_NoiThat.user
             conn.OpenConnection();
             try
             {
-                SqlCommand cmd = new SqlCommand("proc_UpdateTrangThaiDonHang", conn.GetConnection());
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@MaDonHang", idDonHang);
-                cmd.Parameters.AddWithValue("@TrangThai", status);
-                cmd.ExecuteNonQuery();
+                SqlCommand cmd1 = new SqlCommand("proc_UpdateTrangThaiDonHang", conn.GetConnection());
+                cmd1.CommandType = CommandType.StoredProcedure;
+                cmd1.Parameters.AddWithValue("@MaDonHang", idDonHang);
+                cmd1.Parameters.AddWithValue("@TrangThai", status);
+                cmd1.ExecuteNonQuery();
                 MessageBox.Show("Cập nhật thành công!");
-                LoadDataToDataGridView();
+
+                if (radioButtonDaGiao.Checked == true)
+                {
+                    conn.OpenConnection();
+                    SqlCommand cmd = new SqlCommand("proc_LocTrangThaiDonHang", conn.GetConnection());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Status", "Ðã giao");
+                    DataTable table = new DataTable();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(table);
+                    }
+                    dataGridView1.DataSource = table;
+                    conn.CloseConnection();
+                }
+                else if (radioButtonDaXacNhan.Checked == true)
+                {
+                    conn.OpenConnection();
+                    SqlCommand cmd = new SqlCommand("proc_LocTrangThaiDonHang", conn.GetConnection());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Status", "Ðã xác nhận");
+                    DataTable table = new DataTable();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(table);
+                    }
+                    dataGridView1.DataSource = table;
+                    conn.CloseConnection();
+                }
+                else if (radioButtonDangChoXN.Checked==true)
+                {
+                    conn.OpenConnection();
+                    SqlCommand cmd = new SqlCommand("proc_LocTrangThaiDonHang", conn.GetConnection());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Status", "Ðang chờ xác nhận");
+                    DataTable table = new DataTable();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(table);
+                    }
+                    dataGridView1.DataSource = table;
+                    conn.CloseConnection();
+                }
+                else
+                {                
+                    LoadDataToDataGridView();
+                }
+               
             }
             catch (SqlException ex)
             {
@@ -222,6 +269,9 @@ namespace DBMS_NoiThat.user
         private void QuanLyDonHangForm_Click(object sender, EventArgs e)
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            radioButtonDaXacNhan.Checked = false;
+            radioButtonDaXacNhan.Checked = false;
+            radioButtonDaGiao.Checked = false;
             LoadDataToDataGridView();
         }
 
