@@ -23,13 +23,16 @@ namespace DBMS_NoiThat
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
         }
-        int maDH ;
+        int maDH,maKH = 0,ThanhTien = 0 ;
+        
         public DonHang(int maDonHang)
         {
             InitializeComponent();
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
             LoadSanPham(maDonHang);
+
+            LoadThanhTien(" ");
             maDH = maDonHang;   
         }
 
@@ -65,6 +68,7 @@ namespace DBMS_NoiThat
                 {
                     int MaSanPham = (int)row["MaSanPham"];
                     MaKhachHang = (int)row["MaKhachHang"];
+                    maKH = MaKhachHang;
                     TenNguoiDat = row["TenNguoiDat"].ToString();
                     SDTNguoiDat = Convert.ToInt32(row["SDTNguoiDat"].ToString());
                     TenNguoiNhan = row["TenNguoiNhan"].ToString();
@@ -86,9 +90,11 @@ namespace DBMS_NoiThat
             }
             LB_MaDonHang.Text = "Mã Đơn Hàng : " + maDonHang.ToString();
             LB_MaKH.Text = "Mã Khách Hàng : " + MaKhachHang.ToString();
+            maKH = MaKhachHang;
             LB_TenNguoiDat.Text = "Tên Người Đặt : " + TenNguoiDat;
             LB_SDTNguoiDat.Text = "Số Điện Thoại Người Đặt : " + SDTNguoiDat.ToString();
             LB_SoTien.Text = "Tổng Số Tiền : " + sum.ToString();
+            ThanhTien = sum;
             TB_TenNguoiNhan.Text = TenNguoiNhan;
             TB_SDTNguoiNhan.Text = SDTNguoiNhan.ToString();
             TB_DiaChi.Text = DiaChiNhan;
@@ -111,26 +117,66 @@ namespace DBMS_NoiThat
                         {
                             string maGiamGia = row["MaGiamGia"].ToString();
                             int maSanPham = (int)row["MaSanPham"];
-                            float soLuongGiam = (float)row["SoLuongGiam"];
-                            DateTime ngayApDung = (DateTime)row["MaGiamGia"];
-                            DateTime ngayKetThuc = (DateTime)row["MaGiamGia"];
+                            decimal soLuongGiam = decimal.Parse(row["SoLuongGiam"].ToString());
+                            DateTime ngayApDung = (DateTime)row["NgayApDung"];
+                            DateTime ngayKetThuc = (DateTime)row["NgayKetThuc"];
                             string liDo = row["LiDo"].ToString();
                             Discount discount = new Discount(maGiamGia, maSanPham, MaKhachHang, soLuongGiam, ngayApDung, ngayKetThuc, liDo);
                             UCDiscount ucgg = new UCDiscount(discount);
+                            // Lắng nghe sự kiện OnApplyDiscount
+                            ucgg.OnApplyDiscount += MaGiamGia =>
+                            {
+                                LoadThanhTien(MaGiamGia); // Gọi hàm LoadThanhTien với mã giảm giá
+                            };  
+
                             int dis = (FPN_HienThi.Width - (2 * ucgg.Width)) / 3;
                             ucgg.Margin = new Padding(dis, dis, 0, 0);
                             FLP_Voucher.Controls.Add(ucgg);
                         }
                     }
                 }
+            }          
+            connection.Close();
+        }
+
+        public void LoadThanhTien(string maGG)
+        {
+            decimal phanTramGiamGia = 0;
+            if (maKH <= 0)
+            {
+                MessageBox.Show("Mã khách hàng không hợp lệ!");
+                return;
             }
 
-            
+            // Sử dụng SqlCommand để gọi hàm fn_TinhPhanTramGiamGia
+            using (SqlCommand command = new SqlCommand("fn_TinhPhanTramGiamGia", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure; // Thay CommandType.Text thành CommandType.StoredProcedure
 
+                // Thêm tham số vào câu lệnh
+                command.Parameters.AddWithValue("@MaKhachHang", maKH);  // Truyền tham số MaKhachHang
+                command.Parameters.AddWithValue("@SoTien", ThanhTien);  // Truyền tham số Số Tiền
+                command.Parameters.AddWithValue("@MaGiamGia", maGG);    // Truyền mã giảm giá
 
+                // Mở kết nối
+                connection.Open();
 
+                // Thực thi hàm và lấy kết quả
+                object result = command.ExecuteScalar();
+                if (result != null && decimal.TryParse(result.ToString(), out decimal discountPercent))
+                {
+                    phanTramGiamGia = discountPercent;
+                }
+                connection.Close();
+            }
 
-            connection.Close();
+            // Tính toán số tiền giảm và số tiền phải trả
+            int SoTienGiam = Convert.ToInt32(ThanhTien * phanTramGiamGia);
+            int SoTienTra = ThanhTien - SoTienGiam;
+
+            // Hiển thị kết quả
+            LB_GiamGia.Text = "Số Tiền Giảm: " + SoTienGiam.ToString();
+            LB_SoTienTra.Text = "Số Tiền Phải Trả: " + SoTienTra.ToString();
         }
 
 
@@ -161,7 +207,7 @@ namespace DBMS_NoiThat
         {
 
         }
-
+                
         private void TB_SDTNguoiNhan_TextChanged(object sender, EventArgs e)
         {
 

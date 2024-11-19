@@ -13,6 +13,7 @@ namespace DBMS_NoiThat.UC
 {
     public partial class UCDiscount : UserControl
     {
+        public event Action<string> OnApplyDiscount; // Sự kiện để thông báo mã giảm giá
         public UCDiscount()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace DBMS_NoiThat.UC
 
         private void BTN_AD_Click(object sender, EventArgs e)
         {
-
+            OnApplyDiscount?.Invoke(discount.MaGiamGia1);
         }
     }
 }
