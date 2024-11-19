@@ -1,15 +1,11 @@
-
 ﻿using DBMS_NoiThat.admin;
 using DBMS_NoiThat.user;
-
+using DBMS_NoiThat.user9;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Threading.Tasks;
-
-﻿using System;
-
 using System.Windows.Forms;
 
 namespace DBMS_NoiThat
