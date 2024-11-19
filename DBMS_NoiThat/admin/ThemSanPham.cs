@@ -16,7 +16,65 @@ namespace DBMS_NoiThat.admin
 {
     public partial class ThemSanPham : Form
     {
-        private int? _MaSanPhamToEdit = null; // To store the product ID when editing
+        private int? _MaSanPhamToEdit;
+
+        // Constructor to support editing a specific product
+        public ThemSanPham(int MaSanPham)
+        {
+            InitializeComponent();
+            _MaSanPhamToEdit = MaSanPham;
+
+            // Load product data for editing
+            LoadProductData(MaSanPham);
+        }
+        // Method to load product data into the form for editing
+        private void LoadProductData(int MaSanPham)
+        {
+            try
+            {
+                DBConnection dbConnection = new DBConnection();
+                SqlConnection conn = dbConnection.GetConnection();
+
+                string query = "SELECT * FROM SANPHAM WHERE MaSanPham = @MaSanPham";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.Add("@MaSanPham", SqlDbType.Int).Value = MaSanPham;
+
+                dbConnection.OpenConnection();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    txtTenSanPham.Text = reader["TenSanPham"].ToString();
+                    txtGiaSanPham.Text = reader["GiaSanPham"].ToString();
+                    txtChatLieu.Text = reader["ChatLieu"].ToString();
+                    txtMoTa.Text = reader["MoTa"].ToString();
+                    txtKichThuoc.Text = reader["KichThuoc"].ToString();
+                    txtMauSac.Text = reader["MauSac"].ToString();
+                    txtSoLuong.Text = reader["SoLuong"].ToString();
+
+                    if (reader["HinhAnh"] != DBNull.Value)
+                    {
+                        byte[] imageBytes = (byte[])reader["HinhAnh"];
+                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        {
+                            PictureBoxHinhAnhSP.Image = Image.FromStream(ms);
+                            PictureBoxHinhAnhSP.SizeMode = PictureBoxSizeMode.StretchImage;
+                        }
+                    }
+                    else
+                    {
+                        PictureBoxHinhAnhSP.Image = null;
+                    }
+                }
+                reader.Close();
+                dbConnection.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading product: " + ex.Message);
+            }
+        }
+
         private System.Windows.Forms.PictureBox HinhAnh;
         public ThemSanPham()
         {
@@ -24,7 +82,9 @@ namespace DBMS_NoiThat.admin
         }
         private byte[] ConvertImageToByteArray(Image image)
         {
-            if (image == null) return null;
+            if (image == null)
+                return null;
+
             using (MemoryStream ms = new MemoryStream())
             {
                 image.Save(ms, image.RawFormat);
@@ -110,13 +170,15 @@ namespace DBMS_NoiThat.admin
                 // Check if we are editing an existing product or adding a new one
                 if (_MaSanPhamToEdit.HasValue)
                 {
+                    // If editing, use the update procedure
                     cmd = new SqlCommand("proc_SuaSanPham", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@MaSanPham", SqlDbType.Int).Value = _MaSanPhamToEdit.Value;
                 }
                 else
                 {
-                    cmd = new SqlCommand("proc_ThemSanPham", conn);
+                    // If adding a new product, MaSanPham will be auto-incremented
+                    cmd = new SqlCommand("proc_SuaSanPham", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                 }
 
@@ -132,7 +194,7 @@ namespace DBMS_NoiThat.admin
 
                 dbConnection.OpenConnection();
 
-                // Execute the query
+                // Execute the stored procedure
                 if (cmd.ExecuteNonQuery() > 0)
                 {
                     MessageBox.Show(_MaSanPhamToEdit.HasValue ? "Product updated successfully!" : "Product added successfully!");
