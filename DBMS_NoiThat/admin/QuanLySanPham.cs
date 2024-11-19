@@ -125,7 +125,7 @@ namespace DBMS_NoiThat
 
                 // Open the ThemSanPham form and load data for editing
                 ThemSanPham form = new ThemSanPham();
-                form.LoadProductData(MaSanPham);  // Pass the MaSanPham to load product details
+               
                 form.ShowDialog();  // Open the form as a dialog
             }
             else
