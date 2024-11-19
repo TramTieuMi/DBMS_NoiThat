@@ -47,6 +47,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel_Body = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_Top.SuspendLayout();
             this.panel_left.SuspendLayout();
@@ -105,7 +106,7 @@
             this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogOut.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.ForeColor = System.Drawing.Color.White;
-            this.buttonLogOut.Location = new System.Drawing.Point(19, 587);
+            this.buttonLogOut.Location = new System.Drawing.Point(13, 655);
             this.buttonLogOut.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(229, 50);
@@ -196,6 +197,7 @@
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.Color.Gray;
+            this.panel_left.Controls.Add(this.button1);
             this.panel_left.Controls.Add(this.BTN_ChatBox);
             this.panel_left.Controls.Add(this.buttonThongKeDoanhThu);
             this.panel_left.Controls.Add(this.labelMenu);
@@ -285,6 +287,22 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(15, 582);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(229, 50);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Thông Báo";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // MainFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -326,5 +344,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button buttonThongKeDoanhThu;
         private System.Windows.Forms.Button BTN_ChatBox;
+        private System.Windows.Forms.Button button1;
     }
 }
