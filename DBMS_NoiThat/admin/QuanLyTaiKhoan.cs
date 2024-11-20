@@ -23,10 +23,34 @@ namespace DBMS_NoiThat.admin
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadData(); // Call LoadData when the form loads
+            LoadRoles();
+        }
+
+        private void LoadRoles()
+        {
+            try
+            {
+                using (SqlConnection conn = Connection.GetSqlConnection())
+                {
+                    string query = "SELECT RoleID, RoleName FROM ROLE";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    cmbRole.DisplayMember = "RoleName";  // Display role names (e.g., Admin, User)
+                    cmbRole.ValueMember = "RoleID";      // Use RoleID as value
+                    cmbRole.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading roles: " + ex.Message);
+            }
         }
 
         private void btnSave_Click_Click(object sender, EventArgs e)
         {
+            if (!ValidateFields()) return;
             // Get the input values from form controls
             string tenDangNhap = txtTenDangNhap.Text.Trim();
             string matKhau = txtMatKhau.Text.Trim();
@@ -91,6 +115,7 @@ namespace DBMS_NoiThat.admin
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!ValidateFields()) return;
             // Get the input values from form controls
             string tenDangNhap = txtTenDangNhap.Text.Trim();
             string matKhau = txtMatKhau.Text.Trim();
@@ -139,6 +164,7 @@ namespace DBMS_NoiThat.admin
 
         private void btnDelete_Click_Click(object sender, EventArgs e)
         {
+            
             // Check if a user is selected (assuming this is done via a DataGridView)
             if (dgvTaiKhoan.SelectedRows.Count > 0)
             {
@@ -218,37 +244,43 @@ namespace DBMS_NoiThat.admin
 
         private void btnTimKiem_Click_Click(object sender, EventArgs e)
         {
-            string timKiem = txtTimKiem.Text;
+            string timKiem = txtTimKiem.Text.Trim();
+
+            // Check if the input is empty
+            if (string.IsNullOrEmpty(timKiem))
+            {
+                MessageBox.Show("Vui lòng nhập thông tin tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             using (SqlConnection connection = Connection.GetSqlConnection())
             {
                 connection.Open();
 
-                // Prepare the command to call the function
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.func_TimKiemTaiKhoan(@TimKiem)", connection))
+                // Use the function to perform the search
+                string query = "SELECT * FROM dbo.func_TimKiemTaiKhoan(@TimKiem)";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    // Declare the @TimKiem parameter
                     cmd.Parameters.AddWithValue("@TimKiem", timKiem);
 
-                    // Create a DataTable to hold the results
+                    // Execute the query and bind the results to the DataGridView
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
 
-                    // Display the results in the DataGridView
                     if (dt.Rows.Count == 0)
                     {
-                        MessageBox.Show("Không tìm thấy tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Không tìm thấy tài khoản nào phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    dgvTaiKhoan.DataSource = dt; // Bind the results to the DataGridView
-                }
 
-                connection.Close(); // Connection will be automatically closed here
+                    dgvTaiKhoan.DataSource = dt;
+                }
             }
         }
 
         private void btnLoadData_Click(object sender, EventArgs e)
         {
+            
             // Save the current ComboBox selection before resetting
             var currentSelection = cmbRole.SelectedValue;
 
@@ -274,77 +306,91 @@ namespace DBMS_NoiThat.admin
 
         private void cmbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Use your DBConnection class to get the SQL connection
-            DBConnection dbConnection = new DBConnection();
-            SqlConnection conn = dbConnection.GetConnection(); // Getting the connection from DBConnection class
-
-            try
+            if (cmbRole.SelectedValue != null)
             {
-                // Open the connection
-                dbConnection.OpenConnection();
+                int selectedRoleId = (int)cmbRole.SelectedValue;
+                string query = "SELECT * FROM TAIKHOAN WHERE RoleID = @RoleID";
+                SqlParameter[] parameters = { new SqlParameter("@RoleID", selectedRoleId) };
 
-                // Your query to get the roles
-                string query = "SELECT RoleID, RoleName FROM ROLE";
-
-                // Use SqlDataAdapter to fetch data into a DataTable
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                // Bind data to ComboBox
-                cmbRole.DisplayMember = "RoleName";  // The text to display in the ComboBox
-                cmbRole.ValueMember = "RoleID";      // The actual value used for the selection
-                cmbRole.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading roles: {ex.Message}");
-            }
-            finally
-            {
-                // Ensure the connection is closed after the operation
-                dbConnection.CloseConnection();
+                dgvTaiKhoan.DataSource = ExecuteQuery(query, parameters);
             }
         }
 
-        private void dgvTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
         private void dgvTaiKhoan_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            // Ensure that the clicked row is valid (not a header or empty row)
-            if (e.RowIndex >= 0)
-            {
-                // Get the current row based on the clicked cell
-                DataGridViewRow row = dgvTaiKhoan.Rows[e.RowIndex];
-
-                // Now, fill the textboxes with the values from the selected row
-                txtTenDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
-                txtMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
-                txtEmail.Text = row.Cells["Email"].Value.ToString();
-
-               
-            }
+            PopulateFieldsFromGrid(e.RowIndex);
         }
 
         private void dgvTaiKhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Ensure that the clicked row is valid (not a header or empty row)
-            if (e.RowIndex >= 0)
+            dgvTaiKhoan_CellClick_1(sender, e); // Redirect to CellClick logic
+        }
+        private void PopulateFieldsFromGrid(int rowIndex)
+        {
+            if (rowIndex >= 0)
             {
-                // Get the current row based on the clicked cell
-                DataGridViewRow row = dgvTaiKhoan.Rows[e.RowIndex];
-
-                // Now, fill the textboxes with the values from the selected row
+                DataGridViewRow row = dgvTaiKhoan.Rows[rowIndex];
                 txtTenDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
                 txtMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
                 txtEmail.Text = row.Cells["Email"].Value.ToString();
-
-                
             }
         }
+        private bool ValidateFields()
+        {
+            if (string.IsNullOrEmpty(txtTenDangNhap.Text) ||
+                string.IsNullOrEmpty(txtMatKhau.Text) ||
+                string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+                return false;
+            }
+
+            if (cmbRole.SelectedValue == null || (int)cmbRole.SelectedValue == 0)
+            {
+                MessageBox.Show("Vui lòng chọn vai trò.");
+                return false;
+            }
+
+            return true;
+        }
+        private DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = Connection.GetSqlConnection()) // Adjust to your connection method
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        if (parameters != null)
+                        {
+                            cmd.Parameters.AddRange(parameters); // Add parameters if any
+                        }
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(dt); // Fill the DataTable with query results
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Database error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}");
+            }
+
+            return dt;
+        }
+
+
     }
 }
 
