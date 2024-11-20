@@ -45,9 +45,9 @@ namespace DBMS_NoiThat.UC
             LB_Gia.Text = eDonHang.SoTien1.ToString();
             using (MemoryStream picture = new MemoryStream(eDonHang.Pic))
             {
-                PB_hienthi.SizeMode = PictureBoxSizeMode.Zoom; // Thiết lập kiểu hiển thị ảnh
-                PB_hienthi.Image = Image.FromStream(picture); // Nạp ảnh vào PictureBox
-                PB_hienthi.Refresh(); // Làm mới PictureBox
+                PB_hienthi.SizeMode = PictureBoxSizeMode.Zoom; 
+                PB_hienthi.Image = Image.FromStream(picture); 
+                PB_hienthi.Refresh(); 
             }
         }
 
