@@ -58,6 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\DisCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\DisCount.Designer.cs">
+      <DependentUpon>DisCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin\FNhacNho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\FNhacNho.Designer.cs">
+      <DependentUpon>FNhacNho.cs</DependentUpon>
+    </Compile>
     <Compile Include="admin\ThemSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +82,7 @@
     <Compile Include="admin\QuanLyTaiKhoan.Designer.cs">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Discount.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +95,18 @@
     <Compile Include="admin\.Designer.cs">
       <DependentUpon>QuanlySanPham.cs</DependentUpon>
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC\UCDiscount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCDiscount.Designer.cs">
+      <DependentUpon>UCDiscount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCNhacNho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCNhacNho.Designer.cs">
+      <DependentUpon>UCNhacNho.cs</DependentUpon>
     </Compile>
     <Compile Include="user\MainFormKhachHang.cs">
       <SubType>Form</SubType>
@@ -219,6 +244,12 @@
     <EmbeddedResource Include="admin\ChatBoxAdmin.resx">
       <DependentUpon>ChatBoxAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="admin\DisCount.resx">
+      <DependentUpon>DisCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\FNhacNho.resx">
+      <DependentUpon>FNhacNho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="admin\ThemSanPham.resx">
       <DependentUpon>ThemSanPham.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +261,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin\QuanlySanPham.resx">
       <DependentUpon>QuanlySanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCDiscount.resx">
+      <DependentUpon>UCDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCNhacNho.resx">
+      <DependentUpon>UCNhacNho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\MainFormKhachHang.resx">
       <DependentUpon>MainFormKhachHang.cs</DependentUpon>

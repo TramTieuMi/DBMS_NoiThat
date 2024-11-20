@@ -83,7 +83,7 @@ namespace DBMS_NoiThat.user
         public void LoadLichSu(string tenDangNhap)
         {
             List<LichSuMuaHang> listLichSu = new List<LichSuMuaHang>();
-            string query = "select * from view_ChiTietLichSuMuaHang WHERE TenDangNhap = @TenDangNhap";
+            string query = "select * from view_ChiTietLichSuMuaHang WHERE TenDangNhap = @TenDangNhap ORDER BY NgayMuaHang DESC";
             DataTable dataTable = new DataTable();
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
@@ -143,7 +143,7 @@ namespace DBMS_NoiThat.user
                     UCLichSuMuaHang ucOrderGroup = (UCLichSuMuaHang)flwPnLichSu.Controls[flwPnLichSu.Controls.Count - 1];
 
                     // Đưa UC vừa thêm lên trên cùng
-                    flwPnLichSu.Controls.SetChildIndex(ucOrderGroup, 0);
+                    //flwPnLichSu.Controls.SetChildIndex(ucOrderGroup, 0);
 
                     // Thêm sản phẩm vào nhóm đơn hàng hiện tại
                     ucOrderGroup.AddProduct(product); // Phương thức này sẽ thêm sản phẩm vào flwPnLichSu trong ucLichSuMuaHang1

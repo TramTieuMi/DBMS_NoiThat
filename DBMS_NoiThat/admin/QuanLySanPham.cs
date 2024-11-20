@@ -115,18 +115,13 @@ namespace DBMS_NoiThat
 
         private void btnSuaSP_Click(object sender, EventArgs e)
         {
-            // Ensure a valid row is selected in the DataGridView
             if (dataGridViewSanPham.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridViewSanPham.SelectedRows[0];
-
-                // Retrieve the MaSanPham (product ID) from the selected row
                 int MaSanPham = Convert.ToInt32(selectedRow.Cells["MaSanPham"].Value);
 
-                // Open the ThemSanPham form and load data for editing
-                ThemSanPham form = new ThemSanPham();
-                form.LoadProductData(MaSanPham);  // Pass the MaSanPham to load product details
-                form.ShowDialog();  // Open the form as a dialog
+                ThemSanPham form = new ThemSanPham(MaSanPham);
+                form.ShowDialog();
             }
             else
             {
@@ -242,13 +237,13 @@ namespace DBMS_NoiThat
                     DataGridViewRow row = dataGridViewSanPham.Rows[e.RowIndex];
 
                     // Example: Get data from a specific column (HinhAnh column)
-                    string hinhAnhBase64 = row.Cells["HinhAnh"].Value.ToString();
+                    var hinhAnhValue = row.Cells["HinhAnh"].Value;
 
-                    // Process and display the image (this is just an example; customize as needed)
-                    if (!string.IsNullOrEmpty(hinhAnhBase64))
+                    // Check if the HinhAnh column contains a valid byte array (not Base64)
+                    if (hinhAnhValue != DBNull.Value)
                     {
-                        // Convert Base64 string to image and display it in a PictureBox
-                        byte[] imageBytes = Convert.FromBase64String(hinhAnhBase64);
+                        // Convert byte[] to Image and display in PictureBox
+                        byte[] imageBytes = (byte[])hinhAnhValue;
                         using (MemoryStream ms = new MemoryStream(imageBytes))
                         {
                             PictureBoxHinhAnhSP.Image = Image.FromStream(ms);
@@ -257,7 +252,7 @@ namespace DBMS_NoiThat
                     }
                     else
                     {
-                        // Clear the image if no Base64 data is found
+                        // Clear the image if no data is found
                         PictureBoxHinhAnhSP.Image = null;
                     }
                 }

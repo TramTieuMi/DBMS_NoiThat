@@ -56,7 +56,7 @@
             this.panel_Body.Location = new System.Drawing.Point(269, 123);
             this.panel_Body.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_Body.Name = "panel_Body";
-            this.panel_Body.Size = new System.Drawing.Size(1487, 683);
+            this.panel_Body.Size = new System.Drawing.Size(1518, 683);
             this.panel_Body.TabIndex = 11;
             this.panel_Body.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Body_Paint);
             // 
@@ -206,7 +206,7 @@
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(1756, 123);
+            this.panel_Top.Size = new System.Drawing.Size(1787, 123);
             this.panel_Top.TabIndex = 10;
             // 
             // hello
@@ -246,11 +246,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1756, 806);
+            this.ClientSize = new System.Drawing.Size(1787, 806);
             this.Controls.Add(this.panel_Body);
             this.Controls.Add(this.panel_left);
             this.Controls.Add(this.panel_Top);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainFormKhachHang";
             this.Text = "MainFormKhachHang";
             this.Load += new System.EventHandler(this.MainFormKhachHang_Load);

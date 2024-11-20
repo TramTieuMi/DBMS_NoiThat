@@ -1,5 +1,6 @@
 ﻿using DBMS_NoiThat.admin;
 using DBMS_NoiThat.Entity;
+using DBMS_NoiThat.UC;
 using Do_An_Tuyen_Dung;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace DBMS_NoiThat.user
 {
@@ -47,7 +49,7 @@ namespace DBMS_NoiThat.user
             {
                 MessageBox.Show(ex.Message);
             }
-
+            LoadNutHotThoai();
 
         }
         private Form currentFormChild;
@@ -173,6 +175,48 @@ namespace DBMS_NoiThat.user
 
         private void BTN_Chat_Click(object sender, EventArgs e)
         {
+            BTN_Chat.BackColor = Color.FromArgb(64, 64, 64);
+            string email = LayEmail();
+            conn.OpenConnection();                        
+            
+            using (SqlCommand cmd1 = new SqlCommand("sp_CapNhatTrangThai_user", conn.GetConnection()))
+            {
+                cmd1.CommandType = CommandType.StoredProcedure;
+
+                // Thêm các tham số cho thủ tục
+                cmd1.Parameters.AddWithValue("@Email", email);
+
+                // Mở kết nối và thực thi thủ tục
+                cmd1.ExecuteNonQuery();
+            }
+            conn.CloseConnection();
+            OpenChildForm(new ChatBoxUser(email));
+        }
+        public void LoadNutHotThoai()
+        {
+            
+            string email = LayEmail();
+            SqlCommand cmd0 = new SqlCommand("GetChatboxDetails", conn.GetConnection());
+            cmd0.CommandType = CommandType.StoredProcedure;
+            conn.OpenConnection();
+            SqlDataReader reader = cmd0.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (reader["Email"].ToString() == email && reader["TrangThai"].ToString() == "nhan,chua xem")
+                {
+                    BTN_Chat.BackColor = System.Drawing.Color.Green;
+                    break;
+                }
+
+            }
+            reader.Close();
+            conn.CloseConnection();
+        }
+
+        public string LayEmail()
+        {
+            conn.OpenConnection();
             string email = string.Empty;
 
             SqlCommand cmd = new SqlCommand("sp_LayEmailTheoMaKhachHang", conn.GetConnection());
@@ -189,27 +233,15 @@ namespace DBMS_NoiThat.user
             cmd.Parameters.Add(emailParam);
 
             // Mở kết nối và thực hiện thủ tục
-            conn.OpenConnection();
+
             cmd.ExecuteNonQuery();
-            
+
 
             // Lấy giá trị của tham số đầu ra
             email = emailParam.Value as string;
-
-            using (SqlCommand cmd1 = new SqlCommand("sp_CapNhatTrangThai_user", conn.GetConnection()))
-            {
-                cmd1.CommandType = CommandType.StoredProcedure;
-
-                // Thêm các tham số cho thủ tục
-                cmd1.Parameters.AddWithValue("@Email", email);
-
-                // Mở kết nối và thực thi thủ tục
-                cmd1.ExecuteNonQuery();
-            }
             conn.CloseConnection();
-            OpenChildForm(new ChatBoxUser(email));
+            return email;
         }
-
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
             Close();

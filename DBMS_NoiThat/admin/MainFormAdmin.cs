@@ -180,5 +180,23 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new FNhacNho());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
