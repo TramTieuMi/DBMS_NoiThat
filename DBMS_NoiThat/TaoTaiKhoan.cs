@@ -18,29 +18,10 @@ namespace DBMS_NoiThat
     {
         //SqlConnection stringConnection = Connection.GetSqlConnection();
         SqlConnection connStr = Connection.GetSqlConnection();
+        DBConnection myDB = new DBConnection();
         public TaoTaiKhoan()
         {
             InitializeComponent();
-        }
-
-        private void guna2HtmlLabel7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2TextBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TaoTaiKhoan_Load(object sender, EventArgs e)
-        {
-
         }
         public bool checkAccount(string ac)//check mat khau va ten tai khoan
         {
@@ -86,36 +67,40 @@ namespace DBMS_NoiThat
                 {
                     roleid = 1;
                 }
+                //string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao, MatKhau, RoleID, TenDangNhap) " +
+                // "VALUES (@HoVaTen, @Email, @DiaChi, @SDT, GETDATE(), @MatKhau, @RoleID, @TenDangNhap)";
+                
+                //string queryTKKH = "INSERT INTO TAIKHOAN (TenDangNhap,MatKhau,Email,RoleID) " +
+                //"VALUES (@TenDangNhap,@MatKhau,@Email,@RoleID)";
 
-                string queryKH = "INSERT INTO KHACHHANG (HoVaTen, Email, DiaChi, SDT, NgayTao) VALUES ('" + Hoten + "','" + email + "','" + DiaChi + "','" + sdt + "', GETDATE())";
-                string queryTK = "INSERT INTO TAIKHOAN (TenDangNhap, MatKhau, Email, RoleID) VALUES ('" + tentk + "', '" + matkhau + "', '" + email + "', '" + roleid + "')";
-
-                //
                 // Sử dụng Transaction
                 using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
                 {
                     connection.Open();
                     SqlTransaction transaction = connection.BeginTransaction();
-
+                    myDB.OpenConnection();
                     try
                     {
-                        using (SqlCommand cmdKH = new SqlCommand(queryKH, connection, transaction))
-                        {
-                            cmdKH.Parameters.AddWithValue("@HoVaTen", Hoten);
-                            cmdKH.Parameters.AddWithValue("@Email", email);
-                            cmdKH.Parameters.AddWithValue("@DiaChi", DiaChi);
-                            cmdKH.Parameters.AddWithValue("@SDT", sdt);
-                            cmdKH.ExecuteNonQuery();
-                        }
+                        SqlCommand cmd1 = new SqlCommand("[InsertKhachHang]", myDB.GetConnection());
+                        cmd1.CommandType = CommandType.StoredProcedure;
+                        cmd1.Parameters.AddWithValue("@HoVaTen", Hoten);
+                        cmd1.Parameters.AddWithValue("@Email", email);
+                        cmd1.Parameters.AddWithValue("@DiaChi", DiaChi);
+                        cmd1.Parameters.AddWithValue("@SDT", sdt);
+                        cmd1.Parameters.AddWithValue("@MatKhau", matkhau);
+                        cmd1.Parameters.AddWithValue("@RoleID", roleid);
+                        cmd1.Parameters.AddWithValue("@TenDangNhap", tentk);
+                        cmd1.ExecuteNonQuery();
 
-                        using (SqlCommand cmdTK = new SqlCommand(queryTK, connection, transaction))
-                        {
-                            cmdTK.Parameters.AddWithValue("@TenDangNhap", tentk);
-                            cmdTK.Parameters.AddWithValue("@MatKhau", matkhau);
-                            cmdTK.Parameters.AddWithValue("@Email", email);
-                            cmdTK.Parameters.AddWithValue("@RoleID", roleid);
-                            cmdTK.ExecuteNonQuery();
-                        }
+                        //SqlCommand cmd = new SqlCommand("[InsertTaiKhoan]", myDB.GetConnection());
+                        //cmd.CommandType = CommandType.StoredProcedure;
+                        //cmd.Parameters.AddWithValue("@TenDangNhap", tentk);
+                        //cmd.Parameters.AddWithValue("@MatKhau", matkhau);
+                        //cmd.Parameters.AddWithValue("@Email", email);
+                        //cmd.Parameters.AddWithValue("@RoleID", roleid);
+                        //cmd.ExecuteNonQuery();
+
+                    
 
                         // Commit transaction nếu cả hai câu lệnh INSERT đều thành công
                         transaction.Commit();
@@ -138,6 +123,16 @@ namespace DBMS_NoiThat
             {
                 MessageBox.Show("Đăng ký thất bại: " + ex.Message);
             }
+
+        }
+
+        private void TaoTaiKhoan_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        {
 
         }
     }

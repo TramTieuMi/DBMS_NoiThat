@@ -16,6 +16,7 @@ namespace DBMS_NoiThat.UC
 {
     public partial class UCLichSuMuaHang : UserControl
     {
+        //private FlowLayoutPanel flwPnLichSu;
         SqlConnection connStr = Connection.GetSqlConnection();
         string tensp;
         string mota;
@@ -24,9 +25,20 @@ namespace DBMS_NoiThat.UC
         string trangthai;
         string ngaymua;
         string tongtien;
+
+
+        private FlowLayoutPanel flpProducts;
         public UCLichSuMuaHang()
         {
             InitializeComponent();
+           
+            // Khởi tạo FlowLayoutPanel (nếu chưa có)
+            flpProducts = new FlowLayoutPanel();
+            flpProducts.Dock = DockStyle.Fill;
+            //this.AutoSize = true; // Tự động giãn theo nội dung
+            //this.AutoSizeMode = AutoSizeMode.GrowAndShrink; // Điều chỉnh cả chiều rộng và chiều cao
+            this.Controls.Add(flpProducts);
+            
         }
 
         LichSuMuaHang LichSuMua;
@@ -34,26 +46,108 @@ namespace DBMS_NoiThat.UC
         {
             InitializeComponent();
             this.LichSuMua = LichSuMua;
-            // nganh = lichSuNTD.Nganh;
+            flpProducts = new FlowLayoutPanel();
+            flpProducts.Dock = DockStyle.Fill;
+            this.Controls.Add(flpProducts);
 
-            txtTenSP.Text = LichSuMua.TenSanPham.ToString();
+            // Thêm sản phẩm vào FlowLayoutPanel nếu có
 
-            txtMoTa.Text = $"Mô tả {LichSuMua.MoTa.ToString()}";
+        }
+       
+        // Phương thức để thiết lập thông tin đơn hàng
+        public void SetOrderInfo(object orderId, DateTime orderDate, string status)
+        {
+            // Tạo một panel để hiển thị thông tin đơn hàng
+            Panel pnlOrderInfo = new Panel();
+            pnlOrderInfo.AutoSize = true;
+            pnlOrderInfo.BorderStyle = BorderStyle.FixedSingle;
+            pnlOrderInfo.BackColor = Color.LightGray;
+            pnlOrderInfo.Padding = new Padding(10);
+            pnlOrderInfo.Margin = new Padding(10);
 
-            txtMau.Text = "Màu sắc" + LichSuMua.Mau.ToString();
+            // Tạo và thêm các Label vào Panel
+            Label lblOrderId = new Label();
+            lblOrderId.Text = $"Mã đơn hàng: {orderId}";
+            lblOrderId.AutoSize = true;
+            pnlOrderInfo.Controls.Add(lblOrderId);
 
-            txtSoLuong.Text = "Số lượng "+LichSuMua.SoLuong.ToString();
+            Label lblOrderDate = new Label();
+            lblOrderDate.Text = $"Ngày đặt: {orderDate.ToShortDateString()}";
+            lblOrderDate.AutoSize = true;
+            lblOrderDate.Top = lblOrderId.Bottom + 5;
+            pnlOrderInfo.Controls.Add(lblOrderDate);
 
-            txtNgayMua.Text = "Ngày mua hàng " + LichSuMua.NgayMua.ToString();
+            Label lblOrderStatus = new Label();
+            lblOrderStatus.Text = $"Trạng thái: {status}";
+            lblOrderStatus.AutoSize = true;
+            lblOrderStatus.Top = lblOrderDate.Bottom + 5;
+            pnlOrderInfo.Controls.Add(lblOrderStatus);
 
-            txtTrangThai.Text = "Trạng thái " + LichSuMua.TrangThai.ToString();
-
-          //  txtThanhTien.Text = "Tổng tiền " + LichSuMua.ThanhTien.ToString();
-            //CK_Chon = new CheckBox();
-            //CK_Chon.Checked = gioHang.Check;
+            // Thêm Panel vào FlowLayoutPanel
+            flpProducts.Controls.Add(pnlOrderInfo);
         }
 
+        // Phương thức để thêm sản phẩm vào danh sách
+        public void AddProduct(LichSuMuaHang product)
+        {
+            // Tạo Panel để chứa thông tin của từng sản phẩm
+            Panel pnlProduct = new Panel();
+            pnlProduct.AutoSize = true;
+            pnlProduct.BorderStyle = BorderStyle.FixedSingle;
+            pnlProduct.BackColor = Color.WhiteSmoke; // Màu nền nhẹ nhàng
+            pnlProduct.Padding = new Padding(10); // Khoảng cách bên trong Panel
+            pnlProduct.Margin = new Padding(10); // Khoảng cách giữa các Panel
 
+            // Tạo và thêm các Label vào Panel
+            Label lblTenSP = new Label();
+            lblTenSP.Text = $"Tên sản phẩm: {product.TenSanPham}";
+            lblTenSP.AutoSize = true;
+            pnlProduct.Controls.Add(lblTenSP);
+
+            Label lblMoTa = new Label();
+            lblMoTa.Text = $"Mô tả: {product.MoTa}";
+            lblMoTa.AutoSize = true;
+            lblMoTa.Top = lblTenSP.Bottom + 5;
+            pnlProduct.Controls.Add(lblMoTa);
+
+            Label lblMau = new Label();
+            lblMau.Text = $"Màu sắc: {product.Mau}";
+            lblMau.AutoSize = true;
+            lblMau.Top = lblMoTa.Bottom + 5;
+            pnlProduct.Controls.Add(lblMau);
+
+            Label lblSoLuong = new Label();
+            lblSoLuong.Text = $"Số lượng: {product.SoLuong}";
+            lblSoLuong.AutoSize = true;
+            lblSoLuong.Top = lblMau.Bottom + 5;
+            pnlProduct.Controls.Add(lblSoLuong);
+
+            Label lblNgayMua = new Label();
+            lblNgayMua.Text = $"Ngày mua hàng: {product.NgayMua.ToShortDateString()}";
+            lblNgayMua.AutoSize = true;
+            lblNgayMua.Top = lblSoLuong.Bottom + 5;
+            pnlProduct.Controls.Add(lblNgayMua);
+
+            Label lblTrangThai = new Label();
+            lblTrangThai.Text = $"Trạng thái: {product.TrangThai}";
+            lblTrangThai.AutoSize = true;
+            lblTrangThai.Top = lblNgayMua.Bottom + 5;
+            pnlProduct.Controls.Add(lblTrangThai);
+
+            // Thêm Panel vào FlowLayoutPanel
+            flpProducts.Controls.Add(pnlProduct);
+
+           
+        }
+
+        public void SetTotalOrderPrice(decimal totalPrice)
+        {
+            //.Text = $"Tổng giá trị: {totalPrice:C}"; // Định dạng tiền tệ
+            // txtThanhTien.Text = $"Tổng: {totalPrice.ToString("N0")} ₫";
+            
+            txtThanhTien.Text = totalPrice.ToString("N0") + " đ";
+
+        }
         private void UCLichSuDonHang_Load(object sender, EventArgs e)
         {
 

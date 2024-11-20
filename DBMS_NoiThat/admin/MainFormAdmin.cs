@@ -1,4 +1,5 @@
-﻿using DBMS_NoiThat.Entity;
+﻿using DBMS_NoiThat.admin;
+using DBMS_NoiThat.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -124,6 +125,73 @@ namespace DBMS_NoiThat.user
             {
                 timer1.Start();
                 labelTime.Text = DateTime.Now.ToLongTimeString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonThongKeDoanhThu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new ThongKeDoanhThu());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BTN_ChatBox_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ChatBoxAdmin());
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void buttonSP_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new QuanLySanPham());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonQLTT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new QuanLyTaiKhoan());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new FNhacNho());
+                // labelHome.Text = buttonQLNV.Text;
             }
             catch (Exception ex)
             {

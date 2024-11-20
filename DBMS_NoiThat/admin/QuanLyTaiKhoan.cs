@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Do_An_Tuyen_Dung;
+using DBMS_NoiThat.user;
 
-
-namespace DBMS_NoiThat
+namespace DBMS_NoiThat.admin
 {
     public partial class QuanLyTaiKhoan : Form
     {
@@ -22,122 +22,111 @@ namespace DBMS_NoiThat
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadData();
-            LoadRoles();
+            LoadData(); // Call LoadData when the form loads
         }
 
         private void btnSave_Click_Click(object sender, EventArgs e)
         {
-            string tenDangNhap = txtTenDangNhap.Text;
-            string matKhau = txtMatKhau.Text;
-            string email = txtEmail.Text;
-            int roleId;
+            // Get the input values from form controls
+            string tenDangNhap = txtTenDangNhap.Text.Trim();
+            string matKhau = txtMatKhau.Text.Trim();
+            string email = txtEmail.Text.Trim();
 
-            // Check if an item is selected in the ComboBox
-            if (cmbRoleID.SelectedValue == null)
+            // Validate inputs
+            if (string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau) || string.IsNullOrEmpty(email))
             {
-                MessageBox.Show("Vui lòng chọn một Role ID hợp lệ");
-                return;
-            }
-            // Attempt to parse the selected value
-            if (!int.TryParse(cmbRoleID.SelectedValue.ToString(), out roleId))
-            {
-                MessageBox.Show("Vui lòng chọn một Role ID hợp lệ");
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
                 return;
             }
 
-            // Get the SQL connection from the Connection class
-            using (SqlConnection conn = Connection.GetSqlConnection())
+            // Get the selected Role ID from the ComboBox
+            int roleId = (cmbRole.SelectedValue != null) ? (int)cmbRole.SelectedValue : 0;
+            if (roleId == 0)
             {
-                conn.Open(); // Open the connection
+                MessageBox.Show("Vui lòng chọn vai trò.");
+                return;
+            }
 
-                using (SqlCommand cmd = new SqlCommand("proc_ThemTaiKhoan", conn))
+            // Prepare the SQL query to insert the new account
+            string query = "INSERT INTO TAIKHOAN (TenDangNhap, MatKhau, Email, RoleID) VALUES (@TenDangNhap, @MatKhau, @Email, @RoleID)";
+
+            // Use the DBConnection class to manage database connection
+            DBConnection dbConnection = new DBConnection();
+            dbConnection.OpenConnection(); // Open the connection
+            SqlConnection conn = dbConnection.GetConnection(); // Get the connection
+
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                // Add parameters to prevent SQL injection
+                cmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
+                cmd.Parameters.AddWithValue("@MatKhau", matKhau);  // Use the plain password
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@RoleID", roleId);  // Add RoleID parameter
+
+                try
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    int rowsAffected = cmd.ExecuteNonQuery(); // Execute the insert query
 
-                    // Adding parameters
-                    cmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
-                    cmd.Parameters.AddWithValue("@MatKhau", matKhau);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@RoleID", roleId);
-
-                    try
+                    if (rowsAffected > 0)
                     {
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Tài khoản đã được thêm thành công!");
-                            this.DialogResult = DialogResult.OK;
-                            
-                        }
-                        else
-                        {
-                            MessageBox.Show("Thêm tài khoản thất bại!");
-                        }
+                        MessageBox.Show("Tài khoản đã được thêm thành công!");
+                        LoadData(); // Optionally, reload data or refresh the view
                     }
-                    catch (SqlException ex)
+                    else
                     {
-                        MessageBox.Show($"Có lỗi xảy ra: {ex.Message}");
+                        MessageBox.Show("Thêm tài khoản thất bại!");
                     }
                 }
-            } // Connection is automatically closed here
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Có lỗi xảy ra: {ex.Message}");
+                }
+            }
+
+            // Close the connection after the operation is done
+            dbConnection.CloseConnection();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) // Make sure the row index is valid
-            {
-                var row = dgvTaiKhoan.Rows[e.RowIndex];
-                txtTenDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
-                txtMatKhau.Text = row.Cells["MatKhau"].Value.ToString(); // Ensure your DataTable has this column
-                txtEmail.Text = row.Cells["Email"].Value.ToString();
-                cmbRoleID.SelectedValue = Convert.ToInt32(row.Cells["RoleID"].Value); // Adjust if the column name differs
-            }
-        }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string tenDangNhap = txtTenDangNhap.Text;
-            string matKhau = txtMatKhau.Text;
-            string email = txtEmail.Text;
-            int roleId;
+            // Get the input values from form controls
+            string tenDangNhap = txtTenDangNhap.Text.Trim();
+            string matKhau = txtMatKhau.Text.Trim();
+            string email = txtEmail.Text.Trim();  // Email is used to identify the account to update
+            
 
-            // Assuming role ID is selected from a ComboBox
-            if (!int.TryParse(cmbRoleID.SelectedValue.ToString(), out roleId))
+            // Validate inputs
+            if (string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau) || string.IsNullOrEmpty(email))
             {
-                MessageBox.Show("Vui lòng chọn một Role ID hợp lệ");
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
                 return;
             }
 
-            // Get the SQL connection from the Connection class
+            // SQL Connection and Command
             using (SqlConnection conn = Connection.GetSqlConnection())
             {
                 conn.Open(); // Open the connection
-
                 using (SqlCommand cmd = new SqlCommand("proc_SuaTaiKhoan", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Adding parameters with explicit types
-                    cmd.Parameters.Add("@TenDangNhap", SqlDbType.NVarChar).Value = tenDangNhap;
-                    cmd.Parameters.Add("@MatKhau", SqlDbType.NVarChar).Value = matKhau; // Consider hashing this
-                    cmd.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
-                    cmd.Parameters.Add("@RoleID", SqlDbType.Int).Value = roleId;
+                    cmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
+                    cmd.Parameters.AddWithValue("@MatKhau", matKhau);
+                    cmd.Parameters.AddWithValue("@Email", email);  // Email is used to identify which account to update
+                    
 
                     try
                     {
                         int rowsAffected = cmd.ExecuteNonQuery();
-
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Tài khoản đã được cập nhật thành công!");
-                            this.DialogResult = DialogResult.OK;
-                            
+                            LoadData(); // Refresh the DataGridView or any other controls showing the data
                         }
                         else
                         {
-                            MessageBox.Show("Cập nhật tài khoản thất bại!, chắc rằng sử dụng đúng Email");
+                            MessageBox.Show("Cập nhật tài khoản thất bại. Vui lòng thử lại.");
                         }
                     }
                     catch (SqlException ex)
@@ -145,7 +134,7 @@ namespace DBMS_NoiThat
                         MessageBox.Show($"Có lỗi xảy ra: {ex.Message}");
                     }
                 }
-            } // Connection is automatically closed here
+            }
         }
 
         private void btnDelete_Click_Click(object sender, EventArgs e)
@@ -158,7 +147,6 @@ namespace DBMS_NoiThat
                 using (SqlConnection connection = Connection.GetSqlConnection())
                 {
                     connection.Open();
-
                     using (SqlTransaction transaction = connection.BeginTransaction())
                     {
                         using (SqlCommand cmd = new SqlCommand("proc_XoaTaiKhoan", connection, transaction))
@@ -199,11 +187,14 @@ namespace DBMS_NoiThat
         }
         private void LoadData()
         {
-            // Assuming you have a DataGridView named dgvUsers to display the user accounts.
+            // Save the current selection of the ComboBox
+            var currentSelection = cmbRole.SelectedValue;
+
+            // Reload DataGridView
             using (SqlConnection connection = Connection.GetSqlConnection())
             {
                 connection.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN", connection)) // Adjust query as needed
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN", connection))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -213,125 +204,147 @@ namespace DBMS_NoiThat
                     }
                 }
             }
+
+            
+
+            // Restore the ComboBox selection
+            if (currentSelection != null)
+            {
+                cmbRole.SelectedValue = currentSelection;
+            }
         }
+
+
 
         private void btnTimKiem_Click_Click(object sender, EventArgs e)
         {
-            string timKiem = txtTimKiem.Text; 
-            bool theoEmail = chkEmail.Checked; 
-            bool theoTenDangNhap = chkTenDangNhap.Checked; 
+            string timKiem = txtTimKiem.Text;
 
             using (SqlConnection connection = Connection.GetSqlConnection())
             {
                 connection.Open();
 
                 // Prepare the command to call the function
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.func_TimKiemTaiKhoan(@TimKiem, @TheoEmail, @TheoTenDangNhap)", connection))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.func_TimKiemTaiKhoan(@TimKiem)", connection))
                 {
+                    // Declare the @TimKiem parameter
                     cmd.Parameters.AddWithValue("@TimKiem", timKiem);
-                    cmd.Parameters.AddWithValue("@TheoEmail", theoEmail ? 1 : 0);
-                    cmd.Parameters.AddWithValue("@TheoTenDangNhap", theoTenDangNhap ? 1 : 0);
 
+                    // Create a DataTable to hold the results
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
 
-                    dgvTaiKhoan.DataSource = null; // Assuming you have a DataGridView for displaying results
-
+                    // Display the results in the DataGridView
                     if (dt.Rows.Count == 0)
                     {
                         MessageBox.Show("Không tìm thấy tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else
-                    {
-                        dgvTaiKhoan.DataSource = dt; // Bind the results to the DataGridView
-                    }
-                } // Connection is automatically closed by the using statement
-            }
-        }
-
-        private void chkTenDangNhap_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LoadRoles()
-{
-            using (SqlConnection connection = Connection.GetSqlConnection())
-            {
-                connection.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT RoleID, RoleName FROM Roles", connection))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    cmbRoleID.DataSource = dt;
-                    cmbRoleID.DisplayMember = "RoleName";
-                    cmbRoleID.ValueMember = "RoleID";
+                    dgvTaiKhoan.DataSource = dt; // Bind the results to the DataGridView
                 }
+
+                connection.Close(); // Connection will be automatically closed here
             }
-}
-
-        private void cmbRoleID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLoadData_Click(object sender, EventArgs e)
         {
-            LoadData();
-            LoadRoles();
+            // Save the current ComboBox selection before resetting
+            var currentSelection = cmbRole.SelectedValue;
+
+            // Reset the form fields
+            txtTenDangNhap.Text = "";
+            txtMatKhau.Text = "";
+            txtEmail.Text = "";
+            txtTimKiem.Text = "";
+
+            // Optionally, clear the DataGridView or reset it to its default state
+            dgvTaiKhoan.DataSource = null;
+
+            // If you want to reload the data, you can call the LoadData method again
+            LoadData();  // This will reload the DataGridView data
+
+            // Restore the ComboBox selection to the previously selected value (Admin/User)
+            if (currentSelection != null)
+            {
+                cmbRole.SelectedValue = currentSelection;
+            }
+
         }
 
-        private void chkEmail_CheckedChanged(object sender, EventArgs e)
+        private void cmbRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Use your DBConnection class to get the SQL connection
+            DBConnection dbConnection = new DBConnection();
+            SqlConnection conn = dbConnection.GetConnection(); // Getting the connection from DBConnection class
+
+            try
+            {
+                // Open the connection
+                dbConnection.OpenConnection();
+
+                // Your query to get the roles
+                string query = "SELECT RoleID, RoleName FROM ROLE";
+
+                // Use SqlDataAdapter to fetch data into a DataTable
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                // Bind data to ComboBox
+                cmbRole.DisplayMember = "RoleName";  // The text to display in the ComboBox
+                cmbRole.ValueMember = "RoleID";      // The actual value used for the selection
+                cmbRole.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading roles: {ex.Message}");
+            }
+            finally
+            {
+                // Ensure the connection is closed after the operation
+                dbConnection.CloseConnection();
+            }
+        }
+
+        private void dgvTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        private void dgvTaiKhoan_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            // Ensure that the clicked row is valid (not a header or empty row)
+            if (e.RowIndex >= 0)
+            {
+                // Get the current row based on the clicked cell
+                DataGridViewRow row = dgvTaiKhoan.Rows[e.RowIndex];
 
+                // Now, fill the textboxes with the values from the selected row
+                txtTenDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
+                txtMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
+                txtEmail.Text = row.Cells["Email"].Value.ToString();
+
+               
+            }
         }
 
-        private void cmbRoleID_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void dgvTaiKhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Ensure that the clicked row is valid (not a header or empty row)
+            if (e.RowIndex >= 0)
+            {
+                // Get the current row based on the clicked cell
+                DataGridViewRow row = dgvTaiKhoan.Rows[e.RowIndex];
 
-        }
+                // Now, fill the textboxes with the values from the selected row
+                txtTenDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
+                txtMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
+                txtEmail.Text = row.Cells["Email"].Value.ToString();
 
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMatKhau_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTenDangNhap_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+                
+            }
         }
     }
 }
+

@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using DBMS_NoiThat.user;
 using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
+using System.Drawing;
+using System.Web.UI.WebControls;
 
 namespace DBMS_NoiThat
 {
@@ -15,6 +17,7 @@ namespace DBMS_NoiThat
         private DBConnection dbConnection; // Declare an instance of DBConnection
         private SqlConnection connection; // Declare the SqlConnection variable
         private DataTable dataTable = new DataTable();
+        private DataTable dataTable1 = new DataTable();
 
         public DonHang()
         {
@@ -22,13 +25,16 @@ namespace DBMS_NoiThat
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
         }
-        int maDH ;
+        int maDH,maKH = 0,ThanhTien = 0, SoTienTra = 0;
+        string MaGG = "";
         public DonHang(int maDonHang)
         {
             InitializeComponent();
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
             LoadSanPham(maDonHang);
+
+            LoadThanhTien(" ");
             maDH = maDonHang;   
         }
 
@@ -46,12 +52,10 @@ namespace DBMS_NoiThat
             LB_SDTNhan.Text = "Số Điện Thoại Người Nhận :";
             LB_DiaChi.Text = "Địa Chỉ Nhận Hàng :";
             string query = "SELECT * FROM View_DonHangChiTiet";
-
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(dataTable);
-
             int sum = 0;
             int MaKhachHang = 0;
             string TenNguoiDat = "";
@@ -60,53 +64,138 @@ namespace DBMS_NoiThat
             int SDTNguoiNhan = 0;
             string NgayMuaHang = "";
             string DiaChiNhan = "";
-
-            foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
+            foreach (DataRow row in dataTable.Rows)
             {
-                if ((maDonHang == (int)row["MaDonHang"]) && (row["TrangThai"].ToString() == "Đặt Hàng"))
+                if ((maDonHang == (int)row["MaDonHang"]) && (row["TrangThai"].ToString() == "Ðang chờ xác nhận"))
                 {
                     int MaSanPham = (int)row["MaSanPham"];
                     MaKhachHang = (int)row["MaKhachHang"];
+                    maKH = MaKhachHang;
                     TenNguoiDat = row["TenNguoiDat"].ToString();
-                    SDTNguoiDat = Convert.ToInt32(row["SDTNguoiDat"].ToString()) ;
+                    SDTNguoiDat = Convert.ToInt32(row["SDTNguoiDat"].ToString());
                     TenNguoiNhan = row["TenNguoiNhan"].ToString();
                     SDTNguoiNhan = Convert.ToInt32(row["SDTNguoiNhan"].ToString());
                     int SoTien = (int)row["SoTien"];
                     NgayMuaHang = row["NgayMuaHang"].ToString();
                     DiaChiNhan = row["DiaChiNhan"].ToString();
                     string TrangThai = row["TrangThai"].ToString();
-                    int SoLuong = (int)row["SoLuong"]; // Change this line to get the correct quantity
-                    string TenSanPham = row["TenSanPham"].ToString(); // Change this line to get the correct product name
-                    sum += SoTien; // Sum the total amount
-                    EDonHang donHang = new EDonHang(maDonHang, MaSanPham, MaKhachHang, TenNguoiDat, SDTNguoiDat, TenNguoiNhan, SDTNguoiNhan, SoTien, NgayMuaHang, DiaChiNhan, TrangThai, SoLuong, TenSanPham);
-
+                    int SoLuong = (int)row["SoLuong"];
+                    string TenSanPham = row["TenSanPham"].ToString();
+                    byte[] pic = (byte[])row["HinhAnh"];
+                    sum += SoTien;
+                    EDonHang donHang = new EDonHang(maDonHang, MaSanPham, MaKhachHang, TenNguoiDat, SDTNguoiDat, TenNguoiNhan, SDTNguoiNhan, SoTien, NgayMuaHang, DiaChiNhan, TrangThai, SoLuong, TenSanPham, pic);
                     UCDonHang ucdh = new UCDonHang(donHang);
                     int dis = (FPN_HienThi.Width - (2 * ucdh.Width)) / 3;
                     ucdh.Margin = new Padding(dis, dis, 0, 0);
                     FPN_HienThi.Controls.Add(ucdh);
                 }
             }
-
-            // Set the values in the labels and text boxes
             LB_MaDonHang.Text = "Mã Đơn Hàng : " + maDonHang.ToString();
             LB_MaKH.Text = "Mã Khách Hàng : " + MaKhachHang.ToString();
+            maKH = MaKhachHang;
             LB_TenNguoiDat.Text = "Tên Người Đặt : " + TenNguoiDat;
             LB_SDTNguoiDat.Text = "Số Điện Thoại Người Đặt : " + SDTNguoiDat.ToString();
             LB_SoTien.Text = "Tổng Số Tiền : " + sum.ToString();
+            ThanhTien = sum;
             TB_TenNguoiNhan.Text = TenNguoiNhan;
             TB_SDTNguoiNhan.Text = SDTNguoiNhan.ToString();
             TB_DiaChi.Text = DiaChiNhan;
 
-            connection.Close(); // Close the connection
+            using (SqlCommand command1 = new SqlCommand("GetDiscountsByCustomer", connection))
+            {
+                command1.CommandType = CommandType.StoredProcedure;
+
+                // Thêm tham số MaKhachHang
+                command1.Parameters.Add(new SqlParameter("@MaKhachHang", SqlDbType.Int));
+                command1.Parameters["@MaKhachHang"].Value = MaKhachHang;
+
+                // Sử dụng SqlDataAdapter để điền dữ liệu vào DataTable
+                using (SqlDataAdapter adapter1 = new SqlDataAdapter(command1))
+                {
+
+                    adapter1.Fill(dataTable1);
+                    foreach (DataRow row in dataTable1.Rows)    
+                    {
+                        {
+                            string maGiamGia = row["MaGiamGia"].ToString();
+                            int maSanPham = (int)row["MaSanPham"];
+                            decimal soLuongGiam = decimal.Parse(row["SoLuongGiam"].ToString());
+                            DateTime ngayApDung = (DateTime)row["NgayApDung"];
+                            DateTime ngayKetThuc = (DateTime)row["NgayKetThuc"];
+                            string liDo = row["LiDo"].ToString();
+                            Discount discount = new Discount(maGiamGia, maSanPham, MaKhachHang, soLuongGiam, ngayApDung, ngayKetThuc, liDo);
+                            UCDiscount ucgg = new UCDiscount(discount);
+                            // Lắng nghe sự kiện OnApplyDiscount
+                            ucgg.OnApplyDiscount += MaGiamGia =>
+                            {
+                                LoadThanhTien(MaGiamGia); // Gọi hàm LoadThanhTien với mã giảm giá
+                                MaGG = discount.MaGiamGia1;
+                                FLP_Voucher.Enabled = false;
+
+                                // Đặt màu nhạt cho panel
+                                FLP_Voucher.BackColor = Color.LightGray;
+                            };  
+
+                            int dis = (FPN_HienThi.Width - (2 * ucgg.Width)) / 3;
+                            ucgg.Margin = new Padding(dis, dis, 0, 0);
+                            FLP_Voucher.Controls.Add(ucgg);
+                        }
+                    }
+                }
+            }          
+            connection.Close();
         }
+
+        public void LoadThanhTien(string maGG)
+        {
+            decimal phanTramGiamGia = 0;
+            if (maKH <= 0 || ThanhTien <= 0)
+            {
+                MessageBox.Show("Mã khách hàng hoặc số tiền không hợp lệ!");
+                return;
+            }
+
+
+            // Sử dụng SqlCommand để gọi hàm fn_TinhPhanTramGiamGia
+            using (SqlCommand command = new SqlCommand("SELECT dbo.fn_TinhPhanTramGiamGia(@MaKhachHang, @SoTien, @MaGiamGia)", connection))
+            {
+                command.CommandType = CommandType.Text;
+
+
+                // Thêm tham số vào câu lệnh
+                command.Parameters.AddWithValue("@MaKhachHang", maKH);  // Truyền tham số MaKhachHang
+                command.Parameters.AddWithValue("@SoTien", ThanhTien);  // Truyền tham số Số Tiền
+                command.Parameters.AddWithValue("@MaGiamGia", maGG);    // Truyền mã giảm giá
+
+                // Mở kết nối
+                connection.Open();
+
+                // Thực thi hàm và lấy kết quả
+                object result = command.ExecuteScalar();
+                if (result != null && decimal.TryParse(result.ToString(), out decimal discountPercent))
+                {
+                    phanTramGiamGia = discountPercent;
+                }
+                connection.Close();
+            }
+            LB_test.Text = phanTramGiamGia.ToString();
+            // Tính toán số tiền giảm và số tiền phải trả
+            int SoTienGiam = Convert.ToInt32(ThanhTien * phanTramGiamGia);
+            SoTienTra = ThanhTien - SoTienGiam;
+
+            // Hiển thị kết quả
+            LB_GiamGia.Text = "Số Tiền Giảm: " + SoTienGiam.ToString();
+            LB_SoTienTra.Text = "Số Tiền Phải Trả: " + SoTienTra.ToString();
+        }
+
 
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
-            string query = "sp_CapNhatDonHang"; // Condition for updating
+
 
             connection.Open();
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlCommand command = new SqlCommand("sp_CapNhatDonHang", connection))
             {
                 command.CommandType = CommandType.StoredProcedure; // Đặt loại lệnh là StoredProcedure
                 // Add parameters to the command
@@ -114,10 +203,10 @@ namespace DBMS_NoiThat
                 command.Parameters.AddWithValue("@SDTNguoiNhan", TB_SDTNguoiNhan.Text);
                 command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
                 command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
-                command.Parameters.AddWithValue("@TrangThai", "Đang Xác Nhận");
-                
+                command.Parameters.AddWithValue("@TrangThai", "Đang Xác Nhận");               
                 command.Parameters.AddWithValue("@MaDonHang", maDH); // Pass the order ID
-
+                command.Parameters.AddWithValue("@TongTien", SoTienTra); // Pass the order ID
+                command.Parameters.AddWithValue("@MaGiamGia", MaGG); // Pass the order ID
                 // Execute the command
                 command.ExecuteNonQuery();
             }
@@ -129,7 +218,7 @@ namespace DBMS_NoiThat
         {
 
         }
-
+                
         private void TB_SDTNguoiNhan_TextChanged(object sender, EventArgs e)
         {
 

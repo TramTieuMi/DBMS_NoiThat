@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
@@ -40,7 +41,7 @@ namespace DBMS_NoiThat.user
             // Bật hoặc tắt chế độ chỉnh sửa
             txtDiaChi.ReadOnly = !enable;
             txtSdt.ReadOnly = !enable;
-            txtEmail.ReadOnly = !enable;
+            //txtEmail.ReadOnly = !enable;
             btnSave.Visible = enable; // Hiển thị nút "Lưu" khi chế độ chỉnh sửa bật
             btnEdit.Text = enable ? "Cancel" : "Edit"; // Đổi thành "Cancel" khi đang chỉnh sửa
 
@@ -88,7 +89,7 @@ namespace DBMS_NoiThat.user
                     txtEmail.Text = reader["Email"].ToString();
                     txtDiaChi.Text = reader["DiaChi"].ToString();
                     txtSdt.Text = reader["SDT"].ToString();
-                    //txtDiaChi.Text = reader["Address"].ToString();
+                    txtTenDangNhap.Text = reader["TenDangNhap"].ToString();
                 }
                 connection.Close();
             }
@@ -99,36 +100,44 @@ namespace DBMS_NoiThat.user
 
         private void UpdateUserData()
         {// Cập nhật thông tin người dùng trong cơ sở dữ liệu
+         // Cập nhật thông tin người dùng trong cơ sở dữ liệu
             using (SqlConnection connection = new SqlConnection(connStr.ConnectionString))
             {
-                string query = "UPDATE KHACHHANG " +
-                    "SET KHACHHANG.SDT = @SDT, KHACHHANG.DiaChi = @DiaChi " +
-                    "FROM KHACHHANG " +
-                    "JOIN TAIKHOAN ON KHACHHANG.Email = TAIKHOAN.Email " +
-                    "WHERE TenDangNhap = @TenDangNhap";
+                string storedProcedure = "dbo.UpdateUserInfo";
 
+                using (SqlCommand command = new SqlCommand(storedProcedure, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
-                SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@HovaTen", txtHoTen.Text);
+                    command.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
+                    command.Parameters.AddWithValue("@SDT", txtSdt.Text);
+                    command.Parameters.AddWithValue("@Email", txtEmail.Text);
 
-                command.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
-                command.Parameters.AddWithValue("@Sdt", txtSdt.Text);
-                command.Parameters.AddWithValue("@Email", txtEmail.Text);
-                command.Parameters.AddWithValue("@TenDangNhap", txtHoTen.Text);
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
 
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-
-                MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Kiểm tra kết quả
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Thông tin đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy bản ghi nào để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
         }
 
-
+        // moi
         private void XemThongTinUser_Load(object sender, EventArgs e)
         {
             txtDiaChi.ReadOnly = true;
             txtSdt.ReadOnly = true;
             txtEmail.ReadOnly = true;
+            txtTenDangNhap.ReadOnly = true;
         }
 
    
@@ -141,6 +150,7 @@ namespace DBMS_NoiThat.user
                 ThucThi(FDangNhap.TenDangNhap); // Tải lại dữ liệu ban đầu
                 ToggleEdit(false);
                 isEditing = false;
+                txtEmail.Visible = true;
             }
             else
             {

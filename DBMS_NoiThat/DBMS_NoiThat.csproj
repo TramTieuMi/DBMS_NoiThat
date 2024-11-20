@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,7 +22,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
@@ -41,6 +46,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,17 +58,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin\QuanLySanPham.cs">
+    <Compile Include="admin\DisCount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin\QuanLySanPham.Designer.cs">
-      <DependentUpon>QuanLySanPham.cs</DependentUpon>
+    <Compile Include="admin\DisCount.Designer.cs">
+      <DependentUpon>DisCount.cs</DependentUpon>
     </Compile>
-    <Compile Include="admin\QuanLyTaiKhoan.cs">
+    <Compile Include="admin\FNhacNho.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin\QuanLyTaiKhoan.Designer.cs">
-      <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
+    <Compile Include="admin\FNhacNho.Designer.cs">
+      <DependentUpon>FNhacNho.cs</DependentUpon>
     </Compile>
     <Compile Include="admin\ThemSanPham.cs">
       <SubType>Form</SubType>
@@ -70,7 +76,58 @@
     <Compile Include="admin\ThemSanPham.Designer.cs">
       <DependentUpon>ThemSanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="admin\QuanLyTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\QuanLyTaiKhoan.Designer.cs">
+      <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Discount.cs" />
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin\QuanlySanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\.Designer.cs">
+      <DependentUpon>QuanlySanPham.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC\UCDiscount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCDiscount.Designer.cs">
+      <DependentUpon>UCDiscount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCNhacNho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCNhacNho.Designer.cs">
+      <DependentUpon>UCNhacNho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user\MainFormKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\MainFormKhachHang.Designer.cs">
+      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ThongKeDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\ThongKeDoanhThu.Designer.cs">
+      <DependentUpon>ThongKeDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ChatBoxAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\ChatBoxAdmin.Designer.cs">
+      <DependentUpon>ChatBoxAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs" />
+    <Compile Include="Entity\ChatBox.cs" />
     <Compile Include="Entity\EDonHang.cs" />
     <Compile Include="Entity\EGioHang.cs" />
     <Compile Include="Entity\EKhachHang.cs" />
@@ -79,6 +136,18 @@
     <Compile Include="Entity\Session.cs" />
     <Compile Include="Entity\TaiKhoan.cs" />
     <Compile Include="Modify.cs" />
+    <Compile Include="UC\UCChatNoiDung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCChatNoiDung.Designer.cs">
+      <DependentUpon>UCChatNoiDung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCChatAdminTen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCChatAdminTen.Designer.cs">
+      <DependentUpon>UCChatAdminTen.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC\UCDonHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,6 +166,12 @@
     <Compile Include="UC\UCLichSuMuaHang.Designer.cs">
       <DependentUpon>UCLichSuMuaHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="user\ChatBoxUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\ChatBoxUser.Designer.cs">
+      <DependentUpon>ChatBoxUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="user\ChiTietSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,7 +184,7 @@
     <Compile Include="user\ChiTietSanPhamForm.Designer.cs">
       <DependentUpon>ChiTietSanPhamForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="user\DBConnection.cs" />
+    <Compile Include="DBConnection.cs" />
     <Compile Include="user\DonHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,12 +223,6 @@
     <Compile Include="admin\MainFormAdmin.Designer.cs">
       <DependentUpon>MainFormAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="user\MainFormKhachHang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="user\MainFormKhachHang.Designer.cs">
-      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
-    </Compile>
     <Compile Include="admin\QuanLyDonHangForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,14 +241,38 @@
     <Compile Include="user\XemThongTinUser.Designer.cs">
       <DependentUpon>XemThongTinUser.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="admin\QuanLySanPham.resx">
-      <DependentUpon>QuanLySanPham.cs</DependentUpon>
+    <EmbeddedResource Include="admin\ChatBoxAdmin.resx">
+      <DependentUpon>ChatBoxAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\DisCount.resx">
+      <DependentUpon>DisCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\FNhacNho.resx">
+      <DependentUpon>FNhacNho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\ThemSanPham.resx">
+      <DependentUpon>ThemSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="admin\QuanLyTaiKhoan.resx">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="admin\ThemSanPham.resx">
-      <DependentUpon>ThemSanPham.cs</DependentUpon>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\QuanlySanPham.resx">
+      <DependentUpon>QuanlySanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCDiscount.resx">
+      <DependentUpon>UCDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCNhacNho.resx">
+      <DependentUpon>UCNhacNho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\MainFormKhachHang.resx">
+      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\ThongKeDoanhThu.resx">
+      <DependentUpon>ThongKeDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -194,6 +287,12 @@
     <EmbeddedResource Include="TaoTaiKhoan.resx">
       <DependentUpon>TaoTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCChatNoiDung.resx">
+      <DependentUpon>UCChatNoiDung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCChatAdminTen.resx">
+      <DependentUpon>UCChatAdminTen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC\UCDonHang.resx">
       <DependentUpon>UCDonHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC\UCLichSuMuaHang.resx">
       <DependentUpon>UCLichSuMuaHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\ChatBoxUser.resx">
+      <DependentUpon>ChatBoxUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user\ChiTietSanPham.resx">
       <DependentUpon>ChiTietSanPham.cs</DependentUpon>
@@ -223,10 +325,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin\MainFormAdmin.resx">
       <DependentUpon>MainFormAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="user\MainFormKhachHang.resx">
-      <DependentUpon>MainFormKhachHang.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="admin\QuanLyDonHangForm.resx">
       <DependentUpon>QuanLyDonHangForm.cs</DependentUpon>

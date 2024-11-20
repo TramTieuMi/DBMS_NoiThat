@@ -14,13 +14,13 @@ namespace DBMS_NoiThat.Entity
         int SoTien;
         string TenSanPham;
         bool check;
-      
+        byte[] pic;
 
         public EGioHang()
         {
         }
 
-        public EGioHang(int maGioHang, int maSanPham, int soLuong, int soTien, string tenSanPham, bool check)
+        public EGioHang(int maGioHang, int maSanPham, int soLuong, int soTien, string tenSanPham, bool check, byte[] pic)
         {
             MaGioHang = maGioHang;
             MaSanPham = maSanPham;
@@ -28,6 +28,7 @@ namespace DBMS_NoiThat.Entity
             SoTien = soTien;
             TenSanPham = tenSanPham;
             this.check = check;
+            this.pic = pic;
         }
 
         public int MaGioHang1 { get => MaGioHang; set => MaGioHang = value; }
@@ -36,5 +37,6 @@ namespace DBMS_NoiThat.Entity
         public int SoTien1 { get => SoTien; set => SoTien = value; }
         public string TenSanPham1 { get => TenSanPham; set => TenSanPham = value; }
         public bool Check { get => check; set => check = value; }
+        public byte[] Pic { get => pic; set => pic = value; }
     }
 }

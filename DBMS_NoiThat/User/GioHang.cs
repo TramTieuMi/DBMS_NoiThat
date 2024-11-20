@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DBMS_NoiThat.user
@@ -39,13 +40,11 @@ namespace DBMS_NoiThat.user
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
-
             adapter.Fill(dataTable);
             if (dataTable.Rows.Count > 0)
             {
-                foreach (DataRow row in dataTable.Rows) // Loop through each row in DataTable
+                foreach (DataRow row in dataTable.Rows)
                 {
-                    
                     if (MaGioHang == (int)row["MaGioHang"])
                     {
                         LB_MaGioHang.Text = "Mã Giỏ Hàng : " + row["MaGioHang"].ToString();
@@ -54,7 +53,8 @@ namespace DBMS_NoiThat.user
                         int SoLuong1 = Convert.ToInt32(row["SoLuong"]);
                         int SoTien1 = Convert.ToInt32(row["SoTien"]);
                         string TenSanPham1 = row["TenSanPham"].ToString();
-                        EGioHang gioHang = new EGioHang(MaGioHang1, MaSanPham1, SoLuong1, SoTien1, TenSanPham1, false);
+                        byte[] pic = (byte[])row["HinhAnh"];
+                        EGioHang gioHang = new EGioHang(MaGioHang1, MaSanPham1, SoLuong1, SoTien1, TenSanPham1, false, pic);
                         listGH.Add(gioHang);
                         UCGioHang ucgh = new UCGioHang(gioHang);
                         int dis = (FPN_HienThi.Width - (2 * ucgh.Width)) / 3;
@@ -70,9 +70,10 @@ namespace DBMS_NoiThat.user
             connection.Close();
         }
 
+
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
-            // Kiểm tra nếu listGH rỗng hoặc không có sản phẩm nào được chọn để mua
+            // Kiểm tra nếu giỏ hàng trống hoặc không có sản phẩm nào được chọn
             if (listGH.Count == 0 || !listGH.Exists(gioHang => gioHang.Check))
             {
                 MessageBox.Show("Bạn chưa chọn sản phẩm nào để mua");
@@ -81,73 +82,99 @@ namespace DBMS_NoiThat.user
 
             string query1 = "sp_LayThongTinKhachHang";
             string hoVaTen, diaChi, sdt;
-            int maDonHang;
+            int maDonHang = 0;
             connection.Open();
 
+            // Lấy thông tin khách hàng
             using (SqlCommand command1 = new SqlCommand(query1, connection))
             {
-                command1.CommandType = CommandType.StoredProcedure; // Đảm bảo đặt loại lệnh là StoredProcedure
+                command1.CommandType = CommandType.StoredProcedure;
                 command1.Parameters.AddWithValue("@MaKhachHang", maGH);
 
                 using (SqlDataReader reader = command1.ExecuteReader())
                 {
-                    if (reader.Read()) // Make sure to read the data
+                    if (reader.Read())
                     {
-                        hoVaTen = reader["HovaTen"].ToString();    // Get HovaTen
-                        diaChi = reader["DiaChi"].ToString();      // Get DiaChi
-                        sdt = reader["SDT"].ToString();            // Get SDT
+                        hoVaTen = reader["HovaTen"].ToString();
+                        diaChi = reader["DiaChi"].ToString();
+                        sdt = reader["SDT"].ToString();
                     }
                     else
                     {
                         MessageBox.Show("Không tìm thấy khách hàng.");
-                        return; // Exit if no customer found
+                        return;
                     }
                 }
             }
 
-            string query = "sp_ThemDonHang"; // Get the MaDonHang value just inserted
+            SqlTransaction transaction = connection.BeginTransaction();
 
-            using (SqlCommand command = new SqlCommand(query, connection))
+            try
             {
-                command.CommandType = CommandType.StoredProcedure; // Đặt loại lệnh là StoredProcedure
-                command.Parameters.AddWithValue("@MaKhachHang", maGH);
-                command.Parameters.AddWithValue("@TenNguoiDat", hoVaTen);
-                command.Parameters.AddWithValue("@SDTNguoiDat", sdt);
-                command.Parameters.AddWithValue("@TenNguoiNhan", hoVaTen);
-                command.Parameters.AddWithValue("@SDTNguoiNhan", sdt);
-                command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
-                command.Parameters.AddWithValue("@DiaChiNhan", diaChi);
-                command.Parameters.AddWithValue("@TrangThai", "Đặt Hàng");
-                maDonHang = Convert.ToInt32(command.ExecuteScalar());
-            }
-
-
-            string query3 = "sp_ThemDonHangSanPham";
-            foreach (EGioHang gioHang in listGH)
-            {
-                if (gioHang.Check)
+                // Thêm đơn hàng
+                string query = "sp_ThemDonHang";
+                using (SqlCommand command = new SqlCommand(query, connection, transaction))
                 {
-                    using (SqlCommand command = new SqlCommand(query3, connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure; // Đặt loại lệnh là StoredProcedure
-                        // Thêm các tham số vào lệnh SQL
-                        command.Parameters.AddWithValue("@MaDonHang", maDonHang);
-                        command.Parameters.AddWithValue("@MaKhachHang", maGH);
-                        command.Parameters.AddWithValue("@MaSanPham", gioHang.MaSanPham1);
-                        command.Parameters.AddWithValue("@TenSanPham", gioHang.TenSanPham1);
-                        command.Parameters.AddWithValue("@SoLuong", gioHang.SoLuong1);
-                        command.Parameters.AddWithValue("@SoTien", gioHang.SoTien1);
-
-                        // Thực thi lệnh SQL
-                        command.ExecuteNonQuery();
-                    }
-                    gioHang.Check = false;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@MaKhachHang", maGH);
+                    command.Parameters.AddWithValue("@TenNguoiDat", hoVaTen);
+                    command.Parameters.AddWithValue("@SDTNguoiDat", sdt);
+                    command.Parameters.AddWithValue("@TenNguoiNhan", hoVaTen);
+                    command.Parameters.AddWithValue("@SDTNguoiNhan", sdt);
+                    command.Parameters.AddWithValue("@NgayMuaHang", DateTime.Now);
+                    command.Parameters.AddWithValue("@DiaChiNhan", diaChi);
+                    command.Parameters.AddWithValue("@TrangThai", "Đang chờ xác nhận");                 
+                    maDonHang = Convert.ToInt32(command.ExecuteScalar());
                 }
+
+                // Duyệt qua các sản phẩm trong giỏ hàng đã chọn
+                foreach (EGioHang gioHang in listGH)
+                {
+                    if (gioHang.Check)
+                    {
+                        // Thực hiện gọi thủ tục thêm sản phẩm vào đơn hàng
+                        string query3 = "sp_ThemDonHangSanPham";
+                        using (SqlCommand command = new SqlCommand(query3, connection, transaction))
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+                            command.Parameters.AddWithValue("@MaDonHang", maDonHang);
+                            command.Parameters.AddWithValue("@MaKhachHang", maGH);
+                            command.Parameters.AddWithValue("@MaSanPham", gioHang.MaSanPham1);
+                            command.Parameters.AddWithValue("@TenSanPham", gioHang.TenSanPham1);
+                            command.Parameters.AddWithValue("@SoLuong", gioHang.SoLuong1);
+                            command.Parameters.AddWithValue("@SoTien", gioHang.SoTien1);
+                            byte[] imageBytes = gioHang.Pic;
+                            command.Parameters.AddWithValue("@HinhAnh", imageBytes);                 
+
+                            // Thực thi thủ tục
+                            command.ExecuteNonQuery();
+                            
+                        }
+                    }
+                }
+
+                // Commit giao dịch nếu không có lỗi
+                transaction.Commit();
+                MessageBox.Show("Đơn hàng đã được tạo thành công.");
+                DonHang dh = new DonHang(maDonHang);
+                dh.ShowDialog();
             }
-            connection.Close();
-            DonHang dh = new DonHang(maDonHang);
-            dh.ShowDialog();
+            catch (Exception ex)
+            {
+                // Rollback nếu có lỗi
+                transaction.Rollback();
+                MessageBox.Show($"Lỗi: {ex.Message}");
+            }
+            finally
+            {
+                // Đảm bảo đóng kết nối
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+
+
         }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
