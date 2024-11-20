@@ -12,7 +12,7 @@ namespace DBMS_NoiThat.user
     internal class DBConnection
     {
         // SqlConnection sqlCon;
-        //Data Source=NGOCNAM;Initial Catalog=data;Integrated Security=True
+        //Data Source=NGOCNAM;Initial Catalog=data_daydu;Integrated Security=True
         //Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True
         SqlConnection sqlCon;
         // SqlConnection conAdmin = new SqlConnection(@"Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True");
@@ -20,7 +20,7 @@ namespace DBMS_NoiThat.user
         {
             
 
-            sqlCon = new SqlConnection(@"Data Source=KHANG\LTWEB;Initial Catalog=data_daydu;Integrated Security=True;TrustServerCertificate=True");
+            sqlCon = new SqlConnection(@"Data Source=NGOCNAM;Initial Catalog=data_daydu;Integrated Security=True");
 
         }
 

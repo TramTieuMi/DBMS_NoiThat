@@ -30,7 +30,9 @@ namespace DBMS_NoiThat.user
         }
 
        
-        private void buttonThemVaoGio_Click_1(object sender, EventArgs e)
+      
+
+        private void buttonThemVaoGio_Click(object sender, EventArgs e)
         {
             try
             {
@@ -126,7 +128,7 @@ namespace DBMS_NoiThat.user
             }
         }
 
-        private void ButtonTroVe_Click_1(object sender, EventArgs e)
+        private void ButtonTroVe_Click(object sender, EventArgs e)
         {
             try
             {
