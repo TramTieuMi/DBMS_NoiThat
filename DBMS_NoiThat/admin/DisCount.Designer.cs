@@ -28,45 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.LB_MSP = new Guna.UI2.WinForms.Guna2Panel();
             this.DTP_NKT = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.DTP_NAD = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.TB_LDG = new Guna.UI2.WinForms.Guna2TextBox();
             this.TB_GTG = new Guna.UI2.WinForms.Guna2TextBox();
             this.TB_MSP = new Guna.UI2.WinForms.Guna2TextBox();
             this.TB_MKH = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LB_LiDo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LB_GT = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LB_NKT = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LB_NAD = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LB_MSPh = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LB_MKH = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LB_TieuDe = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.BTN_AD = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel1.SuspendLayout();
+            this.LB_MSP.SuspendLayout();
             this.SuspendLayout();
             // 
-            // guna2Panel1
+            // LB_MSP
             // 
-            this.guna2Panel1.Controls.Add(this.DTP_NKT);
-            this.guna2Panel1.Controls.Add(this.DTP_NAD);
-            this.guna2Panel1.Controls.Add(this.TB_LDG);
-            this.guna2Panel1.Controls.Add(this.TB_GTG);
-            this.guna2Panel1.Controls.Add(this.TB_MSP);
-            this.guna2Panel1.Controls.Add(this.TB_MKH);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel7);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel6);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel5);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel4);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel3);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2Panel1.Controls.Add(this.BTN_AD);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1098, 617);
-            this.guna2Panel1.TabIndex = 0;
+            this.LB_MSP.Controls.Add(this.DTP_NKT);
+            this.LB_MSP.Controls.Add(this.DTP_NAD);
+            this.LB_MSP.Controls.Add(this.TB_LDG);
+            this.LB_MSP.Controls.Add(this.TB_GTG);
+            this.LB_MSP.Controls.Add(this.TB_MSP);
+            this.LB_MSP.Controls.Add(this.TB_MKH);
+            this.LB_MSP.Controls.Add(this.LB_LiDo);
+            this.LB_MSP.Controls.Add(this.LB_GT);
+            this.LB_MSP.Controls.Add(this.LB_NKT);
+            this.LB_MSP.Controls.Add(this.LB_NAD);
+            this.LB_MSP.Controls.Add(this.LB_MSPh);
+            this.LB_MSP.Controls.Add(this.LB_MKH);
+            this.LB_MSP.Controls.Add(this.LB_TieuDe);
+            this.LB_MSP.Controls.Add(this.BTN_AD);
+            this.LB_MSP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LB_MSP.Location = new System.Drawing.Point(0, 0);
+            this.LB_MSP.Name = "LB_MSP";
+            this.LB_MSP.Size = new System.Drawing.Size(1098, 617);
+            this.LB_MSP.TabIndex = 0;
             // 
             // DTP_NKT
             // 
@@ -125,7 +125,7 @@
             this.TB_GTG.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TB_GTG.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TB_GTG.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TB_GTG.Location = new System.Drawing.Point(213, 321);
+            this.TB_GTG.Location = new System.Drawing.Point(210, 321);
             this.TB_GTG.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TB_GTG.Name = "TB_GTG";
             this.TB_GTG.PasswordChar = '\0';
@@ -174,75 +174,75 @@
             this.TB_MKH.Size = new System.Drawing.Size(281, 26);
             this.TB_MKH.TabIndex = 8;
             // 
-            // guna2HtmlLabel7
+            // LB_LiDo
             // 
-            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(66, 396);
-            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(110, 27);
-            this.guna2HtmlLabel7.TabIndex = 7;
-            this.guna2HtmlLabel7.Text = "Lí Do Giảm :";
+            this.LB_LiDo.BackColor = System.Drawing.Color.Transparent;
+            this.LB_LiDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.LB_LiDo.Location = new System.Drawing.Point(66, 396);
+            this.LB_LiDo.Name = "LB_LiDo";
+            this.LB_LiDo.Size = new System.Drawing.Size(110, 27);
+            this.LB_LiDo.TabIndex = 7;
+            this.LB_LiDo.Text = "Lí Do Giảm :";
             // 
-            // guna2HtmlLabel6
+            // LB_GT
             // 
-            this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(53, 325);
-            this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(142, 27);
-            this.guna2HtmlLabel6.TabIndex = 6;
-            this.guna2HtmlLabel6.Text = "Giá Trị Sẽ Giảm";
+            this.LB_GT.BackColor = System.Drawing.Color.Transparent;
+            this.LB_GT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.LB_GT.Location = new System.Drawing.Point(52, 325);
+            this.LB_GT.Name = "LB_GT";
+            this.LB_GT.Size = new System.Drawing.Size(142, 27);
+            this.LB_GT.TabIndex = 6;
+            this.LB_GT.Text = "Giá Trị Sẽ Giảm";
             // 
-            // guna2HtmlLabel5
+            // LB_NKT
             // 
-            this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(600, 192);
-            this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(134, 27);
-            this.guna2HtmlLabel5.TabIndex = 5;
-            this.guna2HtmlLabel5.Text = "Ngày Kết Thúc";
+            this.LB_NKT.BackColor = System.Drawing.Color.Transparent;
+            this.LB_NKT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.LB_NKT.Location = new System.Drawing.Point(600, 192);
+            this.LB_NKT.Name = "LB_NKT";
+            this.LB_NKT.Size = new System.Drawing.Size(134, 27);
+            this.LB_NKT.TabIndex = 5;
+            this.LB_NKT.Text = "Ngày Kết Thúc";
             // 
-            // guna2HtmlLabel4
+            // LB_NAD
             // 
-            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(56, 193);
-            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(131, 27);
-            this.guna2HtmlLabel4.TabIndex = 4;
-            this.guna2HtmlLabel4.Text = "Ngày Áp Dụng";
+            this.LB_NAD.BackColor = System.Drawing.Color.Transparent;
+            this.LB_NAD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.LB_NAD.Location = new System.Drawing.Point(54, 193);
+            this.LB_NAD.Name = "LB_NAD";
+            this.LB_NAD.Size = new System.Drawing.Size(131, 27);
+            this.LB_NAD.TabIndex = 4;
+            this.LB_NAD.Text = "Ngày Áp Dụng";
             // 
-            // guna2HtmlLabel3
+            // LB_MSPh
             // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(600, 113);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(128, 27);
-            this.guna2HtmlLabel3.TabIndex = 3;
-            this.guna2HtmlLabel3.Text = "Mã Sản Phẩm";
+            this.LB_MSPh.BackColor = System.Drawing.Color.Transparent;
+            this.LB_MSPh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.LB_MSPh.Location = new System.Drawing.Point(600, 113);
+            this.LB_MSPh.Name = "LB_MSPh";
+            this.LB_MSPh.Size = new System.Drawing.Size(128, 27);
+            this.LB_MSPh.TabIndex = 3;
+            this.LB_MSPh.Text = "Mã Sản Phẩm";
             // 
-            // guna2HtmlLabel2
+            // LB_MKH
             // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(57, 113);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(145, 27);
-            this.guna2HtmlLabel2.TabIndex = 2;
-            this.guna2HtmlLabel2.Text = "Mã Khách Hàng";
+            this.LB_MKH.BackColor = System.Drawing.Color.Transparent;
+            this.LB_MKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.LB_MKH.Location = new System.Drawing.Point(51, 113);
+            this.LB_MKH.Name = "LB_MKH";
+            this.LB_MKH.Size = new System.Drawing.Size(145, 27);
+            this.LB_MKH.TabIndex = 2;
+            this.LB_MKH.Text = "Mã Khách Hàng";
             // 
-            // guna2HtmlLabel1
+            // LB_TieuDe
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F);
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(438, 31);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(224, 44);
-            this.guna2HtmlLabel1.TabIndex = 1;
-            this.guna2HtmlLabel1.Text = "Tạo Discount";
+            this.LB_TieuDe.BackColor = System.Drawing.Color.Transparent;
+            this.LB_TieuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F);
+            this.LB_TieuDe.Location = new System.Drawing.Point(438, 31);
+            this.LB_TieuDe.Name = "LB_TieuDe";
+            this.LB_TieuDe.Size = new System.Drawing.Size(224, 44);
+            this.LB_TieuDe.TabIndex = 1;
+            this.LB_TieuDe.Text = "Tạo Discount";
             // 
             // BTN_AD
             // 
@@ -264,23 +264,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1098, 617);
-            this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.LB_MSP);
             this.Name = "DisCount";
             this.Text = "DisCount";
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
+            this.LB_MSP.ResumeLayout(false);
+            this.LB_MSP.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2Panel LB_MSP;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LB_NKT;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LB_NAD;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LB_MSPh;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LB_MKH;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LB_TieuDe;
         private Guna.UI2.WinForms.Guna2Button BTN_AD;
         private Guna.UI2.WinForms.Guna2DateTimePicker DTP_NKT;
         private Guna.UI2.WinForms.Guna2DateTimePicker DTP_NAD;
@@ -288,7 +288,7 @@
         private Guna.UI2.WinForms.Guna2TextBox TB_GTG;
         private Guna.UI2.WinForms.Guna2TextBox TB_MSP;
         private Guna.UI2.WinForms.Guna2TextBox TB_MKH;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LB_LiDo;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LB_GT;
     }
 }

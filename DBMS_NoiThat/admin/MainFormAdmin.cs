@@ -198,5 +198,10 @@ namespace DBMS_NoiThat.user
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DisCount());
+        }
     }
 }
