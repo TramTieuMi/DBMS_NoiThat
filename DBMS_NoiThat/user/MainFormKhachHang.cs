@@ -37,8 +37,9 @@ namespace DBMS_NoiThat.user
             labelDate.Text = DateTime.Now.ToLongDateString();
             try
             {
-                XemSanPhamForm xemSanPhamForm = new XemSanPhamForm();
+                XemSanPhamForm xemSanPhamForm = new XemSanPhamForm(maKhachHang);
                 xemSanPhamForm.idKhachHang = maKhachHang;
+        
                 OpenChildForm(xemSanPhamForm);
 
             }
@@ -113,7 +114,7 @@ namespace DBMS_NoiThat.user
         {
             try
             {
-                XemSanPhamForm xemSanPhamForm = new XemSanPhamForm();
+                XemSanPhamForm xemSanPhamForm = new XemSanPhamForm(maKhachHang);
                 xemSanPhamForm.idKhachHang = maKhachHang;
                 OpenChildForm(xemSanPhamForm);
             }
