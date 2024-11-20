@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using DBMS_NoiThat.user;
 using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
+using System.Drawing;
+using System.Web.UI.WebControls;
 
 namespace DBMS_NoiThat
 {
@@ -23,8 +25,8 @@ namespace DBMS_NoiThat
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
         }
-        int maDH,maKH = 0,ThanhTien = 0 ;
-        
+        int maDH,maKH = 0,ThanhTien = 0, SoTienTra = 0;
+        string MaGG = "";
         public DonHang(int maDonHang)
         {
             InitializeComponent();
@@ -127,6 +129,11 @@ namespace DBMS_NoiThat
                             ucgg.OnApplyDiscount += MaGiamGia =>
                             {
                                 LoadThanhTien(MaGiamGia); // Gọi hàm LoadThanhTien với mã giảm giá
+                                MaGG = discount.MaGiamGia1;
+                                FLP_Voucher.Enabled = false;
+
+                                // Đặt màu nhạt cho panel
+                                FLP_Voucher.BackColor = Color.LightGray;
                             };  
 
                             int dis = (FPN_HienThi.Width - (2 * ucgg.Width)) / 3;
@@ -142,16 +149,18 @@ namespace DBMS_NoiThat
         public void LoadThanhTien(string maGG)
         {
             decimal phanTramGiamGia = 0;
-            if (maKH <= 0)
+            if (maKH <= 0 || ThanhTien <= 0)
             {
-                MessageBox.Show("Mã khách hàng không hợp lệ!");
+                MessageBox.Show("Mã khách hàng hoặc số tiền không hợp lệ!");
                 return;
             }
 
+
             // Sử dụng SqlCommand để gọi hàm fn_TinhPhanTramGiamGia
-            using (SqlCommand command = new SqlCommand("fn_TinhPhanTramGiamGia", connection))
+            using (SqlCommand command = new SqlCommand("SELECT dbo.fn_TinhPhanTramGiamGia(@MaKhachHang, @SoTien, @MaGiamGia)", connection))
             {
-                command.CommandType = CommandType.StoredProcedure; // Thay CommandType.Text thành CommandType.StoredProcedure
+                command.CommandType = CommandType.Text;
+
 
                 // Thêm tham số vào câu lệnh
                 command.Parameters.AddWithValue("@MaKhachHang", maKH);  // Truyền tham số MaKhachHang
@@ -169,10 +178,10 @@ namespace DBMS_NoiThat
                 }
                 connection.Close();
             }
-
+            LB_test.Text = phanTramGiamGia.ToString();
             // Tính toán số tiền giảm và số tiền phải trả
             int SoTienGiam = Convert.ToInt32(ThanhTien * phanTramGiamGia);
-            int SoTienTra = ThanhTien - SoTienGiam;
+            SoTienTra = ThanhTien - SoTienGiam;
 
             // Hiển thị kết quả
             LB_GiamGia.Text = "Số Tiền Giảm: " + SoTienGiam.ToString();
@@ -183,10 +192,10 @@ namespace DBMS_NoiThat
 
         private void BTN_MuaHang_Click(object sender, EventArgs e)
         {
-            string query = "sp_CapNhatDonHang"; // Condition for updating
+
 
             connection.Open();
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlCommand command = new SqlCommand("sp_CapNhatDonHang", connection))
             {
                 command.CommandType = CommandType.StoredProcedure; // Đặt loại lệnh là StoredProcedure
                 // Add parameters to the command
@@ -196,6 +205,8 @@ namespace DBMS_NoiThat
                 command.Parameters.AddWithValue("@DiaChiNhan", TB_DiaChi.Text);
                 command.Parameters.AddWithValue("@TrangThai", "Đang Xác Nhận");               
                 command.Parameters.AddWithValue("@MaDonHang", maDH); // Pass the order ID
+                command.Parameters.AddWithValue("@TongTien", SoTienTra); // Pass the order ID
+                command.Parameters.AddWithValue("@MaGiamGia", MaGG); // Pass the order ID
                 // Execute the command
                 command.ExecuteNonQuery();
             }
