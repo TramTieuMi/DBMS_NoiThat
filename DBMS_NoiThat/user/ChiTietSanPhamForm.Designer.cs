@@ -60,7 +60,6 @@
             this.button1.TabIndex = 78;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
- 
             // 
             // TextBoxMoTa
             // 
@@ -192,7 +191,7 @@
             this.buttonThemVaoGio.TabIndex = 66;
             this.buttonThemVaoGio.Text = "Thêm Vào Giỏ Hàng";
             this.buttonThemVaoGio.UseVisualStyleBackColor = false;
-            //this.buttonThemVaoGio.Click += new System.EventHandler(this.buttonThemVaoGio_Click_1);
+            this.buttonThemVaoGio.Click += new System.EventHandler(this.buttonThemVaoGio_Click);
             // 
             // PictureBoxHinhAnhSP
             // 
@@ -244,7 +243,7 @@
             this.ButtonTroVe.TabIndex = 62;
             this.ButtonTroVe.Text = "Trở về";
             this.ButtonTroVe.UseVisualStyleBackColor = false;
-            //this.ButtonTroVe.Click += new System.EventHandler(this.ButtonTroVe_Click_1);
+            this.ButtonTroVe.Click += new System.EventHandler(this.ButtonTroVe_Click);
             // 
             // labelKichThuoc
             // 
