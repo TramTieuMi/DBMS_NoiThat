@@ -141,7 +141,7 @@ namespace DBMS_NoiThat.user
                         command.Parameters.AddWithValue("@HinhAnh", picture);
                         command.ExecuteNonQuery();
                     }
-                    gioHang.Check = false;
+
                 }
             }
             connection.Close();
