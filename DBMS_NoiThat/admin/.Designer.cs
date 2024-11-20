@@ -42,10 +42,10 @@
             // 
             // btnThemSP
             // 
-            this.btnThemSP.Location = new System.Drawing.Point(117, 556);
+            this.btnThemSP.Location = new System.Drawing.Point(132, 695);
             this.btnThemSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemSP.Name = "btnThemSP";
-            this.btnThemSP.Size = new System.Drawing.Size(67, 28);
+            this.btnThemSP.Size = new System.Drawing.Size(75, 35);
             this.btnThemSP.TabIndex = 1;
             this.btnThemSP.Text = "Thêm";
             this.btnThemSP.UseVisualStyleBackColor = true;
@@ -53,10 +53,10 @@
             // 
             // btnXoaSP
             // 
-            this.btnXoaSP.Location = new System.Drawing.Point(227, 556);
+            this.btnXoaSP.Location = new System.Drawing.Point(255, 695);
             this.btnXoaSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoaSP.Name = "btnXoaSP";
-            this.btnXoaSP.Size = new System.Drawing.Size(67, 28);
+            this.btnXoaSP.Size = new System.Drawing.Size(75, 35);
             this.btnXoaSP.TabIndex = 2;
             this.btnXoaSP.Text = "Xóa";
             this.btnXoaSP.UseVisualStyleBackColor = true;
@@ -64,10 +64,10 @@
             // 
             // btnSuaSP
             // 
-            this.btnSuaSP.Location = new System.Drawing.Point(348, 556);
+            this.btnSuaSP.Location = new System.Drawing.Point(392, 695);
             this.btnSuaSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSuaSP.Name = "btnSuaSP";
-            this.btnSuaSP.Size = new System.Drawing.Size(67, 28);
+            this.btnSuaSP.Size = new System.Drawing.Size(75, 35);
             this.btnSuaSP.TabIndex = 3;
             this.btnSuaSP.Text = "Sửa";
             this.btnSuaSP.UseVisualStyleBackColor = true;
@@ -75,10 +75,10 @@
             // 
             // btnTimKiemSP
             // 
-            this.btnTimKiemSP.Location = new System.Drawing.Point(348, 55);
+            this.btnTimKiemSP.Location = new System.Drawing.Point(392, 69);
             this.btnTimKiemSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTimKiemSP.Name = "btnTimKiemSP";
-            this.btnTimKiemSP.Size = new System.Drawing.Size(80, 26);
+            this.btnTimKiemSP.Size = new System.Drawing.Size(90, 32);
             this.btnTimKiemSP.TabIndex = 4;
             this.btnTimKiemSP.Text = "Tìm kiếm ";
             this.btnTimKiemSP.UseVisualStyleBackColor = true;
@@ -86,10 +86,10 @@
             // 
             // btnTaiLai
             // 
-            this.btnTaiLai.Location = new System.Drawing.Point(468, 556);
+            this.btnTaiLai.Location = new System.Drawing.Point(526, 695);
             this.btnTaiLai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTaiLai.Name = "btnTaiLai";
-            this.btnTaiLai.Size = new System.Drawing.Size(67, 28);
+            this.btnTaiLai.Size = new System.Drawing.Size(75, 35);
             this.btnTaiLai.TabIndex = 5;
             this.btnTaiLai.Text = "Tải lại ";
             this.btnTaiLai.UseVisualStyleBackColor = true;
@@ -97,22 +97,22 @@
             // 
             // txtbTimKiemSP
             // 
-            this.txtbTimKiemSP.Location = new System.Drawing.Point(22, 58);
+            this.txtbTimKiemSP.Location = new System.Drawing.Point(25, 72);
             this.txtbTimKiemSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtbTimKiemSP.Name = "txtbTimKiemSP";
-            this.txtbTimKiemSP.Size = new System.Drawing.Size(312, 22);
+            this.txtbTimKiemSP.Size = new System.Drawing.Size(350, 26);
             this.txtbTimKiemSP.TabIndex = 70;
             this.txtbTimKiemSP.TextChanged += new System.EventHandler(this.txtbTimKiemSP_TextChanged_1);
             // 
             // dataGridViewSanPham
             // 
             this.dataGridViewSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSanPham.Location = new System.Drawing.Point(22, 114);
+            this.dataGridViewSanPham.Location = new System.Drawing.Point(25, 142);
             this.dataGridViewSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewSanPham.Name = "dataGridViewSanPham";
             this.dataGridViewSanPham.RowHeadersWidth = 62;
             this.dataGridViewSanPham.RowTemplate.Height = 28;
-            this.dataGridViewSanPham.Size = new System.Drawing.Size(637, 409);
+            this.dataGridViewSanPham.Size = new System.Drawing.Size(717, 511);
             this.dataGridViewSanPham.TabIndex = 71;
             this.dataGridViewSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSanPham_CellClick);
             this.dataGridViewSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSanPham_CellContentClick);
@@ -121,10 +121,10 @@
             // 
             this.PictureBoxHinhAnhSP.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PictureBoxHinhAnhSP.BackColor = System.Drawing.Color.Silver;
-            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(813, 23);
+            this.PictureBoxHinhAnhSP.Location = new System.Drawing.Point(915, 29);
             this.PictureBoxHinhAnhSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PictureBoxHinhAnhSP.Name = "PictureBoxHinhAnhSP";
-            this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(421, 318);
+            this.PictureBoxHinhAnhSP.Size = new System.Drawing.Size(474, 398);
             this.PictureBoxHinhAnhSP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBoxHinhAnhSP.TabIndex = 67;
             this.PictureBoxHinhAnhSP.TabStop = false;
@@ -132,9 +132,9 @@
             // 
             // QuanLySanPham
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1458, 690);
+            this.ClientSize = new System.Drawing.Size(1640, 862);
             this.Controls.Add(this.dataGridViewSanPham);
             this.Controls.Add(this.txtbTimKiemSP);
             this.Controls.Add(this.PictureBoxHinhAnhSP);

@@ -35,31 +35,32 @@ namespace DBMS_NoiThat.admin
             {
                 connection.Open();
 
-                // Lấy danh sách sản phẩm gần hết hàng
-                //string querySanPham = "SELECT MaSanPham, TenSanPham, TonKho FROM vw_SanPhamSapHetHang";
-                //using (SqlCommand cmdSanPham = new SqlCommand(querySanPham, connection))
-                //{
-                //    try
-                //    {
-                //        using (SqlDataReader readerSanPham = cmdSanPham.ExecuteReader())
-                //        {
-                //            while (readerSanPham.Read())
-                //            {
-                //                string maSanPham = readerSanPham["MaSanPham"].ToString();
-                //                string tenSanPham = readerSanPham["TenSanPham"].ToString();
-                //                int tonKho = Convert.ToInt32(readerSanPham["TonKho"]);
-
-                //                string message = $"Sản phẩm {maSanPham} - {tenSanPham} hiện đang gần hết hàng, chỉ còn {tonKho} trong kho.";
-                //                AddMessageToUI(message);
-                //            }
-                //        }
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        // Xử lý lỗi nếu có (ví dụ: log lỗi)
-                //        AddMessageToUI($"Lỗi khi truy xuất dữ liệu: {ex.Message}");
-                //    }
-                //}
+                //Lấy danh sách sản phẩm gần hết hàng
+                string querySanPham = "SELECT MaSanPham, TenSanPham, TonKho, TongSoLuongBan FROM vw_SanPhamSapHetHang";
+                using (SqlCommand cmdSanPham = new SqlCommand(querySanPham, connection))
+                {
+                    try
+                    {
+                        using (SqlDataReader readerSanPham = cmdSanPham.ExecuteReader())
+                        {
+                            while (readerSanPham.Read())
+                            {
+                                string maSanPham = readerSanPham["MaSanPham"].ToString();
+                                string tenSanPham = readerSanPham["TenSanPham"].ToString();
+                                int tonKho = Convert.ToInt32(readerSanPham["TonKho"]);
+                                int tongSoLuongBan = Convert.ToInt32(readerSanPham["TongSoLuongBan"]);
+                                string message = $"Sản phẩm {maSanPham} - {tenSanPham} hiện đang gần hết hàng, chỉ còn {tonKho} sản phẩm trong kho. | " +
+                                    $" Đã bán: {tongSoLuongBan} trong 30 ngày qua";
+                                AddMessageToUI(message);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Xử lý lỗi nếu có (ví dụ: log lỗi)
+                        AddMessageToUI($"Lỗi khi truy xuất dữ liệu: {ex.Message}");
+                    }
+                }
                 //Lấy danh sách đơn hàng chưa giao
                 string queryDonHang = "SELECT MaDonHang, TenNguoiDat, MaKhachHang, NgayMuaHang, TrangThai FROM vw_DonHangCanXacNhan";
                 using (SqlCommand cmdDonHang = new SqlCommand(queryDonHang, connection))
@@ -83,19 +84,7 @@ namespace DBMS_NoiThat.admin
                                 int soNgayDaTron = (DateTime.Now - ngayMua).Days;
                                 string message = $"Đơn hàng số {maDonHang} của khách hàng {tenNguoiDat} đã hơn {soNgayDaTron} ngày  ";
                                 message += $" vẫn ở trạng thái '{TrangThai}'";
-                                //if (TrangThai.ToLower() == "đang chờ xác nhận")
-                                //{
-                                //    message += " và trạng thái là 'Đang chờ xác nhận'.";
-                                //}
-                                //else if (TrangThai.ToLower() == "đã xác nhận")
-                                //{
-                                //    message += " và trạng thái là 'Đã xác nhận'.";
-                                //}
-                                //else
-                                //{
-                                //    message += $" và trạng thái không xác định. (TrangThai: '{TrangThai}')";
-                                //}
-
+                                
 
                                 // Hiển thị thông báo trên UI
                                 AddMessageToUI(message);

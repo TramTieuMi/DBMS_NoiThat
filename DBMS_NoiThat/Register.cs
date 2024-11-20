@@ -27,7 +27,7 @@ namespace DBMS_NoiThat
             InitializeComponent();
             // Khởi tạo Timer
             timerSendCode = new Timer();
-            timerSendCode.Interval = 1000; // 1000 ms = 1 giây
+            timerSendCode.Interval = 1000; // 1000 ms = 1 giây khoảng thời gian sự kiện Tick sẽ được kích hoạt mỗi 1 giây.
             timerSendCode.Tick += timerSend_Tick; // Gán sự kiện Tick
 
             // Khởi tạo nút và label
@@ -66,6 +66,7 @@ namespace DBMS_NoiThat
     
         bool checkEmail(string em)
         {
+            // kiểm tra tính hợp lệ của một địa chỉ email
             return Regex.IsMatch(em, @"^[a-zA-Z0-9_.]{3,20}@gmail.com(.vn|)$");
         }
 
@@ -145,22 +146,25 @@ namespace DBMS_NoiThat
                 string from, pass, messageBody;
                 Random rand = new Random();
                 randomCode = (rand.Next(999999)).ToString();
-                MailMessage message = new MailMessage();
-                to = txtEmail.Text.Trim();
+                MailMessage message = new MailMessage(); //thư viện xây dựng một email
+                to = txtEmail.Text.Trim(); //thêm email người nhận vào thông điệp
                 from = "22133010@student.hcmute.edu.vn"; //email của bạn
                 pass = "PNDuog@5432106#";// pass email
                 messageBody = "Code: " + randomCode;
                 message.To.Add(to);
-                message.From = new MailAddress(from);
-                message.Body = messageBody;
-                message.Subject = "Account creation code";
+                message.From = new MailAddress(from); //là email người gửi.
+                message.Body = messageBody; // chứa nội dung mã xác nhận.
+                message.Subject = "Account creation code"; // là tiêu đề email.
+
+                //Cấu hình SMTP
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-                smtp.EnableSsl = true;
-                smtp.Port = 587;
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Credentials = new NetworkCredential(from, pass);
+                smtp.EnableSsl = true; // Kích hoạt SSL để bảo mật kết nối.
+                smtp.Port = 587; //Cổng 587 là cổng SMTP có hỗ trợ SSL.
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network; //sử dụng để chỉ định phương thức gửi email cho đối tượng SmtpClient
+                smtp.Credentials = new NetworkCredential(from, pass); //Xác thực với thông tin tài khoản email của người gửi.
                 try
                 {
+                    //Nếu thành công, hiển thị thông báo
                     smtp.Send(message);
                     MessageBox.Show("Code send successfully", "Code", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     timerSend.Enabled = true;
