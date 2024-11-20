@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBMS_NoiThat.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,8 +18,9 @@ namespace DBMS_NoiThat.user
     {
         DBConnection conn = new DBConnection();
         public int idKhachHang;
-        public XemSanPhamForm()
+        public XemSanPhamForm(int idkh)
         {
+            idKhachHang = idkh;
             InitializeComponent();
             dgvXemSanPham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LoadDataToDataGridView();
@@ -27,14 +29,18 @@ namespace DBMS_NoiThat.user
         {
             DataTable SPTable = new DataTable();
             conn.OpenConnection();
-            SqlCommand cmd = new SqlCommand("select * from v_XemSanPham", conn.GetConnection());
+
+            SqlCommand cmd = new SqlCommand("SELECT msp,TenSanPham,HinhAnh,GiaSanPham,MauSac FROM dbo.fn_LaySanPhamTheoKhachHang(@MaKhachHang) ORDER BY SoLuongTruyCap DESC", conn.GetConnection());
+            cmd.Parameters.AddWithValue("@MaKhachHang", idKhachHang);
+           // MessageBox.Show(idKhachHang.ToString());
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(SPTable);
             dgvXemSanPham.ReadOnly = true;
-            dgvXemSanPham.DataSource = null;
+          //  dgvXemSanPham.DataSource = null;
             dgvXemSanPham.DataSource = SPTable;
-            dgvXemSanPham.Refresh();
-            dgvXemSanPham.Columns["MaSanPham"].HeaderText = "Mã Sản Phẩm";
+
+         //   dgvXemSanPham.Refresh();
+            dgvXemSanPham.Columns["msp"].HeaderText = "Mã Sản Phẩm";
             dgvXemSanPham.Columns["TenSanPham"].HeaderText = "Tên Sản Phẩm";
             dgvXemSanPham.Columns["HinhAnh"].HeaderText = "Hình Ảnh";
             dgvXemSanPham.Columns["GiaSanPham"].HeaderText = "Giá Sản Phẩm";
@@ -45,6 +51,7 @@ namespace DBMS_NoiThat.user
 
             dgvXemSanPham.RowTemplate.Height = 80;
             dgvXemSanPham.AllowUserToAddRows = false;
+         
             conn.CloseConnection();
         }
 
@@ -126,11 +133,50 @@ namespace DBMS_NoiThat.user
         private void dgvXemSanPham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            // Tạo đối tượng kết nối từ lớp DBConnection
+            DBConnection db = new DBConnection();
+
+            // Gọi hàm cập nhật hoặc thêm dữ liệu vào bảng SANPHAM_GOIY
+            int maSanPham = Convert.ToInt32(dgvXemSanPham.CurrentRow.Cells[0].Value.ToString().Trim()); 
+            int maKhachHang = idKhachHang;
+            int soLuongTruyCap = 1;
+            DateTime ngayTruyCapGanDay = DateTime.Now;
+
+            try
+            {
+                db.OpenConnection(); // Mở kết nối
+                SqlConnection sqlCon = db.GetConnection();
+
+                // Gọi Stored Procedure
+                using (SqlCommand cmd = new SqlCommand("sp_UpdateOrInsertSanPhamGoiY", sqlCon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số vào Stored Procedure
+                    cmd.Parameters.AddWithValue("@MaSanPham", maSanPham);
+                    cmd.Parameters.AddWithValue("@MaKhachHang", maKhachHang);
+                    cmd.Parameters.AddWithValue("@SoLuongTruyCap", soLuongTruyCap);
+                    cmd.Parameters.AddWithValue("@NgayTruyCapGanDay", ngayTruyCapGanDay);
+
+                    // Thực thi Stored Procedure
+                    cmd.ExecuteNonQuery();
+                }
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection(); // Đóng kết nối
+            }
+
             try
             {
                 string id = dgvXemSanPham.CurrentRow.Cells[0].Value.ToString().Trim();
                 int ID = Convert.ToInt32(id);
-
                 DataTable table1 = new DataTable();
                 conn.OpenConnection();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fn_ChiTietSanPham(@MaSP)", conn.GetConnection());
@@ -180,5 +226,7 @@ namespace DBMS_NoiThat.user
         {
 
         }
+
+       
     }
 }
