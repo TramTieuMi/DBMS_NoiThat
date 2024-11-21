@@ -151,7 +151,7 @@ namespace DBMS_NoiThat.admin
                         }
                         else
                         {
-                            MessageBox.Show("Cập nhật tài khoản thất bại. Vui lòng thử lại.");
+                            MessageBox.Show("Cập nhật tài khoản thất bại. Không thể sửa tên, chỉ có thể sửa Email và mật khẩu.");
                         }
                     }
                     catch (SqlException ex)

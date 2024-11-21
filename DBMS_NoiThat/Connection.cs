@@ -11,7 +11,7 @@ namespace Do_An_Tuyen_Dung
     internal class Connection
     {
         //Data Source=NGOCNAM;Initial Catalog=data_daydu;Integrated Security=True
-        private static readonly string stringConnection = @"Data Source=DESKTOP-T4EF20F\TANDANH;Initial Catalog=data;Integrated Security=True";
+        private static readonly string stringConnection = @"Data Source=KHANG\LTWEB;Initial Catalog=""data (1)"";Integrated Security=True;TrustServerCertificate=True";
         public static SqlConnection GetSqlConnection()
         {
             return new SqlConnection(stringConnection); 
