@@ -19,7 +19,7 @@ namespace DBMS_NoiThat.user
             InitializeComponent();
 
             // Set the background of the form to light gray or a gradient
-            this.BackColor = Color.White;
+            this.BackColor = Color.LightSkyBlue;
             this.Font = new Font("Segoe UI", 10);
 
             // Customize all elements
@@ -30,10 +30,10 @@ namespace DBMS_NoiThat.user
 
             // Align labels with appropriate font and color
             lblCustomerId.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            lblCustomerId.ForeColor = Color.FromArgb(0, 120, 215);
+            lblCustomerId.ForeColor = Color.Green;
 
             lblCustomerName.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            lblCustomerName.ForeColor = Color.FromArgb(0, 120, 215);
+            lblCustomerName.ForeColor = Color.Green;
 
             lblLoyaltyTier.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             lblLoyaltyTier.ForeColor = Color.Green;
@@ -41,14 +41,14 @@ namespace DBMS_NoiThat.user
 
         private void CustomizeButton(Button btn)
         {
-            btn.BackColor = Color.FromArgb(0, 120, 215);
+            btn.BackColor = Color.Green;
             btn.ForeColor = Color.White;
             btn.FlatStyle = FlatStyle.Flat;
             btn.FlatAppearance.BorderSize = 0;
             btn.Font = new Font("Segoe UI", 10, FontStyle.Bold);
 
-            btn.MouseEnter += (sender, e) => { btn.BackColor = Color.FromArgb(0, 100, 180); };
-            btn.MouseLeave += (sender, e) => { btn.BackColor = Color.FromArgb(0, 120, 215); };
+            btn.MouseEnter += (sender, e) => { btn.BackColor = Color.Green; };
+            btn.MouseLeave += (sender, e) => { btn.BackColor = Color.Green; };
         }
 
         private void CustomizeTextBox(TextBox txt)

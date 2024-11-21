@@ -80,9 +80,9 @@
             this.lblThongBao.AutoSize = true;
             this.lblThongBao.Location = new System.Drawing.Point(66, 170);
             this.lblThongBao.Name = "lblThongBao";
-            this.lblThongBao.Size = new System.Drawing.Size(162, 20);
+            this.lblThongBao.Size = new System.Drawing.Size(164, 20);
             this.lblThongBao.TabIndex = 5;
-            this.lblThongBao.Text = "nhập mã khách hàng ";
+            this.lblThongBao.Text = "Nhập mã khách hàng ";
             // 
             // lblCustomerId
             // 
