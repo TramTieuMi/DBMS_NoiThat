@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using System.IO;
 using DBMS_NoiThat.Entity;
 using DBMS_NoiThat.user;
-using DBMS_NoiThat.admin;  // Ensure this is added to use QuanlySanPham
+using DBMS_NoiThat.admin;  
 
 namespace DBMS_NoiThat
 {
