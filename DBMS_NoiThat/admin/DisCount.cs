@@ -20,33 +20,32 @@ namespace DBMS_NoiThat.admin
         public DisCount()
         {
             InitializeComponent();
+            LB_TieuDe.Text = "Tạo Mã Giảm Giá";
+            LB_MKH.Text = "Mã Khách Hàng";
+            LB_MSPh.Text = "Mã Sản Phẩm";
+            LB_NAD.Text = "Ngày Áp Dụng";
+            LB_NKT.Text = "Ngày Kết Thúc";
+            LB_GT.Text = "Giá Trị Giảm";
+            LB_LiDo.Text = "Lí Do Giảm";
             dbConnection = new DBConnection(); // Instantiate DBConnection
             connection = dbConnection.GetConnection(); // Get the connection
         }
 
         public List<int> ExtractNumbers(string input)
         {
-            // Tách chuỗi theo dấu phẩy
             string[] parts = input.Split(',');
-
-            // Danh sách lưu các số
             List<int> numbers = new List<int>();
-
-            // Duyệt qua các phần tử
             foreach (string part in parts)
             {
-                // Kiểm tra và chuyển đổi thành số
                 if (int.TryParse(part, out int number))
                 {
                     numbers.Add(number);
                 }
             }
-
             return numbers;
         }
         private void BTN_AD_Click(object sender, EventArgs e)
         {
-
             List<int> ListMSP  = ExtractNumbers(TB_MSP.Text);
             List<int> ListMKH = ExtractNumbers(TB_MKH.Text);
             decimal soLuongGiam = Math.Round(decimal.Parse(TB_GTG.Text), 3);
@@ -57,23 +56,18 @@ namespace DBMS_NoiThat.admin
             {
                 for (int j = 0; j < ListMKH.Count; j++)
                 {
-                    int maSanPham = ListMSP[i]; // Lấy giá trị từ danh sách ListMSP
-                    int maKhachHang = ListMKH[j]; // Lấy giá trị từ danh sách ListMKH
+                    int maSanPham = ListMSP[i]; 
+                    int maKhachHang = ListMKH[j]; 
                     using (SqlCommand command = new SqlCommand("sp_InsertDiscount", connection))
                     {
                         connection.Open();
-                        // Thiết lập thủ tục
                         command.CommandType = CommandType.StoredProcedure;
-
-                        // Thêm các tham số
                         command.Parameters.AddWithValue("@MaSanPham", maSanPham);
                         command.Parameters.AddWithValue("@MaKhachHang", maKhachHang);
                         command.Parameters.Add("@SoLuongGiam", SqlDbType.Decimal).Value = soLuongGiam;
                         command.Parameters.AddWithValue("@NgayApDung", ngayApDung);
                         command.Parameters.AddWithValue("@NgayKetThuc", ngayKetThuc);
                         command.Parameters.AddWithValue("@LiDo", liDo);
-
-                        // Thực thi thủ tục
                         int rowsAffected = command.ExecuteNonQuery();
                         connection.Close();
                     }

@@ -32,11 +32,10 @@ namespace DBMS_NoiThat
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LB_TT = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.FLP_Voucher = new System.Windows.Forms.FlowLayoutPanel();
             this.LB_SoTienTra = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.LB_GiamGia = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.LB_test = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.TB_DiaChi = new Guna.UI2.WinForms.Guna2TextBox();
             this.TB_SDTNguoiNhan = new Guna.UI2.WinForms.Guna2TextBox();
             this.TB_TenNguoiNhan = new Guna.UI2.WinForms.Guna2TextBox();
@@ -61,11 +60,10 @@ namespace DBMS_NoiThat
             // guna2Panel1
             // 
             this.guna2Panel1.AutoScroll = true;
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
+            this.guna2Panel1.Controls.Add(this.LB_TT);
             this.guna2Panel1.Controls.Add(this.FLP_Voucher);
             this.guna2Panel1.Controls.Add(this.LB_SoTienTra);
             this.guna2Panel1.Controls.Add(this.LB_GiamGia);
-            this.guna2Panel1.Controls.Add(this.LB_test);
             this.guna2Panel1.Controls.Add(this.TB_DiaChi);
             this.guna2Panel1.Controls.Add(this.TB_SDTNguoiNhan);
             this.guna2Panel1.Controls.Add(this.TB_TenNguoiNhan);
@@ -91,15 +89,15 @@ namespace DBMS_NoiThat
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
-            // guna2HtmlLabel2
+            // LB_TT
             // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F);
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(421, 1008);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(167, 40);
-            this.guna2HtmlLabel2.TabIndex = 33;
-            this.guna2HtmlLabel2.Text = "Thành Tiền";
+            this.LB_TT.BackColor = System.Drawing.Color.Transparent;
+            this.LB_TT.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F);
+            this.LB_TT.Location = new System.Drawing.Point(421, 1008);
+            this.LB_TT.Name = "LB_TT";
+            this.LB_TT.Size = new System.Drawing.Size(167, 40);
+            this.LB_TT.TabIndex = 33;
+            this.LB_TT.Text = "Thành Tiền";
             // 
             // FLP_Voucher
             // 
@@ -127,15 +125,6 @@ namespace DBMS_NoiThat
             this.LB_GiamGia.Size = new System.Drawing.Size(191, 31);
             this.LB_GiamGia.TabIndex = 30;
             this.LB_GiamGia.Text = "guna2HtmlLabel2";
-            // 
-            // LB_test
-            // 
-            this.LB_test.BackColor = System.Drawing.Color.Transparent;
-            this.LB_test.Location = new System.Drawing.Point(867, 1475);
-            this.LB_test.Name = "LB_test";
-            this.LB_test.Size = new System.Drawing.Size(108, 18);
-            this.LB_test.TabIndex = 29;
-            this.LB_test.Text = "guna2HtmlLabel1";
             // 
             // TB_DiaChi
             // 
@@ -395,8 +384,7 @@ namespace DBMS_NoiThat
         private Guna.UI2.WinForms.Guna2TextBox TB_SDTNguoiNhan;
         private Guna.UI2.WinForms.Guna2HtmlLabel LB_SoTienTra;
         private Guna.UI2.WinForms.Guna2HtmlLabel LB_GiamGia;
-        private Guna.UI2.WinForms.Guna2HtmlLabel LB_test;
         private FlowLayoutPanel FLP_Voucher;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LB_TT;
     }
 }

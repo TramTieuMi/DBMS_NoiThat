@@ -44,6 +44,7 @@
             this.hello = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
+            this.BTN_VIP = new System.Windows.Forms.Button();
             this.panel_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_Top.SuspendLayout();
@@ -53,10 +54,10 @@
             // 
             this.panel_Body.BackColor = System.Drawing.Color.White;
             this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Body.Location = new System.Drawing.Point(269, 123);
+            this.panel_Body.Location = new System.Drawing.Point(303, 154);
             this.panel_Body.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_Body.Name = "panel_Body";
-            this.panel_Body.Size = new System.Drawing.Size(1518, 683);
+            this.panel_Body.Size = new System.Drawing.Size(1621, 854);
             this.panel_Body.TabIndex = 11;
             this.panel_Body.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Body_Paint);
             // 
@@ -67,6 +68,7 @@
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.Color.Gray;
+            this.panel_left.Controls.Add(this.BTN_VIP);
             this.panel_left.Controls.Add(this.BTN_Chat);
             this.panel_left.Controls.Add(this.pictureBox1);
             this.panel_left.Controls.Add(this.labelMenu);
@@ -75,10 +77,10 @@
             this.panel_left.Controls.Add(this.buttonGioHang);
             this.panel_left.Controls.Add(this.buttonTTCN);
             this.panel_left.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_left.Location = new System.Drawing.Point(0, 123);
+            this.panel_left.Location = new System.Drawing.Point(0, 154);
             this.panel_left.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_left.Name = "panel_left";
-            this.panel_left.Size = new System.Drawing.Size(269, 683);
+            this.panel_left.Size = new System.Drawing.Size(303, 854);
             this.panel_left.TabIndex = 9;
             // 
             // BTN_Chat
@@ -88,10 +90,10 @@
             this.BTN_Chat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTN_Chat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTN_Chat.ForeColor = System.Drawing.Color.White;
-            this.BTN_Chat.Location = new System.Drawing.Point(9, 279);
+            this.BTN_Chat.Location = new System.Drawing.Point(10, 349);
             this.BTN_Chat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BTN_Chat.Name = "BTN_Chat";
-            this.BTN_Chat.Size = new System.Drawing.Size(229, 50);
+            this.BTN_Chat.Size = new System.Drawing.Size(258, 62);
             this.BTN_Chat.TabIndex = 7;
             this.BTN_Chat.Text = "Hộp Thoại Tư Vấn";
             this.BTN_Chat.UseVisualStyleBackColor = false;
@@ -100,10 +102,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DBMS_NoiThat.Properties.Resources.thiet_ke_logo_cong_ty_noi_that_house;
-            this.pictureBox1.Location = new System.Drawing.Point(107, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(120, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(77, 78);
+            this.pictureBox1.Size = new System.Drawing.Size(87, 98);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -112,9 +114,9 @@
             // 
             this.labelMenu.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMenu.ForeColor = System.Drawing.Color.Black;
-            this.labelMenu.Location = new System.Drawing.Point(9, 33);
+            this.labelMenu.Location = new System.Drawing.Point(10, 41);
             this.labelMenu.Name = "labelMenu";
-            this.labelMenu.Size = new System.Drawing.Size(128, 47);
+            this.labelMenu.Size = new System.Drawing.Size(144, 59);
             this.labelMenu.TabIndex = 4;
             this.labelMenu.Text = "MENU";
             this.labelMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -127,10 +129,10 @@
             this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogOut.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.ForeColor = System.Drawing.Color.White;
-            this.buttonLogOut.Location = new System.Drawing.Point(11, 335);
+            this.buttonLogOut.Location = new System.Drawing.Point(10, 512);
             this.buttonLogOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(229, 50);
+            this.buttonLogOut.Size = new System.Drawing.Size(258, 62);
             this.buttonLogOut.TabIndex = 6;
             this.buttonLogOut.Text = "Log Out";
             this.buttonLogOut.UseVisualStyleBackColor = false;
@@ -143,10 +145,10 @@
             this.buttonLSMH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLSMH.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLSMH.ForeColor = System.Drawing.Color.White;
-            this.buttonLSMH.Location = new System.Drawing.Point(9, 224);
+            this.buttonLSMH.Location = new System.Drawing.Point(10, 280);
             this.buttonLSMH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLSMH.Name = "buttonLSMH";
-            this.buttonLSMH.Size = new System.Drawing.Size(229, 50);
+            this.buttonLSMH.Size = new System.Drawing.Size(258, 62);
             this.buttonLSMH.TabIndex = 3;
             this.buttonLSMH.Text = "Lịch Sử Mua Hàng";
             this.buttonLSMH.UseVisualStyleBackColor = false;
@@ -159,10 +161,10 @@
             this.buttonGioHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGioHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGioHang.ForeColor = System.Drawing.Color.White;
-            this.buttonGioHang.Location = new System.Drawing.Point(9, 171);
+            this.buttonGioHang.Location = new System.Drawing.Point(10, 214);
             this.buttonGioHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGioHang.Name = "buttonGioHang";
-            this.buttonGioHang.Size = new System.Drawing.Size(229, 50);
+            this.buttonGioHang.Size = new System.Drawing.Size(258, 62);
             this.buttonGioHang.TabIndex = 2;
             this.buttonGioHang.Text = "Giỏ Hàng";
             this.buttonGioHang.UseVisualStyleBackColor = false;
@@ -175,10 +177,10 @@
             this.buttonTTCN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTTCN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTTCN.ForeColor = System.Drawing.Color.White;
-            this.buttonTTCN.Location = new System.Drawing.Point(9, 122);
+            this.buttonTTCN.Location = new System.Drawing.Point(10, 152);
             this.buttonTTCN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTTCN.Name = "buttonTTCN";
-            this.buttonTTCN.Size = new System.Drawing.Size(229, 50);
+            this.buttonTTCN.Size = new System.Drawing.Size(258, 62);
             this.buttonTTCN.TabIndex = 1;
             this.buttonTTCN.Text = "Thông Tin Cá Nhân";
             this.buttonTTCN.UseVisualStyleBackColor = false;
@@ -189,9 +191,9 @@
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbTitle.Location = new System.Drawing.Point(29, 39);
+            this.lbTitle.Location = new System.Drawing.Point(33, 49);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(172, 36);
+            this.lbTitle.Size = new System.Drawing.Size(204, 40);
             this.lbTitle.TabIndex = 3;
             this.lbTitle.Text = "BoConcept";
             // 
@@ -206,17 +208,17 @@
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(1787, 123);
+            this.panel_Top.Size = new System.Drawing.Size(1924, 154);
             this.panel_Top.TabIndex = 10;
             // 
             // hello
             // 
             this.hello.BackColor = System.Drawing.Color.Transparent;
             this.hello.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hello.Location = new System.Drawing.Point(224, 50);
+            this.hello.Location = new System.Drawing.Point(252, 62);
             this.hello.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hello.Name = "hello";
-            this.hello.Size = new System.Drawing.Size(122, 22);
+            this.hello.Size = new System.Drawing.Size(139, 27);
             this.hello.TabIndex = 4;
             this.hello.Text = "label welcome";
             // 
@@ -224,9 +226,9 @@
             // 
             this.labelDate.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDate.ForeColor = System.Drawing.Color.Black;
-            this.labelDate.Location = new System.Drawing.Point(668, 7);
+            this.labelDate.Location = new System.Drawing.Point(752, 9);
             this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(519, 38);
+            this.labelDate.Size = new System.Drawing.Size(584, 48);
             this.labelDate.TabIndex = 2;
             this.labelDate.Text = "label1";
             this.labelDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -235,22 +237,38 @@
             // 
             this.labelTime.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTime.ForeColor = System.Drawing.Color.Black;
-            this.labelTime.Location = new System.Drawing.Point(1400, 75);
+            this.labelTime.Location = new System.Drawing.Point(1575, 94);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(307, 31);
+            this.labelTime.Size = new System.Drawing.Size(345, 39);
             this.labelTime.TabIndex = 1;
             this.labelTime.Text = "label1";
             this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // BTN_VIP
+            // 
+            this.BTN_VIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BTN_VIP.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BTN_VIP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_VIP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_VIP.ForeColor = System.Drawing.Color.White;
+            this.BTN_VIP.Location = new System.Drawing.Point(10, 431);
+            this.BTN_VIP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BTN_VIP.Name = "BTN_VIP";
+            this.BTN_VIP.Size = new System.Drawing.Size(258, 62);
+            this.BTN_VIP.TabIndex = 8;
+            this.BTN_VIP.Text = "Khách Hàng VIP";
+            this.BTN_VIP.UseVisualStyleBackColor = false;
+            this.BTN_VIP.Click += new System.EventHandler(this.BTN_VIP_Click);
+            // 
             // MainFormKhachHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1787, 806);
+            this.ClientSize = new System.Drawing.Size(1924, 1008);
             this.Controls.Add(this.panel_Body);
             this.Controls.Add(this.panel_left);
             this.Controls.Add(this.panel_Top);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainFormKhachHang";
             this.Text = "MainFormKhachHang";
             this.Load += new System.EventHandler(this.MainFormKhachHang_Load);
@@ -279,5 +297,6 @@
         private System.Windows.Forms.Label labelTime;
         private Guna.UI2.WinForms.Guna2HtmlLabel hello;
         private System.Windows.Forms.Button BTN_Chat;
+        private System.Windows.Forms.Button BTN_VIP;
     }
 }

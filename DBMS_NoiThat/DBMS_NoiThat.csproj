@@ -108,6 +108,12 @@
     <Compile Include="UC\UCNhacNho.Designer.cs">
       <DependentUpon>UCNhacNho.cs</DependentUpon>
     </Compile>
+    <Compile Include="user\LoyaltyCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user\LoyaltyCustomer.Designer.cs">
+      <DependentUpon>LoyaltyCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="user\MainFormKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +274,9 @@
     <EmbeddedResource Include="UC\UCNhacNho.resx">
       <DependentUpon>UCNhacNho.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="user\LoyaltyCustomer.resx">
+      <DependentUpon>LoyaltyCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="user\MainFormKhachHang.resx">
       <DependentUpon>MainFormKhachHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,6 +344,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="user\XemThongTinUser.resx">
       <DependentUpon>XemThongTinUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -373,6 +383,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\275465-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Bronze.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Gold.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Silver.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

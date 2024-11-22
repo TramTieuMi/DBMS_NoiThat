@@ -246,5 +246,18 @@ namespace DBMS_NoiThat.user
         {
             Close();
         }
+
+        private void BTN_VIP_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new LoyaltyCustomer());
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
