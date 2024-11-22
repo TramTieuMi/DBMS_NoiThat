@@ -152,7 +152,10 @@ namespace DBMS_NoiThat.user
 
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Hide();
+            FDangNhap dangNhap = new FDangNhap();
+            dangNhap.ShowDialog();
+            this.Close();
         }
 
         private void buttonSP_Click(object sender, EventArgs e)
