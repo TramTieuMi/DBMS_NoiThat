@@ -1,4 +1,5 @@
 ﻿using DBMS_NoiThat.admin;
+using DBMS_NoiThat.admin;
 using DBMS_NoiThat.Entity;
 using System;
 using System.Collections.Generic;
@@ -205,6 +206,19 @@ namespace DBMS_NoiThat.user
         private void button2_Click(object sender, EventArgs e)
         {
             OpenChildForm(new DisCount());
+        }
+
+        private void btnLoyalCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenChildForm(new LoyaltyCustomerAdmin());
+                // labelHome.Text = buttonQLNV.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
