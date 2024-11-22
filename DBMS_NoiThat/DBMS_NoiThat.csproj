@@ -70,6 +70,12 @@
     <Compile Include="admin\FNhacNho.Designer.cs">
       <DependentUpon>FNhacNho.cs</DependentUpon>
     </Compile>
+    <Compile Include="admin\LoyaltyCustomerAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\LoyaltyCustomerAdmin.Designer.cs">
+      <DependentUpon>LoyaltyCustomerAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="admin\ThemSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin\FNhacNho.resx">
       <DependentUpon>FNhacNho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\LoyaltyCustomerAdmin.resx">
+      <DependentUpon>LoyaltyCustomerAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="admin\ThemSanPham.resx">
       <DependentUpon>ThemSanPham.cs</DependentUpon>
